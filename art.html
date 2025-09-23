@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrita Rahman Tory - AI & Security Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFDC00;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero-content .description {
+            font-size: 16px;
+            color: #888;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-photo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 60px;
+            color: #ccc;
+        }
+
+        /* Contact Info */
+        .contact-bar {
+            background: #f8f8f8;
+            padding: 20px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-item a {
+            color: #2c2c2c;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #FFDC00;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 120px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 60px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .current-roles {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .current-roles h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+        }
+
+        .role-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .role-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+        }
+
+        .role-org {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .role-duration {
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            padding: 30px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+        }
+
+        .job-company {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .job-duration {
+            color: #FFDC00;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .job-description {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .job-description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f8f8f8;
+            color: #666;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            border: 1px solid #eee;
+        }
+
+        .skill-tag:hover {
+            background: #FFDC00;
+            color: #2c2c2c;
+            border-color: #FFDC00;
+        }
+
+        /* Education & Certifications */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .edu-item, .cert-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .edu-item:last-child, .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree, .cert-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .institution {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .year, .result {
+            color: #FFDC00;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Publications */
+        .publication {
+            padding: 30px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #666;
+            margin-bottom: 8px;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        .pub-venue {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Languages */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .language-item {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .language-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .language-level {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #f8f8f8;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-contact a:hover {
+            color: #FFDC00;
+        }
+
+        .footer-text {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 0;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .edu-cert-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ART</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Hi, I'm Adrita Rahman Tory</h1>
+                    <div class="subtitle">AI & Security Researcher</div>
+                    <div class="description">
+                        I'm a dedicated researcher with extensive experience in cybersecurity, intrusion detection systems, and adversarial AI. Currently pursuing a Master's in Information Technology while conducting research in explainable AI and network security.
+                    </div>
+                </div>
+                
+                <div class="hero-photo">
+                    <div class="photo-container">
+                        <!-- Replace with: <img src="your-photo.jpg" alt="Adrita Rahman Tory"> -->
+                        <div class="photo-placeholder">📸</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="contact-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:adritatori456@gmail.com">adritatori456@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Dhaka, Bangladesh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <section id="about" class="section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I am a dedicated AI and Security Researcher with extensive experience in cybersecurity, intrusion detection systems, and adversarial AI. My research focuses on developing MITRE ATT&CK-aligned protocols, conducting threat analysis, and designing experiments on differential privacy and adversarial attacks.</p>
+                        
+                        <p>With a strong background in software engineering and technical training, I combine practical development skills with cutting-edge research methodologies to address real-world cybersecurity challenges.</p>
+                        
+                        <p>I have experience managing research lab operations, leading teams, and contributing to peer-reviewed publications in the field of AI security and network intrusion detection.</p>
+                    </div>
+                    
+                    <div class="current-roles">
+                        <h3>Current Positions</h3>
+                        <div class="role-item">
+                            <div class="role-title">Research Assistant</div>
+                            <div class="role-org">Bangladesh University of Business and Technology</div>
+                            <div class="role-duration">May 2025 - Present</div>
+                        </div>
+                        <div class="role-item">
+                            <div class="role-title">Research Assistant</div>
+                            <div class="role-org">UNSW, Australia (Remote)</div>
+                            <div class="role-duration">July 2024 - Present</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div class="job-title">Research Assistant (Part Time)</div>
+                            <div class="job-company">Bangladesh University of Business and Technology</div>
+                            <div class="job-duration">May 2025 - Present</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Research Assistant managing BUBT Cyber Research Lab operations (budget, infrastructure, compliance) and leading a 10-person team</li>
+                                <li>Conducted cybersecurity research on intrusion detection and adversarial AI</li>
+                                <li>Developed MITRE ATT&CK-aligned protocols and co-authored two peer-reviewed manuscripts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div class="job-title">Research Assistant</div>
+                            <div class="job-company">New South Wales (UNSW), Canberra, ACT</div>
+                            <div class="job-duration">July 2024 - Present</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Research Assistant under Dr. Fida Hasan (UNSW Cyber Security)</li>
+                                <li>Conducted explainable AI and intrusion detection research focusing on fairness in AI security systems</li>
+                                <li>Designed experiments on differential privacy and adversarial attacks for trustworthy AI research</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div class="job-title">Software Engineer (Part Time)</div>
+                            <div class="job-company">SUN Co. Ltd.</div>
+                            <div class="job-duration">January 2022 - July 2024</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Developed full-lifecycle software solutions, enhancing functionality and user experience</li>
+                                <li>Collaborated in cross-functional teams, applying Japanese work ethics</li>
+                                <li>Gained experience in front-end development using React, Redux, HTML, CSS, and JavaScript</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div class="job-title">RPL/RTO Trainer – Multiple Occupations</div>
+                            <div class="job-company">Bangladesh Technical Education Board</div>
+                            <div class="job-duration">March 2020 - June 2021</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Designed and delivered training programs in multiple IT disciplines</li>
+                                <li>Trained students in graphic design, web development, and computer operations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Cybersecurity</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">IDS</span>
+                            <span class="skill-tag">Suricata</span>
+                            <span class="skill-tag">Wireshark</span>
+                            <span class="skill-tag">Kali Linux</span>
+                            <span class="skill-tag">Penetration Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MITRE ATT&CK</span>
+                            <span class="skill-tag">NIST</span>
+                            <span class="skill-tag">CVE/CVSS</span>
+                            <span class="skill-tag">OWASP Top 10</span>
+                            <span class="skill-tag">Essential Eight</span>
+                            <span class="skill-tag">PSPF</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>AI Security</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adversarial Attacks</span>
+                            <span class="skill-tag">Differential Privacy</span>
+                            <span class="skill-tag">XAI (LIME, SHAP)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Web Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Redux</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">WordPress</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Research Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Threat Analysis</span>
+                            <span class="skill-tag">Experimental Design</span>
+                            <span class="skill-tag">Literature Review</span>
+                            <span class="skill-tag">Statistical Methods</span>
+                            <span class="skill-tag">Technical Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="edu-cert-grid">
+                    <div>
+                        <h3 style="font-size: 20px; margin-bottom: 30px; color: #2c2c2c;">Education</h3>
+                        <div class="edu-item">
+                            <div class="degree">Master's in Information Technology</div>
+                            <div class="institution">Jahangirnagar University</div>
+                            <div class="year">2025 - Present</div>
+                        </div>
+                        
+                        <div class="edu-item">
+                            <div class="degree">Bachelor of Science in Computer Science</div>
+                            <div class="institution">Bangladesh University of Business and Technology</div>
+                            <div class="year">2021 - 2025</div>
+                            <div class="result">CGPA: 3.55/4.00</div>
+                        </div>
+                        
+                        <div class="edu-item">
+                            <div class="degree">Diploma in Computer Engineering</div>
+                            <div class="institution">Dhaka Mohila Polytechnic Institute</div>
+                            <div class="year">2016 - 2021</div>
+                            <div class="result">CGPA: 3.48/4.00</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 20px; margin-bottom: 30px; color: #2c2c2c;">Certifications</h3>
+                        <div class="cert-item">
+                            <div class="cert-name">Security Plus</div>
+                            <div class="institution">CompTIA</div>
+                            <div class="year">2025</div>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">NTVQF Level 4 in CBT&A</div>
+                            <div class="institution">Bangladesh Technical Education Board</div>
+                            <div class="year">2023</div>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">IT Essentials</div>
+                            <div class="institution">CISCO</div>
+                            <div class="year">2022</div>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">Web Development NTVQF Level 4</div>
+                            <div class="year">Certified</div>
+                        </div>
+                        
+                        <div class="cert-item">
+                            <div class="cert-name">Graphic Design NTVQF Level 2 & 3</div>
+                            <div class="year">Certified</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications" class="section">
+                <h2 class="section-title">Publications</h2>
+                
+                <div class="publication">
+                    <div class="pub-title">Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector</div>
+                    <div class="pub-authors">Tory, A. R., Hasan, K. F., Moni, M., Koroniotis, N., & Saifur, S.</div>
+                    <div class="pub-venue">Proceedings of the 3rd International Conference on Big Data, IoT and Machine Learning (BIM 2025), September 25–27, 2025. Accepted; to appear.</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="pub-title">An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&CK and Industry Relevance Metrics</div>
+                    <div class="pub-authors">Tory, A. R., & Hasan, K. F.</div>
+                    <div class="pub-venue">Manuscript under review (2025)</div>
+                </div>
+            </section>
+
+            <section id="languages" class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <div class="language-name">Bangla</div>
+                        <div class="language-level">Native</div>
+                    </div>
+                    
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <div class="language-level">IELTS Overall: 7.0</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 5px;">
+                            R: 7.5 | W: 6.0 | S: 6.5 | L: 8.0
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3 style="font-size: 24px; margin-bottom: 30px; color: #2c2c2c;">Let's Connect</h3>
+            <div class="footer-contact">
+                <a href="mailto:adritatori456@gmail.com">📧 adritatori456@gmail.com</a>
+                <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank">🔗 LinkedIn Profile</a>
+            </div>
+            <p class="footer-text">&copy; 2025 Adrita Rahman Tory. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
