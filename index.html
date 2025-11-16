@@ -201,6 +201,186 @@
             font-size: 14px;
         }
 
+        /* Horizontal Scroll Certifications */
+        .cert-scroll-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .cert-scroll-container::before,
+        .cert-scroll-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .cert-scroll-container::before {
+            left: 0;
+            background: linear-gradient(90deg, #E8D8F5, transparent);
+        }
+
+        .cert-scroll-container::after {
+            right: 0;
+            background: linear-gradient(270deg, #E8D8F5, transparent);
+        }
+
+        .cert-scroll-track {
+            display: flex;
+            gap: 20px;
+            animation: scrollCerts 20s linear infinite;
+            width: max-content;
+        }
+
+        .cert-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollCerts {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .cert-item {
+            background: #FFD700;
+            color: #000000;
+            padding: 12px 24px;
+            border: 3px solid #000000;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 4px 4px 0 #000000;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0 #000000;
+            background: #FFE066;
+        }
+
+        .cert-icon {
+            margin-right: 8px;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: floatShape 15s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: #FFB6C1;
+            border-radius: 50%;
+            animation-delay: -2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            width: 60px;
+            height: 60px;
+            background: #5DADE2;
+            transform: rotate(45deg);
+            animation-delay: -4s;
+        }
+
+        .floating-shape:nth-child(4) {
+            top: 50%;
+            right: 20%;
+            width: 100px;
+            height: 100px;
+            background: #90EE90;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation-delay: -6s;
+        }
+
+        .floating-shape:nth-child(5) {
+            bottom: 20%;
+            right: 30%;
+            width: 70px;
+            height: 70px;
+            background: #FFD700;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: -8s;
+        }
+
+        .floating-shape:nth-child(6) {
+            top: 70%;
+            left: 25%;
+            width: 90px;
+            height: 90px;
+            background: #FFB6C1;
+            border-radius: 20% 80% 80% 20% / 20% 20% 80% 80%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-3deg);
+            }
+            75% {
+                transform: translateY(-25px) rotate(2deg);
+            }
+        }
+
+        /* Grid Background Pattern */
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
         /* Decorative Elements */
         .decorations {
             position: absolute;
@@ -584,79 +764,119 @@
             border-radius: 4px;
         }
 
-        /* Contact Section */
-        .contact-section {
-            background: #FFB6C1;
-            border: 3px solid #000000;
-            border-radius: 20px;
-            padding: 50px 30px;
-            box-shadow: 8px 8px 0 #000000;
-            max-width: 900px;
+        /* Contact Section - Redesigned */
+        .connect-section {
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .contact-title {
-            font-size: clamp(32px, 5vw, 42px);
+        .connect-title {
+            font-size: clamp(48px, 8vw, 72px);
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFB6C1 50%, #5DADE2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
         }
 
-        .contact-subtitle {
-            font-size: 16px;
-            margin-bottom: 30px;
+        .connect-subtitle {
+            font-size: 18px;
             color: #333;
+            margin-bottom: 50px;
+            font-weight: 500;
         }
 
-        .contact-cards {
+        .connect-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .contact-card {
+        .connect-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
             background: #F5E8F0;
             border: 3px solid #000000;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #000000;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 6px 6px 0 #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .connect-link:hover::before {
+            left: 100%;
+        }
+
+        .connect-link:hover {
+            transform: translateY(-8px) rotate(-2deg);
+            box-shadow: 10px 10px 0 #000000;
+        }
+
+        .connect-link:nth-child(even):hover {
+            transform: translateY(-8px) rotate(2deg);
+        }
+
+        .connect-link .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .connect-link:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .connect-link.youtube { background: #FFE4E1; }
+        .connect-link.scholar { background: #E8F4F8; }
+        .connect-link.researchgate { background: #E8F8F5; }
+        .connect-link.linkedin { background: #E8F0F8; }
+        .connect-link.github { background: #F0F0F0; }
+        .connect-link.medium { background: #FFF8E1; }
+
+        .connect-cta {
+            background: #FFD700;
+            border: 3px solid #000000;
             border-radius: 12px;
-            padding: 25px;
-            box-shadow: 4px 4px 0 #000000;
-            max-width: 500px;
+            padding: 30px;
+            box-shadow: 6px 6px 0 #000000;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-card-title {
-            font-size: 18px;
+        .connect-cta-text {
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
-        .contact-card-content {
-            font-size: 16px;
-            margin-bottom: 15px;
-            word-break: break-all;
-        }
-
-        .profile-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .profile-link {
-            display: block;
-            color: #000000;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px;
-            transition: all 0.2s ease;
-            border-radius: 6px;
-            text-align: left;
-        }
-
-        .profile-link:hover {
-            color: #5DADE2;
-            transform: translateX(5px);
+        .connect-cta-subtext {
+            font-size: 14px;
+            color: #333;
         }
 
         /* Mouse Trail */
@@ -820,6 +1040,17 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="grid-pattern"></div>
+    <div class="animated-bg" aria-hidden="true">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
     <nav class="nav-container" role="navigation" aria-label="Main navigation">
         <ul class="nav-links">
             <li><a href="#publications">Pubs</a></li>
@@ -843,12 +1074,14 @@
         <div class="hero-about-grid">
             <div class="hero-about-content">
                 <h1>Adrita Rahman Tory</h1>
-                <div class="subtitle">Cybersecurity Researcher | Research Assistant</div>
+                <div class="subtitle">Cybersecurity Researcher | Research Assistant | Certified Trainer</div>
 
                 <div class="hero-about-bio">
-                    <p>I'm a <span class="highlight">dedicated cybersecurity researcher</span> focusing on AI-driven security solutions. Currently pursuing a Professional Master's in IT at Jahangirnagar University while conducting research on <span class="highlight">intrusion detection systems</span> and trustworthy AI.</p>
+                    <p>Picture this: <span class="highlight">AI meets cybersecurity</span>, and I'm in the middle of that collision. I decode threats before they strike, architect defenses that learn and adapt, and chase vulnerabilities across the digital frontier.</p>
 
-                    <p>My work bridges the gap between artificial intelligence and network security, with emphasis on protecting critical infrastructure and advancing 6G security frameworks.</p>
+                    <p>By day, I'm dissecting <span class="highlight">intrusion detection systems</span> and wrestling with Byzantine-robust algorithms. By night, I'm writing research papers that push the boundaries of what's possible in <span class="highlight">6G security</span> and federated learning.</p>
+
+                    <p>Currently leveling up with a Professional Master's in IT while publishing in Q1 journals. My mission? Making critical infrastructure unhackable, one algorithm at a time.</p>
 
                     <div class="interest-tags">
                         <span class="interest-tag">AI Threat Detection</span>
@@ -860,8 +1093,15 @@
                     </div>
                 </div>
 
-                <div class="certification-badge">
-                    CompTIA Security+ Certified
+                <div class="cert-scroll-container">
+                    <div class="cert-scroll-track">
+                        <div class="cert-item"><span class="cert-icon">🛡️</span>CompTIA Security+ Certified</div>
+                        <div class="cert-item"><span class="cert-icon">🎓</span>BTEB Certified Trainer & Assessor</div>
+                        <div class="cert-item"><span class="cert-icon">💻</span>Cisco IT Essentials Certified</div>
+                        <div class="cert-item"><span class="cert-icon">🛡️</span>CompTIA Security+ Certified</div>
+                        <div class="cert-item"><span class="cert-icon">🎓</span>BTEB Certified Trainer & Assessor</div>
+                        <div class="cert-item"><span class="cert-icon">💻</span>Cisco IT Essentials Certified</div>
+                    </div>
                 </div>
 
                 <div class="hero-buttons">
@@ -989,7 +1229,6 @@
                     <div class="education-card">
                         <h3 class="education-degree">Professional Master's in Information Technology</h3>
                         <p class="education-institution">Jahangirnagar University</p>
-                        <p class="education-location">Dhaka, Bangladesh</p>
                         <span class="education-duration">August 2025 - Current</span>
                     </div>
                 </div>
@@ -999,7 +1238,6 @@
                     <div class="education-card">
                         <h3 class="education-degree">Bachelor's in Computer Science and Engineering</h3>
                         <p class="education-institution">Bangladesh University of Business and Technology (BUBT)</p>
-                        <p class="education-location">Dhaka, Bangladesh</p>
                         <div>
                             <span class="education-duration">July 2021 - March 2025</span>
                         </div>
@@ -1011,7 +1249,6 @@
                     <div class="education-card">
                         <h3 class="education-degree">Diploma in Engineering</h3>
                         <p class="education-institution">Dhaka Mohila Polytechnic Institute</p>
-                        <p class="education-location">Dhaka, Bangladesh</p>
                         <div>
                             <span class="education-duration">June 2016 - July 2020</span>
                         </div>
@@ -1023,27 +1260,40 @@
 
     <section id="contact" class="section" role="region" aria-labelledby="contact-title">
         <div class="container">
-            <div class="contact-section">
-                <h2 class="contact-title" id="contact-title">LET'S CONNECT</h2>
-                <p class="contact-subtitle">Interested in research collaboration or just want to chat?</p>
+            <div class="connect-section">
+                <h2 class="connect-title" id="contact-title">LET'S CONNECT</h2>
+                <p class="connect-subtitle">Got a research idea? Want to collaborate? Or just geek out about AI security? I'm all ears.</p>
 
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <h3 class="contact-card-title">LOCATION</h3>
-                        <p class="contact-card-content">Dhaka, Bangladesh</p>
-                    </div>
+                <div class="connect-grid">
+                    <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="connect-link youtube">
+                        <span class="icon">📺</span>
+                        YouTube
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="connect-link scholar">
+                        <span class="icon">📚</span>
+                        Scholar
+                    </a>
+                    <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="connect-link researchgate">
+                        <span class="icon">🔬</span>
+                        ResearchGate
+                    </a>
+                    <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="connect-link linkedin">
+                        <span class="icon">💼</span>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="connect-link github">
+                        <span class="icon">⚡</span>
+                        GitHub
+                    </a>
+                    <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="connect-link medium">
+                        <span class="icon">✍️</span>
+                        Medium
+                    </a>
+                </div>
 
-                    <div class="contact-card">
-                        <h3 class="contact-card-title">FIND ME ONLINE</h3>
-                        <div class="profile-links">
-                            <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; YouTube Channel</a>
-                            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Google Scholar</a>
-                            <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; ResearchGate</a>
-                            <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; LinkedIn</a>
-                            <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; GitHub</a>
-                            <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Medium Blog</a>
-                        </div>
-                    </div>
+                <div class="connect-cta">
+                    <p class="connect-cta-text">Ready to collaborate on the next breakthrough?</p>
+                    <p class="connect-cta-subtext">Let's turn ideas into impact together.</p>
                 </div>
             </div>
         </div>
