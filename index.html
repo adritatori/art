@@ -706,11 +706,41 @@
 
             display: grid;
 
-            gap: 25px;
+            gap: 20px;
+
+            max-height: calc(100vh - 200px);
+
+            overflow-y: auto;
+
+            padding-right: 10px;
 
         }
 
- 
+        .publications-grid::-webkit-scrollbar {
+
+            width: 8px;
+
+        }
+
+        .publications-grid::-webkit-scrollbar-track {
+
+            background: rgba(0, 0, 0, 0.1);
+
+            border-radius: 4px;
+
+        }
+
+        .publications-grid::-webkit-scrollbar-thumb {
+
+            background: #FFD700;
+
+            border-radius: 4px;
+
+            border: 2px solid #000000;
+
+        }
+
+
 
         .publication-card {
 
@@ -720,7 +750,7 @@
 
             border-radius: 12px;
 
-            padding: 25px;
+            padding: 20px;
 
             box-shadow: 6px 6px 0 #000000;
 
@@ -728,7 +758,7 @@
 
         }
 
- 
+
 
         .publication-card:hover {
 
@@ -872,9 +902,39 @@
 
             display: grid;
 
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
-            gap: 30px;
+            gap: 25px;
+
+            max-height: calc(100vh - 200px);
+
+            overflow-y: auto;
+
+            padding-right: 10px;
+
+        }
+
+        .blog-grid::-webkit-scrollbar {
+
+            width: 8px;
+
+        }
+
+        .blog-grid::-webkit-scrollbar-track {
+
+            background: rgba(0, 0, 0, 0.1);
+
+            border-radius: 4px;
+
+        }
+
+        .blog-grid::-webkit-scrollbar-thumb {
+
+            background: #5DADE2;
+
+            border-radius: 4px;
+
+            border: 2px solid #000000;
 
         }
 
@@ -1306,9 +1366,13 @@
 
         .connect-link .icon {
 
-            font-size: 36px;
+            font-size: 14px;
 
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
 
         }
 
@@ -1370,7 +1434,7 @@
 
             }
 
- 
+
 
             .photo-container {
 
@@ -1380,7 +1444,7 @@
 
             }
 
- 
+
 
             .interest-tags {
 
@@ -1388,7 +1452,7 @@
 
             }
 
- 
+
 
             .cert-badges {
 
@@ -1396,7 +1460,7 @@
 
             }
 
- 
+
 
             .about-bio {
 
@@ -1404,35 +1468,47 @@
 
             }
 
- 
+
 
             .connect-grid {
 
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
 
             }
 
- 
+
 
             .blog-grid {
 
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+            }
+
+            .publications-grid {
+
+                max-height: calc(100vh - 180px);
 
             }
 
         }
 
- 
+
 
         @media (max-width: 768px) {
 
             .panel {
 
-                padding: 30px;
+                padding: 20px;
 
             }
 
- 
+            .panel-content {
+
+                max-width: 100%;
+
+            }
+
+
 
             .nav-container {
 
@@ -1440,53 +1516,365 @@
 
                 right: 10px;
 
+                left: 10px;
+
+                padding: 6px 10px;
+
+                border-radius: 30px;
+
+            }
+
+            .nav-links {
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 2px;
+
+            }
+
+
+
+            .nav-links a {
+
+                padding: 6px 10px;
+
+                font-size: 11px;
+
+            }
+
+
+
+            .section-title {
+
+                font-size: 28px;
+
+                padding: 8px 20px;
+
+                margin-bottom: 25px;
+
+            }
+
+
+
+            .connect-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+                max-width: 100%;
+
+                gap: 15px;
+
+            }
+
+            .connect-link {
+
+                padding: 20px 15px;
+
+                font-size: 12px;
+
+            }
+
+
+
+            .scroll-indicator {
+
+                font-size: 11px;
+
+                padding: 8px 16px;
+
+                bottom: 20px;
+
+            }
+
+            .progress-dots {
+
+                bottom: 60px;
+
+                padding: 8px 16px;
+
+                gap: 10px;
+
+            }
+
+            .progress-dot {
+
+                width: 12px;
+
+                height: 12px;
+
+            }
+
+            .publications-grid {
+
+                gap: 15px;
+
+                max-height: calc(100vh - 160px);
+
+            }
+
+            .publication-card {
+
+                padding: 15px;
+
+                box-shadow: 4px 4px 0 #000000;
+
+            }
+
+            .publication-title {
+
+                font-size: 15px;
+
+                margin-bottom: 8px;
+
+            }
+
+            .publication-authors {
+
+                font-size: 13px;
+
+            }
+
+            .publication-venue {
+
+                font-size: 12px;
+
+            }
+
+            .publication-role {
+
+                font-size: 11px;
+
+            }
+
+            .year-badge, .status-badge {
+
+                font-size: 11px;
+
+                padding: 4px 10px;
+
+            }
+
+            .blog-grid {
+
+                gap: 20px;
+
+                max-height: calc(100vh - 160px);
+
+            }
+
+            .blog-card {
+
+                box-shadow: 4px 4px 0 #000000;
+
+            }
+
+            .blog-content {
+
+                padding: 15px;
+
+            }
+
+            .blog-title {
+
+                font-size: 16px;
+
+            }
+
+            .blog-excerpt {
+
+                font-size: 13px;
+
+            }
+
+            .blog-link {
+
+                font-size: 12px;
+
                 padding: 6px 12px;
 
             }
 
- 
+            .about-content h1 {
 
-            .nav-links a {
+                font-size: clamp(2rem, 8vw, 3rem);
+
+            }
+
+            .subtitle {
+
+                font-size: 16px;
+
+                padding: 5px 12px;
+
+            }
+
+            .about-bio {
+
+                padding: 20px;
+
+                margin: 20px 0;
+
+            }
+
+            .about-bio p {
+
+                font-size: 14px;
+
+            }
+
+            .interest-tag {
+
+                font-size: 11px;
+
+                padding: 5px 10px;
+
+            }
+
+            .cert-badge {
+
+                font-size: 11px;
 
                 padding: 8px 12px;
 
+            }
+
+            .connect-title {
+
+                font-size: clamp(36px, 10vw, 60px);
+
+                margin-bottom: 15px;
+
+            }
+
+            .connect-subtitle {
+
+                font-size: 14px;
+
+                margin-bottom: 30px;
+
+            }
+
+            .connect-cta {
+
+                padding: 20px;
+
+            }
+
+            .connect-cta-text {
+
+                font-size: 16px;
+
+            }
+
+            .connect-cta-subtext {
+
                 font-size: 12px;
 
             }
 
- 
+            .education-timeline::before {
 
-            .section-title {
-
-                font-size: 32px;
-
-                padding: 10px 24px;
+                left: 25px;
 
             }
 
- 
+            .education-marker {
 
-            .connect-grid {
+                width: 50px;
 
-                grid-template-columns: 1fr;
+                height: 50px;
 
-                max-width: 300px;
+                font-size: 20px;
 
             }
 
- 
+            .education-card {
 
-            .scroll-indicator {
+                padding: 15px;
+
+            }
+
+            .education-degree {
+
+                font-size: 16px;
+
+            }
+
+            .education-institution {
+
+                font-size: 14px;
+
+            }
+
+            .education-duration {
 
                 font-size: 12px;
-
-                padding: 10px 20px;
 
             }
 
         }
 
- 
+        @media (max-width: 480px) {
+
+            .panel {
+
+                padding: 15px;
+
+            }
+
+            .nav-links a {
+
+                padding: 5px 8px;
+
+                font-size: 10px;
+
+            }
+
+            .section-title {
+
+                font-size: 24px;
+
+                padding: 6px 16px;
+
+            }
+
+            .connect-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 12px;
+
+            }
+
+            .connect-link {
+
+                padding: 15px 10px;
+
+            }
+
+            .publication-title {
+
+                font-size: 14px;
+
+            }
+
+            .blog-title {
+
+                font-size: 15px;
+
+            }
+
+            .about-content h1 {
+
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+
+            }
+
+        }
+
+
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -1778,6 +2166,34 @@
 
                         <div class="blog-content">
 
+                            <span class="blog-category">DEVOPS</span>
+
+                            <h3 class="blog-title">Docker পর্ব ১ - Container Technology Fundamentals</h3>
+
+                            <p class="blog-excerpt">Introduction to Docker containerization and its role in modern software development</p>
+
+                            <a href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener noreferrer" class="blog-link">READ ON MEDIUM &rarr;</a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="blog-card">
+
+                        <div class="blog-window-bar">
+
+                            <span class="window-dot window-dot-red"></span>
+
+                            <span class="window-dot window-dot-yellow"></span>
+
+                            <span class="window-dot window-dot-green"></span>
+
+                        </div>
+
+                        <div class="blog-content">
+
                             <span class="blog-category">COMPUTER GRAPHICS</span>
 
                             <h3 class="blog-title">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python Graphics</h3>
@@ -1790,7 +2206,7 @@
 
                     </article>
 
- 
+
 
                     <article class="blog-card">
 
@@ -1934,7 +2350,7 @@
 
                         <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">📺</span>
+                            <span class="icon">YT</span>
 
                             YouTube
 
@@ -1942,7 +2358,7 @@
 
                         <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">📚</span>
+                            <span class="icon">GS</span>
 
                             Scholar
 
@@ -1950,7 +2366,7 @@
 
                         <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">🔬</span>
+                            <span class="icon">RG</span>
 
                             ResearchGate
 
@@ -1958,7 +2374,7 @@
 
                         <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">💼</span>
+                            <span class="icon">IN</span>
 
                             LinkedIn
 
@@ -1966,7 +2382,7 @@
 
                         <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">⚡</span>
+                            <span class="icon">GH</span>
 
                             GitHub
 
@@ -1974,7 +2390,7 @@
 
                         <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="connect-link">
 
-                            <span class="icon">✍️</span>
+                            <span class="icon">MD</span>
 
                             Medium
 
