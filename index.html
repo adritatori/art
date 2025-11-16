@@ -76,7 +76,7 @@
 
         .hero-about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 320px;
             gap: 60px;
             width: 100%;
             max-width: 1200px;
@@ -84,21 +84,21 @@
             align-items: center;
         }
 
-        .hero-content {
+        .hero-about-content {
             position: relative;
         }
 
-        .hero-content h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
+        .hero-about-content h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
             font-weight: 700;
             color: #000000;
-            line-height: 1;
+            line-height: 0.95;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
 
-        .hero-content .subtitle {
-            font-size: 20px;
+        .hero-about-content .subtitle {
+            font-size: 22px;
             color: #000000;
             margin: 15px 0;
             font-weight: 600;
@@ -109,11 +109,23 @@
             box-shadow: 4px 4px 0 #000000;
         }
 
-        .hero-description {
+        .hero-about-bio {
+            background: #F5E8F0;
+            border: 3px solid #000000;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 4px 4px 0 #000000;
+        }
+
+        .hero-about-bio p {
             font-size: 16px;
             line-height: 1.7;
-            margin: 20px 0;
-            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .hero-about-bio p:last-child {
+            margin-bottom: 0;
         }
 
         .highlight {
@@ -122,21 +134,11 @@
             font-weight: 600;
         }
 
-        .research-interests {
-            margin: 20px 0;
-        }
-
-        .research-interests h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
         .interest-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 20px;
         }
 
         .interest-tag {
@@ -146,27 +148,14 @@
             border: 3px solid #000000;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 12px;
-            box-shadow: 3px 3px 0 #000000;
-        }
-
-        .certification-badge {
-            display: inline-block;
-            background: #FFD700;
-            color: #000000;
-            padding: 10px 20px;
-            border: 3px solid #000000;
-            border-radius: 8px;
-            font-weight: 700;
-            margin-top: 15px;
-            box-shadow: 4px 4px 0 #000000;
-            font-size: 14px;
+            font-size: 13px;
+            box-shadow: 2px 2px 0 #000000;
         }
 
         .hero-buttons {
             display: flex;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
@@ -199,9 +188,17 @@
             color: #000000;
         }
 
-        .btn-blue {
-            background: #5DADE2;
+        .certification-badge {
+            display: inline-block;
+            background: #FFD700;
             color: #000000;
+            padding: 10px 20px;
+            border: 3px solid #000000;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 15px;
+            box-shadow: 3px 3px 0 #000000;
+            font-size: 14px;
         }
 
         /* Decorative Elements */
@@ -231,6 +228,13 @@
         .decoration:nth-child(8) { bottom: 15%; right: 25%; transform: rotate(-5deg); }
 
         /* Photo Section */
+        .photo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
         .photo-container {
             width: 100%;
             max-width: 350px;
@@ -587,7 +591,7 @@
             border-radius: 20px;
             padding: 50px 30px;
             box-shadow: 8px 8px 0 #000000;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
@@ -605,6 +609,12 @@
             color: #333;
         }
 
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
         .contact-card {
             background: #F5E8F0;
             border: 3px solid #000000;
@@ -619,6 +629,12 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 15px;
+        }
+
+        .contact-card-content {
+            font-size: 16px;
+            margin-bottom: 15px;
+            word-break: break-all;
         }
 
         .profile-links {
@@ -639,7 +655,7 @@
         }
 
         .profile-link:hover {
-            background: #5DADE2;
+            color: #5DADE2;
             transform: translateX(5px);
         }
 
@@ -671,6 +687,10 @@
                 gap: 40px;
             }
 
+            .photo-section {
+                order: -1;
+            }
+
             .photo-container {
                 max-width: 280px;
             }
@@ -683,8 +703,8 @@
                 justify-content: center;
             }
 
-            .research-interests h3 {
-                text-align: center;
+            .hero-about-bio {
+                text-align: left;
             }
         }
 
@@ -706,8 +726,12 @@
                 padding: 40px 20px;
             }
 
-            .hero-content h1 {
+            .hero-about-content h1 {
                 font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 32px;
             }
 
             .container {
@@ -749,6 +773,29 @@
 
             .photo-container {
                 max-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-about-content h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 18px !important;
+            }
+
+            .photo-container {
+                width: 240px;
+                height: 300px;
+            }
+
+            .contact-section {
+                padding: 40px 20px;
+            }
+
+            .contact-title {
+                font-size: 32px;
             }
         }
 
@@ -794,21 +841,20 @@
             <span class="decoration">&#x25CF;</span>
         </div>
         <div class="hero-about-grid">
-            <div class="hero-content">
+            <div class="hero-about-content">
                 <h1>Adrita Rahman Tory</h1>
                 <div class="subtitle">Cybersecurity Researcher | Research Assistant</div>
 
-                <p class="hero-description">
-                    I'm a <span class="highlight">dedicated cybersecurity researcher</span> currently pursuing a Professional Master's in IT at Jahangirnagar University while conducting research at BUBT and UNSW Canberra.
-                </p>
+                <div class="hero-about-bio">
+                    <p>I'm a <span class="highlight">dedicated cybersecurity researcher</span> focusing on AI-driven security solutions. Currently pursuing a Professional Master's in IT at Jahangirnagar University while conducting research on <span class="highlight">intrusion detection systems</span> and trustworthy AI.</p>
 
-                <div class="research-interests">
-                    <h3>Research Interests</h3>
+                    <p>My work bridges the gap between artificial intelligence and network security, with emphasis on protecting critical infrastructure and advancing 6G security frameworks.</p>
+
                     <div class="interest-tags">
-                        <span class="interest-tag">AI-based Threat Detection</span>
+                        <span class="interest-tag">AI Threat Detection</span>
                         <span class="interest-tag">Network IDS</span>
                         <span class="interest-tag">Federated Learning</span>
-                        <span class="interest-tag">Critical Infrastructure Security</span>
+                        <span class="interest-tag">Critical Infrastructure</span>
                         <span class="interest-tag">6G Security</span>
                         <span class="interest-tag">Byzantine Robustness</span>
                     </div>
@@ -954,7 +1000,9 @@
                         <h3 class="education-degree">Bachelor's in Computer Science and Engineering</h3>
                         <p class="education-institution">Bangladesh University of Business and Technology (BUBT)</p>
                         <p class="education-location">Dhaka, Bangladesh</p>
-                        <span class="education-duration">July 2021 - March 2025</span>
+                        <div>
+                            <span class="education-duration">July 2021 - March 2025</span>
+                        </div>
                     </div>
                 </div>
 
@@ -964,7 +1012,9 @@
                         <h3 class="education-degree">Diploma in Engineering</h3>
                         <p class="education-institution">Dhaka Mohila Polytechnic Institute</p>
                         <p class="education-location">Dhaka, Bangladesh</p>
-                        <span class="education-duration">June 2016 - July 2020</span>
+                        <div>
+                            <span class="education-duration">June 2016 - July 2020</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -977,15 +1027,22 @@
                 <h2 class="contact-title" id="contact-title">LET'S CONNECT</h2>
                 <p class="contact-subtitle">Interested in research collaboration or just want to chat?</p>
 
-                <div class="contact-card">
-                    <h3 class="contact-card-title">FIND ME HERE</h3>
-                    <div class="profile-links">
-                        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Google Scholar</a>
-                        <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; ResearchGate</a>
-                        <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; LinkedIn</a>
-                        <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; GitHub</a>
-                        <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; YouTube</a>
-                        <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Medium Blog</a>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <h3 class="contact-card-title">LOCATION</h3>
+                        <p class="contact-card-content">Dhaka, Bangladesh</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3 class="contact-card-title">FIND ME ONLINE</h3>
+                        <div class="profile-links">
+                            <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; YouTube Channel</a>
+                            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Google Scholar</a>
+                            <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; ResearchGate</a>
+                            <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; LinkedIn</a>
+                            <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; GitHub</a>
+                            <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="profile-link">&rarr; Medium Blog</a>
+                        </div>
                     </div>
                 </div>
             </div>
