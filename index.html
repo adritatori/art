@@ -34,9 +34,11 @@
 
             overflow-y: hidden;
 
+            scroll-behavior: smooth;
+
         }
 
- 
+
 
         body {
 
@@ -68,9 +70,11 @@
 
             width: max-content;
 
+            scroll-snap-type: x mandatory;
+
         }
 
- 
+
 
         .panel {
 
@@ -89,6 +93,10 @@
             position: relative;
 
             overflow: hidden;
+
+            scroll-snap-align: start;
+
+            scroll-snap-stop: always;
 
         }
 
@@ -360,7 +368,77 @@
 
         }
 
- 
+
+
+        /* Progress Indicator */
+
+        .progress-dots {
+
+            position: fixed;
+
+            bottom: 80px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 1000;
+
+            display: flex;
+
+            gap: 12px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            padding: 10px 20px;
+
+            border-radius: 50px;
+
+            border: 3px solid #000000;
+
+            box-shadow: 4px 4px 0 #000000;
+
+        }
+
+
+
+        .progress-dot {
+
+            width: 14px;
+
+            height: 14px;
+
+            border-radius: 50%;
+
+            background: #E0E0E0;
+
+            border: 2px solid #000000;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .progress-dot.active {
+
+            background: #FFD700;
+
+            transform: scale(1.3);
+
+        }
+
+
+
+        .progress-dot:hover {
+
+            background: #FFB6C1;
+
+        }
+
+
 
         /* About Panel */
 
@@ -1450,11 +1528,27 @@
 
     <div class="scroll-indicator">
 
-        SCROLL SIDEWAYS &rarr;
+        SCROLL OR USE ARROW KEYS &rarr;
 
     </div>
 
- 
+
+
+    <div class="progress-dots" role="navigation" aria-label="Section navigation">
+
+        <div class="progress-dot active" data-section="about" title="About"></div>
+
+        <div class="progress-dot" data-section="publications" title="Publications"></div>
+
+        <div class="progress-dot" data-section="blog" title="Blog"></div>
+
+        <div class="progress-dot" data-section="education" title="Education"></div>
+
+        <div class="progress-dot" data-section="connect" title="Connect"></div>
+
+    </div>
+
+
 
     <div class="horizontal-scroll-wrapper">
 
@@ -1910,7 +2004,133 @@
 
     <script>
 
-        // Smooth horizontal scroll on navigation click
+        // Section management
+
+        const sections = ['about', 'publications', 'blog', 'education', 'connect'];
+
+        let currentSectionIndex = 0;
+
+        let isScrolling = false;
+
+
+
+        // Navigate to section by index
+
+        function goToSection(index) {
+
+            if (index < 0 || index >= sections.length || isScrolling) return;
+
+            isScrolling = true;
+
+            currentSectionIndex = index;
+
+            const target = document.getElementById(sections[index]);
+
+            if (target) {
+
+                target.scrollIntoView({
+
+                    behavior: 'smooth',
+
+                    inline: 'start',
+
+                    block: 'nearest'
+
+                });
+
+                updateProgressDots();
+
+            }
+
+            setTimeout(() => { isScrolling = false; }, 800);
+
+        }
+
+
+
+        // Update progress dots
+
+        function updateProgressDots() {
+
+            document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+
+                dot.classList.toggle('active', i === currentSectionIndex);
+
+            });
+
+        }
+
+
+
+        // Mouse wheel horizontal scroll
+
+        document.addEventListener('wheel', (e) => {
+
+            e.preventDefault();
+
+            if (isScrolling) return;
+
+
+
+            if (e.deltaY > 0 || e.deltaX > 0) {
+
+                goToSection(currentSectionIndex + 1);
+
+            } else if (e.deltaY < 0 || e.deltaX < 0) {
+
+                goToSection(currentSectionIndex - 1);
+
+            }
+
+        }, { passive: false });
+
+
+
+        // Keyboard navigation
+
+        document.addEventListener('keydown', (e) => {
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+
+                e.preventDefault();
+
+                goToSection(currentSectionIndex + 1);
+
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+
+                e.preventDefault();
+
+                goToSection(currentSectionIndex - 1);
+
+            } else if (e.key === 'Home') {
+
+                e.preventDefault();
+
+                goToSection(0);
+
+            } else if (e.key === 'End') {
+
+                e.preventDefault();
+
+                goToSection(sections.length - 1);
+
+            }
+
+        });
+
+
+
+        // Progress dot click navigation
+
+        document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+
+            dot.addEventListener('click', () => goToSection(i));
+
+        });
+
+
+
+        // Navigation link click
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
@@ -1918,19 +2138,13 @@
 
                 e.preventDefault();
 
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href').substring(1);
 
-                if (target) {
+                const targetIndex = sections.indexOf(targetId);
 
-                    target.scrollIntoView({
+                if (targetIndex !== -1) {
 
-                        behavior: 'smooth',
-
-                        inline: 'start',
-
-                        block: 'nearest'
-
-                    });
+                    goToSection(targetIndex);
 
                 }
 
@@ -1938,17 +2152,57 @@
 
         });
 
- 
 
-        // Hide scroll indicator after first scroll
 
-        let hasScrolled = false;
+        // Touch/swipe support
 
-        window.addEventListener('scroll', () => {
+        let touchStartX = 0;
 
-            if (!hasScrolled) {
+        let touchEndX = 0;
 
-                hasScrolled = true;
+
+
+        document.addEventListener('touchstart', (e) => {
+
+            touchStartX = e.changedTouches[0].screenX;
+
+        }, { passive: true });
+
+
+
+        document.addEventListener('touchend', (e) => {
+
+            touchEndX = e.changedTouches[0].screenX;
+
+            const swipeDistance = touchStartX - touchEndX;
+
+            if (Math.abs(swipeDistance) > 50) {
+
+                if (swipeDistance > 0) {
+
+                    goToSection(currentSectionIndex + 1);
+
+                } else {
+
+                    goToSection(currentSectionIndex - 1);
+
+                }
+
+            }
+
+        }, { passive: true });
+
+
+
+        // Hide scroll indicator after first interaction
+
+        let hasInteracted = false;
+
+        function hideIndicator() {
+
+            if (!hasInteracted) {
+
+                hasInteracted = true;
 
                 const indicator = document.querySelector('.scroll-indicator');
 
@@ -1956,13 +2210,23 @@
 
                     indicator.style.opacity = '0';
 
+                    indicator.style.transition = 'opacity 0.5s ease';
+
                     setTimeout(() => indicator.remove(), 500);
 
                 }
 
             }
 
-        });
+        }
+
+
+
+        document.addEventListener('wheel', hideIndicator, { once: true });
+
+        document.addEventListener('keydown', hideIndicator, { once: true });
+
+        document.addEventListener('touchstart', hideIndicator, { once: true });
 
     </script>
 
