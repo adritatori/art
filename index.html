@@ -954,6 +954,22 @@
     </div>
 
     <script>
+        // Convert vertical mouse scroll to horizontal scroll
+        const wrapper = document.querySelector('.horizontal-scroll-wrapper');
+
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            wrapper.parentElement.scrollLeft += e.deltaY;
+        }, { passive: false });
+
+        // Also handle trackpad horizontal scroll
+        document.body.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                // Already horizontal scroll, let it happen naturally
+                return;
+            }
+        }, { passive: true });
+
         // Smooth horizontal scroll on navigation click
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -971,7 +987,7 @@
 
         // Hide scroll indicator after first scroll
         let hasScrolled = false;
-        window.addEventListener('scroll', () => {
+        document.addEventListener('scroll', () => {
             if (!hasScrolled) {
                 hasScrolled = true;
                 const indicator = document.querySelector('.scroll-indicator');
@@ -979,6 +995,17 @@
                     indicator.style.opacity = '0';
                     setTimeout(() => indicator.remove(), 500);
                 }
+            }
+        }, true);
+
+        // Keyboard navigation (arrow keys)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                document.documentElement.scrollLeft += window.innerWidth;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                document.documentElement.scrollLeft -= window.innerWidth;
             }
         });
     </script>
