@@ -104,7 +104,7 @@
             font-weight: 600;
             background: #FFB6C1;
             display: inline-block;
-            padding: 8px 20px;
+            padding: 6px 16px;
             border: 3px solid #000000;
             box-shadow: 4px 4px 0 #000000;
         }
@@ -236,8 +236,9 @@
         }
 
         .photo-container {
-            width: 280px;
-            height: 350px;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 4/5;
             border-radius: 12px;
             overflow: hidden;
             background: #F5E8F0;
@@ -245,6 +246,7 @@
             box-shadow: 8px 8px 0 #000000;
             transform: rotate(3deg);
             transition: all 0.3s ease;
+            margin: 0 auto;
         }
 
         .photo-container:hover {
@@ -270,7 +272,7 @@
         }
 
         .section-title {
-            font-size: 48px;
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 700;
             color: #000000;
             text-transform: uppercase;
@@ -294,7 +296,7 @@
             background: #F5E8F0;
             border: 3px solid #000000;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 6px 6px 0 #000000;
             transition: all 0.2s ease;
         }
@@ -306,28 +308,28 @@
 
         .publication-header {
             display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
         }
 
         .year-badge {
             background: #FFD700;
             color: #000000;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: 3px solid #000000;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             box-shadow: 3px 3px 0 #000000;
         }
 
         .status-badge {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: 3px solid #000000;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             box-shadow: 3px 3px 0 #000000;
         }
 
@@ -344,14 +346,14 @@
         }
 
         .publication-title {
-            font-size: 22px;
+            font-size: clamp(18px, 3vw, 22px);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.3;
         }
 
         .publication-authors {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 8px;
             color: #333;
         }
@@ -363,23 +365,23 @@
         }
 
         .publication-venue {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #000000;
             margin-bottom: 8px;
         }
 
         .publication-role {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .abstract-toggle {
             background: #FFD700;
             color: #000000;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: 3px solid #000000;
             border-radius: 6px;
             font-weight: 700;
@@ -387,7 +389,7 @@
             box-shadow: 3px 3px 0 #000000;
             transition: all 0.2s ease;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
         }
 
@@ -398,12 +400,12 @@
 
         .abstract-content {
             display: none;
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 15px;
+            padding: 15px;
             background: #E8D8F5;
             border: 3px solid #000000;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
         }
 
@@ -414,7 +416,7 @@
         /* Blog Section */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
@@ -436,16 +438,16 @@
 
         .blog-window-bar {
             background: #5DADE2;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border-bottom: 3px solid #000000;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .window-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             border: 2px solid #000000;
         }
@@ -455,34 +457,34 @@
         .window-dot-green { background: #90EE90; }
 
         .blog-content {
-            padding: 25px;
+            padding: 20px;
         }
 
         .blog-category {
             display: inline-block;
             background: #FFB6C1;
             color: #000000;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border: 3px solid #000000;
             border-radius: 6px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             box-shadow: 3px 3px 0 #000000;
         }
 
         .blog-title {
-            font-size: 20px;
+            font-size: clamp(16px, 2.5vw, 20px);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.3;
         }
 
         .blog-excerpt {
-            font-size: 15px;
+            font-size: 14px;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.6;
         }
 
@@ -490,14 +492,14 @@
             display: inline-block;
             background: #FFD700;
             color: #000000;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: 3px solid #000000;
             border-radius: 6px;
             font-weight: 700;
             text-decoration: none;
             box-shadow: 3px 3px 0 #000000;
             transition: all 0.2s ease;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .blog-link:hover {
@@ -524,8 +526,8 @@
 
         .education-item {
             display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 35px;
             position: relative;
         }
 
@@ -549,31 +551,31 @@
             background: #F5E8F0;
             border: 3px solid #000000;
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 6px 6px 0 #000000;
         }
 
         .education-degree {
-            font-size: 20px;
+            font-size: clamp(16px, 2.5vw, 20px);
             font-weight: 700;
             margin-bottom: 8px;
         }
 
         .education-institution {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #000000;
             margin-bottom: 5px;
         }
 
         .education-location {
-            font-size: 14px;
+            font-size: 13px;
             color: #333;
             margin-bottom: 5px;
         }
 
         .education-duration {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             background: #5DADE2;
             display: inline-block;
@@ -587,7 +589,7 @@
             background: #FFB6C1;
             border: 3px solid #000000;
             border-radius: 20px;
-            padding: 60px 40px;
+            padding: 50px 30px;
             box-shadow: 8px 8px 0 #000000;
             max-width: 900px;
             margin: 0 auto;
@@ -595,15 +597,15 @@
         }
 
         .contact-title {
-            font-size: 42px;
+            font-size: clamp(32px, 5vw, 42px);
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
 
         .contact-subtitle {
-            font-size: 18px;
-            margin-bottom: 40px;
+            font-size: 16px;
+            margin-bottom: 30px;
             color: #333;
         }
 
@@ -619,6 +621,8 @@
             border-radius: 12px;
             padding: 25px;
             box-shadow: 4px 4px 0 #000000;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .contact-card-title {
@@ -634,7 +638,9 @@
         }
 
         .profile-links {
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .profile-link {
@@ -642,8 +648,10 @@
             color: #000000;
             text-decoration: none;
             font-weight: 600;
-            padding: 8px 0;
+            padding: 10px;
             transition: all 0.2s ease;
+            border-radius: 6px;
+            text-align: left;
         }
 
         .profile-link:hover {
@@ -684,7 +692,7 @@
             }
 
             .photo-container {
-                margin: 0 auto;
+                max-width: 280px;
             }
 
             .hero-buttons {
@@ -735,10 +743,6 @@
                 align-items: center;
             }
 
-            .contact-cards {
-                grid-template-columns: 1fr;
-            }
-
             .blog-grid {
                 grid-template-columns: 1fr;
             }
@@ -751,6 +755,24 @@
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 16px;
+            }
+
+            .photo-container {
+                max-width: 220px;
             }
         }
 
@@ -968,9 +990,7 @@
                         <h3 class="education-degree">Professional Master's in Information Technology</h3>
                         <p class="education-institution">Jahangirnagar University</p>
                         <p class="education-location">Dhaka, Bangladesh</p>
-                        <div>
-                            <span class="education-duration">August 2025 - Current</span>
-                        </div>
+                        <span class="education-duration">August 2025 - Current</span>
                     </div>
                 </div>
 
