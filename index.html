@@ -100,7 +100,7 @@
 
         }
 
- 
+
 
         .panel-content {
 
@@ -111,6 +111,10 @@
             position: relative;
 
             z-index: 10;
+
+            max-height: 100%;
+
+            overflow-y: auto;
 
         }
 
@@ -1642,21 +1646,29 @@
 
                 overflow-x: hidden;
 
+                overflow-y: hidden;
+
             }
 
 
 
             .panel {
 
-                padding: 80px 20px 100px;
+                padding: 70px 15px 120px;
 
                 align-items: flex-start;
+
+                overflow-y: auto;
 
             }
 
             .panel-content {
 
                 max-width: 100%;
+
+                overflow-y: visible;
+
+                max-height: none;
 
             }
 
@@ -1758,6 +1770,34 @@
 
 
 
+            /* About section mobile layout */
+
+            .about-grid {
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 25px;
+
+            }
+
+
+
+            .photo-container {
+
+                max-width: 200px;
+
+                margin: 0 auto;
+
+                transform: rotate(0deg);
+
+                box-shadow: 6px 6px 0 #000000;
+
+            }
+
+
+
             .connect-grid {
 
                 grid-template-columns: repeat(2, 1fr);
@@ -1810,9 +1850,11 @@
 
                 gap: 15px;
 
-                max-height: calc(100vh - 200px);
+                max-height: none;
 
                 padding-bottom: 10px;
+
+                overflow-y: visible;
 
             }
 
@@ -1862,9 +1904,11 @@
 
                 gap: 20px;
 
-                max-height: calc(100vh - 200px);
+                max-height: none;
 
                 grid-template-columns: 1fr;
+
+                overflow-y: visible;
 
             }
 
@@ -1902,13 +1946,13 @@
 
             .about-content h1 {
 
-                font-size: clamp(2rem, 8vw, 3rem);
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
 
             }
 
             .subtitle {
 
-                font-size: 16px;
+                font-size: 14px;
 
                 padding: 5px 12px;
 
@@ -1916,37 +1960,37 @@
 
             .about-bio {
 
-                padding: 20px;
+                padding: 15px;
 
-                margin: 20px 0;
+                margin: 15px 0;
 
             }
 
             .about-bio p {
 
-                font-size: 14px;
+                font-size: 13px;
 
             }
 
             .interest-tag {
 
-                font-size: 11px;
+                font-size: 10px;
 
-                padding: 5px 10px;
+                padding: 4px 8px;
 
             }
 
             .cert-badge {
 
-                font-size: 11px;
+                font-size: 10px;
 
-                padding: 8px 12px;
+                padding: 6px 10px;
 
             }
 
             .connect-title {
 
-                font-size: clamp(36px, 10vw, 60px);
+                font-size: clamp(32px, 10vw, 50px);
 
                 margin-bottom: 15px;
 
@@ -2054,7 +2098,7 @@
 
             .panel {
 
-                padding: 70px 15px 90px;
+                padding: 65px 12px 110px;
 
             }
 
@@ -2062,9 +2106,9 @@
 
             .section-title {
 
-                font-size: 24px;
+                font-size: 22px;
 
-                padding: 6px 16px;
+                padding: 6px 14px;
 
             }
 
@@ -2072,15 +2116,15 @@
 
                 grid-template-columns: 1fr 1fr;
 
-                gap: 12px;
+                gap: 10px;
 
             }
 
             .connect-link {
 
-                padding: 15px 10px;
+                padding: 12px 8px;
 
-                font-size: 11px;
+                font-size: 10px;
 
             }
 
@@ -2092,19 +2136,19 @@
 
             .blog-title {
 
-                font-size: 15px;
+                font-size: 14px;
 
             }
 
             .about-content h1 {
 
-                font-size: clamp(1.8rem, 10vw, 2.5rem);
+                font-size: clamp(1.5rem, 8vw, 2rem);
 
             }
 
             .subtitle {
 
-                font-size: 14px;
+                font-size: 12px;
 
                 padding: 4px 10px;
 
@@ -2112,55 +2156,57 @@
 
             .about-bio {
 
-                padding: 15px;
+                padding: 12px;
 
-                margin: 15px 0;
+                margin: 12px 0;
 
             }
 
             .about-bio p {
 
-                font-size: 13px;
+                font-size: 12px;
 
-                margin-bottom: 12px;
+                margin-bottom: 10px;
+
+                line-height: 1.5;
 
             }
 
             .interest-tag {
 
-                font-size: 10px;
+                font-size: 9px;
 
-                padding: 4px 8px;
+                padding: 3px 6px;
 
             }
 
             .cert-badge {
 
-                font-size: 10px;
+                font-size: 9px;
 
-                padding: 6px 10px;
+                padding: 5px 8px;
 
             }
 
             .photo-container {
 
-                max-width: 220px;
+                max-width: 180px;
 
             }
 
             .scroll-indicator {
 
-                font-size: 10px;
+                font-size: 9px;
 
-                padding: 6px 12px;
+                padding: 6px 10px;
 
             }
 
             .progress-dots {
 
-                padding: 6px 12px;
+                padding: 6px 10px;
 
-                gap: 8px;
+                gap: 6px;
 
             }
 
@@ -2174,43 +2220,75 @@
 
             .education-item {
 
-                gap: 15px;
+                gap: 12px;
 
-                margin-bottom: 20px;
+                margin-bottom: 15px;
 
             }
 
             .education-marker {
 
-                width: 40px;
+                width: 36px;
 
-                height: 40px;
-
-                font-size: 16px;
-
-            }
-
-            .education-timeline::before {
-
-                left: 20px;
-
-            }
-
-            .connect-cta {
-
-                padding: 15px;
-
-            }
-
-            .connect-cta-text {
+                height: 36px;
 
                 font-size: 14px;
 
             }
 
+            .education-timeline::before {
+
+                left: 18px;
+
+            }
+
+            .education-card {
+
+                padding: 12px;
+
+            }
+
+            .education-degree {
+
+                font-size: 14px;
+
+            }
+
+            .education-institution {
+
+                font-size: 12px;
+
+            }
+
+            .connect-cta {
+
+                padding: 12px;
+
+            }
+
+            .connect-cta-text {
+
+                font-size: 13px;
+
+            }
+
             .connect-cta-subtext {
 
-                font-size: 11px;
+                font-size: 10px;
+
+            }
+
+            .connect-title {
+
+                font-size: clamp(28px, 9vw, 40px);
+
+            }
+
+            .connect-subtitle {
+
+                font-size: 12px;
+
+                margin-bottom: 20px;
 
             }
 
@@ -2224,27 +2302,29 @@
 
             .panel {
 
-                padding: 65px 12px 85px;
+                padding: 60px 10px 105px;
 
             }
 
             .about-content h1 {
 
-                font-size: clamp(1.5rem, 12vw, 2rem);
+                font-size: clamp(1.3rem, 10vw, 1.8rem);
 
             }
 
             .subtitle {
 
-                font-size: 12px;
+                font-size: 11px;
+
+                padding: 3px 8px;
 
             }
 
             .section-title {
 
-                font-size: 20px;
+                font-size: 18px;
 
-                padding: 5px 12px;
+                padding: 5px 10px;
 
             }
 
@@ -2252,69 +2332,155 @@
 
                 grid-template-columns: 1fr;
 
-                gap: 10px;
+                gap: 8px;
 
             }
 
             .connect-link {
 
-                padding: 12px 10px;
+                padding: 10px 8px;
+
+                font-size: 10px;
 
             }
 
             .cert-badge {
 
-                font-size: 9px;
+                font-size: 8px;
 
-                padding: 5px 8px;
+                padding: 4px 6px;
 
             }
 
             .interest-tag {
 
-                font-size: 9px;
+                font-size: 8px;
+
+                padding: 3px 5px;
 
             }
 
             .publication-card {
 
-                padding: 12px;
+                padding: 10px;
+
+            }
+
+            .publication-title {
+
+                font-size: 13px;
 
             }
 
             .blog-content {
 
-                padding: 12px;
+                padding: 10px;
+
+            }
+
+            .blog-title {
+
+                font-size: 13px;
 
             }
 
             .education-marker {
 
-                width: 35px;
+                width: 32px;
 
-                height: 35px;
+                height: 32px;
 
-                font-size: 14px;
+                font-size: 12px;
 
             }
 
             .education-timeline::before {
 
-                left: 17px;
+                left: 16px;
+
+            }
+
+            .education-card {
+
+                padding: 10px;
+
+            }
+
+            .education-degree {
+
+                font-size: 13px;
 
             }
 
             .nav-links {
 
-                min-width: 130px;
+                min-width: 120px;
 
             }
 
             .nav-links a {
 
-                padding: 8px 12px;
+                padding: 8px 10px;
 
-                font-size: 12px;
+                font-size: 11px;
+
+            }
+
+            .photo-container {
+
+                max-width: 160px;
+
+            }
+
+            .about-bio {
+
+                padding: 10px;
+
+            }
+
+            .about-bio p {
+
+                font-size: 11px;
+
+            }
+
+            .connect-title {
+
+                font-size: clamp(24px, 8vw, 36px);
+
+            }
+
+            .connect-cta {
+
+                padding: 10px;
+
+            }
+
+        }
+
+
+
+        /* Mobile panel scrollbar styling */
+
+        @media (max-width: 768px) {
+
+            .panel::-webkit-scrollbar {
+
+                width: 4px;
+
+            }
+
+            .panel::-webkit-scrollbar-track {
+
+                background: rgba(0, 0, 0, 0.05);
+
+            }
+
+            .panel::-webkit-scrollbar-thumb {
+
+                background: rgba(0, 0, 0, 0.2);
+
+                border-radius: 2px;
 
             }
 
