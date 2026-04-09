@@ -1,3399 +1,911 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrita Rahman Tory — Cybersecurity Researcher</title>
+    <meta name="description" content="Cybersecurity Researcher specializing in AI-based threat detection, NIDS, Federated Learning, and Critical Infrastructure Security.">
+    <meta property="og:title" content="Adrita Rahman Tory — Cybersecurity Researcher">
+    <meta property="og:description" content="Research Assistant & Cybersecurity Researcher at Jahangirnagar University.">
+    <meta property="og:type" content="website">
 
-    <title>Adrita Rahman Tory - Cybersecurity Researcher</title>
+    <!--
+    ╔══════════════════════════════════════════════════════╗
+    ║  GITHUB PAGES SETUP                                  ║
+    ║  1. Push this repo to GitHub (branch: main)          ║
+    ║  2. Repo Settings → Pages → Deploy from branch       ║
+    ║  3. Choose "main" branch, "/ (root)" folder → Save   ║
+    ║  4. Site live at: https://adritatori.github.io/art/  ║
+    ║                                                      ║
+    ║  CV HOSTING                                          ║
+    ║  - Upload your CV to this repo as "cv.pdf"           ║
+    ║  - It will be served at: [site-url]/cv.pdf           ║
+    ╚══════════════════════════════════════════════════════╝
+    -->
 
-    <meta name="description" content="Cybersecurity Researcher specializing in AI-based threat detection, NIDS, Federated Learning, and Critical Infrastructure Security">
-
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
+        :root {
+            --navy:        #1e3a8a;
+            --navy-dark:   #0f2460;
+            --blue:        #2563eb;
+            --blue-light:  #eff6ff;
+            --text:        #0f172a;
+            --text-sec:    #475569;
+            --text-muted:  #94a3b8;
+            --bg:          #ffffff;
+            --bg-alt:      #f8fafc;
+            --border:      #e2e8f0;
         }
 
- 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-
-            overflow-x: auto;
-
-            overflow-y: hidden;
-
-            scroll-behavior: smooth;
-
-        }
-
-
+        html { scroll-behavior: smooth; }
 
         body {
-
-            font-family: 'Space Grotesk', sans-serif;
-
-            line-height: 1.6;
-
-            color: #000000;
-
-            background: #E8D8F5;
-
-            overflow-x: auto;
-
-            overflow-y: hidden;
-
-            height: 100vh;
-
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
         }
 
- 
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        /* Horizontal Scroll Container */
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
 
-        .horizontal-scroll-wrapper {
-
-            display: flex;
-
-            height: 100vh;
-
-            width: max-content;
-
-            scroll-snap-type: x mandatory;
-
-        }
-
-
-
-        .panel {
-
-            min-width: 100vw;
-
-            height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 60px;
-
-            position: relative;
-
-            overflow: hidden;
-
-            scroll-snap-align: start;
-
-            scroll-snap-stop: always;
-
-        }
-
- 
-
-        .panel-content {
-
-            max-width: 1200px;
-
-            width: 100%;
-
-            position: relative;
-
-            z-index: 10;
-
-        }
-
- 
-
-        /* Panel Backgrounds */
-
-        .panel-about {
-
-            background: linear-gradient(135deg, #E8D8F5 0%, #F5E8F0 100%);
-
-        }
-
- 
-
-        .panel-publications {
-
-            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
-
-        }
-
- 
-
-        .panel-blog {
-
-            background: linear-gradient(135deg, #E0F7FA 0%, #E8F4F8 100%);
-
-        }
-
- 
-
-        .panel-education {
-
-            background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
-
-        }
-
- 
-
-        .panel-connect {
-
-            background: linear-gradient(135deg, #F3E5F5 0%, #E8D8F5 100%);
-
-        }
-
- 
-
-        /* Animated Background Shapes */
-
-        .bg-shapes {
-
-            position: absolute;
-
+        /* ── NAVIGATION ─────────────────────────────────── */
+        header {
+            position: sticky;
             top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            pointer-events: none;
-
-            overflow: hidden;
-
+            z-index: 100;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
         }
 
- 
-
-        .bg-shape {
-
-            position: absolute;
-
-            opacity: 0.1;
-
-            animation: floatShape 20s ease-in-out infinite;
-
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 62px;
         }
 
- 
-
-        .bg-shape:nth-child(1) {
-
-            top: 10%;
-
-            left: 10%;
-
-            width: 200px;
-
-            height: 200px;
-
-            background: #FFD700;
-
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-
+        .nav-brand {
+            font-weight: 700;
+            font-size: 0.9375rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.01em;
         }
-
- 
-
-        .bg-shape:nth-child(2) {
-
-            top: 60%;
-
-            right: 15%;
-
-            width: 150px;
-
-            height: 150px;
-
-            background: #FFB6C1;
-
-            border-radius: 50%;
-
-            animation-delay: -5s;
-
-        }
-
- 
-
-        .bg-shape:nth-child(3) {
-
-            bottom: 20%;
-
-            left: 30%;
-
-            width: 100px;
-
-            height: 100px;
-
-            background: #5DADE2;
-
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-
-            animation-delay: -10s;
-
-        }
-
- 
-
-        @keyframes floatShape {
-
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-
-            50% { transform: translateY(-40px) rotate(10deg); }
-
-        }
-
- 
-
-        /* Navigation - Fixed */
-
-        .nav-container {
-
-            position: fixed;
-
-            top: 20px;
-
-            right: 20px;
-
-            z-index: 1000;
-
-            background: #FFD700;
-
-            border: 3px solid #000000;
-
-            border-radius: 50px;
-
-            padding: 8px 16px;
-
-            box-shadow: 4px 4px 0 #000000;
-
-        }
-
-
+        .nav-brand:hover { text-decoration: none; }
 
         .nav-links {
-
             display: flex;
-
+            align-items: center;
+            gap: 2px;
             list-style: none;
-
-            gap: 0;
-
         }
-
-
-
-        .nav-links li {
-
-            list-style: none;
-
-        }
-
-
 
         .nav-links a {
-
-            color: #000000;
-
-            text-decoration: none;
-
-            padding: 10px 16px;
-
-            border-radius: 40px;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
-            transition: all 0.2s ease;
-
-            display: block;
-
-        }
-
-
-
-        .nav-links a:hover {
-
-            background: #FFB6C1;
-
-        }
-
-
-
-        /* Mobile Menu Toggle */
-
-        .menu-toggle {
-
-            display: none;
-
-            background: none;
-
-            border: none;
-
-            cursor: pointer;
-
-            padding: 10px;
-
-            z-index: 1001;
-
-        }
-
-
-
-        .menu-toggle span {
-
-            display: block;
-
-            width: 25px;
-
-            height: 3px;
-
-            background: #000000;
-
-            margin: 5px 0;
-
-            border-radius: 3px;
-
-            transition: all 0.3s ease;
-
-        }
-
-
-
-        .menu-toggle.active span:nth-child(1) {
-
-            transform: rotate(45deg) translate(5px, 5px);
-
-        }
-
-
-
-        .menu-toggle.active span:nth-child(2) {
-
-            opacity: 0;
-
-        }
-
-
-
-        .menu-toggle.active span:nth-child(3) {
-
-            transform: rotate(-45deg) translate(7px, -6px);
-
-        }
-
- 
-
-        /* Scroll Indicator */
-
-        .scroll-indicator {
-
-            position: fixed;
-
-            bottom: 30px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            z-index: 1000;
-
-            background: #000000;
-
-            color: #FFD700;
-
-            padding: 12px 24px;
-
-            border-radius: 50px;
-
-            font-weight: 700;
-
-            font-size: 14px;
-
-            animation: pulseIndicator 2s ease-in-out infinite;
-
-        }
-
- 
-
-        @keyframes pulseIndicator {
-
-            0%, 100% { transform: translateX(-50%) scale(1); }
-
-            50% { transform: translateX(-50%) scale(1.05); }
-
-        }
-
-
-
-        /* Progress Indicator */
-
-        .progress-dots {
-
-            position: fixed;
-
-            bottom: 80px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            z-index: 1000;
-
-            display: flex;
-
-            gap: 12px;
-
-            background: rgba(255, 255, 255, 0.9);
-
-            padding: 10px 20px;
-
-            border-radius: 50px;
-
-            border: 3px solid #000000;
-
-            box-shadow: 4px 4px 0 #000000;
-
-        }
-
-
-
-        .progress-dot {
-
-            width: 14px;
-
-            height: 14px;
-
-            border-radius: 50%;
-
-            background: #E0E0E0;
-
-            border: 2px solid #000000;
-
-            cursor: pointer;
-
-            transition: all 0.3s ease;
-
-        }
-
-
-
-        .progress-dot.active {
-
-            background: #FFD700;
-
-            transform: scale(1.3);
-
-        }
-
-
-
-        .progress-dot:hover {
-
-            background: #FFB6C1;
-
-        }
-
-
-
-        /* About Panel */
-
-        .about-grid {
-
-            display: grid;
-
-            grid-template-columns: 1fr 350px;
-
-            gap: 60px;
-
-            align-items: center;
-
-        }
-
- 
-
-        .about-content h1 {
-
-            font-size: clamp(3rem, 6vw, 4.5rem);
-
-            font-weight: 700;
-
-            color: #000000;
-
-            line-height: 0.95;
-
-            margin-bottom: 15px;
-
-            text-transform: uppercase;
-
-        }
-
- 
-
-        .subtitle {
-
-            font-size: 20px;
-
-            color: #000000;
-
-            margin: 15px 0;
-
-            font-weight: 600;
-
-            background: #FFB6C1;
-
-            display: inline-block;
-
-            padding: 6px 16px;
-
-            border: 3px solid #000000;
-
-            box-shadow: 4px 4px 0 #000000;
-
-        }
-
- 
-
-        .about-bio {
-
-            background: #F5E8F0;
-
-            border: 3px solid #000000;
-
-            border-radius: 12px;
-
-            padding: 25px;
-
-            margin: 25px 0;
-
-            box-shadow: 4px 4px 0 #000000;
-
-        }
-
- 
-
-        .about-bio p {
-
-            font-size: 16px;
-
-            line-height: 1.7;
-
-            margin-bottom: 15px;
-
-        }
-
- 
-
-        .highlight {
-
-            background: #FFB6C1;
-
-            padding: 2px 6px;
-
-            font-weight: 600;
-
-        }
-
- 
-
-        .interest-tags {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-top: 20px;
-
-        }
-
- 
-
-        .interest-tag {
-
-            background: #5DADE2;
-
-            color: #000000;
-
+            color: var(--text-sec);
+            font-size: 0.8125rem;
+            font-weight: 500;
             padding: 6px 12px;
+            border-radius: 6px;
+            transition: color 0.15s, background 0.15s;
+            text-decoration: none;
+        }
+        .nav-links a:hover { color: var(--navy); background: var(--bg-alt); }
 
-            border: 3px solid #000000;
+        .nav-cv {
+            background: var(--navy) !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            margin-left: 6px;
+            transition: background 0.15s !important;
+        }
+        .nav-cv:hover { background: var(--navy-dark) !important; }
 
-            border-radius: 8px;
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block; width: 22px; height: 2px;
+            background: var(--text); border-radius: 2px; transition: all 0.25s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-            font-weight: 600;
-
-            font-size: 13px;
-
-            box-shadow: 2px 2px 0 #000000;
-
+        /* ── HERO ───────────────────────────────────────── */
+        .hero {
+            padding: 80px 0 72px;
+            border-bottom: 1px solid var(--border);
         }
 
- 
-
-        .cert-badges {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 12px;
-
-            margin: 20px 0;
-
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 64px;
+            align-items: start;
         }
 
- 
-
-        .cert-badge {
-
-            background: #FFD700;
-
-            color: #000000;
-
-            padding: 10px 16px;
-
-            border: 3px solid #000000;
-
-            border-radius: 8px;
-
+        .hero-name {
+            font-size: clamp(2rem, 4vw, 2.875rem);
             font-weight: 700;
-
-            box-shadow: 3px 3px 0 #000000;
-
-            font-size: 13px;
-
-            transition: all 0.3s ease;
-
+            color: var(--text);
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            margin-bottom: 10px;
         }
 
- 
-
-        .cert-badge:hover {
-
-            transform: translateY(-3px);
-
-            box-shadow: 5px 5px 0 #000000;
-
+        .hero-title {
+            font-size: 1.0625rem;
+            color: var(--navy);
+            font-weight: 500;
+            margin-bottom: 5px;
         }
 
- 
-
-        .photo-container {
-
-            width: 100%;
-
-            max-width: 350px;
-
-            aspect-ratio: 4/5;
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-            background: #F5E8F0;
-
-            border: 3px solid #000000;
-
-            box-shadow: 8px 8px 0 #000000;
-
-            transform: rotate(3deg);
-
-            transition: all 0.3s ease;
-
+        .hero-affil {
+            font-size: 0.9rem;
+            color: var(--text-sec);
+            margin-bottom: 24px;
         }
 
- 
-
-        .photo-container:hover {
-
-            transform: rotate(0deg);
-
-            box-shadow: 12px 12px 0 #000000;
-
+        .hero-bio {
+            font-size: 0.9375rem;
+            color: var(--text-sec);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            max-width: 580px;
         }
 
- 
-
-        .photo-container img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
         }
 
- 
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--navy); color: #fff;
+            padding: 10px 22px; border-radius: 8px;
+            font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; transition: background 0.15s;
+        }
+        .btn-primary:hover { background: var(--navy-dark); text-decoration: none; color: #fff; }
 
-        /* Section Titles */
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: transparent; color: var(--navy);
+            padding: 10px 22px; border-radius: 8px;
+            font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; border: 1.5px solid var(--navy);
+            transition: all 0.15s;
+        }
+        .btn-outline:hover { background: var(--blue-light); text-decoration: none; }
+
+        .social-links {
+            display: flex; gap: 8px; flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 0.8125rem; font-weight: 500;
+            color: var(--text-sec); text-decoration: none;
+            padding: 5px 10px; border-radius: 6px;
+            border: 1px solid var(--border); transition: all 0.15s;
+        }
+        .social-link:hover {
+            color: var(--navy); border-color: var(--navy);
+            background: var(--blue-light); text-decoration: none;
+        }
+
+        .hero-photo {
+            width: 100%; border-radius: 10px;
+            aspect-ratio: 4/5; object-fit: cover;
+            object-position: top center;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(30,58,138,0.10);
+        }
+
+        /* ── SECTIONS ───────────────────────────────────── */
+        section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+        section:last-of-type { border-bottom: none; }
+
+        .section-label {
+            font-size: 0.6875rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--blue); margin-bottom: 8px;
+        }
 
         .section-title {
-
-            font-size: clamp(36px, 6vw, 56px);
-
-            font-weight: 700;
-
-            color: #000000;
-
-            text-transform: uppercase;
-
-            margin-bottom: 40px;
-
-            display: inline-block;
-
-            background: #FFD700;
-
-            padding: 12px 36px;
-
-            border: 3px solid #000000;
-
-            box-shadow: 6px 6px 0 #000000;
-
+            font-size: 1.625rem; font-weight: 700;
+            color: var(--text); letter-spacing: -0.02em;
         }
 
- 
+        .section-sub {
+            margin-top: 6px; font-size: 0.9rem; color: var(--text-sec);
+        }
 
-        /* Publications */
+        .section-header { margin-bottom: 36px; }
 
-        .publications-grid {
+        /* ── ABOUT ──────────────────────────────────────── */
+        .about-body {
+            max-width: 720px;
+        }
 
+        .about-body p {
+            font-size: 0.9375rem; color: var(--text-sec);
+            line-height: 1.8; margin-bottom: 16px;
+        }
+
+        .certs-row {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px;
+        }
+
+        .cert-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 14px; background: var(--bg-alt);
+            border: 1px solid var(--border); border-radius: 8px;
+            font-size: 0.8125rem; font-weight: 600; color: var(--text);
+        }
+
+        /* ── RESEARCH ───────────────────────────────────── */
+        .research-bg { background: var(--bg-alt); }
+
+        .interests-grid {
             display: grid;
-
-            gap: 20px;
-
-            max-height: calc(100vh - 200px);
-
-            overflow-y: auto;
-
-            padding-right: 10px;
-
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
         }
 
-        .publications-grid::-webkit-scrollbar {
+        .interest-card {
+            padding: 22px; border-radius: 10px;
+            border: 1px solid var(--border); background: var(--bg);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .interest-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transform: translateY(-2px); }
 
-            width: 8px;
+        .interest-icon { font-size: 1.4rem; margin-bottom: 10px; display: block; }
 
+        .interest-card h3 {
+            font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 5px;
         }
 
-        .publications-grid::-webkit-scrollbar-track {
-
-            background: rgba(0, 0, 0, 0.1);
-
-            border-radius: 4px;
-
+        .interest-card p {
+            font-size: 0.8125rem; color: var(--text-sec); line-height: 1.55;
         }
 
-        .publications-grid::-webkit-scrollbar-thumb {
+        /* ── PUBLICATIONS ───────────────────────────────── */
+        .pub-list { display: flex; flex-direction: column; gap: 20px; }
 
-            background: #FFD700;
+        .pub-item {
+            padding: 24px; border-radius: 10px;
+            border: 1px solid var(--border); background: var(--bg);
+            transition: box-shadow 0.2s;
+        }
+        .pub-item:hover { box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
 
-            border-radius: 4px;
-
-            border: 2px solid #000000;
-
+        .pub-meta {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 10px; flex-wrap: wrap;
         }
 
-
-
-        .publication-card {
-
-            background: #FFFFFF;
-
-            border: 3px solid #000000;
-
-            border-radius: 12px;
-
-            padding: 20px;
-
-            box-shadow: 6px 6px 0 #000000;
-
-            transition: all 0.2s ease;
-
+        .pub-year {
+            font-size: 0.8125rem; font-weight: 600; color: var(--text-muted);
         }
 
+        .pub-badge {
+            font-size: 0.7rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+        }
+        .badge-review   { background: #fef3c7; color: #92400e; }
+        .badge-accepted { background: #d1fae5; color: #065f46; }
+        .badge-submitted{ background: #dbeafe; color: #1e40af; }
 
-
-        .publication-card:hover {
-
-            transform: translate(-2px, -2px);
-
-            box-shadow: 8px 8px 0 #000000;
-
+        .pub-title {
+            font-size: 0.9375rem; font-weight: 600; color: var(--text);
+            line-height: 1.45; margin-bottom: 8px;
         }
 
- 
-
-        .publication-header {
-
-            display: flex;
-
-            gap: 12px;
-
-            margin-bottom: 12px;
-
-            flex-wrap: wrap;
-
+        .pub-authors {
+            font-size: 0.875rem; color: var(--text-sec); margin-bottom: 5px;
+        }
+        .pub-authors .me {
+            font-weight: 700; color: var(--text);
+            text-decoration: underline; text-decoration-style: dotted;
         }
 
- 
-
-        .year-badge {
-
-            background: #FFD700;
-
-            color: #000000;
-
-            padding: 5px 12px;
-
-            border: 3px solid #000000;
-
-            border-radius: 6px;
-
-            font-weight: 700;
-
-            font-size: 13px;
-
-            box-shadow: 3px 3px 0 #000000;
-
+        .pub-venue {
+            font-size: 0.8125rem; color: var(--text-sec);
+            font-style: italic; margin-bottom: 5px;
         }
 
- 
+        .pub-role { font-size: 0.8125rem; color: var(--text-muted); }
 
-        .status-badge {
+        .pub-links { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
 
-            padding: 5px 12px;
+        .pub-link {
+            font-size: 0.75rem; font-weight: 600; color: var(--blue);
+            padding: 3px 10px; border: 1px solid var(--blue);
+            border-radius: 4px; text-decoration: none; transition: all 0.15s;
+        }
+        .pub-link:hover { background: var(--blue); color: #fff; text-decoration: none; }
 
-            border: 3px solid #000000;
+        /* ── EDUCATION ──────────────────────────────────── */
+        .edu-bg { background: var(--bg-alt); }
 
-            border-radius: 6px;
+        .edu-list { display: flex; flex-direction: column; }
 
-            font-weight: 700;
+        .edu-item {
+            display: grid; grid-template-columns: 140px 1fr;
+            gap: 24px; padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
 
-            font-size: 13px;
-
-            box-shadow: 3px 3px 0 #000000;
-
+        .edu-dates {
+            font-size: 0.8125rem; font-weight: 500;
+            color: var(--text-muted); padding-top: 3px;
         }
 
- 
-
-        .status-review { background: #5DADE2; }
-
-        .status-accepted { background: #90EE90; }
-
-        .status-submitted { background: #FFB6C1; }
-
- 
-
-        .publication-title {
-
-            font-size: 18px;
-
-            font-weight: 700;
-
-            margin-bottom: 10px;
-
-            line-height: 1.3;
-
+        .edu-degree {
+            font-size: 0.9375rem; font-weight: 600; color: var(--text); margin-bottom: 4px;
         }
 
- 
-
-        .publication-authors {
-
-            font-size: 14px;
-
-            margin-bottom: 8px;
-
-            color: #333;
-
+        .edu-institution {
+            font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-bottom: 3px;
         }
 
- 
+        .edu-detail { font-size: 0.8125rem; color: var(--text-sec); }
 
-        .author-highlight {
-
-            font-weight: 700;
-
-            background: #FFB6C1;
-
-            padding: 2px 4px;
-
-        }
-
- 
-
-        .publication-venue {
-
-            font-size: 13px;
-
-            font-weight: 600;
-
-            color: #000000;
-
-            margin-bottom: 8px;
-
-        }
-
- 
-
-        .publication-role {
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            color: #333;
-
-        }
-
- 
-
-        /* Blog */
-
+        /* ── BLOG ───────────────────────────────────────── */
         .blog-grid {
-
             display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 25px;
-
-            max-height: calc(100vh - 200px);
-
-            overflow-y: auto;
-
-            padding-right: 10px;
-
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 20px;
         }
-
-        .blog-grid::-webkit-scrollbar {
-
-            width: 8px;
-
-        }
-
-        .blog-grid::-webkit-scrollbar-track {
-
-            background: rgba(0, 0, 0, 0.1);
-
-            border-radius: 4px;
-
-        }
-
-        .blog-grid::-webkit-scrollbar-thumb {
-
-            background: #5DADE2;
-
-            border-radius: 4px;
-
-            border: 2px solid #000000;
-
-        }
-
- 
 
         .blog-card {
-
-            background: #FFFFFF;
-
-            border: 3px solid #000000;
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-            box-shadow: 6px 6px 0 #000000;
-
-            transition: all 0.2s ease;
-
+            border-radius: 10px; border: 1px solid var(--border);
+            background: var(--bg); padding: 24px;
+            display: flex; flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
         }
+        .blog-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
 
- 
-
-        .blog-card:hover {
-
-            transform: translate(-2px, -2px);
-
-            box-shadow: 8px 8px 0 #000000;
-
+        .blog-tag {
+            font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--blue); margin-bottom: 10px;
         }
-
- 
-
-        .blog-window-bar {
-
-            background: #5DADE2;
-
-            padding: 10px 12px;
-
-            border-bottom: 3px solid #000000;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 6px;
-
-        }
-
- 
-
-        .window-dot {
-
-            width: 10px;
-
-            height: 10px;
-
-            border-radius: 50%;
-
-            border: 2px solid #000000;
-
-        }
-
- 
-
-        .window-dot-red { background: #FF6B6B; }
-
-        .window-dot-yellow { background: #FFD700; }
-
-        .window-dot-green { background: #90EE90; }
-
- 
-
-        .blog-content {
-
-            padding: 20px;
-
-        }
-
- 
-
-        .blog-category {
-
-            display: inline-block;
-
-            background: #FFB6C1;
-
-            color: #000000;
-
-            padding: 5px 10px;
-
-            border: 3px solid #000000;
-
-            border-radius: 6px;
-
-            font-weight: 700;
-
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 12px;
-
-            box-shadow: 3px 3px 0 #000000;
-
-        }
-
- 
 
         .blog-title {
-
-            font-size: 18px;
-
-            font-weight: 700;
-
-            margin-bottom: 10px;
-
-            line-height: 1.3;
-
+            font-size: 0.9rem; font-weight: 600; color: var(--text);
+            line-height: 1.45; margin-bottom: 10px;
         }
-
- 
 
         .blog-excerpt {
-
-            font-size: 14px;
-
-            color: #333;
-
-            margin-bottom: 15px;
-
-            line-height: 1.6;
-
+            font-size: 0.8125rem; color: var(--text-sec);
+            line-height: 1.6; flex: 1; margin-bottom: 18px;
         }
 
- 
-
-        .blog-link {
-
-            display: inline-block;
-
-            background: #FFD700;
-
-            color: #000000;
-
-            padding: 8px 16px;
-
-            border: 3px solid #000000;
-
-            border-radius: 6px;
-
-            font-weight: 700;
-
+        .blog-readmore {
+            font-size: 0.8125rem; font-weight: 600; color: var(--blue);
             text-decoration: none;
+        }
+        .blog-readmore:hover { text-decoration: underline; }
 
-            box-shadow: 3px 3px 0 #000000;
+        /* ── CONTACT ────────────────────────────────────── */
+        .contact-bg { background: var(--bg-alt); }
 
-            transition: all 0.2s ease;
-
-            font-size: 13px;
-
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
         }
 
- 
-
-        .blog-link:hover {
-
-            transform: translate(1px, 1px);
-
-            box-shadow: 2px 2px 0 #000000;
-
+        .contact-intro {
+            font-size: 0.9375rem; color: var(--text-sec);
+            line-height: 1.8; margin-bottom: 24px;
         }
 
- 
-
-        /* Education */
-
-        .education-timeline {
-
-            position: relative;
-
+        .contact-email-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; font-weight: 600; color: var(--navy);
+            padding: 12px 22px; border: 2px solid var(--navy);
+            border-radius: 8px; text-decoration: none; transition: all 0.15s;
+        }
+        .contact-email-btn:hover {
+            background: var(--navy); color: #fff; text-decoration: none;
         }
 
- 
-
-        .education-timeline::before {
-
-            content: '';
-
-            position: absolute;
-
-            left: 30px;
-
-            top: 0;
-
-            bottom: 0;
-
-            width: 4px;
-
-            background: #000000;
-
+        .links-label {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 16px;
         }
 
- 
+        .links-list { display: flex; flex-direction: column; gap: 12px; }
 
-        .education-item {
+        .link-item {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.9rem; color: var(--text-sec);
+            text-decoration: none; transition: color 0.15s;
+        }
+        .link-item:hover { color: var(--navy); text-decoration: none; }
 
-            display: flex;
-
-            gap: 25px;
-
-            margin-bottom: 30px;
-
-            position: relative;
-
+        .link-icon {
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 6px; font-size: 0.8125rem; font-weight: 700;
+            color: var(--navy); flex-shrink: 0;
         }
 
- 
+        .link-name { font-weight: 600; color: var(--text); }
+        .link-handle { font-size: 0.8125rem; color: var(--text-muted); margin-left: 4px; }
 
-        .education-marker {
-
-            flex-shrink: 0;
-
-            width: 60px;
-
-            height: 60px;
-
-            background: #FFD700;
-
-            border: 3px solid #000000;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 24px;
-
-            box-shadow: 4px 4px 0 #000000;
-
-            z-index: 1;
-
+        /* ── FOOTER ─────────────────────────────────────── */
+        footer {
+            padding: 32px 0; text-align: center;
+            font-size: 0.8125rem; color: var(--text-muted);
+            border-top: 1px solid var(--border);
         }
+        footer a { color: var(--text-sec); }
 
- 
+        /* ── RESPONSIVE ─────────────────────────────────── */
+        @media (max-width: 800px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 36px; }
 
-        .education-card {
+            .hero-photo-wrap { order: -1; }
 
-            flex: 1;
-
-            background: #FFFFFF;
-
-            border: 3px solid #000000;
-
-            border-radius: 12px;
-
-            padding: 20px;
-
-            box-shadow: 6px 6px 0 #000000;
-
-        }
-
- 
-
-        .education-degree {
-
-            font-size: 18px;
-
-            font-weight: 700;
-
-            margin-bottom: 8px;
-
-        }
-
- 
-
-        .education-institution {
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            color: #000000;
-
-            margin-bottom: 8px;
-
-        }
-
- 
-
-        .education-duration {
-
-            font-size: 13px;
-
-            font-weight: 600;
-
-            background: #5DADE2;
-
-            display: inline-block;
-
-            padding: 4px 12px;
-
-            border: 2px solid #000000;
-
-            border-radius: 4px;
-
-        }
-
- 
-
-        /* Connect Section */
-
-        .connect-content {
-
-            text-align: center;
-
-        }
-
- 
-
-        .connect-title {
-
-            font-size: clamp(48px, 8vw, 80px);
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
-            margin-bottom: 20px;
-
-            letter-spacing: -3px;
-
-            background: linear-gradient(135deg, #FFD700 0%, #FFB6C1 50%, #5DADE2 100%);
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            -webkit-text-fill-color: transparent;
-
-        }
-
- 
-
-        .connect-subtitle {
-
-            font-size: 18px;
-
-            color: #333;
-
-            margin-bottom: 50px;
-
-            font-weight: 500;
-
-        }
-
- 
-
-        .connect-grid {
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 25px;
-
-            max-width: 800px;
-
-            margin: 0 auto 40px;
-
-        }
-
- 
-
-        .connect-link {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 30px 20px;
-
-            background: #FFFFFF;
-
-            border: 3px solid #000000;
-
-            border-radius: 16px;
-
-            text-decoration: none;
-
-            color: #000000;
-
-            font-weight: 700;
-
-            font-size: 14px;
-
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-            box-shadow: 6px 6px 0 #000000;
-
-        }
-
- 
-
-        .connect-link:hover {
-
-            transform: translateY(-10px) rotate(-3deg);
-
-            box-shadow: 10px 10px 0 #000000;
-
-        }
-
- 
-
-        .connect-link:nth-child(even):hover {
-
-            transform: translateY(-10px) rotate(3deg);
-
-        }
-
- 
-
-        .connect-link .icon {
-
-            font-size: 14px;
-
-            margin-bottom: 10px;
-
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-        }
-
- 
-
-        .connect-cta {
-
-            background: #FFD700;
-
-            border: 3px solid #000000;
-
-            border-radius: 12px;
-
-            padding: 30px;
-
-            box-shadow: 6px 6px 0 #000000;
-
-            max-width: 600px;
-
-            margin: 0 auto;
-
-        }
-
- 
-
-        .connect-cta-text {
-
-            font-size: 20px;
-
-            font-weight: 700;
-
-            margin-bottom: 5px;
-
-        }
-
- 
-
-        .connect-cta-subtext {
-
-            font-size: 14px;
-
-            color: #333;
-
-        }
-
- 
-
-        /* Responsive */
-
-        @media (max-width: 1024px) {
-
-            .about-grid {
-
-                grid-template-columns: 1fr;
-
-                text-align: center;
-
-                gap: 30px;
-
+            .hero-photo {
+                max-width: 180px; aspect-ratio: 1/1;
+                border-radius: 50%;
             }
 
+            .contact-grid { grid-template-columns: 1fr; gap: 36px; }
 
-
-            .photo-container {
-
-                max-width: 280px;
-
-                margin: 0 auto;
-
-            }
-
-
-
-            .interest-tags {
-
-                justify-content: center;
-
-            }
-
-
-
-            .cert-badges {
-
-                justify-content: center;
-
-            }
-
-
-
-            .about-bio {
-
-                text-align: left;
-
-            }
-
-
-
-            .connect-grid {
-
-                grid-template-columns: repeat(3, 1fr);
-
-            }
-
-
-
-            .blog-grid {
-
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-            }
-
-            .publications-grid {
-
-                max-height: calc(100vh - 180px);
-
-            }
-
-        }
-
-
-
-        /* Tablet Landscape */
-
-        @media (max-width: 900px) {
-
-            .panel {
-
-                padding: 40px 30px;
-
-            }
-
-
-
-            .nav-container {
-
-                top: 15px;
-
-                right: 15px;
-
-                padding: 6px 12px;
-
-            }
-
-
-
-            .nav-links a {
-
-                padding: 8px 12px;
-
-                font-size: 12px;
-
-            }
-
-
-
-            .section-title {
-
-                font-size: 32px;
-
-                padding: 10px 24px;
-
-                margin-bottom: 30px;
-
-            }
-
-
-
-            .connect-grid {
-
-                grid-template-columns: repeat(2, 1fr);
-
-                gap: 20px;
-
-            }
-
-
-
-            .education-item {
-
-                gap: 20px;
-
-            }
-
-        }
-
-
-
-        /* Tablet Portrait */
-
-        @media (max-width: 768px) {
-
-            html, body {
-
-                overflow-x: hidden;
-
-            }
-
-
-
-            .panel {
-
-                padding: 80px 20px 100px;
-
-                align-items: flex-start;
-
-            }
-
-            .panel-content {
-
-                max-width: 100%;
-
-            }
-
-
-
-            /* Mobile Navigation with Hamburger */
-
-            .nav-container {
-
-                top: 10px;
-
-                right: 10px;
-
-                left: auto;
-
-                padding: 8px 12px;
-
-                border-radius: 12px;
-
-            }
-
-
-
-            .menu-toggle {
-
-                display: block;
-
-            }
-
-
+            .edu-item { grid-template-columns: 1fr; gap: 4px; }
 
             .nav-links {
-
-                display: none;
-
-                position: absolute;
-
-                top: calc(100% + 10px);
-
-                right: 0;
-
-                background: #FFD700;
-
-                border: 3px solid #000000;
-
-                border-radius: 12px;
-
-                padding: 10px;
-
-                box-shadow: 4px 4px 0 #000000;
-
-                flex-direction: column;
-
-                min-width: 150px;
-
+                display: none; position: absolute;
+                top: 62px; left: 0; right: 0;
+                background: var(--bg); flex-direction: column;
+                padding: 12px 20px 16px; border-bottom: 1px solid var(--border);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             }
-
-
-
-            .nav-links.active {
-
-                display: flex;
-
-            }
-
-
-
-            .nav-links a {
-
-                padding: 10px 16px;
-
-                font-size: 13px;
-
-                border-radius: 8px;
-
-                text-align: center;
-
-            }
-
-
-
-            .nav-links a:hover {
-
-                background: #FFB6C1;
-
-            }
-
-
-
-            .section-title {
-
-                font-size: 28px;
-
-                padding: 8px 20px;
-
-                margin-bottom: 25px;
-
-            }
-
-
-
-            .connect-grid {
-
-                grid-template-columns: repeat(2, 1fr);
-
-                max-width: 100%;
-
-                gap: 15px;
-
-            }
-
-            .connect-link {
-
-                padding: 20px 15px;
-
-                font-size: 12px;
-
-            }
-
-
-
-            .scroll-indicator {
-
-                font-size: 11px;
-
-                padding: 8px 16px;
-
-                bottom: 20px;
-
-            }
-
-            .progress-dots {
-
-                bottom: 60px;
-
-                padding: 8px 16px;
-
-                gap: 10px;
-
-            }
-
-            .progress-dot {
-
-                width: 12px;
-
-                height: 12px;
-
-            }
-
-            .publications-grid {
-
-                gap: 15px;
-
-                max-height: calc(100vh - 200px);
-
-                padding-bottom: 10px;
-
-            }
-
-            .publication-card {
-
-                padding: 15px;
-
-                box-shadow: 4px 4px 0 #000000;
-
-            }
-
-            .publication-title {
-
-                font-size: 15px;
-
-                margin-bottom: 8px;
-
-            }
-
-            .publication-authors {
-
-                font-size: 13px;
-
-            }
-
-            .publication-venue {
-
-                font-size: 12px;
-
-            }
-
-            .publication-role {
-
-                font-size: 11px;
-
-            }
-
-            .year-badge, .status-badge {
-
-                font-size: 11px;
-
-                padding: 4px 10px;
-
-            }
-
-            .blog-grid {
-
-                gap: 20px;
-
-                max-height: calc(100vh - 200px);
-
-                grid-template-columns: 1fr;
-
-            }
-
-            .blog-card {
-
-                box-shadow: 4px 4px 0 #000000;
-
-            }
-
-            .blog-content {
-
-                padding: 15px;
-
-            }
-
-            .blog-title {
-
-                font-size: 16px;
-
-            }
-
-            .blog-excerpt {
-
-                font-size: 13px;
-
-            }
-
-            .blog-link {
-
-                font-size: 12px;
-
-                padding: 6px 12px;
-
-            }
-
-            .about-content h1 {
-
-                font-size: clamp(2rem, 8vw, 3rem);
-
-            }
-
-            .subtitle {
-
-                font-size: 16px;
-
-                padding: 5px 12px;
-
-            }
-
-            .about-bio {
-
-                padding: 20px;
-
-                margin: 20px 0;
-
-            }
-
-            .about-bio p {
-
-                font-size: 14px;
-
-            }
-
-            .interest-tag {
-
-                font-size: 11px;
-
-                padding: 5px 10px;
-
-            }
-
-            .cert-badge {
-
-                font-size: 11px;
-
-                padding: 8px 12px;
-
-            }
-
-            .connect-title {
-
-                font-size: clamp(36px, 10vw, 60px);
-
-                margin-bottom: 15px;
-
-            }
-
-            .connect-subtitle {
-
-                font-size: 14px;
-
-                margin-bottom: 30px;
-
-            }
-
-            .connect-cta {
-
-                padding: 20px;
-
-            }
-
-            .connect-cta-text {
-
-                font-size: 16px;
-
-            }
-
-            .connect-cta-subtext {
-
-                font-size: 12px;
-
-            }
-
-            .education-timeline::before {
-
-                left: 25px;
-
-            }
-
-            .education-marker {
-
-                width: 50px;
-
-                height: 50px;
-
-                font-size: 20px;
-
-            }
-
-            .education-card {
-
-                padding: 15px;
-
-            }
-
-            .education-degree {
-
-                font-size: 16px;
-
-            }
-
-            .education-institution {
-
-                font-size: 14px;
-
-            }
-
-            .education-duration {
-
-                font-size: 12px;
-
-            }
-
-
-
-            .bg-shape:nth-child(1) {
-
-                width: 120px;
-
-                height: 120px;
-
-            }
-
-            .bg-shape:nth-child(2) {
-
-                width: 100px;
-
-                height: 100px;
-
-            }
-
-            .bg-shape:nth-child(3) {
-
-                width: 60px;
-
-                height: 60px;
-
-            }
-
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 10px 12px; }
+            .nav-toggle { display: flex; }
         }
-
-
-
-        /* Mobile Large */
 
         @media (max-width: 480px) {
-
-            .panel {
-
-                padding: 70px 15px 90px;
-
-            }
-
-
-
-            .section-title {
-
-                font-size: 24px;
-
-                padding: 6px 16px;
-
-            }
-
-            .connect-grid {
-
-                grid-template-columns: 1fr 1fr;
-
-                gap: 12px;
-
-            }
-
-            .connect-link {
-
-                padding: 15px 10px;
-
-                font-size: 11px;
-
-            }
-
-            .publication-title {
-
-                font-size: 14px;
-
-            }
-
-            .blog-title {
-
-                font-size: 15px;
-
-            }
-
-            .about-content h1 {
-
-                font-size: clamp(1.8rem, 10vw, 2.5rem);
-
-            }
-
-            .subtitle {
-
-                font-size: 14px;
-
-                padding: 4px 10px;
-
-            }
-
-            .about-bio {
-
-                padding: 15px;
-
-                margin: 15px 0;
-
-            }
-
-            .about-bio p {
-
-                font-size: 13px;
-
-                margin-bottom: 12px;
-
-            }
-
-            .interest-tag {
-
-                font-size: 10px;
-
-                padding: 4px 8px;
-
-            }
-
-            .cert-badge {
-
-                font-size: 10px;
-
-                padding: 6px 10px;
-
-            }
-
-            .photo-container {
-
-                max-width: 220px;
-
-            }
-
-            .scroll-indicator {
-
-                font-size: 10px;
-
-                padding: 6px 12px;
-
-            }
-
-            .progress-dots {
-
-                padding: 6px 12px;
-
-                gap: 8px;
-
-            }
-
-            .progress-dot {
-
-                width: 10px;
-
-                height: 10px;
-
-            }
-
-            .education-item {
-
-                gap: 15px;
-
-                margin-bottom: 20px;
-
-            }
-
-            .education-marker {
-
-                width: 40px;
-
-                height: 40px;
-
-                font-size: 16px;
-
-            }
-
-            .education-timeline::before {
-
-                left: 20px;
-
-            }
-
-            .connect-cta {
-
-                padding: 15px;
-
-            }
-
-            .connect-cta-text {
-
-                font-size: 14px;
-
-            }
-
-            .connect-cta-subtext {
-
-                font-size: 11px;
-
-            }
-
+            .hero { padding: 48px 0 44px; }
+            section { padding: 52px 0; }
+            .hero-name { font-size: 1.875rem; }
         }
-
-
-
-        /* Mobile Small */
-
-        @media (max-width: 360px) {
-
-            .panel {
-
-                padding: 65px 12px 85px;
-
-            }
-
-            .about-content h1 {
-
-                font-size: clamp(1.5rem, 12vw, 2rem);
-
-            }
-
-            .subtitle {
-
-                font-size: 12px;
-
-            }
-
-            .section-title {
-
-                font-size: 20px;
-
-                padding: 5px 12px;
-
-            }
-
-            .connect-grid {
-
-                grid-template-columns: 1fr;
-
-                gap: 10px;
-
-            }
-
-            .connect-link {
-
-                padding: 12px 10px;
-
-            }
-
-            .cert-badge {
-
-                font-size: 9px;
-
-                padding: 5px 8px;
-
-            }
-
-            .interest-tag {
-
-                font-size: 9px;
-
-            }
-
-            .publication-card {
-
-                padding: 12px;
-
-            }
-
-            .blog-content {
-
-                padding: 12px;
-
-            }
-
-            .education-marker {
-
-                width: 35px;
-
-                height: 35px;
-
-                font-size: 14px;
-
-            }
-
-            .education-timeline::before {
-
-                left: 17px;
-
-            }
-
-            .nav-links {
-
-                min-width: 130px;
-
-            }
-
-            .nav-links a {
-
-                padding: 8px 12px;
-
-                font-size: 12px;
-
-            }
-
-        }
-
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-            * {
-
-                animation: none !important;
-
-                transition: none !important;
-
-            }
-
-        }
-
-
-
-        /* Touch device optimizations */
-
-        @media (hover: none) and (pointer: coarse) {
-
-            .nav-links a:hover,
-
-            .connect-link:hover,
-
-            .publication-card:hover,
-
-            .blog-card:hover,
-
-            .cert-badge:hover,
-
-            .photo-container:hover {
-
-                transform: none;
-
-                box-shadow: inherit;
-
-            }
-
-
-
-            .connect-link {
-
-                -webkit-tap-highlight-color: transparent;
-
-            }
-
-
-
-            .progress-dot {
-
-                min-width: 44px;
-
-                min-height: 44px;
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: center;
-
-            }
-
-
-
-            .progress-dot::after {
-
-                content: '';
-
-                width: 12px;
-
-                height: 12px;
-
-                border-radius: 50%;
-
-                background: inherit;
-
-                border: inherit;
-
-            }
-
-        }
-
-
-
-        /* Landscape orientation for mobile */
-
-        @media (max-height: 500px) and (orientation: landscape) {
-
-            .panel {
-
-                padding: 60px 30px 70px;
-
-            }
-
-            .section-title {
-
-                font-size: 24px;
-
-                margin-bottom: 15px;
-
-            }
-
-            .publications-grid,
-
-            .blog-grid {
-
-                max-height: calc(100vh - 150px);
-
-            }
-
-            .about-bio {
-
-                padding: 15px;
-
-            }
-
-            .about-bio p {
-
-                font-size: 13px;
-
-                margin-bottom: 10px;
-
-            }
-
-            .education-item {
-
-                margin-bottom: 15px;
-
-            }
-
-        }
-
     </style>
-
 </head>
-
 <body>
 
-    <nav class="nav-container" role="navigation" aria-label="Main navigation">
-
-        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-
-            <span></span>
-
-            <span></span>
-
-            <span></span>
-
-        </button>
-
-        <ul class="nav-links">
-
-            <li><a href="#about">About</a></li>
-
-            <li><a href="#publications">Pubs</a></li>
-
-            <li><a href="#blog">Blog</a></li>
-
-            <li><a href="#education">Edu</a></li>
-
-            <li><a href="#connect">Connect</a></li>
-
-        </ul>
-
-    </nav>
-
- 
-
-    <div class="scroll-indicator">
-
-        SCROLL OR USE ARROW KEYS &rarr;
-
+<!-- ── NAVIGATION ────────────────────────────────────────── -->
+<header>
+    <div class="container">
+        <nav class="nav-inner">
+            <a href="#" class="nav-brand">Adrita Rahman Tory</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <!-- Upload your CV as "cv.pdf" to the repo root -->
+                    <a href="cv.pdf" class="nav-cv" target="_blank" rel="noopener">CV ↓</a>
+                </li>
+            </ul>
+        </nav>
     </div>
+</header>
 
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<div class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1 class="hero-name">Adrita Rahman Tory</h1>
+                <p class="hero-title">Cybersecurity Researcher &nbsp;·&nbsp; Research Assistant</p>
+                <p class="hero-affil">Jahangirnagar University &nbsp;·&nbsp; BUBT, Bangladesh</p>
 
+                <p class="hero-bio">
+                    I work at the intersection of artificial intelligence and network security —
+                    building evaluation frameworks for intrusion detection datasets, studying
+                    federated learning under adversarial conditions, and mapping real-world threat
+                    coverage gaps in critical infrastructure sectors.
+                </p>
 
-    <div class="progress-dots" role="navigation" aria-label="Section navigation">
+                <div class="hero-actions">
+                    <!-- Upload your CV as cv.pdf to the repo to activate this button -->
+                    <a href="cv.pdf" class="btn-primary" target="_blank" rel="noopener">↓&nbsp; Download CV</a>
+                    <a href="#publications" class="btn-outline">View Publications</a>
+                </div>
 
-        <div class="progress-dot active" data-section="about" title="About"></div>
+                <div class="social-links">
+                    <a href="https://github.com/adritatori" class="social-link" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/adrita-rahman" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+                    <!-- Replace YOUR_SCHOLAR_ID with your Google Scholar user ID -->
+                    <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="social-link" target="_blank" rel="noopener">Google Scholar</a>
+                    <!-- Replace YOUR_RG_PROFILE with your ResearchGate profile slug -->
+                    <a href="https://www.researchgate.net/profile/YOUR_RG_PROFILE" class="social-link" target="_blank" rel="noopener">ResearchGate</a>
+                    <a href="https://medium.com/@radrita245" class="social-link" target="_blank" rel="noopener">Medium</a>
+                </div>
+            </div>
 
-        <div class="progress-dot" data-section="publications" title="Publications"></div>
-
-        <div class="progress-dot" data-section="blog" title="Blog"></div>
-
-        <div class="progress-dot" data-section="education" title="Education"></div>
-
-        <div class="progress-dot" data-section="connect" title="Connect"></div>
-
+            <div class="hero-photo-wrap">
+                <img src="profileImage.png" alt="Adrita Rahman Tory" class="hero-photo">
+            </div>
+        </div>
     </div>
+</div>
 
+<!-- ── ABOUT ──────────────────────────────────────────────── -->
+<section id="about">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Research Background</h2>
+        </div>
+        <div class="about-body">
+            <p>
+                I am a cybersecurity researcher with a focus on AI-driven threat detection and
+                network security. Currently pursuing a Professional Master's in Information
+                Technology at Jahangirnagar University, I work at the intersection of machine
+                learning and network intrusion detection systems (NIDS).
+            </p>
+            <p>
+                My research addresses a critical gap in cybersecurity: existing NIDS datasets
+                often fail to reflect real-world threat landscapes, particularly in critical
+                infrastructure sectors such as energy. I develop evaluation frameworks using
+                MITRE ATT&amp;CK alignment and industry-relevance metrics, and investigate
+                Byzantine-robust federated learning for distributed, privacy-preserving threat
+                detection.
+            </p>
+            <p>
+                Beyond research, I am a BTEB Certified Trainer &amp; Assessor, a CompTIA
+                Security+ certified professional, and an active science communicator through
+                my Medium blog and YouTube channel.
+            </p>
 
-
-    <div class="horizontal-scroll-wrapper">
-
-        <!-- ABOUT PANEL -->
-
-        <section id="about" class="panel panel-about" role="banner">
-
-            <div class="bg-shapes">
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-            </div>
-
-            <div class="panel-content">
-
-                <div class="about-grid">
-
-                    <div class="about-content">
-
-                        <h1>Adrita Rahman Tory</h1>
-
-                        <div class="subtitle">Cybersecurity Researcher | Research Assistant | Certified Trainer</div>
-
- 
-
-                        <div class="about-bio">
-
-                            <p>Picture this: <span class="highlight">AI meets cybersecurity</span>, and I'm in the middle of that collision. I decode threats before they strike, architect defenses that learn and adapt, and chase vulnerabilities across the digital frontier.</p>
-
- 
-
-                            <p>By day, I'm dissecting <span class="highlight">intrusion detection systems</span> and wrestling with Byzantine-robust algorithms. By night, I'm writing research papers that push the boundaries of what's possible in <span class="highlight">6G security</span> and federated learning.</p>
-
- 
-
-                            <p>Currently leveling up with a Professional Master's in IT while publishing in Q1 journals. My mission? Making critical infrastructure unhackable, one algorithm at a time.</p>
-
- 
-
-                            <div class="interest-tags">
-
-                                <span class="interest-tag">AI Threat Detection</span>
-
-                                <span class="interest-tag">Network IDS</span>
-
-                                <span class="interest-tag">Federated Learning</span>
-
-                                <span class="interest-tag">Critical Infrastructure</span>
-
-                                <span class="interest-tag">6G Security</span>
-
-                                <span class="interest-tag">Byzantine Robustness</span>
-
-                            </div>
-
-                        </div>
-
- 
-
-                        <div class="cert-badges">
-
-                            <div class="cert-badge">CompTIA Security+ Certified</div>
-
-                            <div class="cert-badge">BTEB Certified Trainer & Assessor</div>
-
-                            <div class="cert-badge">Cisco IT Essentials Certified</div>
-
-                        </div>
-
-                    </div>
-
- 
-
-                    <div class="photo-container">
-
-                        <img src="profileImage.png" alt="Adrita Rahman Tory - Cybersecurity Researcher">
-
-                    </div>
-
+            <div>
+                <p class="section-label" style="margin-top: 28px; margin-bottom: 12px;">Certifications</p>
+                <div class="certs-row">
+                    <span class="cert-badge">✓&nbsp; CompTIA Security+</span>
+                    <span class="cert-badge">✓&nbsp; BTEB Certified Trainer &amp; Assessor</span>
+                    <span class="cert-badge">✓&nbsp; Cisco IT Essentials</span>
                 </div>
-
             </div>
-
-        </section>
-
- 
-
-        <!-- PUBLICATIONS PANEL -->
-
-        <section id="publications" class="panel panel-publications" role="region" aria-labelledby="publications-title">
-
-            <div class="bg-shapes">
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-            </div>
-
-            <div class="panel-content">
-
-                <h2 class="section-title" id="publications-title">PUBLICATIONS</h2>
-
-                <div class="publications-grid">
-
-                    <article class="publication-card">
-
-                        <div class="publication-header">
-
-                            <span class="year-badge">2025</span>
-
-                            <span class="status-badge status-review">Under Review</span>
-
-                        </div>
-
-                        <h3 class="publication-title">An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&CK and Industry Relevance Metrics</h3>
-
-                        <p class="publication-authors">
-
-                            <span class="author-highlight">Adrita Rahman Tory</span>, Khandakar Fida Hasan
-
-                        </p>
-
-                        <p class="publication-venue">Computers &amp; Security (Elsevier) - Q1 Journal</p>
-
-                        <p class="publication-role">Role: First Author | Status: Preprint on SSRN; Under review</p>
-
-                    </article>
-
- 
-
-                    <article class="publication-card">
-
-                        <div class="publication-header">
-
-                            <span class="year-badge">2025</span>
-
-                            <span class="status-badge status-accepted">Accepted</span>
-
-                        </div>
-
-                        <h3 class="publication-title">Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector</h3>
-
-                        <p class="publication-authors">
-
-                            <span class="author-highlight">Adrita Rahman Tory</span>, Dr. Khondokar Fida Hasan, Md Saifur Rahman, Nickolaos Koroniotis, Mohammad Ali Moni
-
-                        </p>
-
-                        <p class="publication-venue">International Conference on Big Data, IoT and Machine Learning (ICBDIML 2025) - Elsevier</p>
-
-                        <p class="publication-role">Role: First Author | Status: Accepted</p>
-
-                    </article>
-
- 
-
-                    <article class="publication-card">
-
-                        <div class="publication-header">
-
-                            <span class="year-badge">2025</span>
-
-                            <span class="status-badge status-submitted">Submitted</span>
-
-                        </div>
-
-                        <h3 class="publication-title">Game On: A Developmental Approach to UNSW Cyber Escape Room for Cybersecurity Governance and Policy Education</h3>
-
-                        <p class="publication-authors">
-
-                            Khondokar Fida Hasan, William Hughes, <span class="author-highlight">Adrita Rahman Tory</span>, Chris Campbell, Selen Turkay
-
-                        </p>
-
-                        <p class="publication-venue">Education Sciences, MDPI</p>
-
-                        <p class="publication-role">Role: 3rd Author | Status: Submitted</p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- BLOG PANEL -->
-
-        <section id="blog" class="panel panel-blog" role="region" aria-labelledby="blog-title">
-
-            <div class="bg-shapes">
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-            </div>
-
-            <div class="panel-content">
-
-                <h2 class="section-title" id="blog-title">BLOG</h2>
-
-                <div class="blog-grid">
-
-                    <article class="blog-card">
-
-                        <div class="blog-window-bar">
-
-                            <span class="window-dot window-dot-red"></span>
-
-                            <span class="window-dot window-dot-yellow"></span>
-
-                            <span class="window-dot window-dot-green"></span>
-
-                        </div>
-
-                        <div class="blog-content">
-
-                            <span class="blog-category">DEVOPS</span>
-
-                            <h3 class="blog-title">Docker পর্ব ১ - Container Technology Fundamentals</h3>
-
-                            <p class="blog-excerpt">Introduction to Docker containerization and its role in modern software development</p>
-
-                            <a href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener noreferrer" class="blog-link">READ ON MEDIUM &rarr;</a>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="blog-card">
-
-                        <div class="blog-window-bar">
-
-                            <span class="window-dot window-dot-red"></span>
-
-                            <span class="window-dot window-dot-yellow"></span>
-
-                            <span class="window-dot window-dot-green"></span>
-
-                        </div>
-
-                        <div class="blog-content">
-
-                            <span class="blog-category">COMPUTER GRAPHICS</span>
-
-                            <h3 class="blog-title">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python Graphics</h3>
-
-                            <p class="blog-excerpt">Exploring classic computer graphics algorithms through interactive Python visualizations</p>
-
-                            <a href="https://medium.com/@radrita245/algorithmic-elegance-bresenhams-line-and-midpoint-circle-in-python-graphics-0989d439d86b" target="_blank" rel="noopener noreferrer" class="blog-link">READ ON MEDIUM &rarr;</a>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <article class="blog-card">
-
-                        <div class="blog-window-bar">
-
-                            <span class="window-dot window-dot-red"></span>
-
-                            <span class="window-dot window-dot-yellow"></span>
-
-                            <span class="window-dot window-dot-green"></span>
-
-                        </div>
-
-                        <div class="blog-content">
-
-                            <span class="blog-category">MACHINE LEARNING</span>
-
-                            <h3 class="blog-title">Understanding Bayes Decision Rules with a Loss Function</h3>
-
-                            <p class="blog-excerpt">Understanding optimal decision-making under uncertainty using Bayesian approaches</p>
-
-                            <a href="https://medium.com/@radrita245/understanding-bayes-decision-rules-with-a-loss-function-deacbf70dbda" target="_blank" rel="noopener noreferrer" class="blog-link">READ ON MEDIUM &rarr;</a>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- EDUCATION PANEL -->
-
-        <section id="education" class="panel panel-education" role="region" aria-labelledby="education-title">
-
-            <div class="bg-shapes">
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-            </div>
-
-            <div class="panel-content">
-
-                <h2 class="section-title" id="education-title">EDUCATION</h2>
-
-                <div class="education-timeline">
-
-                    <div class="education-item">
-
-                        <div class="education-marker">&#x2605;</div>
-
-                        <div class="education-card">
-
-                            <h3 class="education-degree">Professional Master's in Information Technology</h3>
-
-                            <p class="education-institution">Jahangirnagar University</p>
-
-                            <span class="education-duration">August 2025 - Current</span>
-
-                        </div>
-
-                    </div>
-
- 
-
-                    <div class="education-item">
-
-                        <div class="education-marker">&#x2605;</div>
-
-                        <div class="education-card">
-
-                            <h3 class="education-degree">Bachelor's in Computer Science and Engineering</h3>
-
-                            <p class="education-institution">Bangladesh University of Business and Technology (BUBT)</p>
-
-                            <span class="education-duration">July 2021 - March 2025</span>
-
-                        </div>
-
-                    </div>
-
- 
-
-                    <div class="education-item">
-
-                        <div class="education-marker">&#x2605;</div>
-
-                        <div class="education-card">
-
-                            <h3 class="education-degree">Diploma in Engineering</h3>
-
-                            <p class="education-institution">Dhaka Mohila Polytechnic Institute</p>
-
-                            <span class="education-duration">June 2016 - July 2020</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- CONNECT PANEL -->
-
-        <section id="connect" class="panel panel-connect" role="region" aria-labelledby="connect-title">
-
-            <div class="bg-shapes">
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-                <div class="bg-shape"></div>
-
-            </div>
-
-            <div class="panel-content">
-
-                <div class="connect-content">
-
-                    <h2 class="connect-title" id="connect-title">LET'S CONNECT</h2>
-
-                    <p class="connect-subtitle">Got a research idea? Want to collaborate? Or just geek out about AI security? I'm all ears.</p>
-
- 
-
-                    <div class="connect-grid">
-
-                        <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">YT</span>
-
-                            YouTube
-
-                        </a>
-
-                        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">GS</span>
-
-                            Scholar
-
-                        </a>
-
-                        <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">RG</span>
-
-                            ResearchGate
-
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/adrita-rahman" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">IN</span>
-
-                            LinkedIn
-
-                        </a>
-
-                        <a href="https://github.com/adritatori" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">GH</span>
-
-                            GitHub
-
-                        </a>
-
-                        <a href="https://medium.com/@radrita245" target="_blank" rel="noopener noreferrer" class="connect-link">
-
-                            <span class="icon">MD</span>
-
-                            Medium
-
-                        </a>
-
-                    </div>
-
- 
-
-                    <div class="connect-cta">
-
-                        <p class="connect-cta-text">Ready to collaborate on the next breakthrough?</p>
-
-                        <p class="connect-cta-subtext">Let's turn ideas into impact together.</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
+        </div>
     </div>
+</section>
 
- 
+<!-- ── RESEARCH ───────────────────────────────────────────── -->
+<section id="research" class="research-bg">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Research</p>
+            <h2 class="section-title">Research Interests</h2>
+            <p class="section-sub">Work spanning machine learning, network security, and critical systems</p>
+        </div>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <span class="interest-icon">🛡️</span>
+                <h3>Network Intrusion Detection</h3>
+                <p>Evaluating and improving AI-powered NIDS/IPS with MITRE ATT&CK alignment and industry-relevance metrics.</p>
+            </div>
+            <div class="interest-card">
+                <span class="interest-icon">🤝</span>
+                <h3>Federated Learning Security</h3>
+                <p>Byzantine-robust distributed learning for privacy-preserving, decentralised threat detection.</p>
+            </div>
+            <div class="interest-card">
+                <span class="interest-icon">⚡</span>
+                <h3>Critical Infrastructure</h3>
+                <p>Cybersecurity challenges in energy sector ICS/SCADA and operational technology (OT) environments.</p>
+            </div>
+            <div class="interest-card">
+                <span class="interest-icon">📡</span>
+                <h3>6G Network Security</h3>
+                <p>Security frameworks and threat models for next-generation wireless network architectures.</p>
+            </div>
+            <div class="interest-card">
+                <span class="interest-icon">🧠</span>
+                <h3>AI Threat Detection</h3>
+                <p>Deep learning and anomaly detection methods for zero-day exploit identification.</p>
+            </div>
+            <div class="interest-card">
+                <span class="interest-icon">📊</span>
+                <h3>Dataset Evaluation</h3>
+                <p>Benchmarking frameworks assessing NIDS dataset quality, coverage, and real-world relevance.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script>
+<!-- ── PUBLICATIONS ───────────────────────────────────────── -->
+<section id="publications">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Publications</p>
+            <h2 class="section-title">Selected Publications</h2>
+            <p class="section-sub">Underline denotes corresponding / first author</p>
+        </div>
+        <div class="pub-list">
 
-        // Section management
+            <article class="pub-item">
+                <div class="pub-meta">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-badge badge-review">Under Review</span>
+                </div>
+                <h3 class="pub-title">
+                    An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&amp;CK and Industry Relevance Metrics
+                </h3>
+                <p class="pub-authors">
+                    <span class="me">Adrita Rahman Tory</span>, Khandakar Fida Hasan
+                </p>
+                <p class="pub-venue">
+                    <em>Computers &amp; Security</em> (Elsevier) &mdash; Q1 Journal
+                </p>
+                <p class="pub-role">Role: First Author &nbsp;·&nbsp; Preprint available on SSRN</p>
+                <div class="pub-links">
+                    <!-- Replace # with your actual SSRN preprint URL -->
+                    <a href="#" class="pub-link">SSRN Preprint</a>
+                </div>
+            </article>
 
-        const sections = ['about', 'publications', 'blog', 'education', 'connect'];
+            <article class="pub-item">
+                <div class="pub-meta">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-badge badge-accepted">Accepted</span>
+                </div>
+                <h3 class="pub-title">
+                    Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector
+                </h3>
+                <p class="pub-authors">
+                    <span class="me">Adrita Rahman Tory</span>, Dr. Khondokar Fida Hasan,
+                    Md Saifur Rahman, Nickolaos Koroniotis, Mohammad Ali Moni
+                </p>
+                <p class="pub-venue">
+                    International Conference on Big Data, IoT and Machine Learning (ICBDIML 2025) &mdash; Elsevier
+                </p>
+                <p class="pub-role">Role: First Author</p>
+            </article>
 
-        let currentSectionIndex = 0;
+            <article class="pub-item">
+                <div class="pub-meta">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-badge badge-submitted">Submitted</span>
+                </div>
+                <h3 class="pub-title">
+                    Game On: A Developmental Approach to UNSW Cyber Escape Room for Cybersecurity Governance and Policy Education
+                </h3>
+                <p class="pub-authors">
+                    Khondokar Fida Hasan, William Hughes,
+                    <span class="me">Adrita Rahman Tory</span>, Chris Campbell, Selen Turkay
+                </p>
+                <p class="pub-venue">
+                    <em>Education Sciences</em> &mdash; MDPI
+                </p>
+                <p class="pub-role">Role: 3rd Author</p>
+            </article>
 
-        let isScrolling = false;
+        </div>
+    </div>
+</section>
 
+<!-- ── EDUCATION ──────────────────────────────────────────── -->
+<section id="education" class="edu-bg">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Education</p>
+            <h2 class="section-title">Academic Background</h2>
+        </div>
+        <div class="edu-list">
+            <div class="edu-item">
+                <div class="edu-dates">Aug 2025 &mdash;<br>Present</div>
+                <div>
+                    <p class="edu-degree">Professional Master's in Information Technology</p>
+                    <p class="edu-institution">Jahangirnagar University</p>
+                    <p class="edu-detail">Dhaka, Bangladesh</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-dates">Jul 2021 &mdash;<br>Mar 2025</div>
+                <div>
+                    <p class="edu-degree">Bachelor of Science in Computer Science and Engineering</p>
+                    <p class="edu-institution">Bangladesh University of Business and Technology (BUBT)</p>
+                    <p class="edu-detail">Dhaka, Bangladesh</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-dates">Jun 2016 &mdash;<br>Jul 2020</div>
+                <div>
+                    <p class="edu-degree">Diploma in Engineering</p>
+                    <p class="edu-institution">Dhaka Mohila Polytechnic Institute</p>
+                    <p class="edu-detail">Dhaka, Bangladesh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- ── BLOG ───────────────────────────────────────────────── -->
+<section id="blog">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Blog</p>
+            <h2 class="section-title">Writing</h2>
+            <p class="section-sub">
+                Technical articles on Medium &mdash;
+                <a href="https://medium.com/@radrita245" target="_blank" rel="noopener">@radrita245</a>
+            </p>
+        </div>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <p class="blog-tag">DevOps</p>
+                <h3 class="blog-title">Docker পর্ব ১ &mdash; Container Technology Fundamentals</h3>
+                <p class="blog-excerpt">An introduction to Docker containerisation and its role in modern software development pipelines.</p>
+                <a href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0"
+                   class="blog-readmore" target="_blank" rel="noopener">Read on Medium →</a>
+            </article>
+            <article class="blog-card">
+                <p class="blog-tag">Computer Graphics</p>
+                <h3 class="blog-title">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python</h3>
+                <p class="blog-excerpt">Exploring classic computer graphics algorithms through interactive Python visualisations.</p>
+                <a href="https://medium.com/@radrita245/algorithmic-elegance-bresenhams-line-and-midpoint-circle-in-python-graphics-0989d439d86b"
+                   class="blog-readmore" target="_blank" rel="noopener">Read on Medium →</a>
+            </article>
+            <article class="blog-card">
+                <p class="blog-tag">Machine Learning</p>
+                <h3 class="blog-title">Understanding Bayes Decision Rules with a Loss Function</h3>
+                <p class="blog-excerpt">Optimal decision-making under uncertainty using Bayesian approaches and risk minimisation.</p>
+                <a href="https://medium.com/@radrita245/understanding-bayes-decision-rules-with-a-loss-function-deacbf70dbda"
+                   class="blog-readmore" target="_blank" rel="noopener">Read on Medium →</a>
+            </article>
+        </div>
+    </div>
+</section>
 
-        // Mobile menu toggle
+<!-- ── CONTACT ────────────────────────────────────────────── -->
+<section id="contact" class="contact-bg">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Get in Touch</h2>
+        </div>
+        <div class="contact-grid">
+            <div>
+                <p class="contact-intro">
+                    I am open to research collaborations, academic discussions, and
+                    opportunities in cybersecurity research. Whether you have a question
+                    about my work or want to explore a collaboration, I'd love to hear from you.
+                </p>
+                <!-- Replace with your actual email address -->
+                <a href="mailto:your.email@university.edu" class="contact-email-btn">
+                    ✉&nbsp; Email Me
+                </a>
+            </div>
+            <div>
+                <p class="links-label">Find me online</p>
+                <div class="links-list">
+                    <a href="https://www.linkedin.com/in/adrita-rahman" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">in</span>
+                        <span>
+                            <span class="link-name">LinkedIn</span>
+                            <span class="link-handle">linkedin.com/in/adrita-rahman</span>
+                        </span>
+                    </a>
+                    <a href="https://github.com/adritatori" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">GH</span>
+                        <span>
+                            <span class="link-name">GitHub</span>
+                            <span class="link-handle">github.com/adritatori</span>
+                        </span>
+                    </a>
+                    <!-- Replace YOUR_SCHOLAR_ID with your Google Scholar user ID -->
+                    <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">GS</span>
+                        <span>
+                            <span class="link-name">Google Scholar</span>
+                            <span class="link-handle">Update Scholar ID</span>
+                        </span>
+                    </a>
+                    <!-- Replace YOUR_RG_PROFILE with your ResearchGate profile slug -->
+                    <a href="https://www.researchgate.net/profile/YOUR_RG_PROFILE" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">RG</span>
+                        <span>
+                            <span class="link-name">ResearchGate</span>
+                            <span class="link-handle">Update RG profile</span>
+                        </span>
+                    </a>
+                    <a href="https://medium.com/@radrita245" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">M</span>
+                        <span>
+                            <span class="link-name">Medium</span>
+                            <span class="link-handle">@radrita245</span>
+                        </span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" class="link-item" target="_blank" rel="noopener">
+                        <span class="link-icon">YT</span>
+                        <span>
+                            <span class="link-name">YouTube</span>
+                            <span class="link-handle">YouTube Channel</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        const menuToggle = document.querySelector('.menu-toggle');
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Adrita Rahman Tory &nbsp;&middot;&nbsp; Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+        <p style="margin-top: 6px; font-size: 0.75rem;">Cybersecurity Researcher &nbsp;&middot;&nbsp; Jahangirnagar University &nbsp;&middot;&nbsp; Bangladesh</p>
+    </div>
+</footer>
 
-        const navLinks = document.querySelector('.nav-links');
+<script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
 
+    navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open);
+    });
 
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        });
+    });
 
-        if (menuToggle) {
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('section[id], div.hero');
+    const navItems = document.querySelectorAll('.nav-links a[href^="#"]');
 
-            menuToggle.addEventListener('click', () => {
-
-                menuToggle.classList.toggle('active');
-
-                navLinks.classList.toggle('active');
-
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-
-            });
-
-        }
-
-
-
-        // Close mobile menu when clicking outside
-
-        document.addEventListener('click', (e) => {
-
-            if (navLinks && navLinks.classList.contains('active')) {
-
-                if (!e.target.closest('.nav-container')) {
-
-                    menuToggle.classList.remove('active');
-
-                    navLinks.classList.remove('active');
-
-                    menuToggle.setAttribute('aria-expanded', 'false');
-
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navItems.forEach(a => a.removeAttribute('style'));
+                const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                if (active) {
+                    active.style.color = 'var(--navy)';
+                    active.style.fontWeight = '600';
                 }
-
             }
-
         });
+    }, { threshold: 0.4 });
 
-
-
-        // Close mobile menu when link is clicked
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-
-            link.addEventListener('click', () => {
-
-                if (navLinks.classList.contains('active')) {
-
-                    menuToggle.classList.remove('active');
-
-                    navLinks.classList.remove('active');
-
-                    menuToggle.setAttribute('aria-expanded', 'false');
-
-                }
-
-            });
-
-        });
-
-
-
-        // Navigate to section by index
-
-        function goToSection(index) {
-
-            if (index < 0 || index >= sections.length || isScrolling) return;
-
-            isScrolling = true;
-
-            currentSectionIndex = index;
-
-            const target = document.getElementById(sections[index]);
-
-            if (target) {
-
-                target.scrollIntoView({
-
-                    behavior: 'smooth',
-
-                    inline: 'start',
-
-                    block: 'nearest'
-
-                });
-
-                updateProgressDots();
-
-            }
-
-            setTimeout(() => { isScrolling = false; }, 800);
-
-        }
-
-
-
-        // Update progress dots
-
-        function updateProgressDots() {
-
-            document.querySelectorAll('.progress-dot').forEach((dot, i) => {
-
-                dot.classList.toggle('active', i === currentSectionIndex);
-
-            });
-
-        }
-
-
-
-        // Mouse wheel horizontal scroll
-
-        document.addEventListener('wheel', (e) => {
-
-            e.preventDefault();
-
-            if (isScrolling) return;
-
-
-
-            if (e.deltaY > 0 || e.deltaX > 0) {
-
-                goToSection(currentSectionIndex + 1);
-
-            } else if (e.deltaY < 0 || e.deltaX < 0) {
-
-                goToSection(currentSectionIndex - 1);
-
-            }
-
-        }, { passive: false });
-
-
-
-        // Keyboard navigation
-
-        document.addEventListener('keydown', (e) => {
-
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-
-                e.preventDefault();
-
-                goToSection(currentSectionIndex + 1);
-
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-
-                e.preventDefault();
-
-                goToSection(currentSectionIndex - 1);
-
-            } else if (e.key === 'Home') {
-
-                e.preventDefault();
-
-                goToSection(0);
-
-            } else if (e.key === 'End') {
-
-                e.preventDefault();
-
-                goToSection(sections.length - 1);
-
-            }
-
-        });
-
-
-
-        // Progress dot click navigation
-
-        document.querySelectorAll('.progress-dot').forEach((dot, i) => {
-
-            dot.addEventListener('click', () => goToSection(i));
-
-        });
-
-
-
-        // Navigation link click
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-            anchor.addEventListener('click', function (e) {
-
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href').substring(1);
-
-                const targetIndex = sections.indexOf(targetId);
-
-                if (targetIndex !== -1) {
-
-                    goToSection(targetIndex);
-
-                }
-
-            });
-
-        });
-
-
-
-        // Enhanced Touch/swipe support
-
-        let touchStartX = 0;
-
-        let touchStartY = 0;
-
-        let touchEndX = 0;
-
-        let touchEndY = 0;
-
-        let touchStartTime = 0;
-
-
-
-        document.addEventListener('touchstart', (e) => {
-
-            touchStartX = e.changedTouches[0].screenX;
-
-            touchStartY = e.changedTouches[0].screenY;
-
-            touchStartTime = Date.now();
-
-        }, { passive: true });
-
-
-
-        document.addEventListener('touchend', (e) => {
-
-            touchEndX = e.changedTouches[0].screenX;
-
-            touchEndY = e.changedTouches[0].screenY;
-
-            const touchEndTime = Date.now();
-
-            const swipeTime = touchEndTime - touchStartTime;
-
-
-
-            const swipeDistanceX = touchStartX - touchEndX;
-
-            const swipeDistanceY = Math.abs(touchStartY - touchEndY);
-
-
-
-            // Only trigger if horizontal swipe is dominant and fast enough
-
-            if (Math.abs(swipeDistanceX) > 50 && Math.abs(swipeDistanceX) > swipeDistanceY && swipeTime < 500) {
-
-                if (swipeDistanceX > 0) {
-
-                    goToSection(currentSectionIndex + 1);
-
-                } else {
-
-                    goToSection(currentSectionIndex - 1);
-
-                }
-
-            }
-
-        }, { passive: true });
-
-
-
-        // Prevent default touch behavior on horizontal scroll wrapper for better UX
-
-        const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
-
-        if (scrollWrapper) {
-
-            scrollWrapper.addEventListener('touchmove', (e) => {
-
-                // Allow vertical scrolling within content areas
-
-                const target = e.target;
-
-                const isScrollableContent = target.closest('.publications-grid') ||
-
-                                          target.closest('.blog-grid') ||
-
-                                          target.closest('.education-timeline');
-
-                if (!isScrollableContent) {
-
-                    e.preventDefault();
-
-                }
-
-            }, { passive: false });
-
-        }
-
-
-
-        // Hide scroll indicator after first interaction
-
-        let hasInteracted = false;
-
-        function hideIndicator() {
-
-            if (!hasInteracted) {
-
-                hasInteracted = true;
-
-                const indicator = document.querySelector('.scroll-indicator');
-
-                if (indicator) {
-
-                    indicator.style.opacity = '0';
-
-                    indicator.style.transition = 'opacity 0.5s ease';
-
-                    setTimeout(() => indicator.remove(), 500);
-
-                }
-
-            }
-
-        }
-
-
-
-        document.addEventListener('wheel', hideIndicator, { once: true });
-
-        document.addEventListener('keydown', hideIndicator, { once: true });
-
-        document.addEventListener('touchstart', hideIndicator, { once: true });
-
-
-
-        // Responsive handling - detect orientation changes
-
-        window.addEventListener('orientationchange', () => {
-
-            setTimeout(() => {
-
-                goToSection(currentSectionIndex);
-
-            }, 100);
-
-        });
-
-
-
-        // Handle resize for responsive adjustments
-
-        let resizeTimeout;
-
-        window.addEventListener('resize', () => {
-
-            clearTimeout(resizeTimeout);
-
-            resizeTimeout = setTimeout(() => {
-
-                // Re-navigate to current section to fix any layout issues
-
-                const target = document.getElementById(sections[currentSectionIndex]);
-
-                if (target) {
-
-                    target.scrollIntoView({
-
-                        behavior: 'auto',
-
-                        inline: 'start',
-
-                        block: 'nearest'
-
-                    });
-
-                }
-
-            }, 250);
-
-        });
-
-    </script>
-
+    sections.forEach(s => observer.observe(s));
+</script>
 </body>
-
 </html>
-
- 

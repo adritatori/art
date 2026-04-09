@@ -1,0 +1,4 @@
+# GitHub Pages configuration
+# This tells GitHub Pages to serve the site from the root folder.
+# No Jekyll theme — serving plain HTML directly.
+theme: null
