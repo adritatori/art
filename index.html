@@ -9,889 +9,813 @@
     <meta property="og:type" content="website">
 
     <!--
-    CV HOSTING
-    ──────────
-    Upload your CV as "cv.pdf" to the root of this repository.
-    It will be served at: https://adritatori.github.io/art/cv.pdf
+    ═══════════════════════════════════════════
+    CV  →  Upload "cv.pdf" to this repo root.
+           It will serve at [site-url]/cv.pdf
 
-    GITHUB PAGES
-    ────────────
-    Settings → Pages → Deploy from branch → main / (root) → Save
-    Site will be live at: https://adritatori.github.io/art/
+    GitHub Pages  →
+      Settings → Pages → Deploy from branch
+      Branch: main  /  Folder: / (root)
+    ═══════════════════════════════════════════
     -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* ── TOKENS ──────────────────────────────────────── */
-        :root {
-            --black:   #0f0f0f;
-            --ink:     #1a1a1a;
-            --mid:     #606060;
-            --muted:   #9a9a9a;
-            --rule:    #dedede;
-            --pale:    #f7f7f7;
-            --white:   #ffffff;
-            --accent:  #1b2e6b;       /* deep navy – used sparingly */
-
-            --serif:   'Cormorant Garamond', Georgia, serif;
-            --sans:    'Inter', system-ui, -apple-system, sans-serif;
-
-            --w:       900px;
-            --px:      44px;
-        }
-
-        /* ── RESET ───────────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            font-family: var(--sans);
-            background: var(--white);
-            color: var(--ink);
-            line-height: 1.65;
-            -webkit-font-smoothing: antialiased;
-        }
-        a { color: inherit; text-decoration: none; }
-        img { display: block; }
-
-        .wrap {
-            max-width: calc(var(--w) + var(--px) * 2);
-            margin: 0 auto;
-            padding: 0 var(--px);
-        }
-
-        /* ── NAVIGATION ──────────────────────────────────── */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background: var(--white);
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 52px;
-        }
-
-        .nav-brand {
-            font-family: var(--sans);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink);
-        }
-
-        .nav-items {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-items a {
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            color: var(--mid);
-            padding-bottom: 1px;
-            border-bottom: 1px solid transparent;
-            transition: color 0.15s, border-color 0.15s;
-        }
-        .nav-items a:hover { color: var(--ink); border-color: var(--ink); }
-
-        .nav-cv {
-            font-weight: 600 !important;
-            color: var(--accent) !important;
-        }
-        .nav-cv:hover { border-color: var(--accent) !important; }
-
-        /* mobile */
-        .nav-burger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 6px;
-        }
-        .nav-burger span {
-            display: block; width: 20px; height: 1.5px;
-            background: var(--ink); transition: all 0.2s;
-        }
-
-        /* ── HERO ────────────────────────────────────────── */
-        .hero {
-            padding: 88px 0 80px;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1fr 210px;
-            gap: 64px;
-            align-items: start;
-        }
-
-        .hero-name {
-            font-family: var(--serif);
-            font-weight: 600;
-            font-size: clamp(3.25rem, 7.5vw, 5.5rem);
-            line-height: 0.95;
-            letter-spacing: -0.01em;
-            color: var(--ink);
-            margin-bottom: 30px;
-        }
-
-        .hero-sub {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            column-gap: 10px;
-            row-gap: 2px;
-            margin-bottom: 28px;
-        }
-
-        .hero-role {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--ink);
-        }
-
-        .hero-dot { color: var(--rule); font-size: 1rem; }
-
-        .hero-place {
-            font-size: 0.9375rem;
-            font-weight: 300;
-            color: var(--mid);
-        }
-
-        .hero-bio {
-            max-width: 560px;
-            font-size: 0.9375rem;
-            font-weight: 300;
-            line-height: 1.85;
-            color: var(--mid);
-            margin-bottom: 36px;
-        }
-
-        .hero-foot {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0;
-            row-gap: 10px;
-        }
-
-        .hero-link {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            color: var(--mid);
-            padding-right: 18px;
-            margin-right: 18px;
-            border-right: 1px solid var(--rule);
-            transition: color 0.15s;
-            white-space: nowrap;
-        }
-        .hero-link:last-of-type { border-right: none; padding-right: 0; margin-right: 0; }
-        .hero-link:hover { color: var(--ink); }
-
-        .hero-cv-btn {
-            margin-left: 28px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 7px 16px;
-            border-radius: 2px;
-            transition: background 0.15s, color 0.15s;
-        }
-        .hero-cv-btn:hover { background: var(--accent); color: var(--white); }
-
-        .hero-photo {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            object-position: top center;
-            filter: grayscale(12%);
-        }
-
-        /* ── SECTION SHELL ───────────────────────────────── */
-        section { border-bottom: 1px solid var(--rule); }
-
-        .sec {
-            padding: 68px 0;
-        }
-
-        /* small uppercase label above each section */
-        .eyebrow {
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 44px;
-        }
-        .eyebrow a {
-            color: var(--accent);
-            font-weight: 600;
-            margin-left: 6px;
-            letter-spacing: 0.04em;
-            text-transform: none;
-        }
-        .eyebrow a:hover { text-decoration: underline; }
-
-        /* ── ABOUT ───────────────────────────────────────── */
-        .about-prose {
-            max-width: 660px;
-        }
-        .about-prose p {
-            font-size: 0.9375rem;
-            font-weight: 300;
-            line-height: 1.9;
-            color: var(--mid);
-            margin-bottom: 16px;
-        }
-        .about-prose p:last-of-type { margin-bottom: 0; }
-
-        .certs {
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--rule);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-        .cert {
-            font-size: 0.8rem;
-            color: var(--mid);
-            font-weight: 400;
-        }
-        .cert::before { content: "—"; margin-right: 8px; color: var(--rule); }
-
-        /* ── RESEARCH ────────────────────────────────────── */
-        .r-list { display: flex; flex-direction: column; }
-
-        .r-row {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 0 48px;
-            padding: 20px 0;
-            border-top: 1px solid var(--rule);
-        }
-        .r-row:last-child { border-bottom: 1px solid var(--rule); }
-
-        .r-area {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--ink);
-            letter-spacing: 0.01em;
-            padding-top: 2px;
-        }
-
-        .r-desc {
-            font-size: 0.8125rem;
-            font-weight: 300;
-            color: var(--mid);
-            line-height: 1.65;
-        }
-
-        /* ── PUBLICATIONS ────────────────────────────────── */
-        .pub-list { display: flex; flex-direction: column; }
-
-        .pub-row {
-            display: grid;
-            grid-template-columns: 44px 1fr 108px;
-            gap: 0 36px;
-            padding: 28px 0;
-            border-top: 1px solid var(--rule);
-            align-items: start;
-        }
-        .pub-row:last-child { border-bottom: 1px solid var(--rule); }
-
-        .pub-yr {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--muted);
-            padding-top: 3px;
-            letter-spacing: 0.02em;
-        }
-
-        .pub-title {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.45;
-            margin-bottom: 9px;
-        }
-
-        .pub-authors {
-            font-size: 0.8125rem;
-            font-weight: 300;
-            color: var(--mid);
-            line-height: 1.5;
-            margin-bottom: 5px;
-        }
-        .pub-authors strong { font-weight: 600; color: var(--ink); }
-
-        .pub-venue {
-            font-size: 0.8125rem;
-            font-weight: 300;
-            color: var(--mid);
-            font-style: italic;
-            margin-bottom: 4px;
-        }
-
-        .pub-role {
-            font-size: 0.75rem;
-            color: var(--muted);
-            letter-spacing: 0.01em;
-        }
-
-        .pub-ext {
-            margin-top: 12px;
-            display: flex;
-            gap: 18px;
-        }
-        .pub-ext a {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--accent);
-            transition: opacity 0.15s;
-        }
-        .pub-ext a:hover { opacity: 0.65; }
-
-        .pill {
-            display: inline-block;
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 2px;
-            margin-top: 4px;
-            white-space: nowrap;
-        }
-        .pill-review    { background: #fff7ed; color: #9a3412; }
-        .pill-accepted  { background: #f0fdf4; color: #166534; }
-        .pill-submitted { background: #eff6ff; color: #1e40af; }
-
-        /* ── EDUCATION ───────────────────────────────────── */
-        .edu-list { display: flex; flex-direction: column; }
-
-        .edu-row {
-            display: grid;
-            grid-template-columns: 130px 1fr;
-            gap: 0 48px;
-            padding: 24px 0;
-            border-top: 1px solid var(--rule);
-        }
-        .edu-row:last-child { border-bottom: 1px solid var(--rule); }
-
-        .edu-span {
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: var(--muted);
-            padding-top: 3px;
-            letter-spacing: 0.02em;
-            line-height: 1.5;
-        }
-
-        .edu-degree {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-
-        .edu-inst {
-            font-size: 0.875rem;
-            font-weight: 400;
-            color: var(--accent);
-            margin-bottom: 2px;
-        }
-
-        .edu-loc {
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: var(--muted);
-        }
-
-        /* ── WRITING ─────────────────────────────────────── */
-        .wr-list { display: flex; flex-direction: column; }
-
-        .wr-row {
-            display: grid;
-            grid-template-columns: 130px 1fr 60px;
-            gap: 0 36px;
-            padding: 18px 0;
-            border-top: 1px solid var(--rule);
-            align-items: baseline;
-        }
-        .wr-row:last-child { border-bottom: 1px solid var(--rule); }
-
-        .wr-tag {
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .wr-title {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--ink);
-            line-height: 1.45;
-        }
-
-        .wr-link {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--accent);
-            text-align: right;
-            white-space: nowrap;
-            transition: opacity 0.15s;
-        }
-        .wr-link:hover { opacity: 0.65; }
-
-        /* ── CONTACT ─────────────────────────────────────── */
-        .contact-inner { max-width: 600px; }
-
-        .contact-lead {
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.85;
-            color: var(--mid);
-            margin-bottom: 44px;
-        }
-
-        .ct-list { display: flex; flex-direction: column; }
-
-        .ct-row {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 0 48px;
-            padding: 14px 0;
-            border-top: 1px solid var(--rule);
-            align-items: baseline;
-        }
-        .ct-row:last-child { border-bottom: 1px solid var(--rule); }
-
-        .ct-label {
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .ct-val {
-            font-size: 0.875rem;
-            font-weight: 400;
-            color: var(--mid);
-            transition: color 0.15s;
-        }
-        .ct-val:hover { color: var(--ink); }
-
-        /* ── FOOTER ──────────────────────────────────────── */
-        footer { padding: 28px 0; }
-
-        .foot-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .foot-copy {
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
-        .foot-copy a { color: var(--mid); }
-        .foot-copy a:hover { color: var(--ink); }
-
-        .foot-top {
-            font-size: 0.75rem;
-            color: var(--muted);
-            transition: color 0.15s;
-        }
-        .foot-top:hover { color: var(--ink); }
-
-        /* ── RESPONSIVE ──────────────────────────────────── */
-        @media (max-width: 720px) {
-            :root { --px: 24px; }
-
-            /* nav */
-            .nav-items {
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 18px;
-                position: absolute;
-                top: 52px; left: 0; right: 0;
-                background: var(--white);
-                padding: 20px 24px 24px;
-                border-bottom: 1px solid var(--rule);
-            }
-            .nav-items.open { display: flex; }
-            .nav-items a { font-size: 0.875rem; }
-            .nav-burger { display: flex; }
-            header { position: relative; }  /* so dropdown flows inline on mobile */
-
-            /* hero */
-            .hero-layout { grid-template-columns: 1fr; gap: 36px; }
-            .hero-photo { max-width: 160px; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%; order: -1; }
-            .hero-name { font-size: clamp(2.75rem, 11vw, 3.5rem); margin-bottom: 22px; }
-            .hero-cv-btn { margin-left: 0; margin-top: 14px; }
-
-            /* rows to single-col */
-            .pub-row  { grid-template-columns: 1fr; gap: 10px; }
-            .r-row    { grid-template-columns: 1fr; gap: 6px; }
-            .edu-row  { grid-template-columns: 1fr; gap: 4px; }
-            .wr-row   { grid-template-columns: 1fr 60px; gap: 0 16px; }
-            .ct-row   { grid-template-columns: 80px 1fr; gap: 0 24px; }
-
-            .foot-inner { flex-direction: column; gap: 8px; text-align: center; }
-        }
+    /* ─── TOKENS ──────────────────────────────────── */
+    :root {
+        --ink:      #111111;
+        --mid:      #5a5a5a;
+        --muted:    #9a9a9a;
+        --rule:     #e0e0e0;
+        --bg:       #ffffff;
+        --bg-alt:   #f2f1ef;   /* warm off-white for alternate sections */
+        --navy:     #1b2e6b;
+        --serif:    'Cormorant Garamond', Georgia, serif;
+        --sans:     'Inter', system-ui, sans-serif;
+        --max:      1060px;
+        --gutter:   48px;
+    }
+
+    /* ─── RESET ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; }
+
+    .wrap {
+        max-width: calc(var(--max) + var(--gutter) * 2);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+    }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    header {
+        position: sticky; top: 0; z-index: 300;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+    }
+    .nav {
+        display: flex; align-items: center;
+        justify-content: space-between; height: 52px;
+    }
+    .nav-brand {
+        font-size: 0.6875rem; font-weight: 600;
+        letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+    }
+    .nav-list { display: flex; align-items: center; gap: 6px; list-style: none; }
+    .nav-list a {
+        font-size: 0.75rem; font-weight: 400;
+        letter-spacing: 0.03em; color: var(--mid);
+        padding: 5px 10px; border-radius: 3px; transition: color .15s;
+    }
+    .nav-list a:hover { color: var(--ink); }
+    .nav-cta {
+        font-size: 0.75rem !important; font-weight: 600 !important;
+        background: var(--ink) !important; color: var(--bg) !important;
+        padding: 7px 14px !important; border-radius: 3px;
+        letter-spacing: 0.04em; transition: opacity .15s !important;
+    }
+    .nav-cta:hover { opacity: .75 !important; color: var(--bg) !important; }
+    .burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .burger span { display: block; width: 20px; height: 1.5px; background: var(--ink); }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero { background: var(--bg); padding: 72px 0 64px; border-bottom: 1px solid var(--rule); }
+
+    .hero-top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 48px; align-items: start;
+        margin-bottom: 44px;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.625rem; font-weight: 600;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--muted); margin-bottom: 16px;
+    }
+
+    .hero-name {
+        font-family: var(--serif);
+        font-size: clamp(3.25rem, 7vw, 5.25rem);
+        font-weight: 600; line-height: 0.93;
+        letter-spacing: -0.01em; color: var(--ink);
+        margin-bottom: 28px;
+    }
+    .hero-name em { font-style: italic; font-weight: 500; }
+
+    .hero-bio {
+        font-size: 0.875rem; font-weight: 300;
+        line-height: 1.8; color: var(--mid);
+        max-width: 440px; margin-bottom: 24px;
+    }
+
+    .hero-links {
+        display: flex; flex-wrap: wrap;
+        align-items: center; gap: 0; row-gap: 8px;
+    }
+    .hero-link {
+        font-size: 0.75rem; font-weight: 500; color: var(--mid);
+        padding-right: 16px; margin-right: 16px;
+        border-right: 1px solid var(--rule);
+        white-space: nowrap; transition: color .15s;
+    }
+    .hero-link:last-of-type { border-right: none; padding-right: 0; margin-right: 0; }
+    .hero-link:hover { color: var(--ink); }
+
+    .hero-photo-wrap { position: relative; }
+    .hero-photo {
+        width: 88px; height: 88px;
+        border-radius: 50%; object-fit: cover;
+        object-position: top center;
+        border: 1px solid var(--rule);
+    }
+
+    /* stat strip */
+    .stats-row {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--rule);
+        padding-top: 32px; gap: 0;
+    }
+    .stat {
+        padding-right: 32px;
+        border-right: 1px solid var(--rule);
+        margin-right: 32px;
+    }
+    .stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .stat-num {
+        font-family: var(--serif);
+        font-size: 2.25rem; font-weight: 600;
+        color: var(--ink); line-height: 1; margin-bottom: 5px;
+    }
+    .stat-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── SECTION SHELL ───────────────────────────── */
+    .sec-shell { border-bottom: 1px solid var(--rule); }
+    .sec-shell.alt { background: var(--bg-alt); }
+    .sec { padding: 80px 0; }
+
+    /* left eyebrow label */
+    .sec-label {
+        font-size: 0.5625rem; font-weight: 700;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--muted); margin-bottom: 48px;
+    }
+
+    /* ─── RESEARCH FOCUS ──────────────────────────── */
+    .rf-headline {
+        font-family: var(--serif);
+        font-size: clamp(2rem, 4.5vw, 3.25rem);
+        font-weight: 600; line-height: 1.1;
+        letter-spacing: -0.01em; color: var(--ink);
+        max-width: 640px; margin-bottom: 56px;
+    }
+
+    .rf-list { display: flex; flex-direction: column; }
+
+    .rf-row {
+        display: grid; grid-template-columns: 44px 1fr;
+        gap: 0 32px; padding: 18px 0;
+        border-top: 1px solid var(--rule); align-items: start;
+    }
+    .rf-row:last-child { border-bottom: 1px solid var(--rule); }
+
+    .rf-num {
+        font-size: 0.6875rem; font-weight: 600;
+        color: var(--muted); letter-spacing: 0.08em; padding-top: 3px;
+    }
+    .rf-title {
+        font-size: 0.9375rem; font-weight: 600;
+        color: var(--ink); margin-bottom: 4px;
+    }
+    .rf-desc { font-size: 0.8125rem; font-weight: 300; color: var(--mid); line-height: 1.6; }
+
+    /* ─── PUBLICATIONS ────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; }
+
+    .pub-entry {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 0 40px; padding: 28px 0;
+        border-top: 1px solid var(--rule); align-items: start;
+    }
+    .pub-entry:last-child { border-bottom: 1px solid var(--rule); }
+
+    .pub-left { display: flex; flex-direction: column; gap: 7px; padding-top: 3px; }
+
+    .pub-yr {
+        font-size: 0.6875rem; font-weight: 700;
+        letter-spacing: 0.06em; color: var(--muted);
+    }
+    .pill {
+        display: inline-block; font-size: 0.5625rem;
+        font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+        padding: 3px 8px; border-radius: 2px;
+    }
+    .pill-r { background: #fff0e6; color: #9a3412; }
+    .pill-a { background: #edfbf3; color: #166534; }
+    .pill-s { background: #eef3ff; color: #1e40af; }
+
+    .pub-title {
+        font-size: 0.9375rem; font-weight: 600; color: var(--ink);
+        line-height: 1.45; margin-bottom: 9px;
+    }
+    .pub-authors { font-size: 0.8125rem; font-weight: 300; color: var(--mid); margin-bottom: 4px; }
+    .pub-authors strong { font-weight: 600; color: var(--ink); }
+    .pub-venue { font-size: 0.8125rem; font-weight: 300; color: var(--mid); font-style: italic; margin-bottom: 4px; }
+    .pub-role { font-size: 0.75rem; color: var(--muted); }
+    .pub-cta { margin-top: 12px; display: flex; gap: 16px; }
+    .pub-cta a {
+        font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; color: var(--navy); transition: opacity .15s;
+    }
+    .pub-cta a:hover { opacity: .6; }
+
+    /* ─── CAREER PATH ─────────────────────────────── */
+    .career-list { display: flex; flex-direction: column; }
+
+    .career-row {
+        display: grid; grid-template-columns: 140px 1fr;
+        gap: 0 40px; padding: 24px 0;
+        border-top: 1px solid var(--rule); align-items: start;
+    }
+    .career-row:last-child { border-bottom: 1px solid var(--rule); }
+
+    .career-dates {
+        font-size: 0.75rem; font-weight: 400;
+        color: var(--muted); line-height: 1.6; padding-top: 2px;
+    }
+    .career-role { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .career-org  { font-size: 0.875rem; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+    .career-desc { font-size: 0.8125rem; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    /* ─── EDUCATION ───────────────────────────────── */
+    .edu-list { display: flex; flex-direction: column; }
+
+    .edu-row {
+        display: grid; grid-template-columns: 140px 1fr;
+        gap: 0 40px; padding: 22px 0;
+        border-top: 1px solid var(--rule); align-items: start;
+    }
+    .edu-row:last-child { border-bottom: 1px solid var(--rule); }
+
+    .edu-dates { font-size: 0.75rem; font-weight: 400; color: var(--muted); padding-top: 2px; line-height: 1.6; }
+    .edu-degree { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .edu-inst   { font-size: 0.875rem; font-weight: 400; color: var(--navy); margin-bottom: 2px; }
+    .edu-loc    { font-size: 0.8125rem; font-weight: 300; color: var(--muted); }
+
+    /* ─── TECHNICAL EXPERTISE ─────────────────────── */
+    .skills-list { display: flex; flex-direction: column; }
+
+    .skills-row {
+        display: grid; grid-template-columns: 180px 1fr;
+        gap: 0 40px; padding: 16px 0;
+        border-top: 1px solid var(--rule); align-items: baseline;
+    }
+    .skills-row:last-child { border-bottom: 1px solid var(--rule); }
+
+    .skills-cat { font-size: 0.8125rem; font-weight: 600; color: var(--ink); }
+
+    .skills-items {
+        display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .skill-tag {
+        font-size: 0.75rem; font-weight: 400; color: var(--mid);
+        padding: 3px 10px; border: 1px solid var(--rule);
+        border-radius: 2px; background: var(--bg);
+    }
+
+    /* cert row */
+    .cert-strip {
+        margin-top: 40px; padding-top: 32px;
+        border-top: 1px solid var(--rule);
+        display: flex; flex-wrap: wrap; gap: 28px;
+    }
+    .cert-item {
+        font-size: 0.75rem; font-weight: 500; color: var(--mid);
+        display: flex; align-items: center; gap: 6px;
+    }
+    .cert-item::before { content: "—"; color: var(--rule); }
+
+    /* ─── CONTACT CTA ─────────────────────────────── */
+    .cta-shell { background: var(--bg); padding: 88px 0 80px; }
+
+    .cta-headline {
+        font-family: var(--serif);
+        font-size: clamp(2.75rem, 6vw, 4.75rem);
+        font-weight: 600; line-height: 1.0;
+        letter-spacing: -0.015em; color: var(--ink);
+        margin-bottom: 48px;
+    }
+    .cta-headline em { font-style: italic; font-weight: 500; }
+
+    .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 64px; }
+
+    .btn-solid {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+        text-transform: uppercase; background: var(--ink); color: var(--bg);
+        padding: 12px 24px; border-radius: 3px; transition: opacity .15s;
+    }
+    .btn-solid:hover { opacity: .75; }
+
+    .btn-outline {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+        text-transform: uppercase; background: transparent; color: var(--ink);
+        padding: 11px 24px; border-radius: 3px; border: 1px solid var(--rule);
+        transition: border-color .15s;
+    }
+    .btn-outline:hover { border-color: var(--ink); }
+
+    .contact-list {
+        display: flex; flex-direction: column;
+        border-top: 1px solid var(--rule); max-width: 560px;
+    }
+    .contact-row {
+        display: grid; grid-template-columns: 120px 1fr;
+        gap: 0 32px; padding: 13px 0;
+        border-bottom: 1px solid var(--rule); align-items: baseline;
+    }
+    .contact-label {
+        font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--muted);
+    }
+    .contact-val {
+        font-size: 0.875rem; font-weight: 400; color: var(--mid); transition: color .15s;
+    }
+    .contact-val:hover { color: var(--ink); }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+        border-top: 1px solid var(--rule);
+        padding: 24px 0;
+        background: var(--bg);
+    }
+    .foot {
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .foot-copy { font-size: 0.75rem; color: var(--muted); }
+    .foot-copy a { color: var(--mid); }
+    .foot-top  { font-size: 0.75rem; color: var(--muted); transition: color .15s; }
+    .foot-top:hover { color: var(--ink); }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 740px) {
+        :root { --gutter: 24px; }
+
+        .nav-list { display: none; flex-direction: column; align-items: flex-start; gap: 14px;
+            position: absolute; top: 52px; left: 0; right: 0;
+            background: var(--bg); padding: 18px var(--gutter) 22px;
+            border-bottom: 1px solid var(--rule); }
+        .nav-list.open { display: flex; }
+        .nav-list a { font-size: 0.875rem; }
+        .burger { display: flex; }
+        header { position: relative; }
+
+        .hero-top { grid-template-columns: 1fr; gap: 24px; }
+        .hero-photo { width: 68px; height: 68px; }
+
+        .stats-row { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
+        .stat:nth-child(2) { border-right: none; }
+
+        .pub-entry,
+        .career-row,
+        .edu-row,
+        .skills-row { grid-template-columns: 1fr; gap: 8px; }
+
+        .cta-headline { font-size: clamp(2rem, 9vw, 3rem); }
+
+        .contact-row { grid-template-columns: 90px 1fr; }
+
+        .foot { flex-direction: column; gap: 8px; text-align: center; }
+    }
     </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ─────────────────────────────────────── -->
+<!-- ─── NAV ───────────────────────────────────────────── -->
 <header>
     <div class="wrap">
         <nav class="nav">
             <span class="nav-brand">Adrita Rahman Tory</span>
-            <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-items" id="navItems">
+            <ul class="nav-list" id="navList">
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#writing">Writing</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="cv.pdf" class="nav-cv" target="_blank" rel="noopener">CV ↓</a></li>
+                <!-- Upload cv.pdf to the repo root to activate this button -->
+                <li><a href="cv.pdf" class="nav-cta" target="_blank" rel="noopener">Download CV</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-<!-- ── HERO ───────────────────────────────────────────── -->
-<div class="hero">
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section class="hero" id="about">
     <div class="wrap">
-        <div class="hero-layout">
-
+        <div class="hero-top">
             <div>
-                <h1 class="hero-name">Adrita<br>Rahman Tory</h1>
-
-                <div class="hero-sub">
-                    <span class="hero-role">Cybersecurity Researcher</span>
-                    <span class="hero-dot">·</span>
-                    <span class="hero-place">Research Assistant, Jahangirnagar University</span>
-                </div>
-
+                <p class="hero-eyebrow">Cybersecurity Researcher &amp; Research Assistant</p>
+                <h1 class="hero-name">
+                    Adrita<br>
+                    Rahman<br>
+                    <em>Tory</em>
+                </h1>
                 <p class="hero-bio">
-                    Working at the intersection of artificial intelligence and network
+                    I work at the intersection of artificial intelligence and network
                     security — building evaluation frameworks for intrusion detection
                     datasets, studying federated learning under adversarial conditions,
                     and mapping threat coverage gaps in critical infrastructure sectors.
                 </p>
-
-                <div class="hero-foot">
+                <div class="hero-links">
                     <a href="https://github.com/adritatori" class="hero-link" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://www.linkedin.com/in/adrita-rahman" class="hero-link" target="_blank" rel="noopener">LinkedIn</a>
-                    <!-- Replace YOUR_SCHOLAR_ID with your Google Scholar user ID -->
+                    <!-- Replace YOUR_SCHOLAR_ID -->
                     <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="hero-link" target="_blank" rel="noopener">Scholar</a>
-                    <!-- Replace YOUR_RG_PROFILE with your ResearchGate profile slug -->
+                    <!-- Replace YOUR_RG_PROFILE -->
                     <a href="https://www.researchgate.net/profile/YOUR_RG_PROFILE" class="hero-link" target="_blank" rel="noopener">ResearchGate</a>
                     <a href="https://medium.com/@radrita245" class="hero-link" target="_blank" rel="noopener">Medium</a>
-                    <!-- Upload cv.pdf to the repo root to activate this button -->
-                    <a href="cv.pdf" class="hero-cv-btn" target="_blank" rel="noopener">↓ Download CV</a>
                 </div>
             </div>
+            <div class="hero-photo-wrap">
+                <img src="profileImage.png" alt="Adrita Rahman Tory" class="hero-photo">
+            </div>
+        </div>
 
-            <img src="profileImage.png" alt="Adrita Rahman Tory" class="hero-photo">
+        <!-- Stats strip — update these numbers as needed -->
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-num">03</div>
+                <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">01</div>
+                <div class="stat-label">Q1 Journal</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">03+</div>
+                <div class="stat-label">Research Areas</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">03</div>
+                <div class="stat-label">Certifications</div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- ─── RESEARCH FOCUS ────────────────────────────────── -->
+<div class="sec-shell alt" id="research">
+    <div class="wrap">
+        <div class="sec">
+            <p class="sec-label">Research Focus</p>
+            <p class="rf-headline">
+                Exploring the intersection<br>
+                of AI security and<br>
+                trustworthy systems
+            </p>
+            <div class="rf-list">
+                <div class="rf-row">
+                    <span class="rf-num">01</span>
+                    <div>
+                        <p class="rf-title">Federated Learning Security</p>
+                        <p class="rf-desc">Byzantine-robust distributed learning mechanisms for privacy-preserving, decentralised threat detection in multi-party environments.</p>
+                    </div>
+                </div>
+                <div class="rf-row">
+                    <span class="rf-num">02</span>
+                    <div>
+                        <p class="rf-title">Adversarial AI in Cybersecurity</p>
+                        <p class="rf-desc">Studying how adversarial machine learning techniques can be used to attack or improve intrusion detection systems.</p>
+                    </div>
+                </div>
+                <div class="rf-row">
+                    <span class="rf-num">03</span>
+                    <div>
+                        <p class="rf-title">Explainable AI for Security</p>
+                        <p class="rf-desc">Developing interpretable AI methods for transparent, auditable decisions in critical security applications.</p>
+                    </div>
+                </div>
+                <div class="rf-row">
+                    <span class="rf-num">04</span>
+                    <div>
+                        <p class="rf-title">NIDS &amp; Threat Detection</p>
+                        <p class="rf-desc">Evaluating AI-powered NIDS/IPS using MITRE ATT&amp;CK alignment and industry-relevance metrics for reproducible benchmarking.</p>
+                    </div>
+                </div>
+                <div class="rf-row">
+                    <span class="rf-num">05</span>
+                    <div>
+                        <p class="rf-title">Critical Infrastructure Security</p>
+                        <p class="rf-desc">Mapping cyber threat coverage gaps in energy sector ICS/SCADA and OT environments through dataset analysis.</p>
+                    </div>
+                </div>
+                <div class="rf-row">
+                    <span class="rf-num">06</span>
+                    <div>
+                        <p class="rf-title">Cybersecurity Education</p>
+                        <p class="rf-desc">Advancing cybersecurity governance literacy through game-based learning, escape rooms, and technical training.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- ── ABOUT ──────────────────────────────────────────── -->
-<section id="about">
+<!-- ─── PUBLICATIONS ──────────────────────────────────── -->
+<div class="sec-shell" id="publications">
     <div class="wrap">
         <div class="sec">
-            <p class="eyebrow">About</p>
-            <div class="about-prose">
-                <p>
-                    I am a cybersecurity researcher with a focus on AI-driven threat detection
-                    and network security. Currently pursuing a Professional Master's in
-                    Information Technology at Jahangirnagar University, I work at the
-                    intersection of machine learning and network intrusion detection systems.
-                </p>
-                <p>
-                    My research addresses a critical gap: existing NIDS datasets often fail to
-                    reflect real-world threat landscapes, particularly in critical infrastructure
-                    sectors such as energy. I develop evaluation frameworks using MITRE ATT&amp;CK
-                    alignment and industry-relevance metrics, and investigate Byzantine-robust
-                    federated learning for distributed, privacy-preserving threat detection.
-                </p>
-                <p>
-                    Beyond research I am a BTEB Certified Trainer &amp; Assessor, a CompTIA
-                    Security+ certified professional, and an active science communicator through
-                    my Medium blog and YouTube channel.
-                </p>
-                <div class="certs">
-                    <span class="cert">CompTIA Security+</span>
-                    <span class="cert">BTEB Certified Trainer &amp; Assessor</span>
-                    <span class="cert">Cisco IT Essentials</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── RESEARCH ───────────────────────────────────────── -->
-<section id="research">
-    <div class="wrap">
-        <div class="sec">
-            <p class="eyebrow">Research Interests</p>
-            <div class="r-list">
-                <div class="r-row">
-                    <span class="r-area">Network Intrusion Detection</span>
-                    <span class="r-desc">Evaluating and improving AI-powered NIDS/IPS using MITRE ATT&amp;CK alignment and industry-relevance metrics for reproducible benchmarking.</span>
-                </div>
-                <div class="r-row">
-                    <span class="r-area">Federated Learning Security</span>
-                    <span class="r-desc">Byzantine-robust distributed learning mechanisms for privacy-preserving, decentralised threat detection in multi-party environments.</span>
-                </div>
-                <div class="r-row">
-                    <span class="r-area">Critical Infrastructure</span>
-                    <span class="r-desc">Cybersecurity of energy sector ICS/SCADA and OT environments, with a focus on realistic threat modelling and dataset coverage gaps.</span>
-                </div>
-                <div class="r-row">
-                    <span class="r-area">6G Network Security</span>
-                    <span class="r-desc">Security frameworks and adversarial threat models for next-generation wireless network architectures.</span>
-                </div>
-                <div class="r-row">
-                    <span class="r-area">Dataset Evaluation</span>
-                    <span class="r-desc">Benchmarking frameworks that assess NIDS dataset quality, coverage, and real-world relevance for the research community.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── PUBLICATIONS ───────────────────────────────────── -->
-<section id="publications">
-    <div class="wrap">
-        <div class="sec">
-            <p class="eyebrow">Publications</p>
+            <p class="sec-label">Selected Scholarly Work</p>
             <div class="pub-list">
 
-                <div class="pub-row">
-                    <span class="pub-yr">2025</span>
+                <div class="pub-entry">
+                    <div class="pub-left">
+                        <span class="pub-yr">2025</span>
+                        <span class="pill pill-r">Under Review</span>
+                        <!-- Replace # with your actual SSRN URL -->
+                        <div class="pub-cta"><a href="#">SSRN ↗</a></div>
+                    </div>
                     <div>
                         <p class="pub-title">An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&amp;CK and Industry Relevance Metrics</p>
                         <p class="pub-authors"><strong>Adrita Rahman Tory</strong>, Khandakar Fida Hasan</p>
                         <p class="pub-venue">Computers &amp; Security, Elsevier — Q1 Journal</p>
                         <p class="pub-role">First Author · Preprint available on SSRN</p>
-                        <div class="pub-ext">
-                            <!-- Replace # with your SSRN URL -->
-                            <a href="#" target="_blank" rel="noopener">SSRN Preprint ↗</a>
-                        </div>
                     </div>
-                    <span class="pill pill-review">Under Review</span>
                 </div>
 
-                <div class="pub-row">
-                    <span class="pub-yr">2025</span>
+                <div class="pub-entry">
+                    <div class="pub-left">
+                        <span class="pub-yr">2025</span>
+                        <span class="pill pill-a">Accepted</span>
+                    </div>
                     <div>
                         <p class="pub-title">Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector</p>
                         <p class="pub-authors"><strong>Adrita Rahman Tory</strong>, Dr. Khondokar Fida Hasan, Md Saifur Rahman, Nickolaos Koroniotis, Mohammad Ali Moni</p>
                         <p class="pub-venue">International Conference on Big Data, IoT and Machine Learning (ICBDIML 2025), Elsevier</p>
                         <p class="pub-role">First Author</p>
                     </div>
-                    <span class="pill pill-accepted">Accepted</span>
                 </div>
 
-                <div class="pub-row">
-                    <span class="pub-yr">2025</span>
+                <div class="pub-entry">
+                    <div class="pub-left">
+                        <span class="pub-yr">2025</span>
+                        <span class="pill pill-s">Submitted</span>
+                    </div>
                     <div>
                         <p class="pub-title">Game On: A Developmental Approach to UNSW Cyber Escape Room for Cybersecurity Governance and Policy Education</p>
                         <p class="pub-authors">Khondokar Fida Hasan, William Hughes, <strong>Adrita Rahman Tory</strong>, Chris Campbell, Selen Turkay</p>
                         <p class="pub-venue">Education Sciences, MDPI</p>
                         <p class="pub-role">3rd Author</p>
                     </div>
-                    <span class="pill pill-submitted">Submitted</span>
                 </div>
 
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ── EDUCATION ──────────────────────────────────────── -->
-<section id="education">
+<!-- ─── CAREER PATH ───────────────────────────────────── -->
+<div class="sec-shell alt" id="experience">
     <div class="wrap">
         <div class="sec">
-            <p class="eyebrow">Education</p>
-            <div class="edu-list">
+            <p class="sec-label">Experience</p>
+            <div class="career-list">
 
+                <!-- Update dates and organisation details as needed -->
+                <div class="career-row">
+                    <span class="career-dates">2024 — Present</span>
+                    <div>
+                        <p class="career-role">Research Assistant (Part-Time)</p>
+                        <p class="career-org">Jahangirnagar University / BUBT</p>
+                        <p class="career-desc">Conducting research in AI-based network intrusion detection, federated learning security, and NIDS dataset evaluation. First-authored multiple papers submitted to Q1 journals and international conferences.</p>
+                    </div>
+                </div>
+
+                <div class="career-row">
+                    <span class="career-dates">2023 — 2024</span>
+                    <div>
+                        <p class="career-role">Research Assistant (Remote)</p>
+                        <p class="career-org">Collaborative Research — Cybersecurity</p>
+                        <p class="career-desc">Collaborated with researchers at UNSW and partner institutions on cybersecurity education and critical infrastructure threat modelling for energy-sector NIDS datasets.</p>
+                    </div>
+                </div>
+
+                <div class="career-row">
+                    <span class="career-dates">2022 — 2023</span>
+                    <div>
+                        <p class="career-role">Software Engineer (Part-Time)</p>
+                        <p class="career-org">[Organisation — update this]</p>
+                        <p class="career-desc">Developed software solutions with exposure to networking, security tooling, and vulnerability assessments.</p>
+                    </div>
+                </div>
+
+                <div class="career-row">
+                    <span class="career-dates">2020 — Present</span>
+                    <div>
+                        <p class="career-role">BTEB Certified Trainer &amp; Assessor</p>
+                        <p class="career-org">Bangladesh Technical Education Board (BTEB)</p>
+                        <p class="career-desc">Certified to deliver and assess technical education courses in computing and IT, with a focus on Cisco networking fundamentals, cybersecurity basics, and IT infrastructure.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ─── EDUCATION ─────────────────────────────────────── -->
+<div class="sec-shell">
+    <div class="wrap">
+        <div class="sec">
+            <p class="sec-label">Education</p>
+            <div class="edu-list">
                 <div class="edu-row">
-                    <span class="edu-span">Aug 2025<br>— Present</span>
+                    <span class="edu-dates">Aug 2025<br>— Present</span>
                     <div>
                         <p class="edu-degree">Professional Master's in Information Technology</p>
                         <p class="edu-inst">Jahangirnagar University</p>
                         <p class="edu-loc">Dhaka, Bangladesh</p>
                     </div>
                 </div>
-
                 <div class="edu-row">
-                    <span class="edu-span">Jul 2021<br>— Mar 2025</span>
+                    <span class="edu-dates">Jul 2021<br>— Mar 2025</span>
                     <div>
                         <p class="edu-degree">Bachelor of Science in Computer Science and Engineering</p>
                         <p class="edu-inst">Bangladesh University of Business and Technology (BUBT)</p>
                         <p class="edu-loc">Dhaka, Bangladesh</p>
                     </div>
                 </div>
-
                 <div class="edu-row">
-                    <span class="edu-span">Jun 2016<br>— Jul 2020</span>
+                    <span class="edu-dates">Jun 2016<br>— Jul 2020</span>
                     <div>
                         <p class="edu-degree">Diploma in Engineering</p>
                         <p class="edu-inst">Dhaka Mohila Polytechnic Institute</p>
                         <p class="edu-loc">Dhaka, Bangladesh</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ── WRITING ────────────────────────────────────────── -->
-<section id="writing">
+<!-- ─── TECHNICAL EXPERTISE ──────────────────────────── -->
+<div class="sec-shell alt" id="skills">
     <div class="wrap">
         <div class="sec">
-            <p class="eyebrow">
-                Writing
-                <a href="https://medium.com/@radrita245" target="_blank" rel="noopener">@radrita245 on Medium ↗</a>
-            </p>
-            <div class="wr-list">
-
-                <div class="wr-row">
-                    <span class="wr-tag">DevOps</span>
-                    <span class="wr-title">Docker পর্ব ১ — Container Technology Fundamentals</span>
-                    <a href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0"
-                       class="wr-link" target="_blank" rel="noopener">Read ↗</a>
+            <p class="sec-label">Technical Expertise</p>
+            <div class="skills-list">
+                <div class="skills-row">
+                    <span class="skills-cat">Cybersecurity</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">NIDS / IPS</span>
+                        <span class="skill-tag">MITRE ATT&amp;CK</span>
+                        <span class="skill-tag">Network Analysis</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">Threat Modelling</span>
+                    </div>
                 </div>
-
-                <div class="wr-row">
-                    <span class="wr-tag">Graphics</span>
-                    <span class="wr-title">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python</span>
-                    <a href="https://medium.com/@radrita245/algorithmic-elegance-bresenhams-line-and-midpoint-circle-in-python-graphics-0989d439d86b"
-                       class="wr-link" target="_blank" rel="noopener">Read ↗</a>
+                <div class="skills-row">
+                    <span class="skills-cat">Python &amp; AI/ML</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                    </div>
                 </div>
-
-                <div class="wr-row">
-                    <span class="wr-tag">Machine Learning</span>
-                    <span class="wr-title">Understanding Bayes Decision Rules with a Loss Function</span>
-                    <a href="https://medium.com/@radrita245/understanding-bayes-decision-rules-with-a-loss-function-deacbf70dbda"
-                       class="wr-link" target="_blank" rel="noopener">Read ↗</a>
+                <div class="skills-row">
+                    <span class="skills-cat">Network Security</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">TCP/IP</span>
+                        <span class="skill-tag">Cisco IOS</span>
+                        <span class="skill-tag">Firewalls</span>
+                    </div>
                 </div>
+                <div class="skills-row">
+                    <span class="skills-cat">AI Security</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">Federated Learning</span>
+                        <span class="skill-tag">Byzantine Robustness</span>
+                        <span class="skill-tag">Anomaly Detection</span>
+                        <span class="skill-tag">Adversarial ML</span>
+                    </div>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-cat">Research &amp; Writing</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">Academic Writing</span>
+                        <span class="skill-tag">LaTeX</span>
+                        <span class="skill-tag">Literature Review</span>
+                        <span class="skill-tag">Data Visualisation</span>
+                    </div>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-cat">Web &amp; Dev</span>
+                    <div class="skills-items">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Git / GitHub</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Certifications row -->
+            <div class="cert-strip">
+                <span class="cert-item">CompTIA Security+</span>
+                <span class="cert-item">BTEB Certified Trainer &amp; Assessor</span>
+                <span class="cert-item">Cisco IT Essentials</span>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ── CONTACT ────────────────────────────────────────── -->
-<section id="contact">
+<!-- ─── CONTACT CTA ───────────────────────────────────── -->
+<div class="cta-shell" id="contact">
     <div class="wrap">
-        <div class="sec">
-            <p class="eyebrow">Contact</p>
-            <div class="contact-inner">
-                <p class="contact-lead">
-                    Open to research collaborations, academic discussions, and opportunities
-                    in cybersecurity. Feel free to reach out by email or through any of the
-                    platforms below.
-                </p>
-                <div class="ct-list">
-                    <!-- Replace with your actual email address -->
-                    <div class="ct-row">
-                        <span class="ct-label">Email</span>
-                        <a href="mailto:your.email@university.edu" class="ct-val">your.email@university.edu</a>
-                    </div>
-                    <div class="ct-row">
-                        <span class="ct-label">LinkedIn</span>
-                        <a href="https://www.linkedin.com/in/adrita-rahman" class="ct-val" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman</a>
-                    </div>
-                    <div class="ct-row">
-                        <span class="ct-label">GitHub</span>
-                        <a href="https://github.com/adritatori" class="ct-val" target="_blank" rel="noopener">github.com/adritatori</a>
-                    </div>
-                    <div class="ct-row">
-                        <span class="ct-label">Google Scholar</span>
-                        <!-- Replace YOUR_SCHOLAR_ID with your Scholar user ID -->
-                        <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="ct-val" target="_blank" rel="noopener">Google Scholar Profile</a>
-                    </div>
-                    <div class="ct-row">
-                        <span class="ct-label">ResearchGate</span>
-                        <!-- Replace YOUR_RG_PROFILE with your ResearchGate profile slug -->
-                        <a href="https://www.researchgate.net/profile/YOUR_RG_PROFILE" class="ct-val" target="_blank" rel="noopener">ResearchGate Profile</a>
-                    </div>
-                    <div class="ct-row">
-                        <span class="ct-label">YouTube</span>
-                        <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" class="ct-val" target="_blank" rel="noopener">YouTube Channel</a>
-                    </div>
-                </div>
+        <p class="cta-headline">
+            Let's work<br>
+            <em>together.</em>
+        </p>
+        <div class="cta-buttons">
+            <!-- Replace with your actual email -->
+            <a href="mailto:your.email@university.edu" class="btn-solid">Get in Touch</a>
+            <!-- Upload cv.pdf to activate this button -->
+            <a href="cv.pdf" class="btn-outline" target="_blank" rel="noopener">Download CV ↓</a>
+        </div>
+        <div class="contact-list">
+            <!-- Replace with your actual email -->
+            <div class="contact-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto:your.email@university.edu" class="contact-val">your.email@university.edu</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/adrita-rahman" class="contact-val" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com/adritatori" class="contact-val" target="_blank" rel="noopener">github.com/adritatori</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">Google Scholar</span>
+                <!-- Replace YOUR_SCHOLAR_ID -->
+                <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" class="contact-val" target="_blank" rel="noopener">Google Scholar Profile</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">ResearchGate</span>
+                <!-- Replace YOUR_RG_PROFILE -->
+                <a href="https://www.researchgate.net/profile/YOUR_RG_PROFILE" class="contact-val" target="_blank" rel="noopener">ResearchGate Profile</a>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">YouTube</span>
+                <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" class="contact-val" target="_blank" rel="noopener">YouTube Channel</a>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ── FOOTER ─────────────────────────────────────────── -->
+<!-- ─── FOOTER ────────────────────────────────────────── -->
 <footer>
     <div class="wrap">
-        <div class="foot-inner">
-            <span class="foot-copy">
-                © 2025 Adrita Rahman Tory
-                &nbsp;·&nbsp;
-                Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
-            </span>
+        <div class="foot">
+            <span class="foot-copy">© 2025 Adrita Rahman Tory · <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></span>
             <a href="#" class="foot-top">↑ Top</a>
         </div>
     </div>
 </footer>
 
 <script>
-    const burger   = document.getElementById('burger');
-    const navItems = document.getElementById('navItems');
-
+    const burger  = document.getElementById('burger');
+    const navList = document.getElementById('navList');
     burger.addEventListener('click', () => {
-        const open = navItems.classList.toggle('open');
+        const open = navList.classList.toggle('open');
         burger.setAttribute('aria-expanded', open);
     });
-
-    navItems.querySelectorAll('a').forEach(a =>
+    navList.querySelectorAll('a').forEach(a =>
         a.addEventListener('click', () => {
-            navItems.classList.remove('open');
+            navList.classList.remove('open');
             burger.setAttribute('aria-expanded', false);
         })
     );
