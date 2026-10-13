@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adrita Rahman Tory — AI &amp; Cybersecurity Research</title>
-<meta name="description" content="Adrita Rahman Tory — AI and cybersecurity researcher working on intrusion detection, adversarial ML, federated learning and LLM security.">
+<meta name="description" content="Adrita Rahman Tory — AI and cybersecurity researcher working on intrusion detection, adversarial ML, federated learning and LLM security. Publications, preprints, CV and contact.">
 <meta property="og:title" content="Adrita Rahman Tory — AI & Cybersecurity Research">
 <meta property="og:type" content="website">
 <meta property="og:image" content="profile.jpg">
@@ -15,57 +15,62 @@
 
 <style>
 :root {
-  --paper:  #d9d9cb;   /* sage paper */
+  --paper:  #d9d9cb;
   --paper2: #cfd0bf;
   --card:   #e8e8dc;
   --ink:    #1f1f1f;
-  --soft:   #4a4a44;
-  --faint:  #7b7b70;
-  --pink:   #e7b9b4;   /* from the saree */
-  --lilac:  #b9aee0;
+  --soft:   #46463f;
+  --faint:  #6f6f64;
+  --pink:   #e7b9b4;
   --hand:   'Caveat', cursive;
   --mono:   'Space Mono', ui-monospace, monospace;
   --body:   'IBM Plex Mono', ui-monospace, monospace;
   --navh:   58px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 15px; }
+html { font-size: 15.5px; }
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--body);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-/* faint paper grain */
 body::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
-  background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px); background-size: 22px 22px;
 }
 a { color: inherit; }
 img { display: block; max-width: 100%; height: auto; }
 b, strong { font-weight: 600; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2.5px solid var(--ink); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ── NAV ─────────────────────────────── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; height: var(--navh); z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px; background: var(--paper);
-  border-bottom: 1.5px solid var(--ink);
+  display: flex; align-items: center; gap: 14px; padding: 0 24px;
+  background: var(--paper); border-bottom: 1.5px solid var(--ink);
 }
-.nav .logo { font-family: var(--mono); font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: .04em; }
-.nav .logo span { font-family: var(--hand); font-size: 22px; font-weight: 700; margin-left: 4px; }
-.nav ul { display: flex; gap: 4px; list-style: none; }
+.nav .logo { font-family: var(--mono); font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: .04em; margin-right: auto; }
+.nav .logo span { font-family: var(--hand); font-size: 22px; margin-left: 4px; }
+.nav ul { display: flex; gap: 2px; list-style: none; }
 .nav ul a {
-  font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
-  text-decoration: none; padding: 5px 9px; border: 1.5px solid transparent; border-radius: 3px;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+  text-decoration: none; padding: 5px 7px; border: 1.5px solid transparent; border-radius: 3px; white-space: nowrap;
 }
 .nav ul a:hover, .nav ul a.on { border-color: var(--ink); background: var(--card); }
-.nav .burger { display: none; background: none; border: 1.5px solid var(--ink); font-family: var(--mono); padding: 4px 10px; cursor: pointer; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer; text-decoration: none; white-space: nowrap;
+  font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  border: 1.5px solid var(--ink); background: var(--card); padding: 5px 10px; border-radius: 3px;
+  box-shadow: 2px 2px 0 var(--ink); transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+.btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
+.btn.dark { background: var(--ink); color: var(--paper); }
+.btn.pink { background: var(--pink); }
+.burger { display: none; }
 
-/* scroll progress: hand-drawn wavy line */
 .progress { position: fixed; left: 0; right: 0; bottom: 10px; height: 18px; z-index: 40; pointer-events: none; padding: 0 28px; }
 .progress svg { width: 100%; height: 100%; overflow: visible; }
 .progress path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
@@ -77,47 +82,42 @@ b, strong { font-weight: 600; }
 .track { display: flex; height: 100%; will-change: transform; }
 .panel {
   position: relative; flex: 0 0 auto; height: 100%;
-  padding: calc(var(--navh) + 46px) 5vw 64px;
+  padding: calc(var(--navh) + 44px) 5vw 64px;
   border-right: 1.5px dashed rgba(0,0,0,.25);
 }
 .panel:last-child { border-right: 0; }
 
-/* ── SHARED BITS ─────────────────────── */
-.label {                         /* the boxed sticker title */
+/* ── SHARED ──────────────────────────── */
+.label {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--mono); font-weight: 700; text-transform: uppercase;
   font-size: 22px; letter-spacing: .06em; line-height: 1;
-  border: 2px solid var(--ink); background: var(--card); padding: 10px 16px;
-  box-shadow: 4px 4px 0 var(--ink);
+  border: 2px solid var(--ink); background: var(--card); padding: 10px 16px; box-shadow: 4px 4px 0 var(--ink);
 }
 .label .thin { font-weight: 400; }
 .tilt-l { transform: rotate(-3deg); }
 .tilt-r { transform: rotate(2.5deg); }
 .hand { font-family: var(--hand); font-size: 24px; line-height: 1.1; color: var(--soft); }
-.small { font-size: 12.5px; color: var(--soft); }
+.small { font-size: 13px; color: var(--soft); }
 .kicker { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--soft); }
 .tag {
   display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em; padding: 2px 7px; border: 1.5px solid var(--ink); border-radius: 20px;
-  white-space: nowrap;
+  text-transform: uppercase; letter-spacing: .08em; padding: 2px 7px; border: 1.5px solid var(--ink); border-radius: 20px; white-space: nowrap;
 }
 .tag.pub { background: var(--ink); color: var(--paper); }
 .tag.pres { background: var(--card); }
 .tag.acc { background: var(--pink); }
-.tape {
-  position: absolute; width: 90px; height: 26px; background: rgba(255,255,255,.45);
-  border: 1px solid rgba(0,0,0,.08); z-index: 3;
-}
-.card {
-  background: var(--card); border: 1.5px solid var(--ink); padding: 16px 18px; position: relative;
-}
+.tape { position: absolute; width: 90px; height: 26px; background: rgba(255,255,255,.45); border: 1px solid rgba(0,0,0,.08); z-index: 3; }
+.card { background: var(--card); border: 1.5px solid var(--ink); padding: 16px 18px; position: relative; }
 .star-list { list-style: none; }
 .star-list li { position: relative; padding-left: 22px; margin-bottom: 8px; }
 .star-list li::before { content: "✳"; position: absolute; left: 0; top: -1px; font-size: 14px; }
+.ulink { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+.ulink:hover { background: var(--pink); }
 
 /* doodles */
 .doodle { position: absolute; pointer-events: none; overflow: visible; }
-.doodle path, .doodle circle, .doodle rect, .doodle line, .doodle polyline, .doodle ellipse {
+.doodle path, .doodle circle, .doodle rect, .doodle line, .doodle ellipse {
   fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
 .draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s ease; }
@@ -133,159 +133,209 @@ b, strong { font-weight: 600; }
 .sticker { transition: transform .25s ease; }
 .sticker:hover { transform: rotate(0deg) scale(1.04); }
 
-/* ── 1. HERO ─────────────────────────── */
+/* ── HERO ────────────────────────────── */
 .p-hero { width: 100vw; display: grid; grid-template-columns: 1.05fr .95fr; gap: 4vw; align-items: center; }
 .hero-text { position: relative; z-index: 2; }
 .hero-text .kicker { margin-bottom: 18px; }
 .name-tag {
   display: inline-flex; align-items: center; gap: 14px;
-  font-family: var(--mono); font-weight: 700; font-size: clamp(34px, 5vw, 68px); line-height: 1;
+  font-family: var(--mono); font-weight: 700; font-size: clamp(34px, 5vw, 66px); line-height: 1;
   border: 2.5px solid var(--ink); background: var(--card); padding: 12px 22px 14px;
   box-shadow: 6px 6px 0 var(--ink); transform: rotate(-4deg);
 }
 .name-tag svg { width: .8em; height: .8em; }
 .surname {
-  display: inline-block; margin: 22px 0 0 14%;
-  font-family: var(--mono); font-size: clamp(20px, 2.6vw, 34px); letter-spacing: .08em;
+  display: inline-block; margin: 20px 0 0 14%;
+  font-family: var(--mono); font-size: clamp(20px, 2.5vw, 32px); letter-spacing: .08em;
   border: 2px solid var(--ink); background: var(--paper); padding: 8px 18px; transform: rotate(5deg);
 }
-.hero-intro { max-width: 470px; margin-top: 36px; font-size: 14px; }
+.hero-intro { max-width: 480px; margin-top: 30px; font-size: 14px; }
 .hero-intro p + p { margin-top: 10px; }
-.hero-now { margin-top: 18px; display: flex; gap: 10px; align-items: flex-start; max-width: 470px; }
-.hero-now .hand { font-size: 22px; }
-.hero-photo { position: relative; justify-self: center; width: min(34vw, 52vh); }
+.hero-now { margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; max-width: 480px; }
+.hero-now .hand { font-size: 21px; }
+.profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; max-width: 520px; }
+.hero-photo { position: relative; justify-self: center; width: min(32vw, 48vh); }
 .hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 12px 12px 46px; transform: rotate(3deg); box-shadow: 6px 6px 0 rgba(0,0,0,.18); }
-.hero-photo img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.05); transition: filter .6s; }
+.hero-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.05); transition: filter .6s; }
 .hero-photo:hover img { filter: grayscale(0); }
 .hero-photo .caption { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-family: var(--hand); font-size: 22px; }
 .hero-photo .tape { top: -12px; left: 38%; transform: rotate(-6deg); }
-.scroll-hint { position: absolute; right: 5vw; bottom: 58px; display: flex; align-items: center; gap: 8px; font-family: var(--hand); font-size: 24px; }
+.scroll-hint { position: absolute; right: 5vw; bottom: 54px; display: flex; align-items: center; gap: 8px; font-family: var(--hand); font-size: 23px; }
 .scroll-hint svg { width: 70px; height: 30px; }
 
-/* ── 2. ABOUT / EDUCATION ────────────── */
+/* ── ABOUT ───────────────────────────── */
 .p-about { width: 96vw; display: grid; grid-template-columns: .9fr 1.1fr; gap: 5vw; }
-.about-copy { margin-top: 28px; max-width: 460px; font-size: 14px; }
+.about-copy { margin-top: 28px; max-width: 470px; font-size: 14px; }
 .about-copy p + p { margin-top: 12px; }
-.about-langs { margin-top: 22px; }
 .edu { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
 .edu .card:nth-child(1) { transform: rotate(-1deg); }
 .edu .card:nth-child(2) { transform: rotate(.8deg); margin-left: 24px; }
 .edu .card:nth-child(3) { transform: rotate(-.5deg); }
-.edu h3 { font-family: var(--mono); font-size: 14.5px; }
-.edu .where { font-style: italic; font-size: 13px; }
-.edu .meta { font-size: 12px; color: var(--soft); margin-top: 6px; }
+.edu h3, .role h3 { font-family: var(--mono); font-size: 14.5px; }
+.edu .where, .role .where { font-style: italic; font-size: 13px; }
+.edu .meta { font-size: 12.5px; color: var(--soft); margin-top: 6px; }
 .edu .meta b { color: var(--ink); }
 
-/* ── 3. RESEARCH ─────────────────────── */
+/* ── NEWS ────────────────────────────── */
+.p-news { width: 58vw; }
+.news { list-style: none; margin-top: 30px; position: relative; max-width: 620px; }
+.news::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; border-left: 2px dashed var(--ink); }
+.news li { position: relative; padding-left: 34px; margin-bottom: 18px; font-size: 13.5px; }
+.news li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+.news li.hot::before { background: var(--pink); }
+.news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
+
+/* ── RESEARCH ────────────────────────── */
 .p-research { width: 112vw; display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; }
 .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 26px; margin-top: 30px; }
 .area { display: flex; gap: 14px; align-items: flex-start; }
 .area svg { flex: 0 0 52px; width: 52px; height: 52px; }
 .area svg * { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .area h3 { font-family: var(--mono); font-size: 12.5px; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
-.area p { font-size: 12.5px; color: var(--soft); margin-top: 2px; }
-.roles { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
-.role h3 { font-family: var(--mono); font-size: 14.5px; }
-.role .where { font-style: italic; font-size: 13px; }
-.role .meta { font-size: 12px; color: var(--soft); margin: 2px 0 10px; }
+.area p { font-size: 13px; color: var(--soft); margin-top: 2px; }
+.area .see { font-size: 12px; margin-top: 4px; }
+.area .see button { background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; font-size: 12px; padding: 0; }
+.area .see button:hover { background: var(--pink); }
+.roles { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+.role .meta { font-size: 12.5px; color: var(--soft); margin: 2px 0 10px; }
 .role .star-list { font-size: 13px; }
-.thesis { margin-top: 26px; }
+.thesis { margin-top: 26px; max-width: 440px; }
 
-/* ── 4. PUBLICATIONS ─────────────────── */
+/* ── PUBLICATIONS ────────────────────── */
 .p-pubs { display: flex; flex-direction: column; }
-.pubs-head { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-.legend { display: flex; gap: 8px; align-items: center; font-size: 12px; }
+.pubs-head { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
+.chip { cursor: pointer; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 20px; background: transparent; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.search { font-family: var(--body); font-size: 13px; padding: 5px 10px; border: 1.5px solid var(--ink); background: var(--card); min-width: 220px; border-radius: 3px; }
+.count { font-family: var(--hand); font-size: 20px; color: var(--soft); }
 .pub-grid {
-  margin-top: 26px; display: grid; grid-auto-flow: column;
-  grid-template-rows: repeat(3, auto); grid-auto-columns: 330px; gap: 16px 18px; align-content: start;
+  margin-top: 20px; display: grid; grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto); grid-auto-columns: 340px; gap: 16px 18px; align-content: start;
 }
-.pub { font-size: 12.3px; line-height: 1.5; }
+.pub { font-size: 12.8px; line-height: 1.5; display: flex; flex-direction: column; }
 .pub .tags { display: flex; gap: 6px; margin-bottom: 7px; flex-wrap: wrap; }
-.pub .title { font-family: var(--mono); font-weight: 700; font-size: 12.5px; line-height: 1.35; margin-bottom: 5px; }
-.pub .authors { color: var(--soft); }
-.pub .authors b { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
-.pub .venue { margin-top: 5px; font-style: italic; }
-.pub:nth-child(odd)  { transform: rotate(-.6deg); }
-.pub:nth-child(even) { transform: rotate(.5deg); }
+.pub .title { font-family: var(--mono); font-weight: 700; font-size: 12.8px; line-height: 1.35; margin-bottom: 5px; }
+.authors { color: var(--soft); }
+.authors b { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.pub .venue { margin-top: 4px; font-style: italic; }
+.pub .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.pub .acts .btn { font-size: 10px; padding: 3px 8px; box-shadow: 1.5px 1.5px 0 var(--ink); }
+.pub .none { font-size: 11.5px; color: var(--faint); font-style: italic; }
+.pub:nth-child(odd)  { transform: rotate(-.5deg); }
+.pub:nth-child(even) { transform: rotate(.4deg); }
+@media (min-height: 1040px) { .pub-grid { grid-template-rows: repeat(3, auto); } }
+.empty { font-family: var(--hand); font-size: 24px; color: var(--soft); margin-top: 20px; }
 
-/* ── 5. MENTORING & SERVICE ──────────── */
+/* reader dialog */
+dialog.reader {
+  width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px); margin: auto;
+  border: 2px solid var(--ink); background: var(--paper); color: var(--ink); padding: 0;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+dialog.reader::backdrop { background: rgba(31,31,31,.45); }
+.reader .bar { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 18px; background: var(--card); border-bottom: 1.5px solid var(--ink); z-index: 2; }
+.reader .body { padding: 22px 26px 28px; font-size: 14px; }
+.reader h2 { font-family: var(--mono); font-size: 19px; line-height: 1.3; margin: 10px 0 10px; }
+.reader .venue { font-style: italic; margin-top: 4px; }
+.reader h3 { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; margin: 22px 0 8px; }
+.reader .summary { font-size: 14.5px; line-height: 1.7; }
+.reader .note { font-size: 12px; color: var(--faint); margin-top: 8px; }
+.reader .links { display: flex; flex-wrap: wrap; gap: 8px; }
+.reader pre { white-space: pre-wrap; word-break: break-word; font-family: var(--body); font-size: 12px; background: var(--card); border: 1.5px solid var(--ink); padding: 12px; }
+.reader .cite-row { display: flex; justify-content: space-between; align-items: center; margin: 22px 0 8px; }
+.reader .cite-row h3 { margin: 0; }
+
+/* ── MENTORING ───────────────────────── */
 .p-mentor { width: 100vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
 .big-num { font-family: var(--mono); font-weight: 700; font-size: 84px; line-height: 1; }
-.mentor-copy { font-size: 13.5px; max-width: 470px; margin-top: 10px; }
+.mentor-copy { font-size: 13.8px; max-width: 480px; margin-top: 10px; }
 .mentor-copy p + p { margin-top: 10px; }
-.service { margin-top: 26px; font-size: 13.5px; }
+.service { margin-top: 26px; font-size: 13.8px; }
 .workshop { margin-top: 18px; }
-.workshop .card { margin-top: 10px; font-size: 13px; }
+.workshop .card { margin-top: 10px; font-size: 13.3px; }
 .workshop .card:nth-child(2) { transform: rotate(-1.2deg); }
 .workshop .card:nth-child(3) { transform: rotate(1deg); margin-left: 30px; }
 
-/* ── 6. EXPERIENCE ───────────────────── */
+/* ── EXPERIENCE ──────────────────────── */
 .p-exp { width: 88vw; }
 .timeline { position: relative; margin-top: 46px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
 .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; border-top: 2px dashed var(--ink); }
-.tl { position: relative; padding-top: 34px; font-size: 12.8px; }
+.tl { position: relative; padding-top: 34px; font-size: 13px; }
 .tl::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); }
 .tl.now::before { background: var(--pink); }
 .tl .when { font-family: var(--hand); font-size: 22px; line-height: 1; }
 .tl h3 { font-family: var(--mono); font-size: 13.5px; margin-top: 6px; line-height: 1.3; }
 .tl .where { font-style: italic; color: var(--soft); margin-top: 3px; }
 .tl p { margin-top: 6px; color: var(--soft); }
-.exp-note { margin-top: 40px; max-width: 560px; }
+.exp-note { margin-top: 40px; }
 
-/* ── 7. SKILLS & CERTS ───────────────── */
+/* ── SKILLS ──────────────────────────── */
 .p-skills { width: 104vw; display: grid; grid-template-columns: 1.35fr .65fr; gap: 4vw; }
 .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
-.skill-grid .card h3 { font-family: var(--mono); font-size: 12.5px; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-.skill-grid .card p { font-size: 12.3px; color: var(--soft); line-height: 1.55; }
-.certs { margin-top: 28px; font-size: 13px; }
+.skill-grid .card h3 { font-family: var(--mono); font-size: 12.5px; text-transform: uppercase; margin-bottom: 6px; }
+.skill-grid .card p { font-size: 12.6px; color: var(--soft); line-height: 1.55; }
+.certs { margin-top: 28px; font-size: 13.3px; }
 .certs li { margin-bottom: 11px; }
 .certs .yr { font-family: var(--hand); font-size: 19px; color: var(--soft); }
 
-/* ── 8. WRITING ──────────────────────── */
+/* ── WRITING ─────────────────────────── */
 .p-writing { width: 62vw; }
-.posts { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; max-width: 520px; }
+.posts { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; }
 .post { display: flex; justify-content: space-between; gap: 18px; align-items: center; text-decoration: none; font-size: 13px; }
 .post:hover { background: var(--paper2); }
 .post .ttl { font-family: var(--mono); font-weight: 700; }
 .post .arrow { font-family: var(--mono); font-size: 18px; }
-.yt { margin-top: 22px; }
 
-/* ── 9. CONTACT ──────────────────────── */
-.p-contact { width: 100vw; display: grid; grid-template-columns: .9fr 1.1fr; gap: 5vw; align-items: center; }
-.contact-photo { position: relative; width: min(28vw, 46vh); justify-self: center; }
+/* ── CONTACT ─────────────────────────── */
+.p-contact { width: 100vw; display: grid; grid-template-columns: .85fr 1.15fr; gap: 5vw; align-items: center; }
+.contact-photo { position: relative; width: min(26vw, 42vh); justify-self: center; }
 .contact-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 10px; transform: rotate(-3deg); }
-.contact-photo img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; object-position: center 25%; filter: grayscale(1); }
+.contact-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 25%; filter: grayscale(1); }
 .contact-photo .tape { top: -10px; right: 18%; transform: rotate(8deg); }
-.links { list-style: none; margin-top: 28px; font-size: 14px; }
-.links li { margin-bottom: 12px; display: flex; gap: 14px; align-items: baseline; }
-.links .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; width: 86px; color: var(--soft); flex: 0 0 auto; }
-.links a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; word-break: break-word; }
-.links a:hover { background: var(--pink); }
-.footer-note { margin-top: 34px; font-size: 11.5px; color: var(--faint); }
+.links { list-style: none; margin-top: 24px; font-size: 14px; }
+.links li { margin-bottom: 10px; display: flex; gap: 14px; align-items: baseline; }
+.links .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; width: 110px; color: var(--soft); flex: 0 0 auto; }
+.links a { word-break: break-word; }
+.footer-note { margin-top: 28px; font-size: 11.5px; color: var(--faint); }
+.copy-mail { background: none; border: 0; cursor: pointer; font-family: var(--hand); font-size: 18px; margin-left: 8px; text-decoration: underline; }
 
-/* ── SMALL / SHORT SCREENS: vertical stack ── */
-@media (max-width: 899px), (max-height: 559px) {
-  html { font-size: 14px; }
-  .nav { padding: 0 16px; }
-  .nav .burger { display: block; }
+.toast { position: fixed; left: 50%; bottom: 40px; transform: translate(-50%, 20px); opacity: 0; z-index: 100; pointer-events: none;
+  background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 12px; padding: 8px 14px; transition: .25s; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ── VERTICAL / READING VIEW (phones, short screens, or chosen) ── */
+.vertical .progress, .vertical .scroll-hint { display: none; }
+.vertical .h-sticky { position: static; height: auto; overflow: visible; }
+.vertical .track { display: block; transform: none !important; }
+.vertical .panel {
+  width: auto !important; height: auto; max-width: 1180px; margin: 0 auto;
+  padding: calc(var(--navh) + 34px) 5vw 56px; border-right: 0; border-bottom: 1.5px dashed rgba(0,0,0,.25);
+}
+.vertical .p-hero { min-height: 100vh; }
+.vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.vertical .p-news, .vertical .p-writing { width: auto; }
+
+@media (max-width: 1180px) {
+  .burger { display: inline-flex; }
   .nav ul {
     display: none; position: absolute; top: var(--navh); left: 0; right: 0; flex-direction: column;
     background: var(--paper); border-bottom: 1.5px solid var(--ink); padding: 10px 16px;
   }
   .nav ul.open { display: flex; }
-  .progress { display: none; }
-  .h-sticky { position: static; height: auto; overflow: visible; }
-  .track { display: block; transform: none !important; }
-  .panel {
-    width: 100% !important; height: auto; display: block !important;
-    padding: calc(var(--navh) + 30px) 16px 48px; border-right: 0; border-bottom: 1.5px dashed rgba(0,0,0,.25);
-  }
+  .nav ul a { font-size: 13px; padding: 8px; }
+}
+@media (max-width: 899px), (max-height: 559px) {
+  html { font-size: 14.5px; }
+  .nav { padding: 0 14px; gap: 8px; }
+  .nav .view-toggle { display: none; }
+  .vertical .panel { display: block !important; padding: calc(var(--navh) + 28px) 16px 46px; }
   .panel > * + * { margin-top: 30px; }
-  .p-hero { padding-top: calc(var(--navh) + 40px); }
+  .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
   .hero-photo { width: min(78vw, 340px); margin: 40px auto 0; }
-  .scroll-hint { display: none; }
   .areas, .skill-grid { grid-template-columns: 1fr; }
-  .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: 1fr; }
+  .pub-grid { grid-template-columns: 1fr !important; }
+  .search { min-width: 0; flex: 1 1 100%; }
   .timeline { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
   .timeline::before { left: 8px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed var(--ink); }
   .tl { padding-top: 0; }
@@ -294,22 +344,26 @@ b, strong { font-weight: 600; }
   .edu .card:nth-child(2), .workshop .card:nth-child(3) { margin-left: 0; }
   .label { font-size: 18px; }
   .doodle.hide-sm { display: none; }
+  .reader .body { padding: 18px 16px 22px; }
+  .links li { flex-direction: column; gap: 0; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .wiggle, .float, .spin { animation: none; }
   .draw { transition: none; stroke-dashoffset: 0; }
+}
+@media print {
+  .nav, .progress, .doodle, .scroll-hint, .toolbar, .pub .acts { display: none !important; }
+  body::before { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
+<nav class="nav" aria-label="Main">
   <a href="#hero" class="logo" data-go="hero">A.R.T.<span>✶</span></a>
-  <button class="burger" aria-label="Menu" aria-expanded="false">menu</button>
   <ul id="menu">
     <li><a href="#about" data-go="about">About</a></li>
+    <li><a href="#news" data-go="news">News</a></li>
     <li><a href="#research" data-go="research">Research</a></li>
     <li><a href="#publications" data-go="publications">Papers</a></li>
     <li><a href="#mentoring" data-go="mentoring">Mentoring</a></li>
@@ -318,6 +372,9 @@ b, strong { font-weight: 600; }
     <li><a href="#writing" data-go="writing">Writing</a></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
   </ul>
+  <button class="btn view-toggle" id="viewToggle" type="button" title="Switch between sideways scrolling and a normal top-to-bottom page">↕ list view</button>
+  <a class="btn dark" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">CV ↓</a>
+  <button class="btn burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">menu</button>
 </nav>
 
 <div class="progress" aria-hidden="true">
@@ -331,15 +388,16 @@ b, strong { font-weight: 600; }
 <div class="h-sticky">
 <div class="track" id="track">
 
-<!-- ═══ 1. HERO ═══ -->
+<!-- ═══ HERO ═══ -->
 <section class="panel p-hero" id="hero">
   <div class="hero-text">
     <p class="kicker">AI &amp; cybersecurity · research · Dhaka, Bangladesh</p>
-    <div class="name-tag sticker">
+    <h1 class="sr-only">Adrita Rahman Tory</h1>
+    <div class="name-tag sticker" aria-hidden="true">
       ADRITA
-      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="14" cy="16" r="1.8" fill="currentColor"/><circle cx="26" cy="16" r="1.8" fill="currentColor"/><path d="M12 24 Q20 31 28 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="14" cy="16" r="1.8" fill="currentColor"/><circle cx="26" cy="16" r="1.8" fill="currentColor"/><path d="M12 24 Q20 31 28 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
     </div><br>
-    <div class="surname sticker">RAHMAN TORY</div>
+    <div class="surname sticker" aria-hidden="true">RAHMAN TORY</div>
 
     <div class="hero-intro">
       <p>I'm a researcher working where <b>AI</b> and <b>cybersecurity</b> meet — mostly intrusion detection, adversarial machine learning, federated learning and LLM security.</p>
@@ -349,6 +407,13 @@ b, strong { font-weight: 600; }
       <span class="tag acc">now</span>
       <span class="hand">writing my master's thesis on multi-frequency memory for IoT intrusion detection</span>
     </div>
+    <div class="profiles">
+      <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+      <a class="btn" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">ResearchGate ↗</a>
+      <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/adrita-rahman-tory" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn pink" href="#publications" data-go="publications">Read my papers →</a>
+    </div>
   </div>
 
   <div class="hero-photo">
@@ -357,12 +422,10 @@ b, strong { font-weight: 600; }
       <img src="profile.jpg" alt="Portrait of Adrita Rahman Tory" width="800" height="984">
       <span class="caption">hi, that's me!</span>
     </div>
-    <!-- doodle: loop squiggle -->
     <svg class="doodle hide-sm" style="left:-90px; top:20%; width:110px; height:90px" viewBox="0 0 110 90" aria-hidden="true">
       <path class="draw" pathLength="1" d="M5 70 C 25 70, 30 30, 50 30 C 70 30, 62 60, 48 55 C 36 50, 50 20, 75 22 C 95 24, 100 45, 104 55"/>
       <path class="draw d2" pathLength="1" d="M96 46 L104 56 L92 58"/>
     </svg>
-    <!-- doodle: stars -->
     <svg class="doodle float" style="right:-34px; top:-30px; width:60px; height:60px" viewBox="0 0 60 60" aria-hidden="true">
       <path class="draw" pathLength="1" d="M30 6 L35 25 L54 30 L35 35 L30 54 L25 35 L6 30 L25 25 Z"/>
     </svg>
@@ -371,28 +434,22 @@ b, strong { font-weight: 600; }
     </svg>
   </div>
 
-  <!-- doodle: underline swoosh under intro -->
-  <svg class="doodle hide-sm" style="left:5vw; bottom:44px; width:220px; height:30px" viewBox="0 0 220 30" aria-hidden="true">
-    <path class="draw d2" pathLength="1" d="M4 18 C 50 4, 90 28, 130 14 S 200 8, 216 16"/>
-  </svg>
-
   <div class="scroll-hint" aria-hidden="true">
     keep scrolling
     <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
-<!-- ═══ 2. ABOUT + EDUCATION ═══ -->
+<!-- ═══ ABOUT + EDUCATION ═══ -->
 <section class="panel p-about" id="about">
   <div>
     <h2 class="label tilt-l sticker">About <span class="thin">me</span></h2>
     <div class="about-copy">
       <p>I study how AI can be used to detect cyber threats — and how AI systems themselves can be attacked. My work so far covers network intrusion detection datasets, adversarial robustness, privacy-preserving federated learning, and security for LLM agents.</p>
       <p>Alongside research, I mentor undergraduate students at the Cyber Research Hub, BUBT, and I've spent several years teaching IT and web development.</p>
-      <p class="about-langs small"><b>Languages:</b> Bengali (native), English</p>
+      <p class="small"><b>Languages:</b> Bengali (native), English</p>
     </div>
-    <p class="hand" style="margin-top:26px">safe AI, built with people in mind ♡</p>
-    <!-- doodle: laptop -->
+    <p class="hand" style="margin-top:24px">safe AI, built with people in mind ♡</p>
     <svg class="doodle hide-sm" style="left:5vw; bottom:70px; width:120px; height:84px" viewBox="0 0 120 84" aria-hidden="true">
       <rect class="draw" pathLength="1" x="20" y="8" width="80" height="52" rx="4"/>
       <path class="draw d2" pathLength="1" d="M6 72 L114 72 L104 62 L16 62 Z"/>
@@ -412,7 +469,7 @@ b, strong { font-weight: 600; }
       <div class="card">
         <h3>B.Sc. in Computer Science &amp; Engineering</h3>
         <p class="where">Bangladesh University of Business &amp; Technology (BUBT), Dhaka</p>
-        <p class="meta">Jul 2021 – Mar 2025 · AQF Level 7 · Final grade 3.55/4.00<br><b>Capstone:</b> AI-powered career platform for university students — <a href="https://github.com/adritatori/bubt_internal_sns" target="_blank" rel="noopener">GitHub ↗</a></p>
+        <p class="meta">Jul 2021 – Mar 2025 · AQF Level 7 · Final grade 3.55/4.00<br><b>Capstone:</b> AI-powered career platform for university students — <a class="ulink" href="https://github.com/adritatori/bubt_internal_sns" target="_blank" rel="noopener">code ↗</a></p>
       </div>
       <div class="card">
         <h3>Diploma in Computer Engineering</h3>
@@ -421,36 +478,56 @@ b, strong { font-weight: 600; }
       </div>
     </div>
   </div>
-  <!-- doodle: graduation cap -->
   <svg class="doodle wiggle hide-sm" style="right:4vw; top:calc(var(--navh) + 30px); width:70px; height:56px" viewBox="0 0 70 56" aria-hidden="true">
     <path class="draw" pathLength="1" d="M35 6 L66 20 L35 34 L4 20 Z"/>
     <path class="draw d2" pathLength="1" d="M16 26 L16 40 C 26 50, 44 50, 54 40 L54 26 M62 22 L62 40"/>
   </svg>
 </section>
 
-<!-- ═══ 3. RESEARCH ═══ -->
+<!-- ═══ NEWS ═══ -->
+<section class="panel p-news" id="news">
+  <h2 class="label tilt-l sticker">Recent <span class="thin">news</span></h2>
+  <ul class="news">
+    <li class="hot"><span class="when">2026</span>Three papers accepted: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
+    <li class="hot"><span class="when">2026</span>Four papers presented at ML4CS 2026 — one as first author, three with students I mentor and colleagues.</li>
+    <li><span class="when">2025</span>Two journal articles published: <i>Computers &amp; Security</i> and <i>Education Sciences</i> (MDPI).</li>
+    <li><span class="when">2025</span>Papers presented at ICBDIML 2025 and ISSOTL 2025. Peer reviewer for COMPAS 2025.</li>
+    <li><span class="when">Aug 2025</span>Started a Professional Master's in IT at Jahangirnagar University.</li>
+    <li><span class="when">2025</span>Earned CompTIA Security+. Completed my B.Sc. in CSE at BUBT (Mar 2025).</li>
+  </ul>
+  <svg class="doodle float hide-sm" style="right:4vw; top:calc(var(--navh) + 30px); width:70px; height:70px" viewBox="0 0 70 70" aria-hidden="true">
+    <path class="draw" pathLength="1" d="M35 10 C 22 10, 16 20, 16 32 L16 44 L8 54 L62 54 L54 44 L54 32 C 54 20, 48 10, 35 10 Z"/>
+    <path class="draw d2" pathLength="1" d="M28 58 C 30 64, 40 64, 42 58 M35 4 L35 10"/>
+  </svg>
+</section>
+
+<!-- ═══ RESEARCH ═══ -->
 <section class="panel p-research" id="research">
   <div>
     <h2 class="label tilt-l sticker">What I <span class="thin">work on</span></h2>
     <div class="areas">
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M26 4 L44 11 L44 26 C 44 38, 35 45, 26 48 C 17 45, 8 38, 8 26 L8 11 Z"/><path d="M18 26 L24 32 L35 20"/></svg>
-        <div><h3>Intrusion detection</h3><p>Network IDS datasets and how well they cover real threats (MITRE ATT&amp;CK).</p></div>
+        <div><h3>Intrusion detection</h3><p>Network IDS datasets and how well they cover real threats (MITRE ATT&amp;CK).</p>
+          <p class="see"><button type="button" data-topic="ids">see related papers →</button></p></div>
       </div>
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="20"/><circle cx="26" cy="26" r="11"/><circle cx="26" cy="26" r="2.5"/><path d="M40 12 L28 24 M40 12 L41 6 M40 12 L46 11"/></svg>
-        <div><h3>Adversarial ML</h3><p>Adversarial detection and robustness of AI-based threat detectors.</p></div>
+        <div><h3>Adversarial ML</h3><p>Adversarial detection and robustness of AI-based threat detectors.</p>
+          <p class="see"><button type="button" data-topic="adv">see related papers →</button></p></div>
       </div>
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="10" r="5"/><circle cx="9" cy="40" r="5"/><circle cx="43" cy="40" r="5"/><circle cx="26" cy="30" r="4"/><path d="M26 15 L26 26 M13 37 L22 32 M39 37 L30 32"/></svg>
-        <div><h3>Federated learning</h3><p>Privacy-preserving training with differential privacy, and its trade-offs.</p></div>
+        <div><h3>Federated learning</h3><p>Privacy-preserving training with differential privacy, and its trade-offs.</p>
+          <p class="see"><button type="button" data-topic="fl">see related papers →</button></p></div>
       </div>
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M6 8 L46 8 L46 34 L22 34 L12 44 L12 34 L6 34 Z"/><rect x="20" y="19" width="12" height="9" rx="1.5"/><path d="M22 19 L22 16 C 22 12, 30 12, 30 16 L30 19"/></svg>
-        <div><h3>LLM &amp; agent security</h3><p>Prompt injection and AI threat modelling for LLM agents.</p></div>
+        <div><h3>LLM &amp; agent security</h3><p>Prompt injection and AI threat modelling for LLM agents.</p>
+          <p class="see"><button type="button" data-topic="llm">see related papers →</button></p></div>
       </div>
     </div>
-    <div class="thesis card tilt-r" style="max-width:440px">
+    <div class="thesis card tilt-r">
       <p class="kicker" style="margin-bottom:4px">master's thesis · ongoing</p>
       <p style="font-family:var(--mono); font-weight:700; font-size:13.5px">Multi-Frequency Memory for IoT Intrusion Detection</p>
     </div>
@@ -458,7 +535,7 @@ b, strong { font-weight: 600; }
 
   <div>
     <h2 class="label tilt-r sticker">Research <span class="thin">roles</span></h2>
-    <div class="roles" style="margin-top:28px">
+    <div class="roles">
       <div class="role card">
         <h3>University Research Assistant</h3>
         <p class="where">Bangladesh University of Business &amp; Technology</p>
@@ -480,106 +557,33 @@ b, strong { font-weight: 600; }
       </div>
     </div>
   </div>
-  <!-- doodle: magnifier -->
   <svg class="doodle float hide-sm" style="left:46%; top:calc(var(--navh) + 24px); width:60px; height:60px" viewBox="0 0 60 60" aria-hidden="true">
     <circle class="draw" pathLength="1" cx="24" cy="24" r="16"/>
     <path class="draw d2" pathLength="1" d="M36 36 L54 54"/>
   </svg>
 </section>
 
-<!-- ═══ 4. PUBLICATIONS ═══ -->
+<!-- ═══ PUBLICATIONS ═══ -->
 <section class="panel p-pubs" id="publications">
   <div class="pubs-head">
     <h2 class="label tilt-l sticker">Publications</h2>
-    <div class="legend">
-      <span class="tag pub">published</span>
-      <span class="tag pres">presented</span>
-      <span class="tag acc">accepted</span>
-      <span class="hand" style="font-size:20px; margin-left:6px">← status as of 2026</span>
-    </div>
+    <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
   </div>
-
-  <div class="pub-grid">
-    <!-- journals -->
-    <article class="pub card">
-      <div class="tags"><span class="tag pub">published</span><span class="tag">journal</span></div>
-      <p class="title">An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&amp;CK and Industry Relevance Metrics</p>
-      <p class="authors"><b>Tory, A. R.</b> &amp; Hasan, K. F. (2025)</p>
-      <p class="venue">Computers &amp; Security</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pub">published</span><span class="tag">journal</span></div>
-      <p class="title">Game On: A Developmental Approach to Cyber Escape Room for Cybersecurity Governance and Policy Education</p>
-      <p class="authors">Hasan, K. F., Hughes, W., <b>Tory, A. R.</b>, Campbell, C., &amp; Turkay, S. (2025)</p>
-      <p class="venue">Education Sciences, MDPI</p>
-    </article>
-    <!-- conferences -->
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector</p>
-      <p class="authors"><b>Tory, A. R.</b>, Hasan, K. F., Rahman, M. S., Koroniotis, N., &amp; Moni, M. A. (2025)</p>
-      <p class="venue">ICBDIML 2025</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">Gamifying Cyber Governance: A Virtual Escape Room to Transform Cybersecurity Policy Education</p>
-      <p class="authors">Hasan, K. F., Hughes, W., &amp; <b>Tory, A. R.</b> (2025)</p>
-      <p class="venue">ISSOTL 2025</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">Privacy, Robustness, and Fairness Trade-offs in Federated Intrusion Detection: Geometric Indistinguishability at the Aggregation Interface</p>
-      <p class="authors"><b>Tory, A. R.</b>, Ali, A. S., Rahman, M. A., &amp; Hasan, K. F. (2026)</p>
-      <p class="venue">ML4CS 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag acc">accepted</span><span class="tag">conference</span></div>
-      <p class="title">Evaluating Provenance-Based Defenses Against Prompt Injection in LLM Agents: What Taint Tracking Can and Cannot See</p>
-      <p class="authors">Tonmoy, T. R., <b>Tory, A. R.</b>, Islam, M. R., Habib, M. A., &amp; Rahaman, M. A. (2026)</p>
-      <p class="venue">IEEE CSDE 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag acc">accepted</span><span class="tag">conference</span></div>
-      <p class="title">An Empirical Evaluation of Quantum Kernel Stability in Network Intrusion Detection</p>
-      <p class="authors">Chakraborty, S., <b>Tory, A. R.</b>, Hasan, K. F., &amp; Rahman, M. A. (2026)</p>
-      <p class="venue">IEEE iCOSTE 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag acc">accepted</span><span class="tag">conference</span></div>
-      <p class="title">DevSecOps 2.0: Shift-Up and a Sec-Trust-Gov Model for AI-Enabled Software Development</p>
-      <p class="authors">Tonmoy, T. R., <b>Tory, A. R.</b>, &amp; Hasan, K. F. (2026)</p>
-      <p class="venue">IEEE ICCIT 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">A Decade of Healthcare Cyber Threats: Empirical Analysis, Evidence-Based Prioritisation, and AI Threat Model</p>
-      <p class="authors">Rahi, S. M., Siddika, A., Maruf, I. H., Rahaman, M. A., Hasan, K. F., &amp; <b>Tory, A. R.</b> (2026)</p>
-      <p class="venue">ML4CS 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">Preprocessing Failure and Adversarial Detection in Depthwise-Separable Edge Vision Systems</p>
-      <p class="authors">Mukta, J. S., Sanjida, R., <b>Tory, A. R.</b>, Rahman, M. S., &amp; Hasan, K. F. (2026)</p>
-      <p class="venue">ML4CS 2026</p>
-    </article>
-    <article class="pub card">
-      <div class="tags"><span class="tag pres">presented</span><span class="tag">conference</span></div>
-      <p class="title">Multi-LLM Consensus Framework for Evaluating Banking-Sector NIDS Dataset Coverage of MITRE ATT&amp;CK Techniques</p>
-      <p class="authors">Khanom, S., Khan, S. A., <b>Tory, A. R.</b>, Hasan, M. A., &amp; Hasan, K. F. (2026)</p>
-      <p class="venue">ML4CS 2026</p>
-    </article>
-    <!-- end doodle card -->
-    <div class="pub" style="display:flex; align-items:center; justify-content:center; transform:none">
-      <svg class="doodle" style="position:relative; width:150px; height:120px" viewBox="0 0 150 120" aria-hidden="true">
-        <path class="draw" pathLength="1" d="M20 100 L20 30 L60 30 L70 40 L130 40 L130 100 Z"/>
-        <path class="draw d2" pathLength="1" d="M40 60 L110 60 M40 75 L95 75 M40 90 L80 90"/>
-        <path class="draw d3 spin" pathLength="1" d="M128 12 L131 22 L141 24 L131 27 L128 37 L125 27 L115 24 L125 22 Z"/>
-      </svg>
-    </div>
+  <div class="toolbar" role="group" aria-label="Filter publications">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal</button>
+    <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference</button>
+    <button class="chip" type="button" data-filter="first" aria-pressed="false">First author</button>
+    <button class="chip" type="button" data-filter="open" aria-pressed="false">Free to read</button>
+    <label class="sr-only" for="pubSearch">Search publications</label>
+    <input class="search" id="pubSearch" type="search" placeholder="search title, author, venue…">
+    <span class="count" id="pubCount"></span>
   </div>
+  <div class="pub-grid" id="pubGrid"></div>
+  <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
 </section>
 
-<!-- ═══ 5. MENTORING & SERVICE ═══ -->
+<!-- ═══ MENTORING & SERVICE ═══ -->
 <section class="panel p-mentor" id="mentoring">
   <div>
     <h2 class="label tilt-l sticker">Students <span class="thin">I mentor</span></h2>
@@ -591,7 +595,6 @@ b, strong { font-weight: 600; }
       <p>I guide undergraduate students on cybersecurity and AI research projects — research methodology, literature review, experiments and academic writing.</p>
       <p>Their topics include network security, quantum machine learning, AI security, adversarial machine learning and trustworthy AI. Three papers from this work have been accepted at international conferences (adversarial detection, NIDS dataset coverage with multi-LLM consensus, and healthcare cyber-threat modelling).</p>
     </div>
-    <!-- doodle: seedling -->
     <svg class="doodle wiggle hide-sm" style="left:30%; top:calc(var(--navh) + 98px); width:60px; height:70px" viewBox="0 0 60 70" aria-hidden="true">
       <path class="draw" pathLength="1" d="M30 66 L30 30"/>
       <path class="draw d2" pathLength="1" d="M30 38 C 14 38, 8 26, 8 16 C 22 16, 30 24, 30 38"/>
@@ -610,7 +613,6 @@ b, strong { font-weight: 600; }
       <div class="card">“Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</div>
       <div class="card">“From Observation to Research Question” — finding research gaps and scoping a thesis or paper</div>
     </div>
-    <!-- doodle: umbrella -->
     <svg class="doodle float hide-sm" style="right:5vw; bottom:70px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
       <path class="draw" pathLength="1" d="M6 38 C 10 14, 70 14, 74 38 C 66 32, 56 32, 50 38 C 46 32, 34 32, 30 38 C 24 32, 14 32, 6 38 Z"/>
       <path class="draw d2" pathLength="1" d="M40 20 L40 66 C 40 74, 30 74, 30 66"/>
@@ -618,7 +620,7 @@ b, strong { font-weight: 600; }
   </div>
 </section>
 
-<!-- ═══ 6. EXPERIENCE ═══ -->
+<!-- ═══ EXPERIENCE ═══ -->
 <section class="panel p-exp" id="experience">
   <h2 class="label tilt-l sticker">Work <span class="thin">experience</span></h2>
   <div class="timeline">
@@ -647,11 +649,10 @@ b, strong { font-weight: 600; }
       <span class="when">2024 – 2026</span>
       <h3>Research roles</h3>
       <p class="where">BUBT &amp; Cyber Research Hub</p>
-      <p>See the research section ←</p>
+      <p><a class="ulink" href="#research" data-go="research">see the research section</a></p>
     </div>
   </div>
   <p class="hand exp-note">teaching → software → research</p>
-  <!-- doodle: coffee -->
   <svg class="doodle hide-sm" style="right:6vw; bottom:80px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
     <path class="draw" pathLength="1" d="M14 34 L62 34 L56 72 L20 72 Z"/>
     <path class="draw d2" pathLength="1" d="M60 42 C 74 42, 74 58, 58 58"/>
@@ -659,7 +660,7 @@ b, strong { font-weight: 600; }
   </svg>
 </section>
 
-<!-- ═══ 7. SKILLS & CERTS ═══ -->
+<!-- ═══ SKILLS & CERTS ═══ -->
 <section class="panel p-skills" id="skills">
   <div>
     <h2 class="label tilt-l sticker">Toolbox</h2>
@@ -691,14 +692,13 @@ b, strong { font-weight: 600; }
       <li>National Certificate-IV in CBT&amp;A Methodology for Trainers &amp; Assessors — BTEB <span class="yr">2021</span></li>
       <li>IT Essentials — Cisco <span class="yr">2020</span></li>
     </ul>
-    <!-- doodle: wrench + spark -->
     <svg class="doodle wiggle hide-sm" style="right:5vw; bottom:76px; width:70px; height:70px" viewBox="0 0 70 70" aria-hidden="true">
       <path class="draw" pathLength="1" d="M46 8 C 36 6, 28 16, 32 26 L8 50 C 4 54, 10 62, 16 58 L40 34 C 50 38, 60 30, 58 20 L50 28 L42 24 L40 16 Z"/>
     </svg>
   </div>
 </section>
 
-<!-- ═══ 8. WRITING ═══ -->
+<!-- ═══ WRITING ═══ -->
 <section class="panel p-writing" id="writing">
   <h2 class="label tilt-l sticker">Writing <span class="thin">&amp; videos</span></h2>
   <p class="small" style="margin-top:22px; max-width:480px">Some things I've written up while learning, on Medium. A few are in Bengali.</p>
@@ -713,15 +713,14 @@ b, strong { font-weight: 600; }
       <span><span class="kicker">Machine learning</span><br><span class="ttl">Understanding Bayes Decision Rules with a Loss Function</span></span><span class="arrow">↗</span>
     </a>
   </div>
-  <p class="yt small">More on <a href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a> · videos on <a href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube (Cyber Golpo)</a></p>
-  <!-- doodle: pencil -->
+  <p class="small" style="margin-top:22px">More on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a> · videos on <a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube (Cyber Golpo)</a></p>
   <svg class="doodle float hide-sm" style="right:4vw; top:calc(var(--navh) + 30px); width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
     <path class="draw" pathLength="1" d="M58 8 L72 22 L28 66 L10 70 L14 52 Z"/>
     <path class="draw d2" pathLength="1" d="M50 16 L64 30 M14 52 L28 66"/>
   </svg>
 </section>
 
-<!-- ═══ 9. CONTACT ═══ -->
+<!-- ═══ CONTACT ═══ -->
 <section class="panel p-contact" id="contact">
   <div class="contact-photo">
     <span class="tape"></span>
@@ -734,14 +733,15 @@ b, strong { font-weight: 600; }
     <h2 class="label tilt-r sticker">Connect <span class="thin">with me</span></h2>
     <p class="hand" style="margin-top:20px">happy to talk about research, collaborations, or mentoring.</p>
     <ul class="links">
-      <li><span class="k">Email</span><a href="mailto:adritatori456@gmail.com">adritatori456@gmail.com</a></li>
-      <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/adrita-rahman-tory" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman-tory</a></li>
-      <li><span class="k">GitHub</span><a href="https://github.com/adritatori" target="_blank" rel="noopener">github.com/adritatori</a></li>
-      <li><span class="k">Medium</span><a href="https://medium.com/@radrita245" target="_blank" rel="noopener">medium.com/@radrita245</a></li>
+      <li><span class="k">Email</span><span><a class="ulink" href="mailto:adritatori456@gmail.com">adritatori456@gmail.com</a><button class="copy-mail" type="button" data-copy="adritatori456@gmail.com">copy</button></span></li>
+      <li><span class="k">CV</span><a class="ulink" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">download PDF ↓</a></li>
+      <li><span class="k">Scholar</span><a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a></li>
+      <li><span class="k">ResearchGate</span><a class="ulink" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">researchgate.net/profile/Adrita-Rahman-Tory</a></li>
+      <li><span class="k">LinkedIn</span><a class="ulink" href="https://www.linkedin.com/in/adrita-rahman-tory" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman-tory</a></li>
+      <li><span class="k">GitHub</span><a class="ulink" href="https://github.com/adritatori" target="_blank" rel="noopener">github.com/adritatori</a></li>
       <li><span class="k">Based in</span><span>Dhaka, Bangladesh</span></li>
     </ul>
     <p class="footer-note">© 2026 Adrita Rahman Tory · hand-drawn doodles, plain HTML, hosted on GitHub Pages</p>
-    <!-- doodle: paper plane -->
     <svg class="doodle float hide-sm" style="right:6vw; top:calc(var(--navh) + 40px); width:110px; height:70px" viewBox="0 0 110 70" aria-hidden="true">
       <path class="draw" pathLength="1" d="M60 10 L104 4 L80 44 L70 30 Z M70 30 L104 4"/>
       <path class="draw d2" pathLength="1" d="M58 30 C 40 40, 30 20, 14 34 C 6 42, 10 56, 4 64" style="stroke-dasharray:4 6"/>
@@ -753,30 +753,258 @@ b, strong { font-weight: 600; }
 </div>
 </main>
 
+<!-- paper reader -->
+<dialog class="reader" id="reader" aria-labelledby="rTitle">
+  <div class="bar">
+    <span>
+      <button class="btn" type="button" id="rPrev" aria-label="Previous paper">← prev</button>
+      <button class="btn" type="button" id="rNext" aria-label="Next paper">next →</button>
+    </span>
+    <button class="btn dark" type="button" id="rClose">close ✕</button>
+  </div>
+  <div class="body">
+    <div class="tags" id="rTags" style="display:flex; gap:6px; flex-wrap:wrap"></div>
+    <h2 id="rTitle"></h2>
+    <p class="authors" id="rAuthors"></p>
+    <p class="venue" id="rVenue"></p>
+    <h3>What it's about</h3>
+    <p class="summary" id="rSummary"></p>
+    <p class="note" id="rNote"></p>
+    <h3>Read it</h3>
+    <div class="links" id="rLinks"></div>
+    <div class="cite-row"><h3>Cite (APA)</h3><button class="btn" type="button" data-copyfrom="rApa">copy</button></div>
+    <pre id="rApa"></pre>
+    <div class="cite-row"><h3>BibTeX</h3><button class="btn" type="button" data-copyfrom="rBib">copy</button></div>
+    <pre id="rBib"></pre>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
+/* ── Publication data ─────────────────────────────────────────
+   status: published | presented | accepted
+   links: only public versions that were found and checked. */
+const ME = 'Tory, A. R.';
+const PUBS = [
+  {
+    id: 'ids-framework', type: 'journal', status: 'published', year: 2025, topics: ['ids'],
+    title: 'An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&CK and Industry Relevance Metrics',
+    authors: ['Tory, A. R.', 'Hasan, K. F.'],
+    venue: 'Computers & Security',
+    summary: 'Most IDS/IPS research judges datasets by model accuracy. This paper proposes a way to judge them by how well they reflect the threats a specific industry actually faces, using MITRE ATT&CK and five metrics. Applied to nine public datasets, it found clear gaps in threat coverage — especially for healthcare, energy and finance.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2511.12743' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2511.12743' }]
+  },
+  {
+    id: 'game-on', type: 'journal', status: 'published', year: 2025, topics: [],
+    title: 'Game On: A Developmental Approach to Cyber Escape Room for Cybersecurity Governance and Policy Education',
+    authors: ['Hasan, K. F.', 'Hughes, W.', 'Tory, A. R.', 'Campbell, C.', 'Turkay, S.'],
+    venue: 'Education Sciences (MDPI)', doi: '10.3390/educsci16010133',
+    summary: 'Describes the design and evaluation of a 3D virtual escape room for teaching cybersecurity governance and policy. Students move through three zones — analysing cyber risks, aligning security frameworks, and drafting policies. A student survey was used to evaluate it.',
+    links: [{ label: 'Journal page', url: 'https://www.mdpi.com/2227-7102/16/1/133' }, { label: 'DOI', url: 'https://doi.org/10.3390/educsci16010133' }, { label: 'Preprint', url: 'https://doi.org/10.20944/preprints202512.2539.v1' }]
+  },
+  {
+    id: 'mind-the-gap', type: 'conference', status: 'presented', year: 2025, topics: ['ids'],
+    title: 'Mind the Gap: Missing Cyber Threat Coverage in NIDS Datasets for the Energy Sector',
+    authors: ['Tory, A. R.', 'Hasan, K. F.', 'Rahman, M. S.', 'Koroniotis, N.', 'Moni, M. A.'],
+    venue: 'ICBDIML 2025',
+    summary: 'Checks five public NIDS datasets against network-detectable MITRE ATT&CK techniques taken from documented energy-sector incidents. Lateral movement and industrial protocol manipulation were the largest gaps; combining several datasets covered more than any single one.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2511.00360' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2511.00360' }]
+  },
+  {
+    id: 'gamifying', type: 'conference', status: 'presented', year: 2025, topics: [],
+    title: 'Gamifying Cyber Governance: A Virtual Escape Room to Transform Cybersecurity Policy Education',
+    authors: ['Hasan, K. F.', 'Hughes, W.', 'Tory, A. R.'],
+    venue: 'ISSOTL 2025',
+    summary: 'The conference paper on the escape-room design: a simulated company where students analyse cybersecurity risks, match security frameworks and draft policies, with scenario-based problems in each zone.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2601.10852' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2601.10852' }]
+  },
+  {
+    id: 'fl-tradeoffs', type: 'conference', status: 'presented', year: 2026, topics: ['fl', 'ids'],
+    title: 'Privacy, Robustness, and Fairness Trade-offs in Federated Intrusion Detection: Geometric Indistinguishability at the Aggregation Interface',
+    authors: ['Tory, A. R.', 'Ali, A. S.', 'Rahman, M. A.', 'Hasan, K. F.'],
+    venue: 'ML4CS 2026',
+    summary: 'Looks at what happens when differential privacy and Byzantine-robust aggregation are used together in federated intrusion detection (UNSW-NB15). Combining them can hurt detection of rare attack types more than common ones, so the three goals cannot simply be stacked.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2609.03420' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2609.03420' }]
+  },
+  {
+    id: 'prompt-injection', type: 'conference', status: 'accepted', year: 2026, topics: ['llm'],
+    title: 'Evaluating Provenance-Based Defenses Against Prompt Injection in LLM Agents: What Taint Tracking Can and Cannot See',
+    authors: ['Tonmoy, T. R.', 'Tory, A. R.', 'Islam, M. R.', 'Habib, M. A.', 'Rahaman, M. A.'],
+    venue: 'IEEE CSDE 2026', links: []
+  },
+  {
+    id: 'quantum-kernel', type: 'conference', status: 'accepted', year: 2026, topics: ['ids'],
+    title: 'An Empirical Evaluation of Quantum Kernel Stability in Network Intrusion Detection',
+    authors: ['Chakraborty, S.', 'Tory, A. R.', 'Hasan, K. F.', 'Rahman, M. A.'],
+    venue: 'IEEE iCOSTE 2026', links: []
+  },
+  {
+    id: 'devsecops', type: 'conference', status: 'accepted', year: 2026, topics: ['llm'],
+    title: 'DevSecOps 2.0: Shift-Up and a Sec-Trust-Gov Model for AI-Enabled Software Development',
+    authors: ['Tonmoy, T. R.', 'Tory, A. R.', 'Hasan, K. F.'],
+    venue: 'IEEE ICCIT 2026', links: []
+  },
+  {
+    id: 'healthcare', type: 'conference', status: 'presented', year: 2026, topics: ['llm'],
+    title: 'A Decade of Healthcare Cyber Threats: Empirical Analysis, Evidence-Based Prioritisation, and AI Threat Model',
+    authors: ['Rahi, S. M.', 'Siddika, A.', 'Maruf, I. H.', 'Rahaman, M. A.', 'Hasan, K. F.', 'Tory, A. R.'],
+    venue: 'ML4CS 2026',
+    summary: 'Analyses ten years of cyber threats against healthcare at the level of attacker techniques, to give defenders a sector-wide basis for prioritising. It also builds an AI threat model for clinical systems from the real attack record rather than only lab demonstrations.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2608.00901' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2608.00901' }]
+  },
+  {
+    id: 'edge-vision', type: 'conference', status: 'presented', year: 2026, topics: ['adv'],
+    title: 'Preprocessing Failure and Adversarial Detection in Depthwise-Separable Edge Vision Systems',
+    authors: ['Mukta, J. S.', 'Sanjida, R.', 'Tory, A. R.', 'Rahman, M. S.', 'Hasan, K. F.'],
+    venue: 'ML4CS 2026',
+    summary: 'Preprocessing defenses are often recommended for edge devices. This paper finds they recover poorly on depthwise-separable CNNs — but the same change in outputs can be used to detect adversarial inputs. Tested on three architectures and one attack family.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2609.03453' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2609.03453' }]
+  },
+  {
+    id: 'banking-llm', type: 'conference', status: 'presented', year: 2026, topics: ['ids', 'llm'],
+    title: 'Multi-LLM Consensus Framework for Evaluating Banking-Sector NIDS Dataset Coverage of MITRE ATT&CK Techniques',
+    authors: ['Khanom, S.', 'Khan, S. A.', 'Tory, A. R.', 'Hasan, M. A.', 'Hasan, K. F.'],
+    venue: 'ML4CS 2026',
+    summary: 'Uses four LLMs as a consensus engine to map banking-relevant MITRE ATT&CK techniques onto five NIDS benchmark datasets. Even the best-scoring dataset had limited direct, technique-level evidence, and the paper argues for banking-specific datasets.',
+    links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2608.00895' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2608.00895' }, { label: 'Code & prompts', url: 'https://github.com/adritatori/BankSectorNIDSdatasetCoverage' }]
+  }
+];
+
 (function () {
-  const wrap  = document.getElementById('wrap');
-  const track = document.getElementById('track');
-  const prog  = document.getElementById('prog');
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const root = document.documentElement;
+  const wrap = $('#wrap'), track = $('#track'), prog = $('#prog');
   const panels = [...document.querySelectorAll('.panel')];
-  const navLinks = [...document.querySelectorAll('[data-go]')];
   const mq = window.matchMedia('(min-width: 900px) and (min-height: 560px)');
-  let dist = 0;
+  let dist = 0, userVertical = false;
+  try { userVertical = localStorage.getItem('view') === 'list'; } catch (e) {}
 
-  function horizontal() { return mq.matches; }
+  const horizontal = () => mq.matches && !userVertical;
 
+  /* ── toast + copy ── */
+  const toast = $('#toast'); let tt;
+  function say(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1600); }
+  async function copy(text) {
+    try { await navigator.clipboard.writeText(text); say('copied ✓'); }
+    catch (e) { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); say('copied ✓'); }
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-copy],[data-copyfrom]');
+    if (!b) return;
+    copy(b.dataset.copy || document.getElementById(b.dataset.copyfrom).textContent);
+  });
+
+  /* ── publications ── */
+  const grid = $('#pubGrid'), count = $('#pubCount'), search = $('#pubSearch');
+  let filter = 'all', visible = PUBS.slice();
+  const statusTag = { published: 'pub', presented: 'pres', accepted: 'acc' };
+  const authorsHTML = a => a.map(x => x === ME ? '<b>' + esc(x) + '</b>' : esc(x)).join(', ');
+  const joinAPA = a => a.length === 1 ? a[0] : a.slice(0, -1).join(', ') + ', & ' + a[a.length - 1];
+  const isOpen = p => p.links && p.links.length > 0;
+
+  function apa(p) {
+    const verb = { published: '', presented: ' Presented at ', accepted: ' Accepted at ' }[p.status];
+    return joinAPA(p.authors) + ' (' + p.year + '). ' + p.title + '. ' + (p.status === 'published' ? p.venue + '.' : verb.trim() + ' ' + p.venue + '.') + (p.doi ? ' https://doi.org/' + p.doi : '');
+  }
+  function bib(p) {
+    const tex = s => s.replace(/&/g, '\\&');
+    const first = p.authors[0].split(',')[0].toLowerCase().replace(/[^a-z]/g, '');
+    const word = p.title.split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g, '');
+    const key = first + p.year + word;
+    const authors = p.authors.map(a => { const [l, f] = a.split(', '); return l + ', ' + f; }).join(' and ');
+    const arx = (p.links || []).find(l => /arxiv\.org\/abs\//.test(l.url));
+    const lines = ['@' + (p.type === 'journal' ? 'article' : 'inproceedings') + '{' + key + ',',
+      '  title     = {' + tex(p.title) + '},',
+      '  author    = {' + authors + '},',
+      '  ' + (p.type === 'journal' ? 'journal   ' : 'booktitle ') + '= {' + tex(p.venue) + '},',
+      '  year      = {' + p.year + '}'];
+    if (p.doi) lines[lines.length - 1] += ',', lines.push('  doi       = {' + p.doi + '}');
+    if (arx) lines[lines.length - 1] += ',', lines.push('  eprint    = {' + arx.url.split('/abs/')[1] + '},', '  archivePrefix = {arXiv}');
+    if (p.status !== 'published') lines[lines.length - 1] += ',', lines.push('  note      = {' + (p.status === 'accepted' ? 'Accepted' : 'Presented') + '}');
+    return lines.join('\n') + '\n}';
+  }
+
+  function match(p) {
+    if (filter === 'journal' && p.type !== 'journal') return false;
+    if (filter === 'conference' && p.type !== 'conference') return false;
+    if (filter === 'first' && p.authors[0] !== ME) return false;
+    if (filter === 'open' && !isOpen(p)) return false;
+    if (filter.startsWith('topic:') && !p.topics.includes(filter.slice(6))) return false;
+    const q = search.value.trim().toLowerCase();
+    if (q && !(p.title + ' ' + p.authors.join(' ') + ' ' + p.venue + ' ' + p.year).toLowerCase().includes(q)) return false;
+    return true;
+  }
+
+  function render() {
+    visible = PUBS.filter(match);
+    grid.innerHTML = visible.map((p, i) => {
+      const pdf = (p.links || []).find(l => l.label === 'PDF') || (p.links || [])[0];
+      return '<article class="pub card">' +
+        '<div class="tags"><span class="tag ' + statusTag[p.status] + '">' + p.status + '</span><span class="tag">' + p.type + '</span></div>' +
+        '<p class="title">' + esc(p.title) + '</p>' +
+        '<p class="authors">' + authorsHTML(p.authors) + ' (' + p.year + ')</p>' +
+        '<p class="venue">' + esc(p.venue) + '</p>' +
+        '<div class="acts">' +
+          '<button class="btn pink" type="button" data-open="' + i + '">' + (p.summary ? 'read summary' : 'details') + '</button>' +
+          (pdf ? '<a class="btn" href="' + esc(pdf.url) + '" target="_blank" rel="noopener">' + esc(pdf.label === 'PDF' ? 'PDF' : pdf.label) + ' ↗</a>' : '<span class="none">public version not out yet</span>') +
+        '</div></article>';
+    }).join('') || '<p class="empty">nothing matches that — try another word?</p>';
+    count.textContent = visible.length === PUBS.length ? PUBS.length + ' papers' : 'showing ' + visible.length + ' of ' + PUBS.length;
+    layout();
+  }
+
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => setFilter(c.dataset.filter)));
+  function setFilter(f) {
+    filter = f;
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.filter === f)));
+    render();
+  }
+  search.addEventListener('input', render);
+  document.querySelectorAll('[data-topic]').forEach(b => b.addEventListener('click', () => {
+    search.value = ''; setFilter('topic:' + b.dataset.topic); go('publications');
+    say('showing papers on this topic');
+  }));
+
+  /* ── reader ── */
+  const dlg = $('#reader'); let cur = 0;
+  function openPaper(i) {
+    cur = (i + visible.length) % visible.length;
+    const p = visible[cur];
+    $('#rTags').innerHTML = '<span class="tag ' + statusTag[p.status] + '">' + p.status + '</span><span class="tag">' + p.type + '</span>';
+    $('#rTitle').textContent = p.title;
+    $('#rAuthors').innerHTML = authorsHTML(p.authors) + ' (' + p.year + ')';
+    $('#rVenue').textContent = p.venue;
+    $('#rSummary').textContent = p.summary || 'This paper has been accepted and a public version is not available yet. The summary and link will be added once it is out.';
+    $('#rNote').textContent = p.summary ? 'Short summary in plain words. Please read the paper for the full details.' : '';
+    $('#rLinks').innerHTML = (p.links && p.links.length)
+      ? p.links.map(l => '<a class="btn" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + ' ↗</a>').join('')
+      : '<span class="small">Not public yet. You can <a class="ulink" href="mailto:adritatori456@gmail.com?subject=' + encodeURIComponent('Paper: ' + p.title) + '">email me</a> about it.</span>';
+    $('#rApa').textContent = apa(p);
+    $('#rBib').textContent = bib(p);
+    $('#rPrev').hidden = $('#rNext').hidden = visible.length < 2;
+    if (!dlg.open) dlg.showModal();
+    dlg.querySelector('.body').scrollTop = 0; dlg.scrollTop = 0;
+  }
+  grid.addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openPaper(+b.dataset.open); });
+  $('#rPrev').addEventListener('click', () => openPaper(cur - 1));
+  $('#rNext').addEventListener('click', () => openPaper(cur + 1));
+  $('#rClose').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  /* ── horizontal scroll ── */
   function layout() {
+    root.classList.toggle('vertical', !horizontal());
+    $('#viewToggle').textContent = userVertical ? '↔ sideways view' : '↕ list view';
     if (horizontal()) {
       dist = Math.max(0, track.scrollWidth - window.innerWidth);
       wrap.style.height = (dist + window.innerHeight) + 'px';
     } else {
-      dist = 0;
-      wrap.style.height = '';
-      track.style.transform = '';
+      dist = 0; wrap.style.height = ''; track.style.transform = '';
     }
     onScroll();
   }
-
   function onScroll() {
     let p = 0;
     if (horizontal()) {
@@ -787,8 +1015,7 @@ b, strong { font-weight: 600; }
     prog.style.strokeDashoffset = String(1 - p);
     markActive();
   }
-
-  // highlight the nav item for the panel in view
+  const navLinks = [...document.querySelectorAll('.nav [data-go]')];
   function markActive() {
     const mid = window.innerWidth / 2, midY = window.innerHeight / 2;
     let current = panels[0].id;
@@ -798,51 +1025,58 @@ b, strong { font-weight: 600; }
     }
     navLinks.forEach(a => a.classList.toggle('on', a.dataset.go === current && current !== 'hero'));
   }
-
-  // jump to a panel
-  function go(id) {
+  function go(id, instant) {
     const el = document.getElementById(id);
     if (!el) return;
-    const top = horizontal() ? wrap.offsetTop + el.offsetLeft : el.getBoundingClientRect().top + window.scrollY - 10;
-    window.scrollTo({ top: top, behavior: 'smooth' });
+    const top = horizontal() ? wrap.offsetTop + el.offsetLeft : el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: top, behavior: instant ? 'auto' : 'smooth' });
   }
-  navLinks.forEach(a => a.addEventListener('click', e => {
+  const menu = $('#menu'), burger = $('.burger');
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-go]');
+    if (!a) return;
     e.preventDefault(); go(a.dataset.go);
     menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false');
     history.replaceState(null, '', '#' + a.dataset.go);
-  }));
-
-  // sideways trackpad swipes scroll too
-  window.addEventListener('wheel', e => {
-    if (horizontal() && Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); window.scrollBy(0, e.deltaX); }
-  }, { passive: false });
-
-  // left/right arrow keys
-  window.addEventListener('keydown', e => {
-    if (!horizontal() || e.target.closest('input,textarea')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); window.scrollBy({ top: window.innerWidth * .6, behavior: 'smooth' }); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); window.scrollBy({ top: -window.innerWidth * .6, behavior: 'smooth' }); }
   });
-
-  // draw doodles when a panel comes into view
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('seen'); });
-  }, { threshold: 0.2 });
-  panels.forEach(p => io.observe(p));
-
-  // mobile menu
-  const burger = document.querySelector('.burger'), menu = document.getElementById('menu');
   burger.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
     burger.setAttribute('aria-expanded', String(open));
   });
 
+  // switch view, keeping the reader on the same section
+  $('#viewToggle').addEventListener('click', () => {
+    const here = (navLinks.find(a => a.classList.contains('on')) || {}).dataset;
+    userVertical = !userVertical;
+    try { localStorage.setItem('view', userVertical ? 'list' : 'sideways'); } catch (e) {}
+    layout();
+    go(here ? here.go : 'hero', true);
+  });
+
+  window.addEventListener('wheel', e => {
+    if (dlg.open || !horizontal()) return;
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); window.scrollBy(0, e.deltaX); }
+  }, { passive: false });
+  window.addEventListener('keydown', e => {
+    if (dlg.open) {
+      if (e.key === 'ArrowRight') openPaper(cur + 1);
+      if (e.key === 'ArrowLeft') openPaper(cur - 1);
+      return;
+    }
+    if (!horizontal() || e.target.closest('input,textarea')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); window.scrollBy({ top: window.innerWidth * .6, behavior: 'smooth' }); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); window.scrollBy({ top: -window.innerWidth * .6, behavior: 'smooth' }); }
+  });
+
+  const io = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('seen'); }), { threshold: 0.15 });
+  panels.forEach(p => io.observe(p));
+
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', layout);
   mq.addEventListener('change', layout);
-  window.addEventListener('load', () => { layout(); if (location.hash) go(location.hash.slice(1)); });
-  document.fonts && document.fonts.ready.then(layout);
-  layout();
+  window.addEventListener('load', () => { layout(); if (location.hash) go(location.hash.slice(1), true); });
+  if (document.fonts) document.fonts.ready.then(layout);
+  render();
 })();
 </script>
 </body>
