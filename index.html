@@ -3,22 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adrita Rahman Tory — AI &amp; Cybersecurity Research</title>
-<meta name="description" content="Adrita Rahman Tory — AI and cybersecurity researcher working on intrusion detection, adversarial ML, federated learning and LLM security. Publications, preprints, CV and contact.">
-<meta property="og:title" content="Adrita Rahman Tory — AI & Cybersecurity Research">
+<title>Adrita Rahman Tory | AI Safety &amp; Security Researcher</title>
+<meta name="description" content="Adrita Rahman Tory, independent researcher in AI safety, security and alignment. 11 peer-reviewed papers on intrusion detection, adversarial ML, federated learning, LLM agent security and AI collusion. Papers, CV, essays and videos.">
+<meta property="og:title" content="Adrita Rahman Tory | AI Safety & Security Researcher">
 <meta property="og:type" content="website">
 <meta property="og:image" content="profile.jpg">
 
 
 <style>
 :root {
-  --paper:  #f7f5ef;
-  --paper2: #eeebe1;
-  --card:   #fffefb;
-  --ink:    #111111;
-  --soft:   #3d3d38;
-  --faint:  #6b6b62;
-  --pink:   #e7b9b4;
+  --paper:  #f4f8f3;
+  --paper2: #e5efe6;
+  --card:   #ffffff;
+  --ink:    #0a1f1a;
+  --soft:   #2f4741;
+  --faint:  #5d716a;
+  --forest: #0e5e4f;
+  --leaf:   #1f8f3a;
+  --mint:   #c9f0d6;
+  --blue:   #2b6bd6;
+  --navy:   #0b1f7a;
+  --wave:   linear-gradient(100deg, var(--leaf) 0%, var(--forest) 35%, var(--blue) 70%, var(--navy) 100%);
+  --pink:   var(--mint);
   --hand:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
   --mono:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
   --body:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
@@ -33,7 +39,7 @@ body {
 }
 body::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .2;
-  background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px); background-size: 22px 22px;
+  background-image: radial-gradient(rgba(14,94,79,.10) 1px, transparent 1px); background-size: 22px 22px;
 }
 a { color: inherit; }
 img { display: block; max-width: 100%; height: auto; }
@@ -64,13 +70,13 @@ button { font: inherit; color: inherit; }
 }
 .btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
 .btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
-.btn.dark { background: var(--ink); color: var(--paper); }
+.btn.dark { background: var(--forest); color: #fff; border-color: var(--forest); }
 .btn.pink { background: var(--pink); }
 .burger { display: none; }
 
 .progress { position: fixed; left: 0; right: 0; bottom: 10px; height: 18px; z-index: 40; pointer-events: none; padding: 0 28px; }
 .progress svg { width: 100%; height: 100%; overflow: visible; }
-.progress path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.progress path { fill: none; stroke: var(--leaf); stroke-width: 2; stroke-linecap: round; }
 .progress .bg { stroke: rgba(0,0,0,.12); }
 
 /* ── HORIZONTAL TRACK ────────────────── */
@@ -89,7 +95,7 @@ button { font: inherit; color: inherit; }
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--mono); font-weight: 700; text-transform: uppercase;
   font-size: 22px; letter-spacing: .06em; line-height: 1;
-  border: 2px solid var(--ink); background: var(--card); padding: 10px 16px; box-shadow: 4px 4px 0 var(--ink);
+  border: 2px solid var(--ink); background: var(--card); padding: 10px 16px; box-shadow: 4px 4px 0 var(--forest);
 }
 .label .thin { font-weight: 400; }
 .tilt-l { transform: rotate(-3deg); }
@@ -101,7 +107,7 @@ button { font: inherit; color: inherit; }
   display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .08em; padding: 2px 7px; border: 1.5px solid var(--ink); border-radius: 20px; white-space: nowrap;
 }
-.tag.pub { background: var(--ink); color: var(--paper); }
+.tag.pub { background: var(--forest); color: #fff; border-color: var(--forest); }
 .tag.pres { background: var(--card); }
 .tag.acc { background: var(--pink); }
 .tape { position: absolute; width: 90px; height: 26px; background: rgba(255,255,255,.45); border: 1px solid rgba(0,0,0,.08); z-index: 3; }
@@ -138,7 +144,7 @@ button { font: inherit; color: inherit; }
   display: inline-flex; align-items: center; gap: 14px;
   font-family: var(--mono); font-weight: 700; font-size: clamp(34px, 5vw, 66px); line-height: 1;
   border: 2.5px solid var(--ink); background: var(--card); padding: 12px 22px 14px;
-  box-shadow: 6px 6px 0 var(--ink); transform: rotate(-4deg);
+  box-shadow: 6px 6px 0 var(--forest); transform: rotate(-4deg);
 }
 .name-tag svg { width: .8em; height: .8em; }
 .surname {
@@ -151,6 +157,12 @@ button { font: inherit; color: inherit; }
 .hero-now { margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; max-width: 480px; }
 .hero-now .hand { font-size: 21px; }
 .profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; max-width: 520px; }
+.hero-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 22px; }
+.hero-stats div { display: flex; flex-direction: column; }
+.hero-stats b.word { font-size: 24px; padding-top: 8px; }
+.hero-stats b { font-size: 34px; line-height: 1; background: var(--wave); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-stats span { font-size: 13px; color: var(--soft); margin-top: 4px; max-width: 150px; line-height: 1.3; }
+.wave-bar { height: 6px; width: 120px; background: var(--wave); border-radius: 3px; margin: 26px 0 0; }
 .hero-photo { position: relative; justify-self: center; width: min(32vw, 48vh); }
 .hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 12px 12px 46px; transform: rotate(3deg); box-shadow: 6px 6px 0 rgba(0,0,0,.18); }
 .hero-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.05); transition: filter .6s; }
@@ -174,16 +186,18 @@ button { font: inherit; color: inherit; }
 .edu .meta b { color: var(--ink); }
 
 /* ── NEWS ────────────────────────────── */
-.p-news { width: 58vw; }
-.news { list-style: none; margin-top: 30px; position: relative; max-width: 620px; }
+.p-news { width: 62vw; }
+.news { list-style: none; margin-top: 26px; position: relative; max-width: 620px; }
 .news::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; border-left: 2px dashed var(--ink); }
-.news li { position: relative; padding-left: 34px; margin-bottom: 18px; font-size: 13.5px; }
+.news li { position: relative; padding-left: 34px; margin-bottom: 12px; font-size: 13.5px; }
 .news li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
-.news li.hot::before { background: var(--pink); }
+.news li.hot::before { background: var(--leaf); border-color: var(--leaf); }
 .news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
 
 /* ── RESEARCH ────────────────────────── */
-.p-research { width: 112vw; display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; }
+.p-research { display: flex; gap: 5vw; }
+.r-left { flex: 0 0 min(46vw, 720px); }
+.r-right { flex: 0 0 auto; display: flex; flex-direction: column; }
 .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 26px; margin-top: 30px; }
 .area { display: flex; gap: 14px; align-items: flex-start; }
 .area svg { flex: 0 0 52px; width: 52px; height: 52px; }
@@ -199,11 +213,11 @@ button { font: inherit; color: inherit; }
 .thesis { margin-top: 26px; max-width: 440px; }
 
 /* ── PUBLICATIONS ────────────────────── */
-.p-pubs { display: flex; flex-direction: column; }
+
 .pubs-head { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
 .chip { cursor: pointer; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 20px; background: transparent; }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.chip[aria-pressed="true"] { background: var(--forest); color: #fff; border-color: var(--forest); }
 .search { font-family: var(--body); font-size: 13px; padding: 5px 10px; border: 1.5px solid var(--ink); background: var(--card); min-width: 220px; border-radius: 3px; }
 .count { font-family: var(--hand); font-size: 20px; color: var(--soft); }
 .pub-grid {
@@ -244,8 +258,21 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .reader .cite-row h3 { margin: 0; }
 
 /* ── MENTORING ───────────────────────── */
-.p-mentor { width: 100vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
-.big-num { font-family: var(--mono); font-weight: 700; font-size: 84px; line-height: 1; }
+.p-mentor { width: 112vw; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5vw; }
+.offers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+.offer { padding: 12px 14px; }
+.offer h3 { font-size: 14.5px; line-height: 1.25; }
+.offer p { font-size: 13px; color: var(--soft); margin-top: 4px; line-height: 1.45; }
+.offer.impact { background: var(--mint); border-color: var(--forest); }
+.cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
+.cta .btn { font-size: 12.5px; padding: 8px 14px; }
+.sample-note { margin-top: 14px; font-style: italic; }
+.quotes { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.quote { padding: 12px 16px; }
+.quote .tag { float: right; margin-left: 8px; color: var(--faint); border-color: var(--faint); }
+.quote blockquote { font-style: italic; font-size: 14.5px; line-height: 1.45; }
+.quote figcaption { font-size: 12.5px; color: var(--soft); margin-top: 6px; }
+.big-num { font-family: var(--mono); font-weight: 700; font-size: 84px; line-height: 1; background: var(--wave); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .mentor-copy { font-size: 13.8px; max-width: 480px; margin-top: 10px; }
 .mentor-copy p + p { margin-top: 10px; }
 .service { margin-top: 26px; font-size: 13.8px; }
@@ -255,17 +282,21 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .workshop .card:nth-child(3) { transform: rotate(1deg); margin-left: 30px; }
 
 /* ── EXPERIENCE ──────────────────────── */
-.p-exp { width: 88vw; }
+.p-exp { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; }
+.timeline.vert { grid-template-columns: 1fr; gap: 18px; padding-left: 30px; margin-top: 30px; }
+.timeline.vert::before { left: 8px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed var(--ink); }
+.timeline.vert .tl { padding-top: 0; }
+.timeline.vert .tl::before { left: -30px; }
 .timeline { position: relative; margin-top: 46px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
 .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; border-top: 2px dashed var(--ink); }
 .tl { position: relative; padding-top: 34px; font-size: 13px; }
 .tl::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); }
-.tl.now::before { background: var(--pink); }
+.tl.now::before { background: var(--leaf); border-color: var(--leaf); }
 .tl .when { font-family: var(--hand); font-size: 22px; line-height: 1; }
 .tl h3 { font-family: var(--mono); font-size: 13.5px; margin-top: 6px; line-height: 1.3; }
 .tl .where { font-style: italic; color: var(--soft); margin-top: 3px; }
 .tl p { margin-top: 6px; color: var(--soft); }
-.exp-note { margin-top: 40px; }
+.exp-note { margin-top: 26px; }
 
 /* ── SKILLS ──────────────────────────── */
 .p-skills { width: 104vw; display: grid; grid-template-columns: 1.35fr .65fr; gap: 4vw; }
@@ -276,8 +307,25 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .certs li { margin-bottom: 11px; }
 .certs .yr { font-family: var(--hand); font-size: 19px; color: var(--soft); }
 
+/* ── VIDEOS ──────────────────────────── */
+.p-videos { width: 96vw; }
+.videos { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; max-width: 1200px; }
+.video { padding: 10px; }
+.video:nth-child(1) { transform: rotate(-.6deg); }
+.video:nth-child(2) { transform: rotate(.5deg); }
+.video .ratio { position: relative; aspect-ratio: 16/9; background: var(--wave); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video .open { display: inline-block; margin-top: 8px; font-size: 13px; }
+
+/* ── PROJECTS ────────────────────────── */
+.projects { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.projects .card { border-left: 5px solid var(--leaf); }
+.projects h3 { font-family: var(--mono); font-size: 14.5px; }
+.projects p { font-size: 13.3px; color: var(--soft); margin-top: 4px; }
+
 /* ── WRITING ─────────────────────────── */
-.p-writing { width: 62vw; }
+.p-writing { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; }
+.p-writing .label { margin-bottom: 4px; }
 .posts { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; }
 .post { display: flex; justify-content: space-between; gap: 18px; align-items: center; text-decoration: none; font-size: 13px; }
 .post:hover { background: var(--paper2); }
@@ -311,7 +359,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 }
 .vertical .p-hero { min-height: 100vh; }
 .vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-.vertical .p-news, .vertical .p-writing { width: auto; }
+.vertical .p-news, .vertical .p-writing, .vertical .p-videos { width: auto; }
+.vertical .p-research { display: block; }
+.vertical .r-right { margin-top: 44px; }
 
 @media (max-width: 1180px) {
   .burger { display: inline-flex; }
@@ -330,7 +380,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .panel > * + * { margin-top: 30px; }
   .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
   .hero-photo { width: min(78vw, 340px); margin: 40px auto 0; }
-  .areas, .skill-grid { grid-template-columns: 1fr; }
+  .areas, .skill-grid, .videos, .offers { grid-template-columns: 1fr; }
   .pub-grid { grid-template-columns: 1fr !important; }
   .search { min-width: 0; flex: 1 1 100%; }
   .timeline { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
@@ -361,11 +411,11 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <ul id="menu">
     <li><a href="#about" data-go="about">About</a></li>
     <li><a href="#news" data-go="news">News</a></li>
-    <li><a href="#research" data-go="research">Research</a></li>
-    <li><a href="#publications" data-go="publications">Papers</a></li>
+    <li><a href="#research" data-go="research">Research &amp; papers</a></li>
     <li><a href="#mentoring" data-go="mentoring">Mentoring</a></li>
-    <li><a href="#experience" data-go="experience">Work</a></li>
+    <li><a href="#experience" data-go="experience">Experience</a></li>
     <li><a href="#skills" data-go="skills">Skills</a></li>
+    <li><a href="#videos" data-go="videos">Videos</a></li>
     <li><a href="#writing" data-go="writing">Writing</a></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
   </ul>
@@ -388,7 +438,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <!-- ═══ HERO ═══ -->
 <section class="panel p-hero" id="hero">
   <div class="hero-text">
-    <p class="kicker">AI &amp; cybersecurity · research · Dhaka, Bangladesh</p>
+    <p class="kicker">Independent researcher · AI safety, security &amp; alignment · Dhaka, Bangladesh</p>
     <h1 class="sr-only">Adrita Rahman Tory</h1>
     <div class="name-tag sticker" aria-hidden="true">
       ADRITA
@@ -397,7 +447,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <div class="surname sticker" aria-hidden="true">RAHMAN TORY</div>
 
     <div class="hero-intro">
-      <p>I'm a researcher working where <b>AI</b> and <b>cybersecurity</b> meet.</p>
+      <p>I work on making <b>AI systems</b> safer: harder to attack, easier to audit, and aligned with the people they serve.</p>
+    </div>
+    <div class="hero-stats">
+      <div><b>11</b><span>peer-reviewed papers</span></div>
+      <div><b>Q1</b><span>first-author journal, Computers &amp; Security</span></div>
+      <div><b class="word">Erasmus Mundus</b><span>CyberMACS scholarship, 2026</span></div>
     </div>
     <div class="profiles">
       <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
@@ -411,7 +466,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <span class="tape"></span>
     <div class="frame">
       <img src="profile.jpg" alt="Portrait of Adrita Rahman Tory" width="800" height="984">
-      <span class="caption">hi, that's me!</span>
+      <span class="caption">hi, I'm Adrita</span>
     </div>
     <svg class="doodle hide-sm" style="left:-90px; top:20%; width:110px; height:90px" viewBox="0 0 110 90" aria-hidden="true">
       <path class="draw" pathLength="1" d="M5 70 C 25 70, 30 30, 50 30 C 70 30, 62 60, 48 55 C 36 50, 50 20, 75 22 C 95 24, 100 45, 104 55"/>
@@ -427,7 +482,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
   <div class="scroll-hint" aria-hidden="true">
     keep scrolling
-    <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#0e5e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
@@ -436,11 +491,13 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div>
     <h2 class="label tilt-l sticker">About <span class="thin">me</span></h2>
     <div class="about-copy">
-      <p>I study how AI can be used to detect cyber threats — and how AI systems themselves can be attacked. My work so far covers network intrusion detection datasets, adversarial robustness, privacy-preserving federated learning, and security for LLM agents.</p>
-      <p>Alongside research, I mentor undergraduate students at the Cyber Research Hub, BUBT, and I've spent several years teaching IT and web development.</p>
-      <p class="small"><b>Languages:</b> Bengali (native), English</p>
+      <p>I started in cybersecurity, asking whether the datasets we train intrusion detectors on actually match real attacks. That led me to a bigger question: how do we keep AI systems themselves safe and honest?</p>
+      <p>My recent work looks at detecting covert collusion between AI agents. Before that I worked on intrusion detection, adversarial robustness, privacy-preserving federated learning and prompt injection in LLM agents. I'm now moving deeper into AI safety and Effective Altruism, through BlueDot Impact's Technical AI Safety course and the Centre for Effective Altruism's Career Bootcamp.</p>
+      <p>Outside research I write essays and poetry about ethics, power and what it means to be a good person. I think those questions belong in AI safety too.</p>
+      <p class="small"><b>Languages:</b> Bengali (native), English (IELTS Academic 7.0)</p>
     </div>
     <p class="hand" style="margin-top:24px">safe AI, built with people in mind ♡</p>
+    <div class="wave-bar" aria-hidden="true"></div>
     <svg class="doodle hide-sm" style="left:5vw; bottom:70px; width:120px; height:84px" viewBox="0 0 120 84" aria-hidden="true">
       <rect class="draw" pathLength="1" x="20" y="8" width="80" height="52" rx="4"/>
       <path class="draw d2" pathLength="1" d="M6 72 L114 72 L104 62 L16 62 Z"/>
@@ -452,15 +509,15 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <h2 class="label tilt-r sticker">Education</h2>
     <div class="edu">
       <div class="card">
-        <span class="tag acc" style="float:right">ongoing</span>
+        <span class="tag acc" style="float:right">thesis submitted</span>
         <h3>Professional Master's in IT</h3>
         <p class="where">Jahangirnagar University, Savar, Dhaka</p>
-        <p class="meta">Aug 2025 – expected Sep 2026 · AQF Level 9<br><b>Thesis (ongoing):</b> Multi-Frequency Memory for IoT Intrusion Detection</p>
+        <p class="meta">Aug 2025 – 2026 · awaiting result<br><b>Thesis:</b> A Multi-Signal Evidence Framework for Open-Set Network Intrusion Detection</p>
       </div>
       <div class="card">
         <h3>B.Sc. in Computer Science &amp; Engineering</h3>
         <p class="where">Bangladesh University of Business &amp; Technology (BUBT), Dhaka</p>
-        <p class="meta">Jul 2021 – Mar 2025 · AQF Level 7 · Final grade 3.55/4.00<br><b>Capstone:</b> AI-powered career platform for university students — <a class="ulink" href="https://github.com/adritatori/bubt_internal_sns" target="_blank" rel="noopener">code ↗</a></p>
+        <p class="meta">Jul 2021 – Mar 2025 · AQF Level 7 · Final grade 3.55/4.00<br><b>Capstone:</b> AI career-matching platform for students, <a class="ulink" href="https://github.com/adritatori/bubt_internal_sns" target="_blank" rel="noopener">code ↗</a></p>
       </div>
       <div class="card">
         <h3>Diploma in Computer Engineering</h3>
@@ -479,8 +536,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <section class="panel p-news" id="news">
   <h2 class="label tilt-l sticker">Recent <span class="thin">news</span></h2>
   <ul class="news">
-    <li class="hot"><span class="when">2026</span>Three papers accepted: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
-    <li class="hot"><span class="when">2026</span>Four papers presented at ML4CS 2026 — one as first author, three with students I mentor and colleagues.</li>
+    <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
+    <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
+    <li class="hot"><span class="when">2026</span>Awarded the Erasmus Mundus CyberMACS Scholarship.</li>
+    <li><span class="when">2026</span>Submitted my master's thesis. Joined the Centre for Effective Altruism's Career Bootcamp.</li>
+    <li><span class="when">2026</span>Three papers accepted: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
+    <li class="hot"><span class="when">2026</span>Four papers presented at ML4CS 2026: one as first author, three with students I mentor and colleagues.</li>
     <li><span class="when">2025</span>Two journal articles published: <i>Computers &amp; Security</i> and <i>Education Sciences</i> (MDPI).</li>
     <li><span class="when">2025</span>Papers presented at ICBDIML 2025 and ISSOTL 2025. Peer reviewer for COMPAS 2025.</li>
     <li><span class="when">Aug 2025</span>Started a Professional Master's in IT at Jahangirnagar University.</li>
@@ -492,10 +553,10 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </svg>
 </section>
 
-<!-- ═══ RESEARCH ═══ -->
+<!-- ═══ RESEARCH + PAPERS ═══ -->
 <section class="panel p-research" id="research">
-  <div>
-    <h2 class="label tilt-l sticker">What I <span class="thin">work on</span></h2>
+  <div class="r-left">
+    <h2 class="label tilt-l sticker">Research</h2>
     <div class="areas">
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M26 4 L44 11 L44 26 C 44 38, 35 45, 26 48 C 17 45, 8 38, 8 26 L8 11 Z"/><path d="M18 26 L24 32 L35 20"/></svg>
@@ -514,50 +575,27 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       </div>
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M6 8 L46 8 L46 34 L22 34 L12 44 L12 34 L6 34 Z"/><rect x="20" y="19" width="12" height="9" rx="1.5"/><path d="M22 19 L22 16 C 22 12, 30 12, 30 16 L30 19"/></svg>
-        <div><h3>LLM &amp; agent security</h3><p>Prompt injection and AI threat modelling for LLM agents.</p>
+        <div><h3>LLM &amp; agent security</h3><p>Prompt injection, AI threat modelling, and covert collusion between AI agents.</p>
           <p class="see"><button type="button" data-topic="llm">see related papers →</button></p></div>
       </div>
     </div>
-    <div class="thesis card tilt-r">
-      <p class="kicker" style="margin-bottom:4px">master's thesis · ongoing</p>
-      <p style="font-family:var(--mono); font-weight:700; font-size:13.5px">Multi-Frequency Memory for IoT Intrusion Detection</p>
-    </div>
-  </div>
-
-  <div>
-    <h2 class="label tilt-r sticker">Research <span class="thin">roles</span></h2>
-    <div class="roles">
-      <div class="role card">
-        <h3>University Research Assistant</h3>
-        <p class="where">Bangladesh University of Business &amp; Technology</p>
-        <p class="meta">May 2025 – Aug 2026 · supervised by Md. Saiful Rahman (BUBT)</p>
-        <ul class="star-list">
-          <li>Research on AI-based cyber threat detection and adversarial AI, including experimental evaluations.</li>
-          <li>Contributed to papers: figures, summarising findings, writing and documentation.</li>
-          <li>Ran workshops and one-on-one mentoring for undergraduate students in cybersecurity.</li>
-        </ul>
+    <p class="kicker" style="margin-top:30px">things I built</p>
+    <div class="projects">
+      <div class="card">
+        <h3>Collusion Evidence Lab <span class="small">· Apart Research sprint · Oct 2026</span></h3>
+        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. Includes a free browser tool so a human reviewer makes the final call.</p>
+        <p><a class="ulink" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></p>
       </div>
-      <div class="role card">
-        <h3>Research Assistant</h3>
-        <p class="where">Cyber Research Hub, BUBT</p>
-        <p class="meta">Jul 2024 – Jul 2026 · supervised by Dr. Khondokar Fida Hasan (UNSW)</p>
-        <ul class="star-list">
-          <li>Supported research on privacy-preserving 6G infrastructure, federated learning, and explainable, trustworthy AI in cybersecurity; ran evaluations and helped build prototypes.</li>
-          <li>Helped keep research activities in line with privacy, governance and policy requirements.</li>
-        </ul>
+      <div class="card">
+        <h3>IDS/IPS Dataset Scoring Tool <span class="small">· 2026</span></h3>
+        <p>Turns my Computers &amp; Security paper into a free browser tool: pick an industry, and it scores 10 well-known intrusion-detection datasets, or your own, on how well they cover that industry's real threats.</p>
+        <p><a class="ulink" href="https://github.com/adritatori/MITRE-ATT-CK-IDS-IPS-dataset-Framewor" target="_blank" rel="noopener">GitHub ↗</a></p>
       </div>
     </div>
   </div>
-  <svg class="doodle float hide-sm" style="left:46%; top:calc(var(--navh) + 24px); width:60px; height:60px" viewBox="0 0 60 60" aria-hidden="true">
-    <circle class="draw" pathLength="1" cx="24" cy="24" r="16"/>
-    <path class="draw d2" pathLength="1" d="M36 36 L54 54"/>
-  </svg>
-</section>
-
-<!-- ═══ PUBLICATIONS ═══ -->
-<section class="panel p-pubs" id="publications">
+  <div class="r-right" id="publications">
   <div class="pubs-head">
-    <h2 class="label tilt-l sticker">Publications</h2>
+    <h2 class="label tilt-r sticker">Papers</h2>
     <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
   </div>
   <div class="toolbar" role="group" aria-label="Filter publications">
@@ -572,83 +610,104 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
   <div class="pub-grid" id="pubGrid"></div>
   <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
+  </div>
 </section>
 
-<!-- ═══ MENTORING & SERVICE ═══ -->
+<!-- ═══ MENTORING ═══ -->
 <section class="panel p-mentor" id="mentoring">
   <div>
-    <h2 class="label tilt-l sticker">Students <span class="thin">I mentor</span></h2>
-    <div style="display:flex; align-items:flex-end; gap:14px; margin-top:28px">
-      <span class="big-num">11</span>
-      <span class="hand" style="padding-bottom:8px">undergraduate researchers<br>at Cyber Research Hub, BUBT</span>
-    </div>
+    <h2 class="label tilt-l sticker">Mentoring <span class="thin">&amp; research support</span></h2>
+    <p class="hand" style="margin-top:18px">for students and early researchers who want to do real research</p>
     <div class="mentor-copy">
-      <p>I guide undergraduate students on cybersecurity and AI research projects — research methodology, literature review, experiments and academic writing.</p>
-      <p>Their topics include network security, quantum machine learning, AI security, adversarial machine learning and trustworthy AI. Three papers from this work have been accepted at international conferences (adversarial detection, NIDS dataset coverage with multi-LLM consensus, and healthcare cyber-threat modelling).</p>
+      <p>I help people go from a vague interest to a research question they can actually answer, and from there to a first paper or a first job. I don't hand out topics. I help you think: what is the real problem, why does it matter, and what evidence would change your mind?</p>
     </div>
-    <svg class="doodle wiggle hide-sm" style="left:30%; top:calc(var(--navh) + 98px); width:60px; height:70px" viewBox="0 0 60 70" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M30 66 L30 30"/>
-      <path class="draw d2" pathLength="1" d="M30 38 C 14 38, 8 26, 8 16 C 22 16, 30 24, 30 38"/>
-      <path class="draw d3" pathLength="1" d="M30 30 C 44 30, 52 20, 52 8 C 38 8, 30 16, 30 30"/>
-    </svg>
+    <p class="kicker" style="margin-top:22px">how I can help</p>
+    <div class="offers">
+      <div class="card offer"><h3>Finding your research question</h3><p>Turning an observation or interest into a focused, answerable question, and spotting real gaps in the literature.</p></div>
+      <div class="card offer"><h3>Understanding the problem deeply</h3><p>Thinking critically about a topic: the hidden assumptions, what has been tried, and why it fell short.</p></div>
+      <div class="card offer"><h3>Methods &amp; experiments</h3><p>Choosing datasets and baselines, designing experiments, and reading results honestly, including the negative ones.</p></div>
+      <div class="card offer"><h3>Writing your first paper</h3><p>Structure, figures and framing, picking a venue, and responding to reviewers.</p></div>
+      <div class="card offer"><h3>Your first job or position</h3><p>CVs and research statements, and planning a path into cybersecurity or AI safety research.</p></div>
+      <div class="card offer impact"><h3>Impact so far</h3><p>Students I mentored have published their first research papers at international conferences, on adversarial detection, dataset coverage with multi-LLM consensus, and healthcare cyber-threat modelling.</p></div>
+    </div>
+    <div class="cta">
+      <a class="btn dark" href="mailto:adritatori456@gmail.com?subject=Mentoring%20request">Ask me for mentoring →</a>
+      <span class="small">Tell me about your topic and where you're stuck.</span>
+    </div>
   </div>
 
   <div>
-    <h2 class="label tilt-r sticker">Service</h2>
-    <ul class="star-list service">
-      <li>Peer reviewer — COMPAS 2025, IEEE Computer Society Bangladesh Chapter</li>
-      <li>Subreviewer / external reviewer — STI 2024</li>
-    </ul>
-    <div class="workshop">
-      <p class="kicker">workshops I designed &amp; ran for CSE students at BUBT</p>
-      <div class="card">“Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</div>
-      <div class="card">“From Observation to Research Question” — finding research gaps and scoping a thesis or paper</div>
+    <h2 class="label tilt-r sticker">What students <span class="thin">say</span></h2>
+    <!-- SAMPLE TESTIMONIALS: placeholder text only. Replace with real reviews before publishing. -->
+    <p class="small sample-note">Sample reviews: placeholder text, to be replaced with real ones.</p>
+    <div class="quotes">
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Adrita helped me turn a messy idea into a clear research question. She kept asking “why does this matter?” until I actually knew.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>I had never written a paper before. She walked me through experiments, figures and reviewer comments, and our paper got accepted.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Beyond research, she helped me think about my career and prepare for my first job in cybersecurity.</blockquote><figcaption>Student name · CSE graduate</figcaption></figure>
     </div>
-    <svg class="doodle float hide-sm" style="right:5vw; bottom:70px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M6 38 C 10 14, 70 14, 74 38 C 66 32, 56 32, 50 38 C 46 32, 34 32, 30 38 C 24 32, 14 32, 6 38 Z"/>
-      <path class="draw d2" pathLength="1" d="M40 20 L40 66 C 40 74, 30 74, 30 66"/>
-    </svg>
+    <p class="kicker" style="margin-top:26px">workshops &amp; service</p>
+    <ul class="star-list service">
+      <li>Workshop: “From Observation to Research Question”, on finding research gaps and scoping a thesis or paper</li>
+      <li>Workshop: “Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</li>
+      <li>Peer reviewer, COMPAS 2025 (IEEE Computer Society Bangladesh Chapter); subreviewer, STI 2024 and STI 2025</li>
+    </ul>
   </div>
 </section>
 
 <!-- ═══ EXPERIENCE ═══ -->
 <section class="panel p-exp" id="experience">
-  <h2 class="label tilt-l sticker">Work <span class="thin">experience</span></h2>
-  <div class="timeline">
-    <div class="tl">
-      <span class="when">2019 – 2022</span>
-      <h3>Guest Trainer, IT &amp; Web Development</h3>
-      <p class="where">Ideal Institute of Technology, Rishda Bangladesh, Kaizen IT Ltd, Technical Teachers' Training College, New Trizon IT</p>
-      <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
-    </div>
-    <div class="tl">
-      <span class="when">Mar 2020 – Jun 2021</span>
-      <h3>RPL/RTO Trainer</h3>
-      <p class="where">Bangladesh Technical Education Board, Dhaka</p>
-    </div>
-    <div class="tl">
-      <span class="when">Jul – Dec 2022</span>
-      <h3>Intern, Software Engineering</h3>
-      <p class="where">Sun Co. Ltd., Dhaka</p>
-    </div>
-    <div class="tl">
-      <span class="when">Jan 2023 – Jul 2024</span>
-      <h3>Software Engineer (part-time)</h3>
-      <p class="where">Sun Co. Ltd., Dhaka</p>
-    </div>
-    <div class="tl now">
-      <span class="when">2024 – 2026</span>
-      <h3>Research roles</h3>
-      <p class="where">BUBT &amp; Cyber Research Hub</p>
-      <p><a class="ulink" href="#research" data-go="research">see the research section</a></p>
+  <div>
+    <h2 class="label tilt-l sticker">Research <span class="thin">roles</span></h2>
+    <div class="roles">
+      <div class="role card">
+        <h3>University Research Assistant</h3>
+        <p class="where">Bangladesh University of Business &amp; Technology</p>
+        <p class="meta">May 2025 – Aug 2026 · supervised by Md. Saiful Rahman (BUBT)</p>
+        <ul class="star-list">
+          <li>Research on AI-based cyber threat detection and adversarial AI, including experimental evaluations.</li>
+          <li>Contributed to papers: figures, summarising findings, writing and documentation.</li>
+          <li>Built research capacity in cybersecurity through workshops and one-on-one mentoring.</li>
+        </ul>
+      </div>
+      <div class="role card">
+        <h3>Research Assistant</h3>
+        <p class="where">Cyber Research Hub, BUBT</p>
+        <p class="meta">Jul 2024 – Jul 2026 · supervised by Dr. Khondokar Fida Hasan (UNSW)</p>
+        <ul class="star-list">
+          <li>Supported research on privacy-preserving 6G infrastructure, federated learning, and explainable, trustworthy AI in cybersecurity; ran evaluations and helped build prototypes.</li>
+          <li>Kept research activities in line with privacy, governance and policy requirements across Australian and global contexts.</li>
+          <li>Mentored undergraduate researchers on methods, experiments and writing, several of whom have now published their first papers.</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <p class="hand exp-note">teaching → software → research</p>
-  <svg class="doodle hide-sm" style="right:6vw; bottom:80px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
-    <path class="draw" pathLength="1" d="M14 34 L62 34 L56 72 L20 72 Z"/>
-    <path class="draw d2" pathLength="1" d="M60 42 C 74 42, 74 58, 58 58"/>
-    <path class="draw d3 float" pathLength="1" d="M30 26 C 26 20, 34 16, 30 8 M42 26 C 38 20, 46 16, 42 8"/>
-  </svg>
+  <div>
+    <h2 class="label tilt-r sticker">Earlier <span class="thin">work</span></h2>
+  <div class="timeline vert">
+      <div class="tl">
+        <span class="when">Jan 2023 – Jul 2024</span>
+        <h3>Software Engineer (part-time)</h3>
+        <p class="where">Sun Co. Ltd., Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">Jul – Dec 2022</span>
+        <h3>Intern, Software Engineering</h3>
+        <p class="where">Sun Co. Ltd., Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">Mar 2020 – Jun 2021</span>
+        <h3>RPL/RTO Trainer</h3>
+        <p class="where">Bangladesh Technical Education Board, Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">2019 – 2022</span>
+        <h3>Guest Trainer, IT &amp; Web Development</h3>
+        <p class="where">Ideal Institute of Technology, Rishda Bangladesh, Kaizen IT Ltd, Technical Teachers' Training College, New Trizon IT</p>
+        <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
+      </div>
+    </div>
+    <p class="hand exp-note">teaching → software → research</p>
+  </div>
 </section>
 
 <!-- ═══ SKILLS & CERTS ═══ -->
@@ -675,13 +734,19 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     </div>
   </div>
   <div>
-    <h2 class="label tilt-r sticker">Certificates</h2>
+    <h2 class="label tilt-r sticker">Awards <span class="thin">&amp; courses</span></h2>
     <ul class="star-list certs">
-      <li>CompTIA Security+ — CompTIA <span class="yr">2025</span></li>
-      <li>Cisco Network Security: Intrusion Detection and Prevention (Lisa Bock) — LinkedIn Learning <span class="yr">2026</span></li>
-      <li>RAG, AI Apps, and AI Agents for Cybersecurity and Networking (Pearson, Omar Santos) — LinkedIn Learning <span class="yr">2026</span></li>
-      <li>National Certificate-IV in CBT&amp;A Methodology for Trainers &amp; Assessors — BTEB <span class="yr">2021</span></li>
-      <li>IT Essentials — Cisco <span class="yr">2020</span></li>
+      <li><b>Erasmus Mundus CyberMACS Scholarship</b> <span class="yr">2026</span></li>
+      <li>Technical AI Safety, BlueDot Impact <span class="yr">Oct 2026</span></li>
+      <li>Career Bootcamp, Centre for Effective Altruism <span class="yr">2026</span></li>
+    </ul>
+    <p class="kicker" style="margin-top:22px">certificates</p>
+    <ul class="star-list certs" style="margin-top:12px">
+      <li>CompTIA Security+, CompTIA <span class="yr">2025</span></li>
+      <li>Cisco Network Security: Intrusion Detection and Prevention (Lisa Bock), LinkedIn Learning <span class="yr">2026</span></li>
+      <li>RAG, AI Apps, and AI Agents for Cybersecurity and Networking (Pearson, Omar Santos), LinkedIn Learning <span class="yr">2026</span></li>
+      <li>National Certificate-IV in CBT&amp;A Methodology for Trainers &amp; Assessors, BTEB <span class="yr">2021</span></li>
+      <li>IT Essentials, Cisco <span class="yr">2020</span></li>
     </ul>
     <svg class="doodle wiggle hide-sm" style="right:5vw; bottom:76px; width:70px; height:70px" viewBox="0 0 70 70" aria-hidden="true">
       <path class="draw" pathLength="1" d="M46 8 C 36 6, 28 16, 32 26 L8 50 C 4 54, 10 62, 16 58 L40 34 C 50 38, 60 30, 58 20 L50 28 L42 24 L40 16 Z"/>
@@ -689,26 +754,59 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
 </section>
 
+<!-- ═══ VIDEOS ═══ -->
+<section class="panel p-videos" id="videos">
+  <h2 class="label tilt-l sticker">Videos</h2>
+  <p class="hand" style="margin-top:20px">not only work: some of the things I think about</p>
+  <div class="videos">
+    <div class="video card">
+      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/HXu6mz04zis" title="Video by Adrita Rahman Tory (1)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <a class="ulink open" href="https://youtu.be/HXu6mz04zis" target="_blank" rel="noopener">watch on YouTube ↗</a>
+    </div>
+    <div class="video card">
+      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/bVgI4DhTupk" title="Video by Adrita Rahman Tory (2)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <a class="ulink open" href="https://youtu.be/bVgI4DhTupk" target="_blank" rel="noopener">watch on YouTube ↗</a>
+    </div>
+  </div>
+  <p class="small" style="margin-top:22px">More on my <a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube channel (Cyber Golpo)</a></p>
+</section>
+
 <!-- ═══ WRITING ═══ -->
 <section class="panel p-writing" id="writing">
-  <h2 class="label tilt-l sticker">Writing <span class="thin">&amp; videos</span></h2>
-  <p class="small" style="margin-top:22px; max-width:480px">Some things I've written up while learning, on Medium. A few are in Bengali.</p>
-  <div class="posts">
-    <a class="post card" href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener">
-      <span><span class="kicker">DevOps</span><br><span class="ttl">Docker পর্ব ১ — Container Technology Fundamentals</span></span><span class="arrow">↗</span>
-    </a>
-    <a class="post card" href="https://medium.com/@radrita245/algorithmic-elegance-bresenhams-line-and-midpoint-circle-in-python-graphics-0989d439d86b" target="_blank" rel="noopener">
-      <span><span class="kicker">Graphics</span><br><span class="ttl">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python</span></span><span class="arrow">↗</span>
-    </a>
-    <a class="post card" href="https://medium.com/@radrita245/understanding-bayes-decision-rules-with-a-loss-function-deacbf70dbda" target="_blank" rel="noopener">
-      <span><span class="kicker">Machine learning</span><br><span class="ttl">Understanding Bayes Decision Rules with a Loss Function</span></span><span class="arrow">↗</span>
-    </a>
+  <div>
+    <h2 class="label tilt-l sticker">Essays <span class="thin">&amp; reflections</span></h2>
+    <p class="small" style="margin-top:22px; max-width:480px">On ethics, power, poetry and being a person.</p>
+    <div class="posts">
+      <a class="post card" href="https://medium.com/@radrita245/to-be-a-fake-person-or-not-to-be-fake-person-the-ethics-of-feeling-and-doing-4c1f0fa19e45" target="_blank" rel="noopener">
+        <span><span class="kicker">Ethics</span><br><span class="ttl">To Be a Fake Person or Not to Be a Fake Person: The Ethics of Feeling and Doing</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/why-good-people-choose-power-over-wisdom-310afc0d0264" target="_blank" rel="noopener">
+        <span><span class="kicker">Power</span><br><span class="ttl">Why Good People Choose Power Over Wisdom</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/so-you-asked-whats-about-poetry-and-writing-c931dc30df97" target="_blank" rel="noopener">
+        <span><span class="kicker">Writing</span><br><span class="ttl">So You Asked What's About Poetry and Writing</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/the-extinction-78310cb5da43" target="_blank" rel="noopener">
+        <span><span class="kicker">Reflection</span><br><span class="ttl">The Extinction</span></span><span class="arrow">↗</span>
+      </a>
+    </div>
   </div>
-  <p class="small" style="margin-top:22px">More on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a> · videos on <a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube (Cyber Golpo)</a></p>
-  <svg class="doodle float hide-sm" style="right:4vw; top:calc(var(--navh) + 30px); width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
-    <path class="draw" pathLength="1" d="M58 8 L72 22 L28 66 L10 70 L14 52 Z"/>
-    <path class="draw d2" pathLength="1" d="M50 16 L64 30 M14 52 L28 66"/>
-  </svg>
+  <div>
+    <h2 class="label tilt-r sticker">Technical <span class="thin">notes</span></h2>
+    <p class="small" style="margin-top:22px; max-width:480px">Things I wrote up while learning. Some are in Bengali.</p>
+    <div class="posts">
+      <a class="post card" href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener">
+        <span><span class="kicker">DevOps</span><br><span class="ttl">Docker পর্ব ১: Container Technology Fundamentals</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/algorithmic-elegance-bresenhams-line-and-midpoint-circle-in-python-graphics-0989d439d86b" target="_blank" rel="noopener">
+        <span><span class="kicker">Graphics</span><br><span class="ttl">Algorithmic Elegance: Bresenham's Line and Midpoint Circle in Python</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/understanding-bayes-decision-rules-with-a-loss-function-deacbf70dbda" target="_blank" rel="noopener">
+        <span><span class="kicker">Machine learning</span><br><span class="ttl">Understanding Bayes Decision Rules with a Loss Function</span></span><span class="arrow">↗</span>
+      </a>
+    </div>
+    <p class="small" style="margin-top:22px">All posts on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
+  </div>
 </section>
 
 <!-- ═══ CONTACT ═══ -->
@@ -722,7 +820,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
   <div>
     <h2 class="label tilt-r sticker">Connect <span class="thin">with me</span></h2>
-    <p class="hand" style="margin-top:20px">happy to talk about research, collaborations, or mentoring.</p>
+    <p class="hand" style="margin-top:20px">open to research roles, collaborations and good conversations.</p>
     <ul class="links">
       <li><span class="k">Email</span><span><a class="ulink" href="mailto:adritatori456@gmail.com">adritatori456@gmail.com</a><button class="copy-mail" type="button" data-copy="adritatori456@gmail.com">copy</button></span></li>
       <li><span class="k">CV</span><a class="ulink" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">download PDF ↓</a></li>
@@ -782,16 +880,16 @@ const PUBS = [
     id: 'ids-framework', type: 'journal', status: 'published', year: 2025, topics: ['ids'],
     title: 'An Evaluation Framework for Network IDS/IPS Datasets: Leveraging MITRE ATT&CK and Industry Relevance Metrics',
     authors: ['Tory, A. R.', 'Hasan, K. F.'],
-    venue: 'Computers & Security',
-    summary: 'Most IDS/IPS research judges datasets by model accuracy. This paper proposes a way to judge them by how well they reflect the threats a specific industry actually faces, using MITRE ATT&CK and five metrics. Applied to nine public datasets, it found clear gaps in threat coverage — especially for healthcare, energy and finance.',
+    venue: 'Computers & Security', rank: 'Q1 · IF 6.8',
+    summary: 'Most IDS/IPS research judges datasets by model accuracy. This paper proposes a way to judge them by how well they reflect the threats a specific industry actually faces, using MITRE ATT&CK and five metrics. Applied to nine public datasets, it found clear gaps in threat coverage, especially for healthcare, energy and finance.',
     links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2511.12743' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2511.12743' }]
   },
   {
     id: 'game-on', type: 'journal', status: 'published', year: 2025, topics: [],
     title: 'Game On: A Developmental Approach to Cyber Escape Room for Cybersecurity Governance and Policy Education',
     authors: ['Hasan, K. F.', 'Hughes, W.', 'Tory, A. R.', 'Campbell, C.', 'Turkay, S.'],
-    venue: 'Education Sciences (MDPI)', doi: '10.3390/educsci16010133',
-    summary: 'Describes the design and evaluation of a 3D virtual escape room for teaching cybersecurity governance and policy. Students move through three zones — analysing cyber risks, aligning security frameworks, and drafting policies. A student survey was used to evaluate it.',
+    venue: 'Education Sciences (MDPI)', rank: 'Q1 · IF 3.5', doi: '10.3390/educsci16010133',
+    summary: 'Describes the design and evaluation of a 3D virtual escape room for teaching cybersecurity governance and policy. Students move through three zones: analysing cyber risks, aligning security frameworks, and drafting policies. A student survey was used to evaluate it.',
     links: [{ label: 'Journal page', url: 'https://www.mdpi.com/2227-7102/16/1/133' }, { label: 'DOI', url: 'https://doi.org/10.3390/educsci16010133' }, { label: 'Preprint', url: 'https://doi.org/10.20944/preprints202512.2539.v1' }]
   },
   {
@@ -849,7 +947,7 @@ const PUBS = [
     title: 'Preprocessing Failure and Adversarial Detection in Depthwise-Separable Edge Vision Systems',
     authors: ['Mukta, J. S.', 'Sanjida, R.', 'Tory, A. R.', 'Rahman, M. S.', 'Hasan, K. F.'],
     venue: 'ML4CS 2026',
-    summary: 'Preprocessing defenses are often recommended for edge devices. This paper finds they recover poorly on depthwise-separable CNNs — but the same change in outputs can be used to detect adversarial inputs. Tested on three architectures and one attack family.',
+    summary: 'Preprocessing defenses are often recommended for edge devices. This paper finds they recover poorly on depthwise-separable CNNs, but the same change in outputs can be used to detect adversarial inputs. Tested on three architectures and one attack family.',
     links: [{ label: 'arXiv preprint', url: 'https://arxiv.org/abs/2609.03453' }, { label: 'PDF', url: 'https://arxiv.org/pdf/2609.03453' }]
   },
   {
@@ -936,12 +1034,12 @@ const PUBS = [
         '<div class="tags"><span class="tag ' + statusTag[p.status] + '">' + p.status + '</span><span class="tag">' + p.type + '</span></div>' +
         '<p class="title">' + esc(p.title) + '</p>' +
         '<p class="authors">' + authorsHTML(p.authors) + ' (' + p.year + ')</p>' +
-        '<p class="venue">' + esc(p.venue) + '</p>' +
+        '<p class="venue">' + esc(p.venue) + (p.rank ? ' <span class="tag acc">' + esc(p.rank) + '</span>' : '') + '</p>' +
         '<div class="acts">' +
           '<button class="btn pink" type="button" data-open="' + i + '">' + (p.summary ? 'read summary' : 'details') + '</button>' +
           (pdf ? '<a class="btn" href="' + esc(pdf.url) + '" target="_blank" rel="noopener">' + esc(pdf.label === 'PDF' ? 'PDF' : pdf.label) + ' ↗</a>' : '<span class="none">public version not out yet</span>') +
         '</div></article>';
-    }).join('') || '<p class="empty">nothing matches that — try another word?</p>';
+    }).join('') || '<p class="empty">nothing matches that, try another word?</p>';
     count.textContent = visible.length === PUBS.length ? PUBS.length + ' papers' : 'showing ' + visible.length + ' of ' + PUBS.length;
     layout();
   }
@@ -966,7 +1064,7 @@ const PUBS = [
     $('#rTags').innerHTML = '<span class="tag ' + statusTag[p.status] + '">' + p.status + '</span><span class="tag">' + p.type + '</span>';
     $('#rTitle').textContent = p.title;
     $('#rAuthors').innerHTML = authorsHTML(p.authors) + ' (' + p.year + ')';
-    $('#rVenue').textContent = p.venue;
+    $('#rVenue').textContent = p.venue + (p.rank ? ' (' + p.rank + ')' : '');
     $('#rSummary').textContent = p.summary || 'This paper has been accepted and a public version is not available yet. The summary and link will be added once it is out.';
     $('#rNote').textContent = p.summary ? 'Short summary in plain words. Please read the paper for the full details.' : '';
     $('#rLinks').innerHTML = (p.links && p.links.length)
@@ -1019,7 +1117,8 @@ const PUBS = [
   function go(id, instant) {
     const el = document.getElementById(id);
     if (!el) return;
-    const top = horizontal() ? wrap.offsetTop + el.offsetLeft : el.getBoundingClientRect().top + window.scrollY;
+    const pad = el.classList.contains('panel') ? 0 : window.innerWidth * 0.05;
+    const top = horizontal() ? wrap.offsetTop + (el.getBoundingClientRect().left - track.getBoundingClientRect().left) - pad : el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('panel') ? 0 : 70);
     window.scrollTo({ top: top, behavior: instant ? 'auto' : 'smooth' });
   }
   const menu = $('#menu'), burger = $('.burger');
