@@ -9,33 +9,30 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="profile.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --paper:  #d9d9cb;
-  --paper2: #cfd0bf;
-  --card:   #e8e8dc;
-  --ink:    #1f1f1f;
-  --soft:   #46463f;
-  --faint:  #6f6f64;
+  --paper:  #f7f5ef;
+  --paper2: #eeebe1;
+  --card:   #fffefb;
+  --ink:    #111111;
+  --soft:   #3d3d38;
+  --faint:  #6b6b62;
   --pink:   #e7b9b4;
-  --hand:   'Caveat', cursive;
-  --mono:   'Space Mono', ui-monospace, monospace;
-  --body:   'IBM Plex Mono', ui-monospace, monospace;
+  --hand:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
+  --mono:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
+  --body:   'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif;
   --navh:   58px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 15.5px; }
+html { font-size: 17.5px; }
 body {
   background: var(--paper); color: var(--ink);
-  font-family: var(--body); line-height: 1.6;
+  font-family: var(--body); line-height: 1.55;
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
 body::before {
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .2;
   background-image: radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px); background-size: 22px 22px;
 }
 a { color: inherit; }
@@ -97,7 +94,7 @@ button { font: inherit; color: inherit; }
 .label .thin { font-weight: 400; }
 .tilt-l { transform: rotate(-3deg); }
 .tilt-r { transform: rotate(2.5deg); }
-.hand { font-family: var(--hand); font-size: 24px; line-height: 1.1; color: var(--soft); }
+.hand { font-style: italic; font-family: var(--hand); font-size: 24px; line-height: 1.1; color: var(--soft); }
 .small { font-size: 13px; color: var(--soft); }
 .kicker { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--soft); }
 .tag {
@@ -149,7 +146,7 @@ button { font: inherit; color: inherit; }
   font-family: var(--mono); font-size: clamp(20px, 2.5vw, 32px); letter-spacing: .08em;
   border: 2px solid var(--ink); background: var(--paper); padding: 8px 18px; transform: rotate(5deg);
 }
-.hero-intro { max-width: 480px; margin-top: 30px; font-size: 14px; }
+.hero-intro { max-width: 480px; margin-top: 30px; font-size: 20px; }
 .hero-intro p + p { margin-top: 10px; }
 .hero-now { margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; max-width: 480px; }
 .hero-now .hand { font-size: 21px; }
@@ -400,18 +397,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <div class="surname sticker" aria-hidden="true">RAHMAN TORY</div>
 
     <div class="hero-intro">
-      <p>I'm a researcher working where <b>AI</b> and <b>cybersecurity</b> meet — mostly intrusion detection, adversarial machine learning, federated learning and LLM security.</p>
-      <p>I have a B.Sc. in Computer Science &amp; Engineering and I'm currently doing a Professional Master's in IT at Jahangirnagar University.</p>
-    </div>
-    <div class="hero-now">
-      <span class="tag acc">now</span>
-      <span class="hand">writing my master's thesis on multi-frequency memory for IoT intrusion detection</span>
+      <p>I'm a researcher working where <b>AI</b> and <b>cybersecurity</b> meet.</p>
     </div>
     <div class="profiles">
       <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
-      <a class="btn" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">ResearchGate ↗</a>
       <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn" href="https://www.linkedin.com/in/adrita-rahman-tory" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn pink" href="#publications" data-go="publications">Read my papers →</a>
     </div>
   </div>
@@ -436,7 +427,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
   <div class="scroll-hint" aria-hidden="true">
     keep scrolling
-    <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
@@ -737,7 +728,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <li><span class="k">CV</span><a class="ulink" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">download PDF ↓</a></li>
       <li><span class="k">Scholar</span><a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a></li>
       <li><span class="k">ResearchGate</span><a class="ulink" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">researchgate.net/profile/Adrita-Rahman-Tory</a></li>
-      <li><span class="k">LinkedIn</span><a class="ulink" href="https://www.linkedin.com/in/adrita-rahman-tory" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman-tory</a></li>
+      <li><span class="k">LinkedIn</span><a class="ulink" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman</a></li>
       <li><span class="k">GitHub</span><a class="ulink" href="https://github.com/adritatori" target="_blank" rel="noopener">github.com/adritatori</a></li>
       <li><span class="k">Based in</span><span>Dhaka, Bangladesh</span></li>
     </ul>
