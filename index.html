@@ -159,6 +159,7 @@ button { font: inherit; color: inherit; }
 .profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; max-width: 520px; }
 .hero-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 22px; }
 .hero-stats div { display: flex; flex-direction: column; }
+.hero-stats b.word { font-size: 24px; padding-top: 8px; }
 .hero-stats b { font-size: 34px; line-height: 1; background: var(--wave); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-stats span { font-size: 13px; color: var(--soft); margin-top: 4px; max-width: 150px; line-height: 1.3; }
 .wave-bar { height: 6px; width: 120px; background: var(--wave); border-radius: 3px; margin: 26px 0 0; }
@@ -194,7 +195,9 @@ button { font: inherit; color: inherit; }
 .news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
 
 /* ── RESEARCH ────────────────────────── */
-.p-research { width: 112vw; display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; }
+.p-research { display: flex; gap: 5vw; }
+.r-left { flex: 0 0 min(46vw, 720px); }
+.r-right { flex: 0 0 auto; display: flex; flex-direction: column; }
 .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 26px; margin-top: 30px; }
 .area { display: flex; gap: 14px; align-items: flex-start; }
 .area svg { flex: 0 0 52px; width: 52px; height: 52px; }
@@ -210,7 +213,7 @@ button { font: inherit; color: inherit; }
 .thesis { margin-top: 26px; max-width: 440px; }
 
 /* ── PUBLICATIONS ────────────────────── */
-.p-pubs { display: flex; flex-direction: column; }
+
 .pubs-head { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 22px; }
 .chip { cursor: pointer; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 20px; background: transparent; }
@@ -255,7 +258,20 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .reader .cite-row h3 { margin: 0; }
 
 /* ── MENTORING ───────────────────────── */
-.p-mentor { width: 100vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
+.p-mentor { width: 112vw; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5vw; }
+.offers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+.offer { padding: 12px 14px; }
+.offer h3 { font-size: 14.5px; line-height: 1.25; }
+.offer p { font-size: 13px; color: var(--soft); margin-top: 4px; line-height: 1.45; }
+.offer.impact { background: var(--mint); border-color: var(--forest); }
+.cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
+.cta .btn { font-size: 12.5px; padding: 8px 14px; }
+.sample-note { margin-top: 14px; font-style: italic; }
+.quotes { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.quote { padding: 12px 16px; }
+.quote .tag { float: right; margin-left: 8px; color: var(--faint); border-color: var(--faint); }
+.quote blockquote { font-style: italic; font-size: 14.5px; line-height: 1.45; }
+.quote figcaption { font-size: 12.5px; color: var(--soft); margin-top: 6px; }
 .big-num { font-family: var(--mono); font-weight: 700; font-size: 84px; line-height: 1; background: var(--wave); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .mentor-copy { font-size: 13.8px; max-width: 480px; margin-top: 10px; }
 .mentor-copy p + p { margin-top: 10px; }
@@ -266,7 +282,11 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .workshop .card:nth-child(3) { transform: rotate(1deg); margin-left: 30px; }
 
 /* ── EXPERIENCE ──────────────────────── */
-.p-exp { width: 88vw; }
+.p-exp { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; }
+.timeline.vert { grid-template-columns: 1fr; gap: 18px; padding-left: 30px; margin-top: 30px; }
+.timeline.vert::before { left: 8px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed var(--ink); }
+.timeline.vert .tl { padding-top: 0; }
+.timeline.vert .tl::before { left: -30px; }
 .timeline { position: relative; margin-top: 46px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
 .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; border-top: 2px dashed var(--ink); }
 .tl { position: relative; padding-top: 34px; font-size: 13px; }
@@ -276,7 +296,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .tl h3 { font-family: var(--mono); font-size: 13.5px; margin-top: 6px; line-height: 1.3; }
 .tl .where { font-style: italic; color: var(--soft); margin-top: 3px; }
 .tl p { margin-top: 6px; color: var(--soft); }
-.exp-note { margin-top: 40px; }
+.exp-note { margin-top: 26px; }
 
 /* ── SKILLS ──────────────────────────── */
 .p-skills { width: 104vw; display: grid; grid-template-columns: 1.35fr .65fr; gap: 4vw; }
@@ -340,6 +360,8 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .p-hero { min-height: 100vh; }
 .vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .vertical .p-news, .vertical .p-writing, .vertical .p-videos { width: auto; }
+.vertical .p-research { display: block; }
+.vertical .r-right { margin-top: 44px; }
 
 @media (max-width: 1180px) {
   .burger { display: inline-flex; }
@@ -358,7 +380,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .panel > * + * { margin-top: 30px; }
   .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
   .hero-photo { width: min(78vw, 340px); margin: 40px auto 0; }
-  .areas, .skill-grid, .videos { grid-template-columns: 1fr; }
+  .areas, .skill-grid, .videos, .offers { grid-template-columns: 1fr; }
   .pub-grid { grid-template-columns: 1fr !important; }
   .search { min-width: 0; flex: 1 1 100%; }
   .timeline { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
@@ -389,10 +411,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <ul id="menu">
     <li><a href="#about" data-go="about">About</a></li>
     <li><a href="#news" data-go="news">News</a></li>
-    <li><a href="#research" data-go="research">Research</a></li>
-    <li><a href="#publications" data-go="publications">Papers</a></li>
+    <li><a href="#research" data-go="research">Research &amp; papers</a></li>
     <li><a href="#mentoring" data-go="mentoring">Mentoring</a></li>
-    <li><a href="#experience" data-go="experience">Work</a></li>
+    <li><a href="#experience" data-go="experience">Experience</a></li>
     <li><a href="#skills" data-go="skills">Skills</a></li>
     <li><a href="#videos" data-go="videos">Videos</a></li>
     <li><a href="#writing" data-go="writing">Writing</a></li>
@@ -431,7 +452,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <div class="hero-stats">
       <div><b>11</b><span>peer-reviewed papers</span></div>
       <div><b>Q1</b><span>first-author journal, Computers &amp; Security</span></div>
-      <div><b>11</b><span>undergraduate researchers mentored</span></div>
+      <div><b class="word">Erasmus Mundus</b><span>CyberMACS scholarship, 2026</span></div>
     </div>
     <div class="profiles">
       <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
@@ -532,10 +553,10 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </svg>
 </section>
 
-<!-- ═══ RESEARCH ═══ -->
+<!-- ═══ RESEARCH + PAPERS ═══ -->
 <section class="panel p-research" id="research">
-  <div>
-    <h2 class="label tilt-l sticker">What I <span class="thin">work on</span></h2>
+  <div class="r-left">
+    <h2 class="label tilt-l sticker">Research</h2>
     <div class="areas">
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M26 4 L44 11 L44 26 C 44 38, 35 45, 26 48 C 17 45, 8 38, 8 26 L8 11 Z"/><path d="M18 26 L24 32 L35 20"/></svg>
@@ -572,9 +593,71 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       </div>
     </div>
   </div>
+  <div class="r-right" id="publications">
+  <div class="pubs-head">
+    <h2 class="label tilt-r sticker">Papers</h2>
+    <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
+  </div>
+  <div class="toolbar" role="group" aria-label="Filter publications">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal</button>
+    <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference</button>
+    <button class="chip" type="button" data-filter="first" aria-pressed="false">First author</button>
+    <button class="chip" type="button" data-filter="open" aria-pressed="false">Free to read</button>
+    <label class="sr-only" for="pubSearch">Search publications</label>
+    <input class="search" id="pubSearch" type="search" placeholder="search title, author, venue…">
+    <span class="count" id="pubCount"></span>
+  </div>
+  <div class="pub-grid" id="pubGrid"></div>
+  <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
+  </div>
+</section>
+
+<!-- ═══ MENTORING ═══ -->
+<section class="panel p-mentor" id="mentoring">
+  <div>
+    <h2 class="label tilt-l sticker">Mentoring <span class="thin">&amp; research support</span></h2>
+    <p class="hand" style="margin-top:18px">for students and early researchers who want to do real research</p>
+    <div class="mentor-copy">
+      <p>I help people go from a vague interest to a research question they can actually answer, and from there to a first paper or a first job. I don't hand out topics. I help you think: what is the real problem, why does it matter, and what evidence would change your mind?</p>
+    </div>
+    <p class="kicker" style="margin-top:22px">how I can help</p>
+    <div class="offers">
+      <div class="card offer"><h3>Finding your research question</h3><p>Turning an observation or interest into a focused, answerable question, and spotting real gaps in the literature.</p></div>
+      <div class="card offer"><h3>Understanding the problem deeply</h3><p>Thinking critically about a topic: the hidden assumptions, what has been tried, and why it fell short.</p></div>
+      <div class="card offer"><h3>Methods &amp; experiments</h3><p>Choosing datasets and baselines, designing experiments, and reading results honestly, including the negative ones.</p></div>
+      <div class="card offer"><h3>Writing your first paper</h3><p>Structure, figures and framing, picking a venue, and responding to reviewers.</p></div>
+      <div class="card offer"><h3>Your first job or position</h3><p>CVs and research statements, and planning a path into cybersecurity or AI safety research.</p></div>
+      <div class="card offer impact"><h3>Impact so far</h3><p>Students I mentored have published their first research papers at international conferences, on adversarial detection, dataset coverage with multi-LLM consensus, and healthcare cyber-threat modelling.</p></div>
+    </div>
+    <div class="cta">
+      <a class="btn dark" href="mailto:adritatori456@gmail.com?subject=Mentoring%20request">Ask me for mentoring →</a>
+      <span class="small">Tell me about your topic and where you're stuck.</span>
+    </div>
+  </div>
 
   <div>
-    <h2 class="label tilt-r sticker">Research <span class="thin">roles</span></h2>
+    <h2 class="label tilt-r sticker">What students <span class="thin">say</span></h2>
+    <!-- SAMPLE TESTIMONIALS: placeholder text only. Replace with real reviews before publishing. -->
+    <p class="small sample-note">Sample reviews: placeholder text, to be replaced with real ones.</p>
+    <div class="quotes">
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Adrita helped me turn a messy idea into a clear research question. She kept asking “why does this matter?” until I actually knew.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>I had never written a paper before. She walked me through experiments, figures and reviewer comments, and our paper got accepted.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Beyond research, she helped me think about my career and prepare for my first job in cybersecurity.</blockquote><figcaption>Student name · CSE graduate</figcaption></figure>
+    </div>
+    <p class="kicker" style="margin-top:26px">workshops &amp; service</p>
+    <ul class="star-list service">
+      <li>Workshop: “From Observation to Research Question”, on finding research gaps and scoping a thesis or paper</li>
+      <li>Workshop: “Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</li>
+      <li>Peer reviewer, COMPAS 2025 (IEEE Computer Society Bangladesh Chapter); subreviewer, STI 2024 and STI 2025</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section class="panel p-exp" id="experience">
+  <div>
+    <h2 class="label tilt-l sticker">Research <span class="thin">roles</span></h2>
     <div class="roles">
       <div class="role card">
         <h3>University Research Assistant</h3>
@@ -593,112 +676,38 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         <ul class="star-list">
           <li>Supported research on privacy-preserving 6G infrastructure, federated learning, and explainable, trustworthy AI in cybersecurity; ran evaluations and helped build prototypes.</li>
           <li>Kept research activities in line with privacy, governance and policy requirements across Australian and global contexts.</li>
-          <li>Mentored 11 undergraduate researchers on methods, experiments and writing. Three of our papers are already accepted.</li>
+          <li>Mentored undergraduate researchers on methods, experiments and writing, several of whom have now published their first papers.</li>
         </ul>
       </div>
     </div>
   </div>
-  <svg class="doodle float hide-sm" style="left:46%; top:calc(var(--navh) + 24px); width:60px; height:60px" viewBox="0 0 60 60" aria-hidden="true">
-    <circle class="draw" pathLength="1" cx="24" cy="24" r="16"/>
-    <path class="draw d2" pathLength="1" d="M36 36 L54 54"/>
-  </svg>
-</section>
-
-<!-- ═══ PUBLICATIONS ═══ -->
-<section class="panel p-pubs" id="publications">
-  <div class="pubs-head">
-    <h2 class="label tilt-l sticker">Publications</h2>
-    <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
-  </div>
-  <div class="toolbar" role="group" aria-label="Filter publications">
-    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
-    <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal</button>
-    <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference</button>
-    <button class="chip" type="button" data-filter="first" aria-pressed="false">First author</button>
-    <button class="chip" type="button" data-filter="open" aria-pressed="false">Free to read</button>
-    <label class="sr-only" for="pubSearch">Search publications</label>
-    <input class="search" id="pubSearch" type="search" placeholder="search title, author, venue…">
-    <span class="count" id="pubCount"></span>
-  </div>
-  <div class="pub-grid" id="pubGrid"></div>
-  <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
-</section>
-
-<!-- ═══ MENTORING & SERVICE ═══ -->
-<section class="panel p-mentor" id="mentoring">
   <div>
-    <h2 class="label tilt-l sticker">Students <span class="thin">I mentor</span></h2>
-    <div style="display:flex; align-items:flex-end; gap:14px; margin-top:28px">
-      <span class="big-num">11</span>
-      <span class="hand" style="padding-bottom:8px">undergraduate researchers<br>at Cyber Research Hub, BUBT</span>
+    <h2 class="label tilt-r sticker">Earlier <span class="thin">work</span></h2>
+  <div class="timeline vert">
+      <div class="tl">
+        <span class="when">Jan 2023 – Jul 2024</span>
+        <h3>Software Engineer (part-time)</h3>
+        <p class="where">Sun Co. Ltd., Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">Jul – Dec 2022</span>
+        <h3>Intern, Software Engineering</h3>
+        <p class="where">Sun Co. Ltd., Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">Mar 2020 – Jun 2021</span>
+        <h3>RPL/RTO Trainer</h3>
+        <p class="where">Bangladesh Technical Education Board, Dhaka</p>
+      </div>
+      <div class="tl">
+        <span class="when">2019 – 2022</span>
+        <h3>Guest Trainer, IT &amp; Web Development</h3>
+        <p class="where">Ideal Institute of Technology, Rishda Bangladesh, Kaizen IT Ltd, Technical Teachers' Training College, New Trizon IT</p>
+        <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
+      </div>
     </div>
-    <div class="mentor-copy">
-      <p>I guide undergraduate students on cybersecurity and AI research projects: research methodology, literature review, experiments and academic writing.</p>
-      <p>Their topics include network security, quantum machine learning, AI security, adversarial machine learning and trustworthy AI. Three papers from this work have been accepted at international conferences (adversarial detection, NIDS dataset coverage with multi-LLM consensus, and healthcare cyber-threat modelling).</p>
-    </div>
-    <svg class="doodle wiggle hide-sm" style="left:30%; top:calc(var(--navh) + 98px); width:60px; height:70px" viewBox="0 0 60 70" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M30 66 L30 30"/>
-      <path class="draw d2" pathLength="1" d="M30 38 C 14 38, 8 26, 8 16 C 22 16, 30 24, 30 38"/>
-      <path class="draw d3" pathLength="1" d="M30 30 C 44 30, 52 20, 52 8 C 38 8, 30 16, 30 30"/>
-    </svg>
+    <p class="hand exp-note">teaching → software → research</p>
   </div>
-
-  <div>
-    <h2 class="label tilt-r sticker">Service</h2>
-    <ul class="star-list service">
-      <li>Peer reviewer, COMPAS 2025 (IEEE Computer Society Bangladesh Chapter)</li>
-      <li>Subreviewer / external reviewer, STI 2024 and STI 2025</li>
-    </ul>
-    <div class="workshop">
-      <p class="kicker">workshops I designed &amp; ran for CSE students at BUBT</p>
-      <div class="card">“Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</div>
-      <div class="card">“From Observation to Research Question”: finding research gaps and scoping a thesis or paper</div>
-    </div>
-    <svg class="doodle float hide-sm" style="right:5vw; bottom:70px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M6 38 C 10 14, 70 14, 74 38 C 66 32, 56 32, 50 38 C 46 32, 34 32, 30 38 C 24 32, 14 32, 6 38 Z"/>
-      <path class="draw d2" pathLength="1" d="M40 20 L40 66 C 40 74, 30 74, 30 66"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ═══ EXPERIENCE ═══ -->
-<section class="panel p-exp" id="experience">
-  <h2 class="label tilt-l sticker">Work <span class="thin">experience</span></h2>
-  <div class="timeline">
-    <div class="tl">
-      <span class="when">2019 – 2022</span>
-      <h3>Guest Trainer, IT &amp; Web Development</h3>
-      <p class="where">Ideal Institute of Technology, Rishda Bangladesh, Kaizen IT Ltd, Technical Teachers' Training College, New Trizon IT</p>
-      <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
-    </div>
-    <div class="tl">
-      <span class="when">Mar 2020 – Jun 2021</span>
-      <h3>RPL/RTO Trainer</h3>
-      <p class="where">Bangladesh Technical Education Board, Dhaka</p>
-    </div>
-    <div class="tl">
-      <span class="when">Jul – Dec 2022</span>
-      <h3>Intern, Software Engineering</h3>
-      <p class="where">Sun Co. Ltd., Dhaka</p>
-    </div>
-    <div class="tl">
-      <span class="when">Jan 2023 – Jul 2024</span>
-      <h3>Software Engineer (part-time)</h3>
-      <p class="where">Sun Co. Ltd., Dhaka</p>
-    </div>
-    <div class="tl now">
-      <span class="when">2024 – 2026</span>
-      <h3>Research roles</h3>
-      <p class="where">BUBT &amp; Cyber Research Hub</p>
-      <p><a class="ulink" href="#research" data-go="research">see the research section</a></p>
-    </div>
-  </div>
-  <p class="hand exp-note">teaching → software → research</p>
-  <svg class="doodle hide-sm" style="right:6vw; bottom:80px; width:80px; height:80px" viewBox="0 0 80 80" aria-hidden="true">
-    <path class="draw" pathLength="1" d="M14 34 L62 34 L56 72 L20 72 Z"/>
-    <path class="draw d2" pathLength="1" d="M60 42 C 74 42, 74 58, 58 58"/>
-    <path class="draw d3 float" pathLength="1" d="M30 26 C 26 20, 34 16, 30 8 M42 26 C 38 20, 46 16, 42 8"/>
-  </svg>
 </section>
 
 <!-- ═══ SKILLS & CERTS ═══ -->
@@ -1108,7 +1117,8 @@ const PUBS = [
   function go(id, instant) {
     const el = document.getElementById(id);
     if (!el) return;
-    const top = horizontal() ? wrap.offsetTop + el.offsetLeft : el.getBoundingClientRect().top + window.scrollY;
+    const pad = el.classList.contains('panel') ? 0 : window.innerWidth * 0.05;
+    const top = horizontal() ? wrap.offsetTop + (el.getBoundingClientRect().left - track.getBoundingClientRect().left) - pad : el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('panel') ? 0 : 70);
     window.scrollTo({ top: top, behavior: instant ? 'auto' : 'smooth' });
   }
   const menu = $('#menu'), burger = $('.burger');
