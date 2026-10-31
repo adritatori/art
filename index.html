@@ -31,7 +31,7 @@
   --navh:   58px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 17.5px; }
+html { font-size: 18px; }
 body {
   background: var(--paper); color: var(--ink);
   font-family: var(--body); line-height: 1.55;
@@ -137,7 +137,7 @@ button { font: inherit; color: inherit; }
 .sticker:hover { transform: rotate(0deg) scale(1.04); }
 
 /* ── HERO ────────────────────────────── */
-.p-hero { width: 100vw; display: grid; grid-template-columns: .95fr 1.05fr; gap: 4vw; align-items: center; }
+.p-hero { width: 100vw; display: grid; grid-template-columns: .82fr 1.18fr; gap: 3.5vw; align-items: center; }
 .hero-text { position: relative; z-index: 2; }
 .hero-text .kicker { margin-bottom: 22px; }
 .id-row { display: flex; align-items: center; gap: 28px; }
@@ -166,26 +166,45 @@ button { font: inherit; color: inherit; }
 
 /* how I can help (home) */
 .help-head { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.help-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-top: 26px; }
-.help-item { display: flex; flex-direction: column; height: 100%; padding: 14px 16px 12px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.help-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 14px; margin-top: 22px; }
+.help-list li.wide { grid-column: span 2; }
+.help-item.cta-card { background: var(--forest); color: #fff; border-color: var(--forest); justify-content: center; }
+.help-item.cta-card .num, .help-item.cta-card p { color: #d6f1de; }
+.help-item.cta-card:hover { background: var(--leaf); }
+.help-item { display: flex; flex-direction: column; height: 100%; padding: 11px 14px 10px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
 .help-item:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--forest); background: var(--mint); }
 .help-item .num { font-family: var(--hand); font-size: 20px; color: var(--faint); line-height: 1; }
-.help-item h3 { font-family: var(--mono); font-size: 16px; line-height: 1.25; margin-top: 4px; }
-.help-item p { font-size: 13.2px; color: var(--soft); line-height: 1.45; margin-top: 4px; }
-.help-item .go { margin-top: auto; padding-top: 8px; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.help-item h3 { font-family: var(--mono); font-size: 14.5px; line-height: 1.25; margin-top: 3px; }
+.help-item p { font-size: 12.4px; color: var(--soft); line-height: 1.4; margin-top: 3px; }
+.help-item .go { margin-top: auto; padding-top: 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 .help-list li:nth-child(odd) .help-item { transform: rotate(-.4deg); }
 .help-list li:nth-child(even) .help-item { transform: rotate(.4deg); }
 .help-list li .help-item:hover { transform: translate(-2px,-2px) rotate(0); }
 
 /* ── CURRENT & PAST WORK ─────────────── */
-.p-work { width: 200vw; display: grid; grid-template-columns: .75fr 2.25fr; gap: 4vw; }
-.prev-grid { display: grid; grid-template-columns: 1fr .95fr 1fr; gap: 3vw; margin-top: 8px; }
+.p-work { width: 100vw; display: grid; grid-template-columns: .85fr 1.15fr; gap: 4vw; }
+.p-work .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; align-items: start; }
+.p-work .role { padding: 14px 16px; }
+.p-work .role .star-list { font-size: 12.8px; }
+.p-work .role .star-list li { margin-bottom: 6px; }
+.timeline.h4 { grid-template-columns: repeat(4, 1fr); margin-top: 22px; gap: 16px; }
+.timeline.h4 .tl .when { font-size: 18px; }
+.timeline.h4 .tl h3 { font-size: 13px; }
+.timeline.h4 .tl { font-size: 12.5px; }
+.timeline.h4 .tl p:not(.where) { display: none; }
+.timeline.h4 .tl .where { font-size: 12px; line-height: 1.35; }
 .p-work .kicker { margin-bottom: 4px; }
 .role h3 { font-family: var(--mono); font-size: 14.5px; }
 .role .where { font-style: italic; font-size: 13px; }
-.news { list-style: none; margin-top: 26px; position: relative; max-width: 460px; }
+.role .meta { font-size: 12.5px; color: var(--soft); margin: 2px 0 8px; }
+.p-work .news { margin-top: 20px; }
+.p-work .news li { margin-bottom: 7px; font-size: 13px; line-height: 1.45; }
+.p-work .news .when { font-size: 19px; }
+.p-work .news li::before { top: 3px; }
+.p-work .news::before { top: 6px; bottom: 14px; }
+.news { list-style: none; margin-top: 26px; position: relative; max-width: 620px; }
 .news::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; border-left: 2px dashed var(--ink); }
-.news li { position: relative; padding-left: 34px; margin-bottom: 16px; font-size: 13.8px; }
+.news li { position: relative; padding-left: 34px; margin-bottom: 12px; font-size: 13.5px; }
 .news li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
 .news li.hot::before { background: var(--leaf); border-color: var(--leaf); }
 .news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
@@ -211,6 +230,16 @@ button { font: inherit; color: inherit; }
 .role .meta { font-size: 12.5px; color: var(--soft); margin: 2px 0 10px; }
 .role .star-list { font-size: 13px; }
 .thesis { margin-top: 26px; max-width: 440px; }
+
+/* ── PROJECTS ────────────────────────── */
+.r-proj { flex: 0 0 min(34vw, 460px); display: flex; flex-direction: column; }
+.r-proj .label { align-self: flex-start; }
+.projects { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+.projects .card { border-left: 5px solid var(--leaf); }
+.projects h3 { font-family: var(--mono); font-size: 15px; }
+.projects p { font-size: 13.3px; color: var(--soft); margin-top: 4px; }
+.projects .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.projects .acts .btn { font-size: 10.5px; padding: 4px 9px; }
 
 /* ── PUBLICATIONS ────────────────────── */
 
@@ -322,12 +351,14 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .h-sticky { position: static; height: auto; overflow: visible; }
 .vertical .track { display: block; transform: none !important; }
 .vertical .panel {
-  width: auto !important; height: auto; max-width: 1180px; margin: 0 auto;
+  width: auto !important; height: auto; max-width: 1560px; margin: 0 auto;
   padding: calc(var(--navh) + 34px) 5vw 56px; border-right: 0; border-bottom: 1.5px dashed rgba(0,0,0,.25);
 }
 .vertical .p-hero { min-height: 100vh; }
 .vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .vertical .p-work, .vertical .p-writing { grid-template-columns: 1fr; }
+.vertical .p-work .roles { grid-template-columns: 1fr 1fr; }
+.vertical .r-proj { margin-top: 44px; }
 .vertical .p-research { display: block; }
 .vertical .r-right { margin-top: 44px; }
 
@@ -349,10 +380,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
   .id-row { gap: 18px; }
   .help-list { grid-template-columns: 1fr; }
+  .help-list li.wide { grid-column: auto; }
   .areas { grid-template-columns: 1fr; }
   .pub-grid { grid-template-columns: 1fr !important; }
   .search { min-width: 0; flex: 1 1 100%; }
-  .timeline { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
+  .timeline, .timeline.h4 { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
+  .p-work .roles { grid-template-columns: 1fr; }
   .timeline::before { left: 8px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed var(--ink); }
   .tl { padding-top: 0; }
   .tl::before { left: -30px; }
@@ -376,9 +409,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <nav class="nav" aria-label="Main">
   <a href="#hero" class="logo" data-go="hero">A.R.T.<span>✶</span></a>
   <ul id="menu">
-    <li><a href="#research" data-go="research">Papers</a></li>
+    <li><a href="#research" data-go="research">Published works</a></li>
     <li><a href="#voices" data-go="voices">Recommendations</a></li>
-    <li><a href="#work" data-go="work">Current &amp; past work</a></li>
+    <li><a href="#work" data-go="work">News &amp; work</a></li>
     <li><a href="#writing" data-go="writing">Writing &amp; content</a></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
   </ul>
@@ -445,6 +478,8 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <li><a class="card help-item" href="help/technical-projects.html"><span class="num">04 /</span><h3>Technical &amp; Prototyping Work</h3><p>Building evaluation pipelines, security benchmarks, and working code for AI systems.</p><span class="go">see how →</span></a></li>
       <li><a class="card help-item" href="help/research-writing.html"><span class="num">05 /</span><h3>Academic Writing &amp; Submissions</h3><p>Structuring manuscripts, figures, target venue selection, and reviewer response strategies.</p><span class="go">see how →</span></a></li>
       <li><a class="card help-item" href="help/career-guidance.html"><span class="num">06 /</span><h3>Career &amp; Pathway Guidance</h3><p>Navigating applications, research statements, and transitions into cybersecurity or AI safety fields.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/beyond-the-lab.html"><span class="num">07 /</span><h3>Beyond the Lab</h3><p>Exploring ethics, power, and human responsibility through essays and poetry. Always up for deep conversations on the philosophical side of AI and humanity.</p><span class="go">see how →</span></a></li>
+      <li class="wide"><a class="card help-item cta-card" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener"><span class="num">Not sure where to start?</span><h3>Book a call and tell me what you&rsquo;re working on</h3><p>Pick a time that suits you. We&rsquo;ll figure out together which of these fits.</p><span class="go">book a call ↗</span></a></li>
     </ul>
   </div>
 
@@ -503,6 +538,23 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div class="pub-grid" id="pubGrid"></div>
   <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
   </div>
+  <div class="r-proj" id="projects">
+    <h2 class="label tilt-l sticker">Projects</h2>
+    <p class="hand" style="font-size:21px; margin-top:14px">tools I built, free to try</p>
+    <!-- To add a project, copy one card below. -->
+    <div class="projects">
+      <div class="card">
+        <h3>Collusion Evidence Lab <span class="small">· Apart Research sprint · Oct 2026</span></h3>
+        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. Includes a free browser tool so a human reviewer makes the final call.</p>
+        <div class="acts"><a class="btn dark" href="https://adritatori.github.io/AI_collusion/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="card">
+        <h3>IDS/IPS Dataset Scoring Tool <span class="small">· 2026</span></h3>
+        <p>Turns my Computers &amp; Security paper into a free browser tool: pick an industry, and it scores 10 well-known intrusion-detection datasets, or your own, on how well they cover that industry's real threats.</p>
+        <div class="acts"><a class="btn dark" href="https://mitre-att-ck-ids-ips-dataset-framew.vercel.app/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/MITRE-ATT-CK-IDS-IPS-dataset-Framewor" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ RECOMMENDATIONS & STUDENTS ═══ -->
@@ -536,39 +588,26 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
 </section>
 
-<!-- ═══ CURRENT & PAST WORK ═══ -->
+<!-- ═══ ONGOING, NEWS & PAST WORK ═══ -->
 <section class="panel p-work" id="work">
   <div>
-    <h2 class="label tilt-l sticker">Ongoing <span class="thin">work</span></h2>
-    <!-- Edit this list as things change. -->
+    <h2 class="label tilt-l sticker">Ongoing <span class="thin">&amp; recent news</span></h2>
     <ul class="news">
-      <li class="hot"><span class="when">Now</span><b>Covert collusion between AI agents.</b> Building on Collusion Evidence Lab: detecting when agents secretly coordinate, from their logs.</li>
-      <li class="hot"><span class="when">Now</span><b>Master's thesis, submitted.</b> “A Multi-Signal Evidence Framework for Open-Set Network Intrusion Detection”, Jahangirnagar University. Awaiting result.</li>
-      <li class="hot"><span class="when">Now</span><b>Moving deeper into AI safety.</b> Completed BlueDot Impact's Technical AI Safety course (Oct 2026); in the Centre for Effective Altruism's Career Bootcamp.</li>
-      <li><span class="when">Coming</span><b>Three accepted papers</b> on the way to publication: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
-    </ul>
+    <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
+    <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
+    <li class="hot"><span class="when">2026</span>Awarded the Erasmus Mundus CyberMACS Scholarship.</li>
+    <li><span class="when">2026</span>Submitted my master's thesis. Joined the Centre for Effective Altruism's Career Bootcamp.</li>
+    <li><span class="when">2026</span>Three papers accepted: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
+    <li class="hot"><span class="when">2026</span>Four papers presented at ML4CS 2026: one as first author, three with students I mentor and colleagues.</li>
+    <li><span class="when">2025</span>Two journal articles published: <i>Computers &amp; Security</i> and <i>Education Sciences</i> (MDPI).</li>
+    <li><span class="when">2025</span>Papers presented at ICBDIML 2025 and ISSOTL 2025. Peer reviewer for COMPAS 2025.</li>
+    <li><span class="when">Aug 2025</span>Started a Professional Master's in IT at Jahangirnagar University.</li>
+    <li><span class="when">2025</span>Earned CompTIA Security+. Completed my B.Sc. in CSE at BUBT (Mar 2025).</li>
+  </ul>
   </div>
   <div>
-    <h2 class="label tilt-r sticker">Previous <span class="thin">work</span></h2>
-    <div class="prev-grid">
-      <div>
-        <p class="kicker">things I built</p>
-        <div class="projects">
-      <div class="card">
-        <h3>Collusion Evidence Lab <span class="small">· Apart Research sprint · Oct 2026</span></h3>
-        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. Includes a free browser tool so a human reviewer makes the final call.</p>
-        <p><a class="ulink" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></p>
-      </div>
-      <div class="card">
-        <h3>IDS/IPS Dataset Scoring Tool <span class="small">· 2026</span></h3>
-        <p>Turns my Computers &amp; Security paper into a free browser tool: pick an industry, and it scores 10 well-known intrusion-detection datasets, or your own, on how well they cover that industry's real threats.</p>
-        <p><a class="ulink" href="https://github.com/adritatori/MITRE-ATT-CK-IDS-IPS-dataset-Framewor" target="_blank" rel="noopener">GitHub ↗</a></p>
-      </div>
-    </div>
-      </div>
-      <div>
-        <p class="kicker">research roles</p>
-        <div class="roles">
+    <h2 class="label tilt-r sticker">Research <span class="thin">roles</span></h2>
+    <div class="roles">
       <div class="role card">
         <h3>University Research Assistant</h3>
         <p class="where">Bangladesh University of Business &amp; Technology</p>
@@ -590,10 +629,8 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         </ul>
       </div>
     </div>
-      </div>
-      <div>
-        <p class="kicker">earlier work</p>
-        <div class="timeline vert">
+    <p class="kicker" style="margin-top:20px">earlier work</p>
+    <div class="timeline h4">
       <div class="tl">
         <span class="when">Jan 2023 – Jul 2024</span>
         <h3>Software Engineer (part-time)</h3>
@@ -614,9 +651,6 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         <h3>Guest Trainer, IT &amp; Web Development</h3>
         <p class="where">Ideal Institute of Technology, Rishda Bangladesh, Kaizen IT Ltd, Technical Teachers' Training College, New Trizon IT</p>
         <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
-      </div>
-    </div>
-        <p class="hand exp-note">teaching → software → research</p>
       </div>
     </div>
   </div>
