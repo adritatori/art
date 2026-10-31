@@ -253,13 +253,16 @@ button { font: inherit; color: inherit; }
   margin-top: 20px; display: grid; grid-auto-flow: column;
   grid-template-rows: repeat(2, auto); grid-auto-columns: 340px; gap: 16px 18px; align-content: start;
 }
-.pub { font-size: 12.8px; line-height: 1.5; display: flex; flex-direction: column; }
+.pub { font-size: 12.8px; line-height: 1.45; display: flex; flex-direction: column; }
+article.pub { padding: 13px 15px; }
 .pub .tags { display: flex; gap: 6px; margin-bottom: 7px; flex-wrap: wrap; }
 .pub .title { font-family: var(--mono); font-weight: 700; font-size: 12.8px; line-height: 1.35; margin-bottom: 5px; }
 .authors { color: var(--soft); }
 .authors b { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
 .pub .venue { margin-top: 4px; font-style: italic; }
-.pub .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; }
+.pub .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+.more-row { margin-top: 16px; display: flex; gap: 12px; align-items: center; }
+.more-row .btn { font-size: 12px; padding: 7px 14px; }
 .pub .acts .btn { font-size: 10px; padding: 3px 8px; box-shadow: 1.5px 1.5px 0 var(--ink); }
 .pub .none { font-size: 11.5px; color: var(--faint); font-style: italic; }
 .pub:nth-child(odd)  { transform: rotate(-.5deg); }
@@ -332,7 +335,13 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .post .arrow { font-family: var(--mono); font-size: 18px; }
 
 /* ── CONTACT ─────────────────────────── */
-.p-contact { width: 70vw; display: flex; align-items: center; }
+.p-contact { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 4vw; align-items: center; }
+.contact-card { background: var(--mint); border: 2px solid var(--forest); box-shadow: 6px 6px 0 var(--forest); padding: 28px 30px 30px; }
+.contact-card .contact-title { margin-top: 18px; }
+.contact-sub { margin-top: 10px; font-size: 16px; max-width: 460px; }
+.contact-card .btn.big { margin-top: 20px; font-size: 15px; padding: 12px 22px; box-shadow: 4px 4px 0 var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.p-contact .footer-note { grid-column: 1 / -1; margin-top: 8px; }
 .book { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 .book .btn { font-size: 15px; padding: 12px 22px; box-shadow: 4px 4px 0 var(--ink); }
 .contact-title { margin-top: 20px; max-width: 520px; }
@@ -351,17 +360,28 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .h-sticky { position: static; height: auto; overflow: visible; }
 .vertical .track { display: block; transform: none !important; }
 .vertical .panel {
-  width: auto !important; height: auto; max-width: 1560px; margin: 0 auto;
-  padding: calc(var(--navh) + 34px) 5vw 56px; border-right: 0; border-bottom: 1.5px dashed rgba(0,0,0,.25);
+  width: auto !important; height: auto; max-width: 1480px; margin: 0 auto;
+  padding: 44px 4vw 48px; border-right: 0; border-bottom: 1.5px dashed rgba(0,0,0,.25);
 }
-.vertical .p-hero { min-height: 100vh; }
-.vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-.vertical .p-work, .vertical .p-writing { grid-template-columns: 1fr; }
-.vertical .p-work .roles { grid-template-columns: 1fr 1fr; }
-.vertical .r-proj { margin-top: 44px; }
+.vertical .p-hero { padding-top: calc(var(--navh) + 34px); }
+.vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.vertical .pub { transform: none !important; }
 .vertical .p-research { display: block; }
-.vertical .r-right { margin-top: 44px; }
+.vertical .areas { grid-template-columns: repeat(4, 1fr); margin-top: 22px; gap: 18px; }
+.vertical .r-right { margin-top: 36px; }
+.vertical .r-proj { margin-top: 36px; }
+.vertical .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.vertical .p-work { grid-template-columns: .9fr 1.1fr; gap: 3.5vw; }
+.vertical .p-writing { grid-template-columns: 1fr 1fr 360px; gap: 3vw; }
+.vertical .p-writing .posts, .vertical .news { max-width: none; }
+.vertical .p-voices { gap: 3.5vw; }
+.vertical .p-contact { grid-template-columns: 1.1fr .9fr; gap: 3.5vw; }
 
+@media (max-width: 1100px) {
+  .vertical .p-writing { grid-template-columns: 1fr 1fr; }
+  .vertical .p-writing > div:last-child { grid-column: 1 / -1; }
+  .vertical .areas { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 1180px) {
   .burger { display: inline-flex; }
   .nav ul {
@@ -375,9 +395,11 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   html { font-size: 14.5px; }
   .nav { padding: 0 14px; gap: 8px; }
   .nav .view-toggle { display: none; }
-  .vertical .panel { display: block !important; padding: calc(var(--navh) + 28px) 16px 46px; }
+  .vertical .panel { display: block !important; padding: 34px 16px 36px; }
+  .vertical .areas, .vertical .projects { grid-template-columns: 1fr; }
+  .vertical .videos { max-width: none; }
   .panel > * + * { margin-top: 30px; }
-  .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
+  .p-hero { padding-top: calc(var(--navh) + 28px) !important; }
   .id-row { gap: 18px; }
   .help-list { grid-template-columns: 1fr; }
   .help-list li.wide { grid-column: auto; }
@@ -536,6 +558,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <span class="count" id="pubCount"></span>
   </div>
   <div class="pub-grid" id="pubGrid"></div>
+  <div class="more-row"><button class="btn dark" id="pubMore" type="button" hidden></button></div>
   <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="cv.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
   </div>
   <div class="r-proj" id="projects">
@@ -571,13 +594,13 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
 
   <div>
-    <h2 class="label tilt-r sticker">What students <span class="thin">say</span></h2>
+    <h2 class="label tilt-r sticker">What mentees <span class="thin">say</span></h2>
     <!-- SAMPLE TESTIMONIALS: placeholder text only. Replace with real reviews before publishing. -->
     <p class="small sample-note">Sample reviews: placeholder text, to be replaced with real ones.</p>
     <div class="quotes">
-      <figure class="card quote"><span class="tag">sample</span><blockquote>Adrita helped me turn a messy idea into a clear research question. She kept asking “why does this matter?” until I actually knew.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
-      <figure class="card quote"><span class="tag">sample</span><blockquote>I had never written a paper before. She walked me through experiments, figures and reviewer comments, and our paper got accepted.</blockquote><figcaption>Student name · undergraduate researcher</figcaption></figure>
-      <figure class="card quote"><span class="tag">sample</span><blockquote>Beyond research, she helped me think about my career and prepare for my first job in cybersecurity.</blockquote><figcaption>Student name · CSE graduate</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Adrita helped me turn a messy idea into a clear research question. She kept asking “why does this matter?” until I actually knew.</blockquote><figcaption>Mentee name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>I had never written a paper before. She walked me through experiments, figures and reviewer comments, and our paper got accepted.</blockquote><figcaption>Mentee name · undergraduate researcher</figcaption></figure>
+      <figure class="card quote"><span class="tag">sample</span><blockquote>Beyond research, she helped me think about my career and prepare for my first job in cybersecurity.</blockquote><figcaption>Mentee name · CSE graduate</figcaption></figure>
     </div>
     <p class="kicker" style="margin-top:26px">workshops &amp; service</p>
     <ul class="star-list service">
@@ -711,27 +734,26 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
 <!-- ═══ CONTACT ═══ -->
 <section class="panel p-contact" id="contact">
-  <div>
-    <h2 class="label tilt-r sticker">Book <span class="thin">a call</span></h2>
-    <p class="hand contact-title">open to research collaborations, mentoring and good conversations. Pick a time that suits you.</p>
-    <div class="book"><a class="btn dark" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call with me ↗</a></div>
-    <p class="kicker" style="margin-top:34px">find me elsewhere</p>
-    <ul class="links">
-      <li><span class="k">CV</span><a class="ulink" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">download PDF ↓</a></li>
-      <li><span class="k">Scholar</span><a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a></li>
-      <li><span class="k">ResearchGate</span><a class="ulink" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">researchgate.net/profile/Adrita-Rahman-Tory</a></li>
-      <li><span class="k">LinkedIn</span><a class="ulink" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman</a></li>
-      <li><span class="k">GitHub</span><a class="ulink" href="https://github.com/adritatori" target="_blank" rel="noopener">github.com/adritatori</a></li>
-      <li><span class="k">Medium</span><a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">medium.com/@radrita245</a></li>
-      <li><span class="k">YouTube</span><a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">Cyber Golpo</a></li>
-      <li><span class="k">Based in</span><span>Dhaka, Bangladesh</span></li>
-    </ul>
-    <p class="footer-note">© 2026 Adrita Rahman Tory · hand-drawn doodles, plain HTML, hosted on GitHub Pages</p>
-    <svg class="doodle float hide-sm" style="right:6vw; top:calc(var(--navh) + 40px); width:110px; height:70px" viewBox="0 0 110 70" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M60 10 L104 4 L80 44 L70 30 Z M70 30 L104 4"/>
-      <path class="draw d2" pathLength="1" d="M58 30 C 40 40, 30 20, 14 34 C 6 42, 10 56, 4 64" style="stroke-dasharray:4 6"/>
-    </svg>
+  <div class="contact-card">
+    <h2 class="label tilt-r sticker">Let's <span class="thin">talk</span></h2>
+    <p class="hand contact-title">open to research collaborations, mentoring and good conversations.</p>
+    <p class="contact-sub">Tell me what you're working on, or where you're stuck, and we'll work out the next step together.</p>
+    <a class="btn dark big" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call with me ↗</a>
   </div>
+  <div class="contact-links">
+    <p class="kicker">find me elsewhere</p>
+    <div class="chips">
+      <a class="btn" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">CV ↓</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+      <a class="btn" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">ResearchGate ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium ↗</a>
+      <a class="btn" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube ↗</a>
+    </div>
+    <p class="small" style="margin-top:16px">Based in Dhaka, Bangladesh</p>
+  </div>
+  <p class="footer-note">© 2026 Adrita Rahman Tory · hand-drawn doodles, plain HTML, hosted on GitHub Pages</p>
 </section>
 
 </div>
@@ -863,8 +885,8 @@ const PUBS = [
   const wrap = $('#wrap'), track = $('#track'), prog = $('#prog');
   const panels = [...document.querySelectorAll('.panel')];
   const mq = window.matchMedia('(min-width: 900px) and (min-height: 560px)');
-  let dist = 0, userVertical = false;
-  try { userVertical = localStorage.getItem('view') === 'list'; } catch (e) {}
+  let dist = 0, userVertical = true;
+  try { userVertical = localStorage.getItem('view') !== 'sideways'; } catch (e) {}
 
   const horizontal = () => mq.matches && !userVertical;
 
@@ -883,7 +905,8 @@ const PUBS = [
 
   /* ── publications ── */
   const grid = $('#pubGrid'), count = $('#pubCount'), search = $('#pubSearch');
-  let filter = 'all', visible = PUBS.slice();
+  let filter = 'all', visible = PUBS.slice(), showAll = false;
+  const LIMIT = 6, more = $('#pubMore');
   const statusTag = { published: 'pub', presented: 'pres', accepted: 'acc' };
   const authorsHTML = a => a.map(x => x === ME ? '<b>' + esc(x) + '</b>' : esc(x)).join(', ');
   const joinAPA = a => a.length === 1 ? a[0] : a.slice(0, -1).join(', ') + ', & ' + a[a.length - 1];
@@ -924,7 +947,7 @@ const PUBS = [
 
   function render() {
     visible = PUBS.filter(match);
-    grid.innerHTML = visible.map((p, i) => {
+    grid.innerHTML = visible.slice(0, showAll ? visible.length : LIMIT).map((p, i) => {
       const pdf = (p.links || []).find(l => l.label === 'PDF') || (p.links || [])[0];
       return '<article class="pub card">' +
         '<div class="tags"><span class="tag ' + statusTag[p.status] + '">' + p.status + '</span><span class="tag">' + p.type + '</span></div>' +
@@ -936,7 +959,10 @@ const PUBS = [
           (pdf ? '<a class="btn" href="' + esc(pdf.url) + '" target="_blank" rel="noopener">' + esc(pdf.label === 'PDF' ? 'PDF' : pdf.label) + ' ↗</a>' : '<span class="none">public version not out yet</span>') +
         '</div></article>';
     }).join('') || '<p class="empty">nothing matches that, try another word?</p>';
-    count.textContent = visible.length === PUBS.length ? PUBS.length + ' papers' : 'showing ' + visible.length + ' of ' + PUBS.length;
+    const shown = showAll ? visible.length : Math.min(LIMIT, visible.length);
+    count.textContent = shown === PUBS.length ? PUBS.length + ' papers' : 'showing ' + shown + ' of ' + PUBS.length;
+    more.hidden = visible.length <= LIMIT;
+    more.textContent = showAll ? 'Show fewer' : 'Show all ' + visible.length + ' papers ↓';
     layout();
   }
 
@@ -947,6 +973,7 @@ const PUBS = [
     render();
   }
   search.addEventListener('input', render);
+  more.addEventListener('click', () => { showAll = !showAll; render(); });
   document.querySelectorAll('[data-topic]').forEach(b => b.addEventListener('click', () => {
     search.value = ''; setFilter('topic:' + b.dataset.topic); go('publications');
     say('showing papers on this topic');
@@ -1014,7 +1041,7 @@ const PUBS = [
     const el = document.getElementById(id);
     if (!el) return;
     const pad = el.classList.contains('panel') ? 0 : window.innerWidth * 0.05;
-    const top = horizontal() ? wrap.offsetTop + (el.getBoundingClientRect().left - track.getBoundingClientRect().left) - pad : el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('panel') ? 0 : 70);
+    const top = horizontal() ? wrap.offsetTop + (el.getBoundingClientRect().left - track.getBoundingClientRect().left) - pad : el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('panel') ? 58 : 80);
     window.scrollTo({ top: top, behavior: instant ? 'auto' : 'smooth' });
   }
   const menu = $('#menu'), burger = $('.burger');
