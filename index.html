@@ -153,7 +153,8 @@ button { font: inherit; color: inherit; }
   font-family: var(--mono); font-size: clamp(17px, 2vw, 26px); letter-spacing: .08em;
   border: 2px solid var(--ink); background: var(--paper); padding: 6px 14px; transform: rotate(5deg);
 }
-.hero-intro { max-width: 480px; margin-top: 28px; font-size: 20px; }
+.hero-intro { max-width: 520px; margin-top: 24px; font-size: 18px; line-height: 1.5; }
+.hero-intro p + p { margin-top: 10px; }
 .profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; max-width: 520px; }
 .hero-photo { position: relative; flex: 0 0 auto; width: min(13vw, 22vh, 190px); min-width: 120px; }
 .hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 7px 7px 30px; transform: rotate(-3deg); box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
@@ -177,14 +178,22 @@ button { font: inherit; color: inherit; }
 .help-list li:nth-child(even) .help-item { transform: rotate(.4deg); }
 .help-list li .help-item:hover { transform: translate(-2px,-2px) rotate(0); }
 
-/* ── NEWS ────────────────────────────── */
-.p-news { width: 62vw; }
-.news { list-style: none; margin-top: 26px; position: relative; max-width: 620px; }
+/* ── CURRENT & PAST WORK ─────────────── */
+.p-work { width: 200vw; display: grid; grid-template-columns: .75fr 2.25fr; gap: 4vw; }
+.prev-grid { display: grid; grid-template-columns: 1fr .95fr 1fr; gap: 3vw; margin-top: 8px; }
+.p-work .kicker { margin-bottom: 4px; }
+.role h3 { font-family: var(--mono); font-size: 14.5px; }
+.role .where { font-style: italic; font-size: 13px; }
+.news { list-style: none; margin-top: 26px; position: relative; max-width: 460px; }
 .news::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; border-left: 2px dashed var(--ink); }
-.news li { position: relative; padding-left: 34px; margin-bottom: 12px; font-size: 13.5px; }
+.news li { position: relative; padding-left: 34px; margin-bottom: 16px; font-size: 13.8px; }
 .news li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
 .news li.hot::before { background: var(--leaf); border-color: var(--leaf); }
 .news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
+.projects { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.projects .card { border-left: 5px solid var(--leaf); }
+.projects h3 { font-family: var(--mono); font-size: 14.5px; }
+.projects p { font-size: 13.3px; color: var(--soft); margin-top: 4px; }
 
 /* ── RESEARCH ────────────────────────── */
 .p-research { display: flex; gap: 5vw; }
@@ -262,8 +271,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .service { margin-top: 26px; font-size: 13.8px; }
 
 /* ── EXPERIENCE ──────────────────────── */
-.p-exp { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; }
-.timeline.vert { grid-template-columns: 1fr; gap: 18px; padding-left: 30px; margin-top: 30px; }
+.timeline.vert { grid-template-columns: 1fr; gap: 14px; padding-left: 30px; margin-top: 18px; }
 .timeline.vert::before { left: 8px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px dashed var(--ink); }
 .timeline.vert .tl { padding-top: 0; }
 .timeline.vert .tl::before { left: -30px; }
@@ -278,29 +286,18 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .tl p { margin-top: 6px; color: var(--soft); }
 .exp-note { margin-top: 26px; }
 
-/* ── SKILLS ──────────────────────────── */
-.p-skills { width: 104vw; display: grid; grid-template-columns: 1.35fr .65fr; gap: 4vw; }
-.skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
-.skill-grid .card h3 { font-family: var(--mono); font-size: 12.5px; text-transform: uppercase; margin-bottom: 6px; }
-.skill-grid .card p { font-size: 12.6px; color: var(--soft); line-height: 1.55; }
-.certs { margin-top: 28px; font-size: 13.3px; }
-.certs li { margin-bottom: 11px; }
-.certs .yr { font-family: var(--hand); font-size: 19px; color: var(--soft); }
-
-/* ── VIDEOS ──────────────────────────── */
-.p-videos { width: 96vw; }
-.videos { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; max-width: 1200px; }
-.video { padding: 10px; }
+/* ── WRITING & CONTENT ───────────────── */
+.videos { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; max-width: 320px; }
+.video { padding: 8px; }
 .video:nth-child(1) { transform: rotate(-.6deg); }
 .video:nth-child(2) { transform: rotate(.5deg); }
 .video .ratio { position: relative; aspect-ratio: 16/9; background: var(--wave); }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video .open { display: inline-block; margin-top: 8px; font-size: 13px; }
-
+.video .open { display: inline-block; margin-top: 6px; font-size: 12.5px; }
 /* ── WRITING ─────────────────────────── */
-.p-writing { width: 100vw; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; }
+.p-writing { width: 150vw; display: grid; grid-template-columns: 1fr 1fr .8fr; gap: 4vw; }
 .p-writing .label { margin-bottom: 4px; }
-.posts { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; }
+.posts { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; max-width: 460px; }
 .post { display: flex; justify-content: space-between; gap: 18px; align-items: center; text-decoration: none; font-size: 13px; }
 .post:hover { background: var(--paper2); }
 .post .ttl { font-family: var(--mono); font-weight: 700; }
@@ -308,12 +305,14 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
 /* ── CONTACT ─────────────────────────── */
 .p-contact { width: 70vw; display: flex; align-items: center; }
+.book { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.book .btn { font-size: 15px; padding: 12px 22px; box-shadow: 4px 4px 0 var(--ink); }
+.contact-title { margin-top: 20px; max-width: 520px; }
 .links { list-style: none; margin-top: 24px; font-size: 14px; }
 .links li { margin-bottom: 10px; display: flex; gap: 14px; align-items: baseline; }
 .links .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; width: 110px; color: var(--soft); flex: 0 0 auto; }
 .links a { word-break: break-word; }
 .footer-note { margin-top: 28px; font-size: 11.5px; color: var(--faint); }
-.copy-mail { background: none; border: 0; cursor: pointer; font-family: var(--hand); font-size: 18px; margin-left: 8px; text-decoration: underline; }
 
 .toast { position: fixed; left: 50%; bottom: 40px; transform: translate(-50%, 20px); opacity: 0; z-index: 100; pointer-events: none;
   background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 12px; padding: 8px 14px; transition: .25s; }
@@ -329,7 +328,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 }
 .vertical .p-hero { min-height: 100vh; }
 .vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-.vertical .p-news, .vertical .p-writing, .vertical .p-videos, .vertical .p-contact { width: auto; }
+.vertical .p-work, .vertical .p-writing { grid-template-columns: 1fr; }
 .vertical .p-research { display: block; }
 .vertical .r-right { margin-top: 44px; }
 
@@ -351,7 +350,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .p-hero { padding-top: calc(var(--navh) + 36px) !important; }
   .id-row { gap: 18px; }
   .help-list { grid-template-columns: 1fr; }
-  .areas, .skill-grid, .videos { grid-template-columns: 1fr; }
+  .areas { grid-template-columns: 1fr; }
   .pub-grid { grid-template-columns: 1fr !important; }
   .search { min-width: 0; flex: 1 1 100%; }
   .timeline { grid-template-columns: 1fr; gap: 22px; padding-left: 30px; }
@@ -378,17 +377,15 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <nav class="nav" aria-label="Main">
   <a href="#hero" class="logo" data-go="hero">A.R.T.<span>✶</span></a>
   <ul id="menu">
-    <li><a href="#news" data-go="news">News</a></li>
-    <li><a href="#research" data-go="research">Research &amp; papers</a></li>
+    <li><a href="#research" data-go="research">Papers</a></li>
     <li><a href="#voices" data-go="voices">Recommendations</a></li>
-    <li><a href="#experience" data-go="experience">Experience</a></li>
-    <li><a href="#skills" data-go="skills">Skills</a></li>
-    <li><a href="#videos" data-go="videos">Videos</a></li>
-    <li><a href="#writing" data-go="writing">Writing</a></li>
+    <li><a href="#work" data-go="work">Current &amp; past work</a></li>
+    <li><a href="#writing" data-go="writing">Writing &amp; content</a></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
   </ul>
   <button class="btn view-toggle" id="viewToggle" type="button" title="Switch between sideways scrolling and a normal top-to-bottom page">↕ list view</button>
-  <a class="btn dark" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">CV ↓</a>
+  <a class="btn" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">CV ↓</a>
+  <a class="btn dark" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call ↗</a>
   <button class="btn burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">menu</button>
 </nav>
 
@@ -426,27 +423,29 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     </div>
 
     <div class="hero-intro">
-      <p>I work on making <b>AI systems</b> safer: harder to attack, easier to audit, and aligned with the people they serve.</p>
+      <p>I research and build tools to make <b>AI systems safer</b>: resilient against attacks, auditable by design, and aligned with human intention.</p>
+      <p>Outside research, I write essays and poetry exploring ethics, power, and human responsibility, the questions that keep me up at night.</p>
     </div>
     <div class="profiles">
       <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
       <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn pink" href="#publications" data-go="publications">Read my papers →</a>
+      <a class="btn dark" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call ↗</a>
     </div>
   </div>
 
   <div class="hero-help" id="help">
     <div class="help-head">
-      <h2 class="label tilt-r sticker">How I can <span class="thin">support you</span></h2>
+      <h2 class="label tilt-r sticker">Let's collaborate <span class="thin">&amp; build together</span></h2>
     </div>
     <ul class="help-list">
-      <li><a class="card help-item" href="help/mentorship.html"><span class="num">01</span><h3>Mentorship</h3><p>From a vague interest to a research question you can actually answer.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/research-projects.html"><span class="num">02</span><h3>Research projects</h3><p>Design, run and honestly read experiments, together.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/ai-safety.html"><span class="num">03</span><h3>AI safety</h3><p>Understand the field and find a place to start contributing.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/technical-projects.html"><span class="num">04</span><h3>Technical projects</h3><p>Prototypes, evaluation tools and working code.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/research-writing.html"><span class="num">05</span><h3>Research writing</h3><p>Structure, figures, venue and reviewer replies for your paper.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/career-guidance.html"><span class="num">06</span><h3>Career guidance</h3><p>CVs, research statements and a path into security or AI safety.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/mentorship.html"><span class="num">01 /</span><h3>Research Mentorship</h3><p>Turning vague ideas into rigorous, answerable research questions and executable plans.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/research-projects.html"><span class="num">02 /</span><h3>Research Collaborations</h3><p>Designing, executing, and transparently evaluating experiments across AI safety and security.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/ai-safety.html"><span class="num">03 /</span><h3>AI Safety &amp; Alignment</h3><p>Navigating core threat models, agent behavior, and entry paths into technical AI safety research.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/technical-projects.html"><span class="num">04 /</span><h3>Technical &amp; Prototyping Work</h3><p>Building evaluation pipelines, security benchmarks, and working code for AI systems.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/research-writing.html"><span class="num">05 /</span><h3>Academic Writing &amp; Submissions</h3><p>Structuring manuscripts, figures, target venue selection, and reviewer response strategies.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/career-guidance.html"><span class="num">06 /</span><h3>Career &amp; Pathway Guidance</h3><p>Navigating applications, research statements, and transitions into cybersecurity or AI safety fields.</p><span class="go">see how →</span></a></li>
     </ul>
   </div>
 
@@ -458,27 +457,6 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     keep scrolling
     <svg viewBox="0 0 70 30"><path class="draw d3" pathLength="1" d="M2 18 C 18 6, 34 26, 50 14 L66 15 M58 7 L66 15 L57 22" fill="none" stroke="#0e5e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
-</section>
-
-<!-- ═══ NEWS ═══ -->
-<section class="panel p-news" id="news">
-  <h2 class="label tilt-l sticker">Recent <span class="thin">news</span></h2>
-  <ul class="news">
-    <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
-    <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
-    <li class="hot"><span class="when">2026</span>Awarded the Erasmus Mundus CyberMACS Scholarship.</li>
-    <li><span class="when">2026</span>Submitted my master's thesis. Joined the Centre for Effective Altruism's Career Bootcamp.</li>
-    <li><span class="when">2026</span>Three papers accepted: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
-    <li class="hot"><span class="when">2026</span>Four papers presented at ML4CS 2026: one as first author, three with students I mentor and colleagues.</li>
-    <li><span class="when">2025</span>Two journal articles published: <i>Computers &amp; Security</i> and <i>Education Sciences</i> (MDPI).</li>
-    <li><span class="when">2025</span>Papers presented at ICBDIML 2025 and ISSOTL 2025. Peer reviewer for COMPAS 2025.</li>
-    <li><span class="when">Aug 2025</span>Started a Professional Master's in IT at Jahangirnagar University.</li>
-    <li><span class="when">2025</span>Earned CompTIA Security+. Completed my B.Sc. in CSE at BUBT (Mar 2025).</li>
-  </ul>
-  <svg class="doodle float hide-sm" style="right:4vw; top:calc(var(--navh) + 30px); width:70px; height:70px" viewBox="0 0 70 70" aria-hidden="true">
-    <path class="draw" pathLength="1" d="M35 10 C 22 10, 16 20, 16 32 L16 44 L8 54 L62 54 L54 44 L54 32 C 54 20, 48 10, 35 10 Z"/>
-    <path class="draw d2" pathLength="1" d="M28 58 C 30 64, 40 64, 42 58 M35 4 L35 10"/>
-  </svg>
 </section>
 
 <!-- ═══ RESEARCH + PAPERS ═══ -->
@@ -559,11 +537,39 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
 </section>
 
-<!-- ═══ EXPERIENCE ═══ -->
-<section class="panel p-exp" id="experience">
+<!-- ═══ CURRENT & PAST WORK ═══ -->
+<section class="panel p-work" id="work">
   <div>
-    <h2 class="label tilt-l sticker">Research <span class="thin">roles</span></h2>
-    <div class="roles">
+    <h2 class="label tilt-l sticker">Ongoing <span class="thin">work</span></h2>
+    <!-- Edit this list as things change. -->
+    <ul class="news">
+      <li class="hot"><span class="when">Now</span><b>Covert collusion between AI agents.</b> Building on Collusion Evidence Lab: detecting when agents secretly coordinate, from their logs.</li>
+      <li class="hot"><span class="when">Now</span><b>Master's thesis, submitted.</b> “A Multi-Signal Evidence Framework for Open-Set Network Intrusion Detection”, Jahangirnagar University. Awaiting result.</li>
+      <li class="hot"><span class="when">Now</span><b>Moving deeper into AI safety.</b> Completed BlueDot Impact's Technical AI Safety course (Oct 2026); in the Centre for Effective Altruism's Career Bootcamp.</li>
+      <li><span class="when">Coming</span><b>Three accepted papers</b> on the way to publication: IEEE CSDE 2026, IEEE iCOSTE 2026 and IEEE ICCIT 2026.</li>
+    </ul>
+  </div>
+  <div>
+    <h2 class="label tilt-r sticker">Previous <span class="thin">work</span></h2>
+    <div class="prev-grid">
+      <div>
+        <p class="kicker">things I built</p>
+        <div class="projects">
+      <div class="card">
+        <h3>Collusion Evidence Lab <span class="small">· Apart Research sprint · Oct 2026</span></h3>
+        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. Includes a free browser tool so a human reviewer makes the final call.</p>
+        <p><a class="ulink" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></p>
+      </div>
+      <div class="card">
+        <h3>IDS/IPS Dataset Scoring Tool <span class="small">· 2026</span></h3>
+        <p>Turns my Computers &amp; Security paper into a free browser tool: pick an industry, and it scores 10 well-known intrusion-detection datasets, or your own, on how well they cover that industry's real threats.</p>
+        <p><a class="ulink" href="https://github.com/adritatori/MITRE-ATT-CK-IDS-IPS-dataset-Framewor" target="_blank" rel="noopener">GitHub ↗</a></p>
+      </div>
+    </div>
+      </div>
+      <div>
+        <p class="kicker">research roles</p>
+        <div class="roles">
       <div class="role card">
         <h3>University Research Assistant</h3>
         <p class="where">Bangladesh University of Business &amp; Technology</p>
@@ -585,10 +591,10 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         </ul>
       </div>
     </div>
-  </div>
-  <div>
-    <h2 class="label tilt-r sticker">Earlier <span class="thin">work</span></h2>
-  <div class="timeline vert">
+      </div>
+      <div>
+        <p class="kicker">earlier work</p>
+        <div class="timeline vert">
       <div class="tl">
         <span class="when">Jan 2023 – Jul 2024</span>
         <h3>Software Engineer (part-time)</h3>
@@ -611,76 +617,17 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         <p>Course-based training in IT operations, web development and graphic design across five institutes.</p>
       </div>
     </div>
-    <p class="hand exp-note">teaching → software → research</p>
-  </div>
-</section>
-
-<!-- ═══ SKILLS & CERTS ═══ -->
-<section class="panel p-skills" id="skills">
-  <div>
-    <h2 class="label tilt-l sticker">Toolbox</h2>
-    <div class="skill-grid">
-      <div class="card">
-        <h3>AI/ML &amp; LLM security</h3>
-        <p>Adversarial detection &amp; robustness pipelines (PyTorch, TensorFlow, scikit-learn, Keras) · Federated learning with differential privacy (Flower, PySyft, Opacus) · Explainable AI (SHAP, LIME) · Basics of RAG pipelines &amp; AI agent architectures (LangChain, LangGraph) · Basics of LLM security in SOC environments (AI threat modelling, prompt injection &amp; jailbreaking, AI supply chain security)</p>
-      </div>
-      <div class="card">
-        <h3>Cybersecurity</h3>
-        <p>Threat-coverage frameworks (MITRE ATT&amp;CK, MITRE ATLAS, CVSS v3.x, OWASP Top 10, OWASP LLM Top 10) · Network &amp; pen-testing tools (Zeek, Wireshark, Snort, Nmap, Nessus, Metasploit) · SIEM (Splunk, ELK Stack) · Governance &amp; compliance (NIST CSF, GDPR, ISO 27001, AI RMF, EU AI Act, Essential Eight)</p>
-      </div>
-      <div class="card">
-        <h3>Research &amp; statistics</h3>
-        <p>Hypothesis testing, cross-validation, experimental design · Data analysis (Pandas, NumPy, SciPy) · Visualisation (Matplotlib, Seaborn) · Academic writing (LaTeX, Overleaf, EndNote) · Systematic literature review</p>
-      </div>
-      <div class="card">
-        <h3>Programming &amp; systems</h3>
-        <p>Python, C++, Bash · Web (JavaScript/TypeScript/React) · Databases (MySQL, PostgreSQL, MongoDB) · Docker, Git/GitHub, Linux (Ubuntu, Kali)</p>
+        <p class="hand exp-note">teaching → software → research</p>
       </div>
     </div>
   </div>
-  <div>
-    <h2 class="label tilt-r sticker">Awards <span class="thin">&amp; courses</span></h2>
-    <ul class="star-list certs">
-      <li><b>Erasmus Mundus CyberMACS Scholarship</b> <span class="yr">2026</span></li>
-      <li>Technical AI Safety, BlueDot Impact <span class="yr">Oct 2026</span></li>
-      <li>Career Bootcamp, Centre for Effective Altruism <span class="yr">2026</span></li>
-    </ul>
-    <p class="kicker" style="margin-top:22px">certificates</p>
-    <ul class="star-list certs" style="margin-top:12px">
-      <li>CompTIA Security+, CompTIA <span class="yr">2025</span></li>
-      <li>Cisco Network Security: Intrusion Detection and Prevention (Lisa Bock), LinkedIn Learning <span class="yr">2026</span></li>
-      <li>RAG, AI Apps, and AI Agents for Cybersecurity and Networking (Pearson, Omar Santos), LinkedIn Learning <span class="yr">2026</span></li>
-      <li>National Certificate-IV in CBT&amp;A Methodology for Trainers &amp; Assessors, BTEB <span class="yr">2021</span></li>
-      <li>IT Essentials, Cisco <span class="yr">2020</span></li>
-    </ul>
-    <svg class="doodle wiggle hide-sm" style="right:5vw; bottom:76px; width:70px; height:70px" viewBox="0 0 70 70" aria-hidden="true">
-      <path class="draw" pathLength="1" d="M46 8 C 36 6, 28 16, 32 26 L8 50 C 4 54, 10 62, 16 58 L40 34 C 50 38, 60 30, 58 20 L50 28 L42 24 L40 16 Z"/>
-    </svg>
-  </div>
 </section>
 
-<!-- ═══ VIDEOS ═══ -->
-<section class="panel p-videos" id="videos">
-  <h2 class="label tilt-l sticker">Videos</h2>
-  <p class="hand" style="margin-top:20px">not only work: some of the things I think about</p>
-  <div class="videos">
-    <div class="video card">
-      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/HXu6mz04zis" title="Video by Adrita Rahman Tory (1)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <a class="ulink open" href="https://youtu.be/HXu6mz04zis" target="_blank" rel="noopener">watch on YouTube ↗</a>
-    </div>
-    <div class="video card">
-      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/bVgI4DhTupk" title="Video by Adrita Rahman Tory (2)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-      <a class="ulink open" href="https://youtu.be/bVgI4DhTupk" target="_blank" rel="noopener">watch on YouTube ↗</a>
-    </div>
-  </div>
-  <p class="small" style="margin-top:22px">More on my <a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube channel (Cyber Golpo)</a></p>
-</section>
-
-<!-- ═══ WRITING ═══ -->
+<!-- ═══ WRITING & CONTENT CREATION ═══ -->
 <section class="panel p-writing" id="writing">
   <div>
     <h2 class="label tilt-l sticker">Essays <span class="thin">&amp; reflections</span></h2>
-    <p class="small" style="margin-top:22px; max-width:480px">On ethics, power, poetry and being a person.</p>
+    <p class="small" style="margin-top:20px; max-width:440px">On ethics, power, poetry and being a person.</p>
     <div class="posts">
       <a class="post card" href="https://medium.com/@radrita245/to-be-a-fake-person-or-not-to-be-fake-person-the-ethics-of-feeling-and-doing-4c1f0fa19e45" target="_blank" rel="noopener">
         <span><span class="kicker">Ethics</span><br><span class="ttl">To Be a Fake Person or Not to Be a Fake Person: The Ethics of Feeling and Doing</span></span><span class="arrow">↗</span>
@@ -698,7 +645,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
   <div>
     <h2 class="label tilt-r sticker">Technical <span class="thin">notes</span></h2>
-    <p class="small" style="margin-top:22px; max-width:480px">Things I wrote up while learning. Some are in Bengali.</p>
+    <p class="small" style="margin-top:20px; max-width:440px">Things I wrote up while learning. Some are in Bengali.</p>
     <div class="posts">
       <a class="post card" href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener">
         <span><span class="kicker">DevOps</span><br><span class="ttl">Docker পর্ব ১: Container Technology Fundamentals</span></span><span class="arrow">↗</span>
@@ -710,22 +657,40 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         <span><span class="kicker">Machine learning</span><br><span class="ttl">Understanding Bayes Decision Rules with a Loss Function</span></span><span class="arrow">↗</span>
       </a>
     </div>
-    <p class="small" style="margin-top:22px">All posts on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
+    <p class="small" style="margin-top:20px">All posts on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
+  </div>
+  <div>
+    <h2 class="label tilt-l sticker">Videos</h2>
+    <p class="hand" style="margin-top:14px; font-size:21px">some of the things I think about</p>
+    <div class="videos">
+      <div class="video card">
+      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/HXu6mz04zis" title="Video by Adrita Rahman Tory (1)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <a class="ulink open" href="https://youtu.be/HXu6mz04zis" target="_blank" rel="noopener">watch on YouTube ↗</a>
+    </div>
+    <div class="video card">
+      <div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/bVgI4DhTupk" title="Video by Adrita Rahman Tory (2)" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <a class="ulink open" href="https://youtu.be/bVgI4DhTupk" target="_blank" rel="noopener">watch on YouTube ↗</a>
+    </div>
+    </div>
+    <p class="small" style="margin-top:14px">More on my <a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube channel (Cyber Golpo)</a></p>
   </div>
 </section>
 
 <!-- ═══ CONTACT ═══ -->
 <section class="panel p-contact" id="contact">
   <div>
-    <h2 class="label tilt-r sticker">Connect <span class="thin">with me</span></h2>
-    <p class="hand" style="margin-top:20px">open to research roles, collaborations and good conversations.</p>
+    <h2 class="label tilt-r sticker">Book <span class="thin">a call</span></h2>
+    <p class="hand contact-title">open to research collaborations, mentoring and good conversations. Pick a time that suits you.</p>
+    <div class="book"><a class="btn dark" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call with me ↗</a></div>
+    <p class="kicker" style="margin-top:34px">find me elsewhere</p>
     <ul class="links">
-      <li><span class="k">Email</span><span><a class="ulink" href="mailto:adritatori456@gmail.com">adritatori456@gmail.com</a><button class="copy-mail" type="button" data-copy="adritatori456@gmail.com">copy</button></span></li>
       <li><span class="k">CV</span><a class="ulink" href="cv.pdf" download="Adrita-Rahman-Tory-CV.pdf">download PDF ↓</a></li>
       <li><span class="k">Scholar</span><a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a></li>
       <li><span class="k">ResearchGate</span><a class="ulink" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">researchgate.net/profile/Adrita-Rahman-Tory</a></li>
       <li><span class="k">LinkedIn</span><a class="ulink" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">linkedin.com/in/adrita-rahman</a></li>
       <li><span class="k">GitHub</span><a class="ulink" href="https://github.com/adritatori" target="_blank" rel="noopener">github.com/adritatori</a></li>
+      <li><span class="k">Medium</span><a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">medium.com/@radrita245</a></li>
+      <li><span class="k">YouTube</span><a class="ulink" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">Cyber Golpo</a></li>
       <li><span class="k">Based in</span><span>Dhaka, Bangladesh</span></li>
     </ul>
     <p class="footer-note">© 2026 Adrita Rahman Tory · hand-drawn doodles, plain HTML, hosted on GitHub Pages</p>
@@ -967,7 +932,7 @@ const PUBS = [
     $('#rNote').textContent = p.summary ? 'Short summary in plain words. Please read the paper for the full details.' : '';
     $('#rLinks').innerHTML = (p.links && p.links.length)
       ? p.links.map(l => '<a class="btn" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + ' ↗</a>').join('')
-      : '<span class="small">Not public yet. You can <a class="ulink" href="mailto:adritatori456@gmail.com?subject=' + encodeURIComponent('Paper: ' + p.title) + '">email me</a> about it.</span>';
+      : '<span class="small">Not public yet. You can <a class="ulink" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">book a call</a> to talk about it.</span>';
     $('#rApa').textContent = apa(p);
     $('#rBib').textContent = bib(p);
     $('#rPrev').hidden = $('#rNext').hidden = visible.length < 2;
