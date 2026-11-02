@@ -291,6 +291,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .reader .cite-row h3 { margin: 0; }
 
 /* ── VOICES (recommendations + students) ── */
+.p-voices[hidden] { display: none !important; }
 .p-voices { width: 100vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
 .sample-note { margin-top: 14px; font-style: italic; }
 .quotes { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
@@ -433,7 +434,8 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <a href="#hero" class="logo" data-go="hero">A.R.T.<span>✶</span></a>
   <ul id="menu">
     <li><a href="#research" data-go="research">Published works</a></li>
-    <li><a href="#voices" data-go="voices">Recommendations</a></li>
+    <!-- Recommendations hidden for now. To bring back: restore this link and remove "hidden" from the #voices section. -->
+    <!-- <li><a href="#voices" data-go="voices">Recommendations</a></li> -->
     <li><a href="#work" data-go="work">News &amp; work</a></li>
     <li><a href="#writing" data-go="writing">Writing &amp; content</a></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
@@ -583,7 +585,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 </section>
 
 <!-- ═══ RECOMMENDATIONS & STUDENTS ═══ -->
-<section class="panel p-voices" id="voices">
+<section class="panel p-voices" id="voices" hidden>
   <div>
     <h2 class="label tilt-l sticker">Notable <span class="thin">recommendations</span></h2>
     <!-- PLACEHOLDERS: replace with real words from the researchers and collaborators you have worked with. Add more figures by copying one block. -->
@@ -687,6 +689,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <h2 class="label tilt-l sticker">Essays <span class="thin">&amp; reflections</span></h2>
     <p class="small" style="margin-top:20px; max-width:440px">On ethics, power, poetry and being a person.</p>
     <div class="posts">
+      <a class="post card" href="https://medium.com/@radrita245/the-bengali-new-year-pahela-boisakh-%E0%A6%B6%E0%A7%81%E0%A6%AD-%E0%A6%A8%E0%A6%AC%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%B7-08b953a0cb49" target="_blank" rel="noopener">
+        <span><span class="kicker">Culture</span><br><span class="ttl">The Bengali New Year: Pahela Boisakh (শুভ নববর্ষ)</span></span><span class="arrow">↗</span>
+      </a>
+      <a class="post card" href="https://medium.com/@radrita245/reflections-on-being-ddb87eff4c08" target="_blank" rel="noopener">
+        <span><span class="kicker">Reflection</span><br><span class="ttl">Reflections on Being</span></span><span class="arrow">↗</span>
+      </a>
       <a class="post card" href="https://medium.com/@radrita245/to-be-a-fake-person-or-not-to-be-fake-person-the-ethics-of-feeling-and-doing-4c1f0fa19e45" target="_blank" rel="noopener">
         <span><span class="kicker">Ethics</span><br><span class="ttl">To Be a Fake Person or Not to Be a Fake Person: The Ethics of Feeling and Doing</span></span><span class="arrow">↗</span>
       </a>
@@ -705,6 +713,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <h2 class="label tilt-r sticker">Technical <span class="thin">notes</span></h2>
     <p class="small" style="margin-top:20px; max-width:440px">Things I wrote up while learning. Some are in Bengali.</p>
     <div class="posts">
+      <a class="post card" href="https://adritadecoded.substack.com/p/what-the-hugging-face-incident-shows" target="_blank" rel="noopener">
+        <span><span class="kicker">AI safety · new</span><br><span class="ttl">What the Hugging Face Incident Shows</span></span><span class="arrow">↗</span>
+      </a>
       <a class="post card" href="https://medium.com/@radrita245/docker-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AC-%E0%A7%A7-38c5b6e35af0" target="_blank" rel="noopener">
         <span><span class="kicker">DevOps</span><br><span class="ttl">Docker পর্ব ১: Container Technology Fundamentals</span></span><span class="arrow">↗</span>
       </a>
@@ -715,7 +726,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         <span><span class="kicker">Machine learning</span><br><span class="ttl">Understanding Bayes Decision Rules with a Loss Function</span></span><span class="arrow">↗</span>
       </a>
     </div>
-    <p class="small" style="margin-top:20px">All posts on <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
+    <p class="small" style="margin-top:20px">All posts on <a class="ulink" href="https://adritadecoded.substack.com/" target="_blank" rel="noopener">Substack</a> and <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
   </div>
   <div>
     <h2 class="label tilt-l sticker">Videos</h2>
@@ -750,6 +761,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <a class="btn" href="https://www.researchgate.net/profile/Adrita-Rahman-Tory" target="_blank" rel="noopener">ResearchGate ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://adritadecoded.substack.com/" target="_blank" rel="noopener">Substack ↗</a>
       <a class="btn" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium ↗</a>
       <a class="btn" href="https://www.youtube.com/channel/UCAg9m4GPPEmung1wAQuYUJw" target="_blank" rel="noopener">YouTube ↗</a>
     </div>
