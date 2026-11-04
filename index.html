@@ -632,9 +632,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <div class="card">
         <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">open source soon</span></div>
         <h3>Agent Control Threat Coverage Matrix <span class="small">· ACTCM · independent project</span></h3>
-        <p><b>The problem:</b> AI-control tests give an agent a hidden harmful goal (a side task) and a monitor scores how suspicious it looks, giving a safety number. That number only covers the attacks the test includes, so missing attack types make it look better than it is.</p>
-        <p style="margin-top:6px"><b>The idea:</b> label every side task with a MITRE ATT&amp;CK tactic, count per tactic, and find the empty ones. It is the same method as my <i>Computers &amp; Security</i> paper on IDS datasets.</p>
-        <p style="margin-top:6px"><b>First result (4 Nov 2026):</b> I labeled all 92 public LinuxArena side tasks. 4 of 15 tactics have none. Reconnaissance and Discovery are expected gaps; Resource Development and Lateral Movement are the real ones. Only 2 of 15 Impact techniques are tested, only 6 tasks target an AI asset, and 34 of the 92 are four templates copied across environments. Open source soon.</p>
+        <p>AI-control tests give an agent a hidden harmful goal and score how suspicious it looks to a monitor, but that safety number only covers the attacks the test includes. This project labels every test attack with a MITRE ATT&CK tactic, counts per tactic, and finds the empty ones, so missing attack types stop making a monitor look safer than it is. Open source soon.</p>
         <div class="acts"><a class="btn" href="https://github.com/adritatori/ACTCM" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
