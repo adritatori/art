@@ -304,10 +304,15 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; mix-blend-mode: multiply; pointer-events: none; z-index: 0; }
 .voices-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
 .voices-head { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
-.reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 18px; align-items: start; }
-.review { padding: 14px 18px 12px; background: rgba(255,255,255,.94); }
+.slider-wrap { position: relative; margin-top: 16px; }
+.reviews { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 2px 10px; scrollbar-width: none; align-items: flex-start; }
+.reviews::-webkit-scrollbar { display: none; }
+.review { flex: 0 0 min(440px, 82%); scroll-snap-align: start; }
+.slider-nav { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.slider-nav .btn { padding: 4px 10px; font-size: 13px; }
+.review { padding: 12px 16px 10px; background: rgba(255,255,255,.94); }
 .review blockquote { font-size: 14px; line-height: 1.5; font-style: italic; }
-.review blockquote.clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; line-clamp: 5; overflow: hidden; }
+.review blockquote.clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
 .review .more { margin-top: 4px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; text-decoration: underline; text-underline-offset: 3px; color: var(--forest); }
 .review figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.25); font-size: 12.5px; color: var(--soft); }
 .review figcaption b { color: var(--ink); }
@@ -369,8 +374,12 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
 
 /* ── BUTTERFLY (follows the cursor on mouse devices) ── */
-.butterfly { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; z-index: 70; pointer-events: none; opacity: 0; transition: opacity .6s; will-change: transform; }
+.butterfly { position: fixed; left: 0; top: 0; width: 54px; height: 54px; margin: -27px 0 0 -27px; z-index: 70; pointer-events: none; opacity: 0; transition: opacity .6s; will-change: transform; }
 .butterfly.on { opacity: 1; }
+.butterfly .orbit { position: absolute; left: 50%; top: 50%; width: 0; height: 0; animation: spin 2.6s linear infinite; }
+.butterfly .mini { position: absolute; left: 40px; top: -9px; width: 18px; height: 18px; transform: rotate(180deg); }
+.butterfly .mini svg { width: 100%; height: 100%; }
+.butterfly .mini .wing { animation-duration: .12s; }
 .butterfly svg { width: 100%; height: 100%; overflow: visible; }
 .butterfly path, .butterfly circle { stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; fill: rgba(201,240,214,.75); }
 .butterfly .body { fill: var(--ink); }
@@ -378,6 +387,21 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .butterfly .wing { transform-box: view-box; transform-origin: 0 0; animation: flap var(--flap, .3s) ease-in-out infinite alternate; }
 @keyframes flap { from { transform: scaleX(1); } to { transform: scaleX(.22); } }
 @media (pointer: coarse), (prefers-reduced-motion: reduce) { .butterfly { display: none; } }
+
+/* decorations: leaves, flowers, little laptops */
+.decor { position: absolute; pointer-events: none; z-index: 0; overflow: visible; }
+.decor * { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.decor .g { fill: rgba(201,240,214,.8); stroke: var(--forest); }
+.decor .p { fill: rgba(255,255,255,.9); }
+.decor .sway { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite alternate; }
+.decor .bob { animation: float 4.5s ease-in-out infinite; }
+.decor .blink { animation: blink 1.1s steps(1) infinite; }
+@keyframes sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+@keyframes blink { 50% { opacity: 0; } }
+.pop { position: fixed; z-index: 69; pointer-events: none; width: 44px; height: 44px; margin: -22px 0 0 -22px; animation: pop 1.6s ease-out forwards; }
+.pop * { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pop .g { fill: rgba(201,240,214,.85); stroke: var(--forest); } .pop .p { fill: #fff; }
+@keyframes pop { 0% { transform: scale(.2) rotate(-20deg); opacity: 0; } 20% { transform: scale(1.1) rotate(4deg); opacity: 1; } 100% { transform: translateY(-46px) scale(1) rotate(8deg); opacity: 0; } }
 
 /* ── VERTICAL / READING VIEW (phones, short screens, or chosen) ── */
 .vertical .progress, .vertical .scroll-hint { display: none; }
@@ -442,10 +466,10 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .doodle.hide-sm { display: none; }
   .reader .body { padding: 18px 16px 22px; }
   .links li { flex-direction: column; gap: 0; }
-  .reviews { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .wiggle, .float, .spin { animation: none; }
+  .wiggle, .float, .spin, .decor *, .pop { animation: none; }
+  .pop { display: none; }
   .draw { transition: none; stroke-dashoffset: 0; }
 }
 @media print {
@@ -608,8 +632,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <div class="card">
         <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">open source soon</span></div>
         <h3>Agent Control Threat Coverage Matrix <span class="small">· ACTCM · independent project</span></h3>
-        <!-- TODO: add 1-2 sentences on what ACTCM measures and what it has found so far. The public repo has no README yet, so nothing is claimed here beyond status. -->
-        <p>An independent project I am working on now. It will be released as open source; the repository is already public while I build it.</p>
+        <p><b>The problem:</b> AI-control tests give an agent a hidden harmful goal (a side task) and a monitor scores how suspicious it looks, giving a safety number. That number only covers the attacks the test includes, so missing attack types make it look better than it is.</p>
+        <p style="margin-top:6px"><b>The idea:</b> label every side task with a MITRE ATT&amp;CK tactic, count per tactic, and find the empty ones. It is the same method as my <i>Computers &amp; Security</i> paper on IDS datasets.</p>
+        <p style="margin-top:6px"><b>First result (4 Nov 2026):</b> I labeled all 92 public LinuxArena side tasks. 4 of 15 tactics have none. Reconnaissance and Discovery are expected gaps; Resource Development and Lateral Movement are the real ones. Only 2 of 15 Impact techniques are tested, only 6 tasks target an AI asset, and 34 of the 92 are four templates copied across environments. Open source soon.</p>
         <div class="acts"><a class="btn" href="https://github.com/adritatori/ACTCM" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
@@ -635,17 +660,18 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <div class="voices-head">
       <h2 class="label">Mentee <span class="thin">reviews</span></h2>
       <span class="hand" style="font-size:21px">4 reviews · 5.0 average · shown as written</span>
+      <span class="slider-nav"><button class="btn" id="revPrev" type="button" aria-label="Previous review">←</button><button class="btn" id="revNext" type="button" aria-label="Next review">→</button></span>
     </div>
-    <div class="reviews">
+    <div class="slider-wrap"><div class="reviews" id="reviews" tabindex="0" aria-label="Mentee reviews, scroll sideways">
       <figure class="card review"><blockquote class="clamp">Adrita Rahman Tori Apu has been an incredible mentor to me for almost 1.5 years. Throughout this journey, she has never made me hesitate to approach her with any questions or confusion. What makes her mentorship special is how she builds confidence in you. She shares her experiences, gives you room to think independently, helps you identify your own mistakes, and allows you time to learn and improve without ever putting you under pressure. She never gets tired of teaching something new. Beyond professional guidance, her mental support has often given me a fresh spark of motivation when things felt difficult. My growth in research would not have been the same without her. She made me believe in my abilities and recognize my potential. These words will always fall short of what her mentorship means to me. I sincerely wish to see her achieve the most prestigious positions in her career. She truly deserves it.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
-        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sanjida Khanom</b><span>Research Assistant, Cyber Research Hub, BUBT</span><time>Nov 4, 2026</time></figcaption></figure>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sanjida Khanom</b><span>Student Researcher, Cyber Research Hub, BUBT</span><time>Nov 4, 2026</time></figcaption></figure>
       <figure class="card review"><blockquote class="clamp">Adrita Apu mentored me throughout our healthcare cybersecurity project. She taught me how to identify attack techniques using the MITRE ATT&amp;CK framework and guided me through our research paper (accepted at ML4CS 2026) and blog from start to finish. This was also my first research paper at the Cyber Research Hub, and I learned so much through her guidance. What I value most about her mentorship is her constant encouragement, dedication, and willingness to help whenever I faced difficulties. She always pushed me to do better and think more critically. Her guidance helped me take research more seriously and grow as a researcher. I’m truly grateful for her support, patience, and everything I’ve learned from her.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
         <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sadia Mehrin Rahi</b><span>Former student mentee, BUBT</span><time>Nov 3, 2026</time></figcaption></figure>
       <figure class="card review"><blockquote class="clamp">Ms. Adrita Rahman Tory is genuinely one of the best mentor I could have asked for. Being completely new to this field, I initially had so much to learn, but she made the entire journey feel seamless. She was always patient with me, never hesitated to answer even my most basic questions, and guided me through every step of the process with incredible care and clarity. What I appreciate most about her is that even when I felt stuck, overwhelmed, or couldn’t see a way forward, she helped me find possibilities I hadn’t even considered. She didn’t just tell me what to do; she showed me how to approach problems, think through challenges, and move forward step by step. Her patience, encouragement, and willingness to guide me have made a lasting impact on my learning journey. I will always be grateful for everything she has taught me and for the confidence she helped me build.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
-        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sreejonty Chakraborty</b><span>Undergraduate student, BUBT</span><time>Nov 3, 2026</time></figcaption></figure>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sreejonty Chakraborty</b><span>Undergraduate student researcher, BUBT</span><time>Nov 3, 2026</time></figcaption></figure>
       <figure class="card review"><blockquote class="clamp">I actually understand research when I started work with you. Before that I used to do it just for the sake of doing it. You are a very good teacher, leader and mentor.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
         <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Ayesha Siddika</b><span>Intern, AI Automation &amp; Process Development (HRM), Walton Plaza</span><time>Nov 3, 2026</time></figcaption></figure>
-    </div>
+    </div></div>
   </div>
 </section>
 
@@ -1202,6 +1228,72 @@ const PUBS = [
       }
       requestAnimationFrame(tick);
     })(last);
+  }
+})();
+</script>
+<script>
+/* sketches: decor, click-to-bloom, reviews slider, mini butterfly */
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flower = '<svg viewBox="0 0 60 60"><g class="sway"><path d="M30 58 C30 46 29 38 30 30"/><path class="g" d="M30 48 C22 48 17 43 16 38 C23 38 28 41 30 46"/><circle class="p" cx="30" cy="20" r="5"/><path class="p" d="M30 15 C26 6 34 6 30 15 M35 20 C44 16 44 24 35 20 M30 25 C34 34 26 34 30 25 M25 20 C16 24 16 16 25 20 M33.5 16.5 C40 9 44 14 36.5 18.5 M26.5 23.5 C20 31 16 26 23.5 21.5"/></g></svg>';
+  const leaf = '<svg viewBox="0 0 60 60"><g class="sway"><path d="M12 56 C20 40 28 26 46 8"/><path class="g" d="M24 40 C14 38 10 30 12 24 C20 24 25 30 24 40Z"/><path class="g" d="M32 30 C42 30 48 24 48 18 C40 17 33 22 32 30Z"/><path class="g" d="M36 20 C30 16 28 10 30 5 C36 8 38 14 36 20Z"/></g></svg>';
+  const laptop = '<svg viewBox="0 0 60 60"><g class="bob"><path class="p" d="M12 14 H48 V38 H12Z"/><path d="M6 44 H54 L50 38 H10Z"/><path d="M22 24 L27 28 L22 32"/><path class="blink" d="M31 32 H38"/></g></svg>';
+  const tulip = '<svg viewBox="0 0 60 60"><g class="sway"><path d="M30 58 C30 46 30 36 30 28"/><path class="g" d="M30 50 C38 48 42 42 42 36 C35 38 31 43 30 50Z"/><path class="p" d="M21 12 C21 24 25 30 30 30 C35 30 39 24 39 12 C35 16 33 12 30 8 C27 12 25 16 21 12Z"/></g></svg>';
+  const sprig = '<svg viewBox="0 0 60 60"><g class="sway"><path d="M30 58 C28 44 32 30 30 8"/><path class="g" d="M30 46 C22 46 18 40 18 36 C25 36 29 40 30 46Z"/><path class="g" d="M30 38 C38 38 42 32 42 28 C35 28 31 32 30 38Z"/><path class="g" d="M30 28 C23 27 20 22 20 18 C27 18 30 22 30 28Z"/><path class="g" d="M30 20 C36 20 39 15 39 11 C33 11 30 15 30 20Z"/></g></svg>';
+  const kinds = [flower, leaf, laptop, tulip, sprig];
+
+  /* decorations at the top-right / top-left of sections (pairs of [panel, css, svg, size]) */
+  if (window.matchMedia('(min-width: 700px)').matches) {
+    const spots = {
+      research: [['right:2vw;top:6px', flower, 62], ['left:46vw;top:4px', leaf, 52]],
+      voices:   [['right:3vw;top:10px', tulip, 66], ['left:3vw;bottom:6px', sprig, 56]],
+      work:     [['right:2vw;top:8px', laptop, 64], ['left:44vw;bottom:8px', flower, 54]],
+      writing:  [['left:40vw;top:6px', sprig, 54], ['right:2vw;bottom:10px', tulip, 60]],
+      contact:  [['right:3vw;top:14px', flower, 70], ['left:2vw;bottom:10px', laptop, 58]]
+    };
+    Object.keys(spots).forEach(id => {
+      const panel = document.getElementById(id); if (!panel) return;
+      spots[id].forEach(([pos, svg, size]) => {
+        const d = document.createElement('div'); d.className = 'decor'; d.setAttribute('aria-hidden', 'true');
+        d.style.cssText = pos + ';width:' + size + 'px;height:' + size + 'px'; d.innerHTML = svg; panel.appendChild(d);
+      });
+    });
+  }
+
+  /* click: a little sketch blooms where you click */
+  if (!reduce) document.addEventListener('click', e => {
+    if (e.target.closest('a,button,input,dialog,iframe')) return;
+    const el = document.createElement('div'); el.className = 'pop'; el.setAttribute('aria-hidden', 'true');
+    el.style.left = e.clientX + 'px'; el.style.top = e.clientY + 'px';
+    el.innerHTML = kinds[Math.floor(Math.random() * kinds.length)];
+    document.body.appendChild(el); setTimeout(() => el.remove(), 1700);
+  });
+
+  /* mini butterfly orbiting the big one */
+  const bf = document.getElementById('butterfly');
+  if (bf) {
+    const o = document.createElement('div'); o.className = 'orbit';
+    const m = document.createElement('div'); m.className = 'mini';
+    m.innerHTML = bf.querySelector('svg').outerHTML; o.appendChild(m); bf.appendChild(o);
+  }
+
+  /* reviews slider: arrows + gentle auto-advance */
+  const track = document.getElementById('reviews');
+  if (track) {
+    const cards = [...track.children], step = () => (cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth);
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const move = dir => {
+      if (dir > 0 && atEnd()) track.scrollTo({ left: 0 });
+      else if (dir < 0 && track.scrollLeft <= 4) track.scrollTo({ left: track.scrollWidth });
+      else track.scrollBy({ left: dir * step() });
+    };
+    document.getElementById('revNext').addEventListener('click', () => move(1));
+    document.getElementById('revPrev').addEventListener('click', () => move(-1));
+    let paused = false, inView = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(ev => track.addEventListener(ev, () => paused = true, { passive: true }));
+    ['mouseleave', 'focusout'].forEach(ev => track.addEventListener(ev, () => paused = false));
+    new IntersectionObserver(es => inView = es[0].isIntersecting, { threshold: .4 }).observe(track);
+    if (!reduce) setInterval(() => { if (!paused && inView && !document.hidden) move(1); }, 6500);
   }
 })();
 </script>
