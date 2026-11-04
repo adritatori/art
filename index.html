@@ -56,7 +56,13 @@ button { font: inherit; color: inherit; }
 }
 .nav .logo { font-family: var(--mono); font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: .04em; margin-right: auto; }
 .nav .logo span { font-family: var(--hand); font-size: 22px; margin-left: 4px; }
-.nav ul { display: flex; gap: 2px; list-style: none; }
+.nav ul { list-style: none; }
+.nav > ul { display: flex; gap: 2px; align-self: stretch; }
+.nav > ul > li { position: relative; display: flex; align-items: center; }
+.caret { background: none; border: 0; cursor: pointer; font-size: 10px; padding: 4px 3px 4px 0; margin-left: -4px; color: var(--soft); }
+.sub-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 200px; flex-direction: column; background: var(--paper); border: 1.5px solid var(--ink); border-top-width: 0; padding: 6px; box-shadow: 3px 3px 0 var(--forest); z-index: 60; }
+.sub-menu a { display: block; padding: 7px 10px !important; font-size: 11.5px !important; }
+.has-sub:hover > .sub-menu, .has-sub:focus-within > .sub-menu, .has-sub.open > .sub-menu { display: flex; }
 .nav ul a {
   font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
   text-decoration: none; padding: 5px 7px; border: 1.5px solid transparent; border-radius: 3px; white-space: nowrap;
@@ -93,14 +99,18 @@ button { font: inherit; color: inherit; }
 
 /* ── SHARED ──────────────────────────── */
 .label {
-  display: inline-flex; align-items: center; gap: 10px;
+  position: relative; display: inline-flex; align-items: baseline; gap: 8px;
   font-family: var(--mono); font-weight: 700; text-transform: uppercase;
-  font-size: 22px; letter-spacing: .06em; line-height: 1;
-  border: 2px solid var(--ink); background: var(--card); padding: 10px 16px; box-shadow: 4px 4px 0 var(--forest);
+  font-size: 21px; letter-spacing: .07em; line-height: 1.1; padding: 0 0 13px;
 }
+.label::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; opacity: .85;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='7' viewBox='0 0 26 7'%3E%3Cpath d='M0 3.5 Q6.5 0 13 3.5 T26 3.5' fill='none' stroke='%230e5e4f' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 26px 7px;
+}
+h3.sub { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--forest); margin: 18px 0 2px; display: flex; align-items: center; gap: 10px; }
+h3.sub::after { content: ""; flex: 1; border-top: 1.5px dashed rgba(14,94,79,.35); }
 .label .thin { font-weight: 400; }
-.tilt-l { transform: rotate(-3deg); }
-.tilt-r { transform: rotate(2.5deg); }
+.tilt-l, .tilt-r { transform: none; }
 .hand { font-style: italic; font-family: var(--hand); font-size: 24px; line-height: 1.1; color: var(--soft); }
 .small { font-size: 13px; color: var(--soft); }
 .kicker { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--soft); }
@@ -110,6 +120,7 @@ button { font: inherit; color: inherit; }
 }
 .tag.pub { background: var(--forest); color: #fff; border-color: var(--forest); }
 .tag.pres { background: var(--card); }
+.tag.live { background: var(--forest); color: #fff; border-color: var(--forest); }
 .tag.acc { background: var(--pink); }
 .tape { position: absolute; width: 90px; height: 26px; background: rgba(255,255,255,.45); border: 1px solid rgba(0,0,0,.08); z-index: 3; }
 .card { background: var(--card); border: 1.5px solid var(--ink); padding: 16px 18px; position: relative; }
@@ -135,7 +146,7 @@ button { font: inherit; color: inherit; }
 @keyframes float  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes spin   { to { transform: rotate(360deg); } }
 .sticker { transition: transform .25s ease; }
-.sticker:hover { transform: rotate(0deg) scale(1.04); }
+
 
 /* ── HERO ────────────────────────────── */
 .p-hero { width: 100vw; display: grid; grid-template-columns: .82fr 1.18fr; gap: 3.5vw; align-items: center; }
@@ -146,22 +157,22 @@ button { font: inherit; color: inherit; }
   display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--mono); font-weight: 700; font-size: clamp(30px, 4vw, 54px); line-height: 1;
   border: 2.5px solid var(--ink); background: var(--card); padding: 10px 18px 12px;
-  box-shadow: 6px 6px 0 var(--forest); transform: rotate(-4deg);
+  box-shadow: 4px 4px 0 var(--forest);
 }
 .name-tag svg { width: .8em; height: .8em; }
 .surname {
   display: inline-block; margin: 18px 0 0 12%;
   font-family: var(--mono); font-size: clamp(17px, 2vw, 26px); letter-spacing: .08em;
-  border: 2px solid var(--ink); background: var(--paper); padding: 6px 14px; transform: rotate(5deg);
+  border: 2px solid var(--ink); background: var(--paper); padding: 6px 14px;
 }
 .hero-intro { max-width: 520px; margin-top: 24px; font-size: 18px; line-height: 1.5; }
 .hero-intro p + p { margin-top: 10px; }
 .profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; max-width: 520px; }
 .hero-photo { position: relative; flex: 0 0 auto; width: min(13vw, 22vh, 190px); min-width: 120px; }
-.hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 7px 7px 30px; transform: rotate(-3deg); box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
+.hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 7px 7px 30px; box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
 .hero-photo img { width: 100%; aspect-ratio: 1095/1437; object-fit: cover; object-position: center 20%; }
 .hero-photo .caption { position: absolute; bottom: 5px; left: 0; right: 0; text-align: center; font-family: var(--hand); font-size: 16px; }
-.hero-photo .tape { top: -10px; left: 30%; width: 60px; height: 20px; transform: rotate(-6deg); }
+.hero-photo .tape { top: -10px; left: 30%; width: 60px; height: 20px; }
 .scroll-hint { position: absolute; right: 5vw; bottom: 54px; display: flex; align-items: center; gap: 8px; font-family: var(--hand); font-size: 23px; }
 .scroll-hint svg { width: 70px; height: 30px; }
 
@@ -178,9 +189,7 @@ button { font: inherit; color: inherit; }
 .help-item h3 { font-family: var(--mono); font-size: 14.5px; line-height: 1.25; margin-top: 3px; }
 .help-item p { font-size: 12.4px; color: var(--soft); line-height: 1.4; margin-top: 3px; }
 .help-item .go { margin-top: auto; padding-top: 6px; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.help-list li:nth-child(odd) .help-item { transform: rotate(-.4deg); }
-.help-list li:nth-child(even) .help-item { transform: rotate(.4deg); }
-.help-list li .help-item:hover { transform: translate(-2px,-2px) rotate(0); }
+.help-list li .help-item:hover { transform: translate(-2px,-2px); }
 
 /* ── CURRENT & PAST WORK ─────────────── */
 .p-work { width: 100vw; display: grid; grid-template-columns: .85fr 1.15fr; gap: 4vw; }
@@ -233,12 +242,14 @@ button { font: inherit; color: inherit; }
 .thesis { margin-top: 26px; max-width: 440px; }
 
 /* ── PROJECTS ────────────────────────── */
-.r-proj { flex: 0 0 min(34vw, 460px); display: flex; flex-direction: column; }
+.r-proj { flex: 0 0 min(36vw, 480px); display: flex; flex-direction: column; }
 .r-proj .label { align-self: flex-start; }
 .projects { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
 .projects .card { border-left: 5px solid var(--leaf); }
 .projects h3 { font-family: var(--mono); font-size: 15px; }
 .projects p { font-size: 13.3px; color: var(--soft); margin-top: 4px; }
+.projects > .small { grid-column: 1 / -1; }
+.r-proj .tags { display: flex; gap: 6px; margin-bottom: 7px; flex-wrap: wrap; }
 .projects .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .projects .acts .btn { font-size: 10.5px; padding: 4px 9px; }
 
@@ -266,8 +277,6 @@ article.pub { padding: 13px 15px; }
 .more-row .btn { font-size: 12px; padding: 7px 14px; }
 .pub .acts .btn { font-size: 10px; padding: 3px 8px; box-shadow: 1.5px 1.5px 0 var(--ink); }
 .pub .none { font-size: 11.5px; color: var(--faint); font-style: italic; }
-.pub:nth-child(odd)  { transform: rotate(-.5deg); }
-.pub:nth-child(even) { transform: rotate(.4deg); }
 @media (min-height: 1040px) { .pub-grid { grid-template-rows: repeat(3, auto); } }
 .empty { font-family: var(--hand); font-size: 24px; color: var(--soft); margin-top: 20px; }
 
@@ -291,17 +300,20 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .reader .cite-row h3 { margin: 0; }
 
 /* ── VOICES (recommendations + students) ── */
-.p-voices[hidden] { display: none !important; }
-.p-voices { width: 100vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
-.sample-note { margin-top: 14px; font-style: italic; }
-.quotes { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
-.quote { padding: 12px 16px; }
-.quote .tag { float: right; margin-left: 8px; color: var(--faint); border-color: var(--faint); }
-.quote blockquote { font-style: italic; font-size: 14.5px; line-height: 1.45; }
-.quote figcaption { font-size: 12.5px; color: var(--soft); margin-top: 6px; }
-.quote.big { border-left: 5px solid var(--leaf); padding: 14px 18px; }
-.quote.big blockquote { font-size: 16px; }
-.service { margin-top: 26px; font-size: 13.8px; }
+.p-voices { width: 100vw; overflow: hidden; }
+.bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; mix-blend-mode: multiply; pointer-events: none; z-index: 0; }
+.voices-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+.voices-head { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
+.reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-top: 18px; align-items: start; }
+.review { padding: 14px 18px 12px; background: rgba(255,255,255,.94); }
+.review blockquote { font-size: 14px; line-height: 1.5; font-style: italic; }
+.review blockquote.clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; line-clamp: 5; overflow: hidden; }
+.review .more { margin-top: 4px; background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; text-decoration: underline; text-underline-offset: 3px; color: var(--forest); }
+.review figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.25); font-size: 12.5px; color: var(--soft); }
+.review figcaption b { color: var(--ink); }
+.review .stars { color: #d98a00; letter-spacing: 1px; font-size: 12px; }
+.review time { margin-left: auto; font-size: 12px; }
+.review figcaption span:not(.stars) { flex-basis: 100%; order: 3; font-size: 12px; }
 
 /* ── EXPERIENCE ──────────────────────── */
 .timeline.vert { grid-template-columns: 1fr; gap: 14px; padding-left: 30px; margin-top: 18px; }
@@ -322,8 +334,6 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 /* ── WRITING & CONTENT ───────────────── */
 .videos { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; max-width: 320px; }
 .video { padding: 8px; }
-.video:nth-child(1) { transform: rotate(-.6deg); }
-.video:nth-child(2) { transform: rotate(.5deg); }
 .video .ratio { position: relative; aspect-ratio: 16/9; background: var(--wave); }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video .open { display: inline-block; margin-top: 6px; font-size: 12.5px; }
@@ -357,6 +367,18 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 12px; padding: 8px 14px; transition: .25s; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+
+/* ── BUTTERFLY (follows the cursor on mouse devices) ── */
+.butterfly { position: fixed; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px; z-index: 70; pointer-events: none; opacity: 0; transition: opacity .6s; will-change: transform; }
+.butterfly.on { opacity: 1; }
+.butterfly svg { width: 100%; height: 100%; overflow: visible; }
+.butterfly path, .butterfly circle { stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; fill: rgba(201,240,214,.75); }
+.butterfly .body { fill: var(--ink); }
+.butterfly .feel { fill: none; }
+.butterfly .wing { transform-box: view-box; transform-origin: 0 0; animation: flap var(--flap, .3s) ease-in-out infinite alternate; }
+@keyframes flap { from { transform: scaleX(1); } to { transform: scaleX(.22); } }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .butterfly { display: none; } }
+
 /* ── VERTICAL / READING VIEW (phones, short screens, or chosen) ── */
 .vertical .progress, .vertical .scroll-hint { display: none; }
 .vertical .h-sticky { position: static; height: auto; overflow: visible; }
@@ -367,7 +389,6 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 }
 .vertical .p-hero { padding-top: calc(var(--navh) + 34px); }
 .vertical .pub-grid { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-.vertical .pub { transform: none !important; }
 .vertical .p-research { display: block; }
 .vertical .areas { grid-template-columns: repeat(4, 1fr); margin-top: 22px; gap: 18px; }
 .vertical .r-right { margin-top: 36px; }
@@ -376,7 +397,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .p-work { grid-template-columns: .9fr 1.1fr; gap: 3.5vw; }
 .vertical .p-writing { grid-template-columns: 1fr 1fr 360px; gap: 3vw; }
 .vertical .p-writing .posts, .vertical .news { max-width: none; }
-.vertical .p-voices { gap: 3.5vw; }
+.vertical .p-voices { overflow: hidden; }
 .vertical .p-contact { grid-template-columns: 1.1fr .9fr; gap: 3.5vw; }
 
 @media (max-width: 1100px) {
@@ -386,11 +407,15 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 }
 @media (max-width: 1180px) {
   .burger { display: inline-flex; }
-  .nav ul {
-    display: none; position: absolute; top: var(--navh); left: 0; right: 0; flex-direction: column;
-    background: var(--paper); border-bottom: 1.5px solid var(--ink); padding: 10px 16px;
+  .nav > ul {
+    display: none; position: absolute; top: var(--navh); left: 0; right: 0; flex-direction: column; align-self: auto;
+    background: var(--paper); border-bottom: 1.5px solid var(--ink); padding: 10px 16px; max-height: calc(100vh - var(--navh)); overflow-y: auto;
   }
-  .nav ul.open { display: flex; }
+  .nav > ul.open { display: flex; }
+  .nav > ul > li { display: block; }
+  .caret { display: none; }
+  .sub-menu { display: flex; position: static; min-width: 0; border: 0; box-shadow: none; padding: 0 0 4px 14px; background: none; }
+  .sub-menu a { font-size: 12px !important; }
   .nav ul a { font-size: 13px; padding: 8px; }
 }
 @media (max-width: 899px), (max-height: 559px) {
@@ -417,6 +442,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .doodle.hide-sm { display: none; }
   .reader .body { padding: 18px 16px 22px; }
   .links li { flex-direction: column; gap: 0; }
+  .reviews { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   .wiggle, .float, .spin { animation: none; }
@@ -433,11 +459,14 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <nav class="nav" aria-label="Main">
   <a href="#hero" class="logo" data-go="hero">A.R.T.<span>✶</span></a>
   <ul id="menu">
-    <li><a href="#research" data-go="research">Published works</a></li>
-    <!-- Recommendations hidden for now. To bring back: restore this link and remove "hidden" from the #voices section. -->
-    <!-- <li><a href="#voices" data-go="voices">Recommendations</a></li> -->
-    <li><a href="#work" data-go="work">News &amp; work</a></li>
-    <li><a href="#writing" data-go="writing">Writing &amp; content</a></li>
+    <li class="has-sub"><a href="#research" data-go="research">Research</a><button class="caret" type="button" aria-label="Research submenu" aria-expanded="false">&#9662;</button>
+      <ul class="sub-menu"><li><a href="#areas" data-go="areas">Areas</a></li><li><a href="#publications" data-go="publications">Papers</a></li><li><a href="#ongoing" data-go="ongoing">Ongoing work</a></li><li><a href="#tools" data-go="tools">Tools</a></li></ul></li>
+    <li class="has-sub"><a href="#voices" data-go="voices">Mentoring</a><button class="caret" type="button" aria-label="Mentoring submenu" aria-expanded="false">&#9662;</button>
+      <ul class="sub-menu"><li><a href="#help" data-go="help">How I can help</a></li><li><a href="#voices" data-go="voices">Mentee reviews</a></li></ul></li>
+    <li class="has-sub"><a href="#work" data-go="work">About</a><button class="caret" type="button" aria-label="About submenu" aria-expanded="false">&#9662;</button>
+      <ul class="sub-menu"><li><a href="#news" data-go="news">News</a></li><li><a href="#roles" data-go="roles">Research roles</a></li><li><a href="#earlier" data-go="earlier">Earlier work</a></li></ul></li>
+    <li class="has-sub"><a href="#writing" data-go="writing">Writing</a><button class="caret" type="button" aria-label="Writing submenu" aria-expanded="false">&#9662;</button>
+      <ul class="sub-menu"><li><a href="#essays" data-go="essays">Essays</a></li><li><a href="#notes" data-go="notes">Technical notes</a></li><li><a href="#videos" data-go="videos">Videos</a></li></ul></li>
     <li><a href="#contact" data-go="contact">Contact</a></li>
   </ul>
   <!-- Sideways view is switched off for now. To bring it back: remove "hidden" on this button and restore the localStorage line in the script. -->
@@ -523,7 +552,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <section class="panel p-research" id="research">
   <div class="r-left">
     <h2 class="label tilt-l sticker">Research</h2>
-    <div class="areas">
+    <div class="areas" id="areas">
       <div class="area">
         <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M26 4 L44 11 L44 26 C 44 38, 35 45, 26 48 C 17 45, 8 38, 8 26 L8 11 Z"/><path d="M18 26 L24 32 L35 20"/></svg>
         <div><h3>Intrusion detection</h3><p>Network IDS datasets and how well they cover real threats (MITRE ATT&amp;CK).</p>
@@ -566,52 +595,57 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <noscript><p class="small" style="margin-top:20px">The full publication list is in my <a class="ulink" href="CV.pdf">CV (PDF)</a> and on <a class="ulink" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ">Google Scholar</a>.</p></noscript>
   </div>
   <div class="r-proj" id="projects">
-    <h2 class="label tilt-l sticker">Projects</h2>
-    <p class="hand" style="font-size:21px; margin-top:14px">tools I built, free to try</p>
-    <!-- To add a project, copy one card below. -->
+    <h2 class="label">Projects</h2>
+
+    <h3 class="sub" id="ongoing">Ongoing work</h3>
     <div class="projects">
       <div class="card">
-        <h3>Collusion Evidence Lab <span class="small">· Apart Research sprint · Oct 2026</span></h3>
-        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. Includes a free browser tool so a human reviewer makes the final call.</p>
+        <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">free tool</span></div>
+        <h3>Collusion Evidence Lab <span class="small">· started in an Apart Research sprint, Oct 2026</span></h3>
+        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. I am still extending it. Includes a free browser tool so a human reviewer makes the final call.</p>
         <div class="acts"><a class="btn dark" href="https://adritatori.github.io/AI_collusion/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
       <div class="card">
+        <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">open source soon</span></div>
+        <h3>Agent Control Threat Coverage Matrix <span class="small">· ACTCM · independent project</span></h3>
+        <!-- TODO: add 1-2 sentences on what ACTCM measures and what it has found so far. The public repo has no README yet, so nothing is claimed here beyond status. -->
+        <p>An independent project I am working on now. It will be released as open source; the repository is already public while I build it.</p>
+        <div class="acts"><a class="btn" href="https://github.com/adritatori/ACTCM" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </div>
+
+    <h3 class="sub" id="tools">Tools you can try</h3>
+    <div class="projects">
+      <div class="card">
+        <div class="tags"><span class="tag live">free tool</span></div>
         <h3>IDS/IPS Dataset Scoring Tool <span class="small">· 2026</span></h3>
         <p>Turns my Computers &amp; Security paper into a free browser tool: pick an industry, and it scores 10 well-known intrusion-detection datasets, or your own, on how well they cover that industry's real threats.</p>
         <div class="acts"><a class="btn dark" href="https://mitre-att-ck-ids-ips-dataset-framew.vercel.app/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/MITRE-ATT-CK-IDS-IPS-dataset-Framewor" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
+      <p class="small">Collusion Evidence Lab above also runs in your browser.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ RECOMMENDATIONS & STUDENTS ═══ -->
-<section class="panel p-voices" id="voices" hidden>
-  <div>
-    <h2 class="label tilt-l sticker">Notable <span class="thin">recommendations</span></h2>
-    <!-- PLACEHOLDERS: replace with real words from the researchers and collaborators you have worked with. Add more figures by copying one block. -->
-    <p class="small sample-note">Placeholders: to be replaced with real words from researchers and collaborators.</p>
-    <div class="quotes">
-      <figure class="card quote big"><span class="tag">placeholder</span><blockquote>Quote from a senior researcher or supervisor goes here.</blockquote><figcaption>Name · Title · Institution</figcaption></figure>
-      <figure class="card quote big"><span class="tag">placeholder</span><blockquote>Quote from a co-author or research collaborator goes here.</blockquote><figcaption>Name · Title · Institution</figcaption></figure>
-      <figure class="card quote big"><span class="tag">placeholder</span><blockquote>Quote from someone you have worked with in AI safety or security goes here.</blockquote><figcaption>Name · Title · Organisation</figcaption></figure>
+<!-- ═══ MENTEE REVIEWS ═══ -->
+<!-- Mentor/colleague recommendations: add a second block here when they arrive (copy a .review card). -->
+<section class="panel p-voices" id="voices">
+  <video class="bg-video" muted loop playsinline preload="none" data-src="reviews-bg.mp4" aria-hidden="true" tabindex="-1"></video>
+  <div class="voices-inner">
+    <div class="voices-head">
+      <h2 class="label">Mentee <span class="thin">reviews</span></h2>
+      <span class="hand" style="font-size:21px">4 reviews · 5.0 average · shown as written</span>
     </div>
-  </div>
-
-  <div>
-    <h2 class="label tilt-r sticker">What mentees <span class="thin">say</span></h2>
-    <!-- SAMPLE TESTIMONIALS: placeholder text only. Replace with real reviews before publishing. -->
-    <p class="small sample-note">Sample reviews: placeholder text, to be replaced with real ones.</p>
-    <div class="quotes">
-      <figure class="card quote"><span class="tag">sample</span><blockquote>Adrita helped me turn a messy idea into a clear research question. She kept asking “why does this matter?” until I actually knew.</blockquote><figcaption>Mentee name · undergraduate researcher</figcaption></figure>
-      <figure class="card quote"><span class="tag">sample</span><blockquote>I had never written a paper before. She walked me through experiments, figures and reviewer comments, and our paper got accepted.</blockquote><figcaption>Mentee name · undergraduate researcher</figcaption></figure>
-      <figure class="card quote"><span class="tag">sample</span><blockquote>Beyond research, she helped me think about my career and prepare for my first job in cybersecurity.</blockquote><figcaption>Mentee name · CSE graduate</figcaption></figure>
+    <div class="reviews">
+      <figure class="card review"><blockquote class="clamp">Adrita Rahman Tori Apu has been an incredible mentor to me for almost 1.5 years. Throughout this journey, she has never made me hesitate to approach her with any questions or confusion. What makes her mentorship special is how she builds confidence in you. She shares her experiences, gives you room to think independently, helps you identify your own mistakes, and allows you time to learn and improve without ever putting you under pressure. She never gets tired of teaching something new. Beyond professional guidance, her mental support has often given me a fresh spark of motivation when things felt difficult. My growth in research would not have been the same without her. She made me believe in my abilities and recognize my potential. These words will always fall short of what her mentorship means to me. I sincerely wish to see her achieve the most prestigious positions in her career. She truly deserves it.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sanjida Khanom</b><span>Research Assistant, Cyber Research Hub, BUBT</span><time>Nov 4, 2026</time></figcaption></figure>
+      <figure class="card review"><blockquote class="clamp">Adrita Apu mentored me throughout our healthcare cybersecurity project. She taught me how to identify attack techniques using the MITRE ATT&amp;CK framework and guided me through our research paper (accepted at ML4CS 2026) and blog from start to finish. This was also my first research paper at the Cyber Research Hub, and I learned so much through her guidance. What I value most about her mentorship is her constant encouragement, dedication, and willingness to help whenever I faced difficulties. She always pushed me to do better and think more critically. Her guidance helped me take research more seriously and grow as a researcher. I’m truly grateful for her support, patience, and everything I’ve learned from her.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sadia Mehrin Rahi</b><span>Former student mentee, BUBT</span><time>Nov 3, 2026</time></figcaption></figure>
+      <figure class="card review"><blockquote class="clamp">Ms. Adrita Rahman Tory is genuinely one of the best mentor I could have asked for. Being completely new to this field, I initially had so much to learn, but she made the entire journey feel seamless. She was always patient with me, never hesitated to answer even my most basic questions, and guided me through every step of the process with incredible care and clarity. What I appreciate most about her is that even when I felt stuck, overwhelmed, or couldn’t see a way forward, she helped me find possibilities I hadn’t even considered. She didn’t just tell me what to do; she showed me how to approach problems, think through challenges, and move forward step by step. Her patience, encouragement, and willingness to guide me have made a lasting impact on my learning journey. I will always be grateful for everything she has taught me and for the confidence she helped me build.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Sreejonty Chakraborty</b><span>Undergraduate student, BUBT</span><time>Nov 3, 2026</time></figcaption></figure>
+      <figure class="card review"><blockquote class="clamp">I actually understand research when I started work with you. Before that I used to do it just for the sake of doing it. You are a very good teacher, leader and mentor.</blockquote><button class="more" type="button" aria-expanded="false">read more</button>
+        <figcaption><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><b>Ayesha Siddika</b><span>Intern, AI Automation &amp; Process Development (HRM), Walton Plaza</span><time>Nov 3, 2026</time></figcaption></figure>
     </div>
-    <p class="kicker" style="margin-top:26px">workshops &amp; service</p>
-    <ul class="star-list service">
-      <li>Workshop: “From Observation to Research Question”, on finding research gaps and scoping a thesis or paper</li>
-      <li>Workshop: “Cybersecurity Under the Umbrella: Paths, Reality, and Research Readiness”</li>
-      <li>Peer reviewer, COMPAS 2025 (IEEE Computer Society Bangladesh Chapter); subreviewer, STI 2024 and STI 2025</li>
-    </ul>
   </div>
 </section>
 
@@ -619,7 +653,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <section class="panel p-work" id="work">
   <div>
     <h2 class="label tilt-l sticker">Ongoing <span class="thin">&amp; recent news</span></h2>
-    <ul class="news">
+    <ul class="news" id="news">
     <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
     <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
     <li class="hot"><span class="when">2026</span>Awarded the Erasmus Mundus CyberMACS Scholarship.</li>
@@ -634,7 +668,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   </div>
   <div>
     <h2 class="label tilt-r sticker">Research <span class="thin">roles</span></h2>
-    <div class="roles">
+    <div class="roles" id="roles">
       <div class="role card">
         <h3>University Research Assistant</h3>
         <p class="where">Bangladesh University of Business &amp; Technology</p>
@@ -656,7 +690,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
         </ul>
       </div>
     </div>
-    <p class="kicker" style="margin-top:20px">earlier work</p>
+    <p class="kicker" id="earlier" style="margin-top:20px">earlier work</p>
     <div class="timeline h4">
       <div class="tl">
         <span class="when">Jan 2023 – Jul 2024</span>
@@ -685,7 +719,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 
 <!-- ═══ WRITING & CONTENT CREATION ═══ -->
 <section class="panel p-writing" id="writing">
-  <div>
+  <div id="essays">
     <h2 class="label tilt-l sticker">Essays <span class="thin">&amp; reflections</span></h2>
     <p class="small" style="margin-top:20px; max-width:440px">On ethics, power, poetry and being a person.</p>
     <div class="posts">
@@ -709,7 +743,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       </a>
     </div>
   </div>
-  <div>
+  <div id="notes">
     <h2 class="label tilt-r sticker">Technical <span class="thin">notes</span></h2>
     <p class="small" style="margin-top:20px; max-width:440px">Things I wrote up while learning. Some are in Bengali.</p>
     <div class="posts">
@@ -728,7 +762,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     </div>
     <p class="small" style="margin-top:20px">All posts on <a class="ulink" href="https://adritadecoded.substack.com/" target="_blank" rel="noopener">Substack</a> and <a class="ulink" href="https://medium.com/@radrita245" target="_blank" rel="noopener">Medium</a></p>
   </div>
-  <div>
+  <div id="videos">
     <h2 class="label tilt-l sticker">Videos</h2>
     <p class="hand" style="margin-top:14px; font-size:21px">some of the things I think about</p>
     <div class="videos">
@@ -799,6 +833,13 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <pre id="rBib"></pre>
   </div>
 </dialog>
+
+<div class="butterfly" id="butterfly" aria-hidden="true"><svg viewBox="-20 -20 40 40">
+  <g class="wing"><path d="M0 -1 C -4 -17 -19 -16 -17 -5 C -16 1 -8 3 0 0 Z"/><path d="M0 1 C -10 3 -15 12 -10 15 C -5 17 -1 9 0 3 Z"/><circle cx="-10" cy="-8" r="2"/></g>
+  <g class="wing" transform="scale(-1,1)"><path d="M0 -1 C -4 -17 -19 -16 -17 -5 C -16 1 -8 3 0 0 Z"/><path d="M0 1 C -10 3 -15 12 -10 15 C -5 17 -1 9 0 3 Z"/><circle cx="-10" cy="-8" r="2"/></g>
+  <path class="body" d="M0 -8 Q2 0 0 10 Q-2 0 0 -8 Z"/>
+  <path class="feel" d="M0 -8 Q-3 -13 -6 -14 M0 -8 Q3 -13 6 -14"/>
+</svg></div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1104,6 +1145,64 @@ const PUBS = [
   window.addEventListener('load', () => { layout(); if (location.hash) go(location.hash.slice(1), true); });
   if (document.fonts) document.fonts.ready.then(layout);
   render();
+})();
+</script>
+<script>
+/* nav submenus (touch), reviews read-more, background video, butterfly */
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('.caret').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation();
+    const li = b.parentElement, open = !li.classList.contains('open');
+    document.querySelectorAll('.has-sub.open').forEach(x => { x.classList.remove('open'); x.querySelector('.caret').setAttribute('aria-expanded', 'false'); });
+    li.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open));
+  }));
+  document.addEventListener('click', () => document.querySelectorAll('.has-sub.open').forEach(x => x.classList.remove('open')));
+
+  document.querySelectorAll('.review').forEach(r => {
+    const q = r.querySelector('blockquote'), b = r.querySelector('.more');
+    const fits = () => q.scrollHeight <= q.clientHeight + 1;
+    b.hidden = false;
+    requestAnimationFrame(() => { if (q.classList.contains('clamp') && fits()) b.hidden = true; });
+    b.addEventListener('click', () => {
+      const open = q.classList.toggle('clamp') === false;
+      b.textContent = open ? 'show less' : 'read more'; b.setAttribute('aria-expanded', String(open));
+    });
+  });
+  window.addEventListener('resize', () => document.querySelectorAll('.review').forEach(r => {
+    const q = r.querySelector('blockquote'), b = r.querySelector('.more');
+    if (q.classList.contains('clamp')) { b.hidden = q.scrollHeight <= q.clientHeight + 1; }
+  }));
+
+  const v = document.querySelector('.bg-video');
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (v && !reduce && !saveData) {
+    new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); } else v.pause();
+    }), { threshold: 0.1 }).observe(v.parentElement);
+  } else if (v) { v.remove(); }
+
+  const bf = document.getElementById('butterfly');
+  if (bf && !reduce && window.matchMedia('(pointer: fine)').matches) {
+    let mx = 0, my = 0, x = innerWidth + 40, y = innerHeight * .75, ang = 0, t = 0, seen = false, last = performance.now();
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; if (!seen) { seen = true; bf.classList.add('on'); } }, { passive: true });
+    document.addEventListener('mouseleave', () => bf.classList.remove('on'));
+    document.addEventListener('mouseenter', () => { if (seen) bf.classList.add('on'); });
+    (function tick(now) {
+      const dt = Math.min((now - last) / 16.7, 3); last = now; t += dt * .016;
+      if (seen) {
+        const tx = mx + Math.cos(t * 1.4) * 42, ty = my + Math.sin(t * 1.9) * 30 - 14;
+        const k = 1 - Math.pow(1 - .045, dt), px = x, py = y;
+        x += (tx - x) * k; y += (ty - y) * k;
+        const vx = x - px, vy = y - py, sp = Math.hypot(vx, vy);
+        if (sp > .15) { const want = Math.atan2(vy, vx) * 180 / Math.PI + 90; let d = ((want - ang + 540) % 360) - 180; ang += d * .12; }
+        bf.style.setProperty('--flap', Math.max(.1, .34 - sp * .02).toFixed(3) + 's');
+        bf.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) rotate(' + ang.toFixed(1) + 'deg)';
+      }
+      requestAnimationFrame(tick);
+    })(last);
+  }
 })();
 </script>
 </body>
