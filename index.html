@@ -7,7 +7,7 @@
 <meta name="description" content="Adrita Rahman Tory, independent researcher in AI safety, security and alignment. 11 peer-reviewed papers on intrusion detection, adversarial ML, federated learning, LLM agent security and AI collusion. Papers, CV, essays and videos.">
 <meta property="og:title" content="Adrita Rahman Tory | AI Safety & Security Researcher">
 <meta property="og:type" content="website">
-<meta property="og:image" content="profile.png">
+<meta property="og:image" content="profile-web.jpg">
 
 
 <style>
@@ -99,7 +99,7 @@ button { font: inherit; color: inherit; }
 
 /* ── SHARED ──────────────────────────── */
 .label {
-  position: relative; display: inline-flex; align-items: baseline; gap: 8px;
+  position: relative; display: inline-block;
   font-family: var(--mono); font-weight: 700; text-transform: uppercase;
   font-size: 21px; letter-spacing: .07em; line-height: 1.1; padding: 0 0 13px;
 }
@@ -170,7 +170,7 @@ h3.sub::after { content: ""; flex: 1; border-top: 1.5px dashed rgba(14,94,79,.35
 .profiles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; max-width: 520px; }
 .hero-photo { position: relative; flex: 0 0 auto; width: min(13vw, 22vh, 190px); min-width: 120px; }
 .hero-photo .frame { border: 2px solid var(--ink); background: var(--card); padding: 7px 7px 30px; box-shadow: 4px 4px 0 rgba(0,0,0,.18); }
-.hero-photo img { width: 100%; aspect-ratio: 1095/1437; object-fit: cover; object-position: center 20%; }
+.hero-photo img { width: 100%; aspect-ratio: 600/771; object-fit: cover; object-position: center 20%; }
 .hero-photo .caption { position: absolute; bottom: 5px; left: 0; right: 0; text-align: center; font-family: var(--hand); font-size: 16px; }
 .hero-photo .tape { top: -10px; left: 30%; width: 60px; height: 20px; }
 .scroll-hint { position: absolute; right: 5vw; bottom: 54px; display: flex; align-items: center; gap: 8px; font-family: var(--hand); font-size: 23px; }
@@ -218,10 +218,6 @@ h3.sub::after { content: ""; flex: 1; border-top: 1.5px dashed rgba(14,94,79,.35
 .news li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
 .news li.hot::before { background: var(--leaf); border-color: var(--leaf); }
 .news .when { font-family: var(--hand); font-size: 21px; line-height: 1; display: block; margin-bottom: 2px; }
-.projects { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
-.projects .card { border-left: 5px solid var(--leaf); }
-.projects h3 { font-family: var(--mono); font-size: 14.5px; }
-.projects p { font-size: 13.3px; color: var(--soft); margin-top: 4px; }
 
 /* ── RESEARCH ────────────────────────── */
 .p-research { display: flex; gap: 5vw; }
@@ -302,7 +298,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 /* ── VOICES (recommendations + students) ── */
 .p-voices { width: 100vw; overflow: hidden; }
 .bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; mix-blend-mode: multiply; pointer-events: none; z-index: 0; }
-.voices-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+.voices-inner { position: relative; z-index: 1; }
 .voices-head { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
 .slider-wrap { position: relative; margin-top: 16px; }
 .reviews { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 2px 10px; scrollbar-width: none; align-items: flex-start; }
@@ -421,7 +417,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .p-work { grid-template-columns: .9fr 1.1fr; gap: 3.5vw; }
 .vertical .p-writing { grid-template-columns: 1fr 1fr 360px; gap: 3vw; }
 .vertical .p-writing .posts, .vertical .news { max-width: none; }
-.vertical .p-voices { overflow: hidden; }
+.vertical .p-voices { overflow: hidden; max-width: none; }
+.vertical .voices-inner { max-width: calc(min(100vw, 1480px) - 8vw); margin: 0 auto; }
+.swipe-hint { display: none; }
 .vertical .p-contact { grid-template-columns: 1.1fr .9fr; gap: 3.5vw; }
 
 @media (max-width: 1100px) {
@@ -467,7 +465,30 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .reader .body { padding: 18px 16px 22px; }
   .links li { flex-direction: column; gap: 0; }
 }
+/* phones: swipeable rows instead of long stacks */
+@media (max-width: 699px) {
+  .swipe-hint { display: inline-block; font-size: 19px; color: var(--forest); animation: nudge 1.8s ease-in-out infinite; }
+  @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+  .help-list, .vertical .pub-grid {
+    display: flex !important; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-left: -16px; margin-right: -16px; padding: 4px 16px 14px; scroll-padding: 0 16px; scrollbar-width: none;
+  }
+  .help-list::-webkit-scrollbar, .vertical .pub-grid::-webkit-scrollbar { display: none; }
+  .help-list > li { flex: 0 0 78%; scroll-snap-align: start; }
+  .help-list li.wide { flex-basis: 78%; }
+  .help-item { min-height: 178px; }
+  .vertical .pub-grid > .pub { flex: 0 0 84%; scroll-snap-align: start; }
+  .vertical .pub-grid > .empty { flex: 1 0 100%; }
+  .review { flex-basis: 86%; }
+  .more-row { display: none; }
+  .id-row { align-items: flex-start; }
+  .name-tag { font-size: 34px; padding: 8px 14px 10px; }
+  .surname { white-space: nowrap; margin-left: 6%; font-size: 16px; padding: 5px 11px; }
+  .hero-photo { width: 128px; min-width: 0; }
+  .label::after { right: 30%; }
+}
 @media (prefers-reduced-motion: reduce) {
+  .swipe-hint { animation: none; }
   .wiggle, .float, .spin, .decor *, .pop { animation: none; }
   .pop { display: none; }
   .draw { transition: none; stroke-dashoffset: 0; }
@@ -520,7 +541,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <div class="hero-photo">
         <span class="tape"></span>
         <div class="frame">
-          <img src="profile.png" alt="Portrait of Adrita Rahman Tory" width="1095" height="1437">
+          <img src="profile-web.jpg" alt="Portrait of Adrita Rahman Tory" width="600" height="771">
           <span class="caption">hi, I'm Adrita</span>
         </div>
       </div>
@@ -534,35 +555,35 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     </div>
 
     <div class="hero-intro">
-      <p>I research and build tools to make <b>AI systems safer</b>: resilient against attacks, auditable by design, and aligned with human intention.</p>
-      <p>Outside research, I write essays and poetry exploring ethics, power, and human responsibility, the questions that keep me up at night.</p>
+      <p>I study how <b>AI systems</b> get attacked, fooled and misused, and I build small tools that help people check them.</p>
+      <p>I also write essays and poems, mostly about ethics, power and what we owe each other.</p>
     </div>
     <div class="profiles">
       <a class="btn" href="https://scholar.google.com/citations?user=YHeHjMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
       <a class="btn" href="https://github.com/adritatori" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/adrita-rahman/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn pink" href="#publications" data-go="publications">Read my papers →</a>
-      <a class="btn dark" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener">Book a call ↗</a>
     </div>
   </div>
 
   <div class="hero-help" id="help">
     <div class="help-head">
-      <h2 class="label tilt-r sticker">Let's collaborate <span class="thin">&amp; build together</span></h2>
+      <h2 class="label tilt-r sticker">Ways we can <span class="thin">work together</span></h2>
+      <span class="hand swipe-hint" aria-hidden="true">swipe →</span>
     </div>
     <ul class="help-list">
-      <li><a class="card help-item" href="help/mentorship.html"><span class="num">01 /</span><h3>Research Mentorship</h3><p>Turning vague ideas into rigorous, answerable research questions and executable plans.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/research-projects.html"><span class="num">02 /</span><h3>Research Collaborations</h3><p>Designing, executing, and transparently evaluating experiments across AI safety and security.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/ai-safety.html"><span class="num">03 /</span><h3>AI Safety &amp; Alignment</h3><p>Navigating core threat models, agent behavior, and entry paths into technical AI safety research.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/technical-projects.html"><span class="num">04 /</span><h3>Technical &amp; Prototyping Work</h3><p>Building evaluation pipelines, security benchmarks, and working code for AI systems.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/research-writing.html"><span class="num">05 /</span><h3>Academic Writing &amp; Submissions</h3><p>Structuring manuscripts, figures, target venue selection, and reviewer response strategies.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/career-guidance.html"><span class="num">06 /</span><h3>Career &amp; Pathway Guidance</h3><p>Navigating applications, research statements, and transitions into cybersecurity or AI safety fields.</p><span class="go">see how →</span></a></li>
-      <li><a class="card help-item" href="help/beyond-the-lab.html"><span class="num">07 /</span><h3>Beyond the Lab</h3><p>Exploring ethics, power, and human responsibility through essays and poetry. Always up for deep conversations on the philosophical side of AI and humanity.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/mentorship.html"><span class="num">01 /</span><h3>Research Mentorship</h3><p>You have a fuzzy idea. We turn it into a question you can actually answer, and a plan.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/research-projects.html"><span class="num">02 /</span><h3>Research Collaborations</h3><p>You have data or a half-done experiment. I help design it, run it and read the results honestly.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/ai-safety.html"><span class="num">03 /</span><h3>AI Safety &amp; Alignment</h3><p>Coming from security, ML or software? Where to start, what matters, and a first small project.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/technical-projects.html"><span class="num">04 /</span><h3>Technical &amp; Prototyping Work</h3><p>Turning an idea into code people can run: evaluation pipelines, scoring tools, prototypes.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/research-writing.html"><span class="num">05 /</span><h3>Academic Writing &amp; Submissions</h3><p>Your first paper or a stuck draft: structure, figures, where to submit, and replying to reviewers.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/career-guidance.html"><span class="num">06 /</span><h3>Career &amp; Pathway Guidance</h3><p>CVs, research statements and next steps into cybersecurity or AI safety.</p><span class="go">see how →</span></a></li>
+      <li><a class="card help-item" href="help/beyond-the-lab.html"><span class="num">07 /</span><h3>Beyond the Lab</h3><p>Ethics, power, poetry, and the human side of AI. Happy to just talk.</p><span class="go">see how →</span></a></li>
       <li class="wide"><a class="card help-item cta-card" href="https://tidycal.com/adritatori456" target="_blank" rel="noopener"><span class="num">Not sure where to start?</span><h3>Book a call and tell me what you&rsquo;re working on</h3><p>Pick a time that suits you. We&rsquo;ll figure out together which of these fits.</p><span class="go">book a call ↗</span></a></li>
     </ul>
   </div>
 
-  <svg class="doodle float" style="right:3vw; top:calc(var(--navh) + 8px); width:48px; height:48px" viewBox="0 0 60 60" aria-hidden="true">
+  <svg class="doodle float hide-sm" style="right:3vw; top:calc(var(--navh) + 8px); width:48px; height:48px" viewBox="0 0 60 60" aria-hidden="true">
     <path class="draw" pathLength="1" d="M30 6 L35 25 L54 30 L35 35 L30 54 L25 35 L6 30 L25 25 Z"/>
   </svg>
 
@@ -603,6 +624,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div class="pubs-head">
     <h2 class="label tilt-r sticker">Papers</h2>
     <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
+    <span class="hand swipe-hint" aria-hidden="true">swipe →</span>
   </div>
   <div class="toolbar" role="group" aria-label="Filter publications">
     <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -632,7 +654,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
       <div class="card">
         <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">open source soon</span></div>
         <h3>Agent Control Threat Coverage Matrix <span class="small">· ACTCM · independent project</span></h3>
-        <p>AI-control tests give an agent a hidden harmful goal and score how suspicious it looks to a monitor, but that safety number only covers the attacks the test includes. This project labels every test attack with a MITRE ATT&CK tactic, counts per tactic, and finds the empty ones, so missing attack types stop making a monitor look safer than it is. Open source soon.</p>
+        <p>AI-control tests give an agent a hidden harmful goal and score how suspicious it looks to a monitor, but that safety number only covers the attacks the test includes. This project labels every test attack with a MITRE ATT&amp;CK tactic, counts per tactic, and finds the empty ones, so missing attack types stop making a monitor look safer than it is.</p>
         <div class="acts"><a class="btn" href="https://github.com/adritatori/ACTCM" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
@@ -676,7 +698,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 <!-- ═══ ONGOING, NEWS & PAST WORK ═══ -->
 <section class="panel p-work" id="work">
   <div>
-    <h2 class="label tilt-l sticker">Ongoing <span class="thin">&amp; recent news</span></h2>
+    <h2 class="label tilt-l sticker">Recent <span class="thin">news</span></h2>
     <ul class="news" id="news">
     <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
     <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
@@ -825,7 +847,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     </div>
     <p class="small" style="margin-top:16px">Based in Dhaka, Bangladesh</p>
   </div>
-  <p class="footer-note">© 2026 Adrita Rahman Tory · hand-drawn doodles, plain HTML, hosted on GitHub Pages</p>
+  <p class="footer-note">© 2026 Adrita Rahman Tory · doodles drawn by hand, page written in plain HTML</p>
 </section>
 
 </div>
@@ -984,7 +1006,7 @@ const PUBS = [
 
   /* ── publications ── */
   const grid = $('#pubGrid'), count = $('#pubCount'), search = $('#pubSearch');
-  let filter = 'all', visible = PUBS.slice(), showAll = false;
+  let filter = 'all', visible = PUBS.slice(), showAll = window.matchMedia('(max-width: 699px)').matches; // phones: all papers in one swipe row
   const LIMIT = 6, more = $('#pubMore');
   const statusTag = { published: 'pub', presented: 'pres', accepted: 'acc' };
   const authorsHTML = a => a.map(x => x === ME ? '<b>' + esc(x) + '</b>' : esc(x)).join(', ');
@@ -1039,7 +1061,8 @@ const PUBS = [
         '</div></article>';
     }).join('') || '<p class="empty">nothing matches that, try another word?</p>';
     const shown = showAll ? visible.length : Math.min(LIMIT, visible.length);
-    count.textContent = shown === PUBS.length ? PUBS.length + ' papers' : 'showing ' + shown + ' of ' + PUBS.length;
+    const topicName = { ids: 'intrusion detection', adv: 'adversarial ML', fl: 'federated learning', llm: 'LLM & agent security' }[filter.slice(6)];
+    count.textContent = topicName ? visible.length + ' on ' + topicName + ' (tap All to reset)' : shown === PUBS.length ? PUBS.length + ' papers' : 'showing ' + shown + ' of ' + PUBS.length;
     more.hidden = visible.length <= LIMIT;
     more.textContent = showAll ? 'Show fewer' : 'Show all ' + visible.length + ' papers ↓';
     layout();
@@ -1241,17 +1264,19 @@ const PUBS = [
   const kinds = [flower, leaf, laptop, tulip, sprig];
 
   /* decorations at the top-right / top-left of sections (pairs of [panel, css, svg, size]) */
-  if (window.matchMedia('(min-width: 700px)').matches) {
+  const small = !window.matchMedia('(min-width: 700px)').matches;
+  {
     const spots = {
-      research: [['right:2vw;top:6px', flower, 62], ['left:46vw;top:4px', leaf, 52]],
-      voices:   [['right:3vw;top:10px', tulip, 66], ['left:3vw;bottom:6px', sprig, 56]],
-      work:     [['right:2vw;top:8px', laptop, 64], ['left:44vw;bottom:8px', flower, 54]],
-      writing:  [['left:40vw;top:6px', sprig, 54], ['right:2vw;bottom:10px', tulip, 60]],
-      contact:  [['right:3vw;top:14px', flower, 70], ['left:2vw;bottom:10px', laptop, 58]]
+      research: [['right:2vw;top:10px', flower, 62]],
+      voices:   [['right:3vw;bottom:8px', tulip, 62], ['left:3vw;bottom:6px', sprig, 56]],
+      work:     [['right:2vw;top:10px', laptop, 64], ['right:2vw;bottom:14px', leaf, 52]],
+      writing:  [['right:2vw;top:10px', sprig, 54], ['right:2vw;bottom:14px', tulip, 60]],
+      contact:  [['right:3vw;top:14px', flower, 70], ['right:3vw;bottom:14px', laptop, 58]]
     };
     Object.keys(spots).forEach(id => {
       const panel = document.getElementById(id); if (!panel) return;
-      spots[id].forEach(([pos, svg, size]) => {
+      (small ? spots[id].slice(0, 1) : spots[id]).forEach(([pos, svg, size]) => {
+        if (small) { pos = 'right:14px;top:22px'; size = Math.round(size * .62); }
         const d = document.createElement('div'); d.className = 'decor'; d.setAttribute('aria-hidden', 'true');
         d.style.cssText = pos + ';width:' + size + 'px;height:' + size + 'px'; d.innerHTML = svg; panel.appendChild(d);
       });
