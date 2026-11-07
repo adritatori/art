@@ -417,7 +417,9 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
 .vertical .p-work { grid-template-columns: .9fr 1.1fr; gap: 3.5vw; }
 .vertical .p-writing { grid-template-columns: 1fr 1fr 360px; gap: 3vw; }
 .vertical .p-writing .posts, .vertical .news { max-width: none; }
-.vertical .p-voices { overflow: hidden; }
+.vertical .p-voices { overflow: hidden; max-width: none; }
+.vertical .voices-inner { max-width: calc(min(100vw, 1480px) - 8vw); margin: 0 auto; }
+.swipe-hint { display: none; }
 .vertical .p-contact { grid-template-columns: 1.1fr .9fr; gap: 3.5vw; }
 
 @media (max-width: 1100px) {
@@ -463,7 +465,30 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   .reader .body { padding: 18px 16px 22px; }
   .links li { flex-direction: column; gap: 0; }
 }
+/* phones: swipeable rows instead of long stacks */
+@media (max-width: 699px) {
+  .swipe-hint { display: inline-block; font-size: 19px; color: var(--forest); animation: nudge 1.8s ease-in-out infinite; }
+  @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+  .help-list, .vertical .pub-grid {
+    display: flex !important; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-left: -16px; margin-right: -16px; padding: 4px 16px 14px; scroll-padding: 0 16px; scrollbar-width: none;
+  }
+  .help-list::-webkit-scrollbar, .vertical .pub-grid::-webkit-scrollbar { display: none; }
+  .help-list > li { flex: 0 0 78%; scroll-snap-align: start; }
+  .help-list li.wide { flex-basis: 78%; }
+  .help-item { min-height: 178px; }
+  .vertical .pub-grid > .pub { flex: 0 0 84%; scroll-snap-align: start; }
+  .vertical .pub-grid > .empty { flex: 1 0 100%; }
+  .review { flex-basis: 86%; }
+  .more-row { display: none; }
+  .id-row { align-items: flex-start; }
+  .name-tag { font-size: 34px; padding: 8px 14px 10px; }
+  .surname { white-space: nowrap; margin-left: 6%; font-size: 16px; padding: 5px 11px; }
+  .hero-photo { width: 128px; min-width: 0; }
+  .label::after { right: 30%; }
+}
 @media (prefers-reduced-motion: reduce) {
+  .swipe-hint { animation: none; }
   .wiggle, .float, .spin, .decor *, .pop { animation: none; }
   .pop { display: none; }
   .draw { transition: none; stroke-dashoffset: 0; }
@@ -544,6 +569,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div class="hero-help" id="help">
     <div class="help-head">
       <h2 class="label tilt-r sticker">Ways we can <span class="thin">work together</span></h2>
+      <span class="hand swipe-hint" aria-hidden="true">swipe →</span>
     </div>
     <ul class="help-list">
       <li><a class="card help-item" href="help/mentorship.html"><span class="num">01 /</span><h3>Research Mentorship</h3><p>You have a fuzzy idea. We turn it into a question you can actually answer, and a plan.</p><span class="go">see how →</span></a></li>
@@ -598,6 +624,7 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div class="pubs-head">
     <h2 class="label tilt-r sticker">Papers</h2>
     <span class="hand" style="font-size:21px">click any paper to read the summary, open the PDF, or copy a citation</span>
+    <span class="hand swipe-hint" aria-hidden="true">swipe →</span>
   </div>
   <div class="toolbar" role="group" aria-label="Filter publications">
     <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -979,7 +1006,7 @@ const PUBS = [
 
   /* ── publications ── */
   const grid = $('#pubGrid'), count = $('#pubCount'), search = $('#pubSearch');
-  let filter = 'all', visible = PUBS.slice(), showAll = false;
+  let filter = 'all', visible = PUBS.slice(), showAll = window.matchMedia('(max-width: 699px)').matches; // phones: all papers in one swipe row
   const LIMIT = 6, more = $('#pubMore');
   const statusTag = { published: 'pub', presented: 'pres', accepted: 'acc' };
   const authorsHTML = a => a.map(x => x === ME ? '<b>' + esc(x) + '</b>' : esc(x)).join(', ');
@@ -1237,17 +1264,19 @@ const PUBS = [
   const kinds = [flower, leaf, laptop, tulip, sprig];
 
   /* decorations at the top-right / top-left of sections (pairs of [panel, css, svg, size]) */
-  if (window.matchMedia('(min-width: 700px)').matches) {
+  const small = !window.matchMedia('(min-width: 700px)').matches;
+  {
     const spots = {
       research: [['right:2vw;top:10px', flower, 62]],
-      voices:   [['right:3vw;top:10px', tulip, 66], ['left:3vw;bottom:6px', sprig, 56]],
+      voices:   [['right:3vw;bottom:8px', tulip, 62], ['left:3vw;bottom:6px', sprig, 56]],
       work:     [['right:2vw;top:10px', laptop, 64], ['right:2vw;bottom:14px', leaf, 52]],
       writing:  [['right:2vw;top:10px', sprig, 54], ['right:2vw;bottom:14px', tulip, 60]],
       contact:  [['right:3vw;top:14px', flower, 70], ['right:3vw;bottom:14px', laptop, 58]]
     };
     Object.keys(spots).forEach(id => {
       const panel = document.getElementById(id); if (!panel) return;
-      spots[id].forEach(([pos, svg, size]) => {
+      (small ? spots[id].slice(0, 1) : spots[id]).forEach(([pos, svg, size]) => {
+        if (small) { pos = 'right:14px;top:22px'; size = Math.round(size * .62); }
         const d = document.createElement('div'); d.className = 'decor'; d.setAttribute('aria-hidden', 'true');
         d.style.cssText = pos + ';width:' + size + 'px;height:' + size + 'px'; d.innerHTML = svg; panel.appendChild(d);
       });
