@@ -647,15 +647,21 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
     <div class="projects">
       <div class="card">
         <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">free tool</span></div>
-        <h3>Collusion Evidence Lab <span class="small">· started in an Apart Research sprint, Oct 2026</span></h3>
-        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. I am still extending it. Includes a free browser tool so a human reviewer makes the final call.</p>
-        <div class="acts"><a class="btn dark" href="https://adritatori.github.io/AI_collusion/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3>Collusion Evidence Lab <span class="small">· Apart Research AI Collusion Sprint, Oct 2026</span></h3>
+        <p>Tested simple ways to spot AI agents secretly coordinating prices, using only their logs. No single check worked everywhere, but combining them cut false alarms from 34% to 4%. It still misses cartels that never react to rivals. On 75 real auction runs with LLM sellers, an AI overseer caught the coordinating messages in all 20 overseen runs, yet under profit pressure prices did not change while the evidence faded. I am still extending it. Includes a free browser tool so a human reviewer makes the final call.</p>
+        <div class="acts"><a class="btn dark" href="https://adritatori.github.io/AI_collusion/" target="_blank" rel="noopener">Website ↗</a><a class="btn" href="https://github.com/adritatori/AI_collusion" target="_blank" rel="noopener">GitHub ↗</a><a class="btn" href="https://apartresearch.com/sprints/projects/oversight-removes-the-evidence-not-the-harm-what-logs-can-prove-about-collusion-among-llm-agents-py0t" target="_blank" rel="noopener">Sprint report ↗</a></div>
       </div>
       <div class="card">
         <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">open source soon</span></div>
         <h3>Agent Control Threat Coverage Matrix <span class="small">· ACTCM · independent project</span></h3>
         <p>AI-control tests give an agent a hidden harmful goal and score how suspicious it looks to a monitor, but that safety number only covers the attacks the test includes. This project labels every test attack with a MITRE ATT&amp;CK tactic, counts per tactic, and finds the empty ones, so missing attack types stop making a monitor look safer than it is.</p>
         <div class="acts"><a class="btn" href="https://github.com/adritatori/ACTCM" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="card">
+        <div class="tags"><span class="tag acc">in progress</span><span class="tag pres">code + logs</span></div>
+        <h3>SwarmGate <span class="small">· with Apart Research · 2026</span></h3>
+        <p>Many AI agents now trust whatever a peer says about itself. SwarmGate puts identity, permissions and audit logs in a gateway the agents cannot change, then asks which attacks still work. It stopped all 8 forgery-type attacks, but not an agent being persuaded. In a ten-agent swarm, harm stayed one hop from the attacker. A simple provenance rule blocked every leak but also blocked normal work.</p>
+        <div class="acts"><a class="btn" href="https://github.com/adritatori/SwarmGate" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
 
@@ -700,7 +706,8 @@ dialog.reader::backdrop { background: rgba(31,31,31,.45); }
   <div>
     <h2 class="label tilt-l sticker">Recent <span class="thin">news</span></h2>
     <ul class="news" id="news">
-    <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs.</li>
+    <li class="hot"><span class="when">Nov 2026</span>Released <b>SwarmGate</b> code and logs (with Apart Research): an outside gateway that stops forged identities and permissions in AI agent swarms, and shows what it cannot stop.</li>
+    <li class="hot"><span class="when">Oct 2026</span>Built <b>Collusion Evidence Lab</b> in an Apart Research sprint: tools to spot AI agents secretly coordinating prices from their logs. Submitted the report <i>Oversight Removes the Evidence, Not the Harm</i> to the AI Collusion Research Sprint (Oct 25).</li>
     <li class="hot"><span class="when">Oct 2026</span>Completed the Technical AI Safety course, BlueDot Impact.</li>
     <li class="hot"><span class="when">2026</span>Awarded the Erasmus Mundus CyberMACS Scholarship.</li>
     <li><span class="when">2026</span>Submitted my master's thesis. Joined the Centre for Effective Altruism's Career Bootcamp.</li>
